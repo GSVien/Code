@@ -1,0 +1,384 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="GiaSinhVienModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="District">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="ProvinceId" Type="int" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'GiaSinhVien.dbo.GroupUser' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="GroupUser">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Status" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PhotoMedia">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ObjectTypeId" Type="int" Nullable="false" />
+          <Property Name="ObjectId" Type="bigint" Nullable="false" />
+          <Property Name="PhotoLink" Type="nvarchar" MaxLength="255" />
+          <Property Name="MediaLink" Type="nvarchar" MaxLength="255" />
+          <Property Name="Type" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'GiaSinhVien.dbo.Product' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="CategoryId" />
+            <PropertyRef Name="SubCategoryId" />
+            <PropertyRef Name="Price" />
+            <PropertyRef Name="Photo" />
+            <PropertyRef Name="Status" />
+            <PropertyRef Name="CreateDate" />
+            <PropertyRef Name="DictrictId" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="CategoryId" Type="bigint" Nullable="false" />
+          <Property Name="SubCategoryId" Type="bigint" Nullable="false" />
+          <Property Name="Price" Type="bigint" Nullable="false" />
+          <Property Name="Photo" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="PostUserId" Type="bigint" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="DictrictId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProductCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Photo" Type="nvarchar" MaxLength="255" />
+          <Property Name="Status" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Province">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SubProductCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductCategoryId" Type="bigint" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Photo" Type="nvarchar" MaxLength="255" />
+          <Property Name="Status" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Passwork" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="GroupId" Type="int" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="255" />
+          <Property Name="AvatarPhoto" Type="nvarchar" MaxLength="255" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="GiaSinhVienModelStoreContainer">
+          <EntitySet Name="District" EntityType="Self.District" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PhotoMedia" EntityType="Self.PhotoMedia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductCategory" EntityType="Self.ProductCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Province" EntityType="Self.Province" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SubProductCategory" EntityType="Self.SubProductCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserInfo" EntityType="Self.UserInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GroupUser" EntityType="Self.GroupUser" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[GroupUser].[Id] AS [Id], 
+[GroupUser].[Name] AS [Name], 
+[GroupUser].[Status] AS [Status]
+FROM [dbo].[GroupUser] AS [GroupUser]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Product" EntityType="Self.Product" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[Product].[Id] AS [Id], 
+[Product].[Name] AS [Name], 
+[Product].[CategoryId] AS [CategoryId], 
+[Product].[SubCategoryId] AS [SubCategoryId], 
+[Product].[Price] AS [Price], 
+[Product].[Photo] AS [Photo], 
+[Product].[Status] AS [Status], 
+[Product].[PostUserId] AS [PostUserId], 
+[Product].[CreateDate] AS [CreateDate], 
+[Product].[DictrictId] AS [DictrictId]
+FROM [dbo].[Product] AS [Product]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GiaSinhVienModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="District">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProvinceId" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PhotoMedia">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ObjectTypeId" Type="Int32" Nullable="false" />
+          <Property Name="ObjectId" Type="Int64" Nullable="false" />
+          <Property Name="PhotoLink" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="MediaLink" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProductCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Photo" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="GiaSinhVienModel.ProductCategoryStatus" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Province">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SubProductCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductCategoryId" Type="Int64" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Photo" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="GiaSinhVienModel.SubProductCategoryStatus" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Passwork" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GroupId" Type="Int32" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="AvatarPhoto" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Status" Type="GiaSinhVienModel.UserStatus" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GroupUser">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Status" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="CategoryId" />
+            <PropertyRef Name="SubCategoryId" />
+            <PropertyRef Name="Price" />
+            <PropertyRef Name="Photo" />
+            <PropertyRef Name="Status" />
+            <PropertyRef Name="CreateDate" />
+            <PropertyRef Name="DictrictId" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CategoryId" Type="Int64" Nullable="false" />
+          <Property Name="SubCategoryId" Type="Int64" Nullable="false" />
+          <Property Name="Price" Type="Int64" Nullable="false" />
+          <Property Name="Photo" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Status" Type="GiaSinhVienModel.ProductStatus" Nullable="false" />
+          <Property Name="PostUserId" Type="Int64" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DictrictId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="GiaSinhVienEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Districts" EntityType="Self.District" />
+          <EntitySet Name="PhotoMedias" EntityType="Self.PhotoMedia" />
+          <EntitySet Name="ProductCategories" EntityType="Self.ProductCategory" />
+          <EntitySet Name="Provinces" EntityType="Self.Province" />
+          <EntitySet Name="SubProductCategories" EntityType="Self.SubProductCategory" />
+          <EntitySet Name="UserInfoes" EntityType="Self.UserInfo" />
+          <EntitySet Name="GroupUsers" EntityType="Self.GroupUser" />
+          <EntitySet Name="Products" EntityType="Self.Product" />
+        </EntityContainer>
+        <EnumType Name="UserStatus">
+          <Member Name="Deleted" Value="0" />
+          <Member Name="Active" Value="1" />
+        </EnumType>
+        <EnumType Name="ProductStatus">
+          <Member Name="Deleted" Value="0" />
+          <Member Name="Active" Value="1" />
+        </EnumType>
+        <EnumType Name="SubProductCategoryStatus">
+          <Member Name="Deleted" Value="0" />
+          <Member Name="Active" Value="1" />
+        </EnumType>
+        <EnumType Name="ProductCategoryStatus">
+          <Member Name="Deleted" Value="0" />
+          <Member Name="Active" Value="1" />
+        </EnumType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GiaSinhVienModelStoreContainer" CdmEntityContainer="GiaSinhVienEntities">
+          <EntitySetMapping Name="Districts">
+            <EntityTypeMapping TypeName="GiaSinhVienModel.District">
+              <MappingFragment StoreEntitySet="District">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ProvinceId" ColumnName="ProvinceId" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PhotoMedias">
+            <EntityTypeMapping TypeName="GiaSinhVienModel.PhotoMedia">
+              <MappingFragment StoreEntitySet="PhotoMedia">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ObjectTypeId" ColumnName="ObjectTypeId" />
+                <ScalarProperty Name="ObjectId" ColumnName="ObjectId" />
+                <ScalarProperty Name="PhotoLink" ColumnName="PhotoLink" />
+                <ScalarProperty Name="MediaLink" ColumnName="MediaLink" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductCategories">
+            <EntityTypeMapping TypeName="GiaSinhVienModel.ProductCategory">
+              <MappingFragment StoreEntitySet="ProductCategory">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Provinces">
+            <EntityTypeMapping TypeName="GiaSinhVienModel.Province">
+              <MappingFragment StoreEntitySet="Province">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubProductCategories">
+            <EntityTypeMapping TypeName="GiaSinhVienModel.SubProductCategory">
+              <MappingFragment StoreEntitySet="SubProductCategory">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ProductCategoryId" ColumnName="ProductCategoryId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserInfoes">
+            <EntityTypeMapping TypeName="GiaSinhVienModel.UserInfo">
+              <MappingFragment StoreEntitySet="UserInfo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Passwork" ColumnName="Passwork" />
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="AvatarPhoto" ColumnName="AvatarPhoto" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GroupUsers">
+            <EntityTypeMapping TypeName="GiaSinhVienModel.GroupUser">
+              <MappingFragment StoreEntitySet="GroupUser">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="GiaSinhVienModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="SubCategoryId" ColumnName="SubCategoryId" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="PostUserId" ColumnName="PostUserId" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="DictrictId" ColumnName="DictrictId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

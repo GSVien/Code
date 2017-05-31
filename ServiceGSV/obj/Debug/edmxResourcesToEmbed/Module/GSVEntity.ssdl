@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GiaSinhVienModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="District">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="ProvinceId" Type="int" Nullable="false" />
+    <Property Name="Status" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'GiaSinhVien.dbo.GroupUser' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="GroupUser">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="Status" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Status" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PhotoMedia">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ObjectTypeId" Type="int" Nullable="false" />
+    <Property Name="ObjectId" Type="bigint" Nullable="false" />
+    <Property Name="PhotoLink" Type="nvarchar" MaxLength="255" />
+    <Property Name="MediaLink" Type="nvarchar" MaxLength="255" />
+    <Property Name="Type" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'GiaSinhVien.dbo.Product' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="CategoryId" />
+      <PropertyRef Name="SubCategoryId" />
+      <PropertyRef Name="Price" />
+      <PropertyRef Name="Photo" />
+      <PropertyRef Name="Status" />
+      <PropertyRef Name="CreateDate" />
+      <PropertyRef Name="DictrictId" />
+    </Key>
+    <Property Name="Id" Type="bigint" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="CategoryId" Type="bigint" Nullable="false" />
+    <Property Name="SubCategoryId" Type="bigint" Nullable="false" />
+    <Property Name="Price" Type="bigint" Nullable="false" />
+    <Property Name="Photo" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Status" Type="int" Nullable="false" />
+    <Property Name="PostUserId" Type="bigint" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+    <Property Name="DictrictId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProductCategory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Photo" Type="nvarchar" MaxLength="255" />
+    <Property Name="Status" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Province">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Status" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SubProductCategory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProductCategoryId" Type="bigint" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Photo" Type="nvarchar" MaxLength="255" />
+    <Property Name="Status" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserInfo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Passwork" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="GroupId" Type="int" Nullable="false" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Address" Type="nvarchar" MaxLength="255" />
+    <Property Name="AvatarPhoto" Type="nvarchar" MaxLength="255" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+    <Property Name="Status" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="GiaSinhVienModelStoreContainer">
+    <EntitySet Name="District" EntityType="Self.District" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PhotoMedia" EntityType="Self.PhotoMedia" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProductCategory" EntityType="Self.ProductCategory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Province" EntityType="Self.Province" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SubProductCategory" EntityType="Self.SubProductCategory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserInfo" EntityType="Self.UserInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GroupUser" EntityType="Self.GroupUser" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[GroupUser].[Id] AS [Id], 
+[GroupUser].[Name] AS [Name], 
+[GroupUser].[Status] AS [Status]
+FROM [dbo].[GroupUser] AS [GroupUser]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Product" EntityType="Self.Product" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[Product].[Id] AS [Id], 
+[Product].[Name] AS [Name], 
+[Product].[CategoryId] AS [CategoryId], 
+[Product].[SubCategoryId] AS [SubCategoryId], 
+[Product].[Price] AS [Price], 
+[Product].[Photo] AS [Photo], 
+[Product].[Status] AS [Status], 
+[Product].[PostUserId] AS [PostUserId], 
+[Product].[CreateDate] AS [CreateDate], 
+[Product].[DictrictId] AS [DictrictId]
+FROM [dbo].[Product] AS [Product]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>
