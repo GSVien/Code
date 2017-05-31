@@ -1,0 +1,59 @@
+﻿@import "../_lib.scss";
+@import "../_core.scss";
+
+.uc-show-control {
+    @include clearfix;
+
+    .toolbar {
+        @include clearfix;
+
+        .btn {
+            float: left;
+            width: 35px;
+            @include clear;
+            height: 35px;
+            line-height: 38px;
+            color: $color-white;
+            background: rgba($color-black, 0.8);
+
+            .fa {
+                font-size: 20px;
+            }
+
+            &:not(:last-child) {
+                margin-right: 8px;
+            }
+
+            &:hover, &:focus {
+                background: $color-black;
+            }
+        }
+    }
+
+    #modal-edit-show {
+        .description {
+            resize: none;
+        }
+
+        .image-cropper {
+            .cropit-image-preview {
+                width: 100px;
+                height: 100px;
+                margin: auto;
+                margin-bottom: 15px;
+                background: $color-line-gray;
+                cursor: all-scroll;
+            }
+
+            .cropit-image-zoom-input {
+                margin-top: 5px;
+            }
+
+            .form-group {
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+}

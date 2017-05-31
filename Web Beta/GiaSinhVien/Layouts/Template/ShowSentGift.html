@@ -1,0 +1,31 @@
+﻿<div class="show-sent-gift panel">
+<!--    <div class="panel-title">-->
+<!--        <i class="fa fa-gift"></i> Các món quà đã tặng-->
+<!--    </div>-->
+
+    <div class="panel-body">
+<!--        <div class="alert alert-info" ng-if="listGift.status == 'loading'">-->
+<!--            <i class="fa fa-spin fa-circle-o-notch"></i> Đang tải...-->
+<!--        </div>-->
+
+        <div class="alert alert-danger" ng-if="listGift.status == 'error'">
+            {{ error }}
+        </div>
+
+        <div class="list" ng-if="listGift.status == 'loaded'">
+            <div class="sent-gift-item" ng-repeat="x in listGift.items">
+                <div class="time">
+                    <i class="fa fa-clock-o" data-toggle="tooltip" data-container="body" data-placement="top" title="{{ helper.formatTime(x.GiveAway.CreateDate) }}"></i>
+                </div>
+                <div class="user">
+                    <a href="#" ud-role="user-popup" user-id="{{ x.SenderUser.Id }}" schedule-id="{{scheduleId}}">
+                        {{ x.SenderUser.Name }}
+                    </a>
+                </div>
+                <div class="gift">
+                    <img-scale link="{{x.GiftAnimation.PhotoLink}}" scale="best-fit" data-toggle="tooltip" data-container="body" data-placement="top" title="{{ helper.formatNumber(x.GiveAway.Quantity) + ' ' + x.Gift.Name }}"></img-scale>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

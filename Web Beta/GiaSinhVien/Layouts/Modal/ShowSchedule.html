@@ -1,0 +1,100 @@
+﻿<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" ng-click="onClose()">
+        <span>&times;</span>
+    </button>
+    <h4 class="modal-title">
+        <ul class="nav nav-tabs">
+            <li>
+                <a data-target="#modal-show-schedule-current" data-toggle="tab">Show hiện tại</a>
+            </li>
+            <li class="active">
+                <a data-target="#modal-show-schedule-other" data-toggle="tab">Tất cả các show</a>
+            </li>
+        </ul>
+    </h4>
+</div>
+<div class="modal-body">
+    <div class="tab-content">
+        <div class="tab-pane fade" id="modal-show-schedule-current">
+            <div class="alert alert-info" ng-if="showSchedule.currentStatus == 'loading'">
+                <i class="fa fa-spin fa-circle-o-notch"></i> Đang tải...
+            </div>
+
+            <div class="alert alert-danger" ng-if="showSchedule.currentStatus == 'error'">
+                {{showSchedule.currentError}}
+            </div>
+
+            <div class="alert alert-success" ng-if="showSchedule.currentStatus == 'loaded' && showSchedule.listCurrent.length == 0">
+                Hiện chưa có thông tin để xếp hạng
+            </div>
+
+            <div ng-if="showSchedule.currentStatus == 'loaded'">
+                <ul class="nav nav-tabs">
+                    <li class="active">
+                        <a data-target="#modal-show-schedule-current-today" data-toggle="tab">Lịch diễn hôm nay</a>
+                    </li>
+                    <li>
+                        <a data-target="#modal-show-schedule-current-all" data-toggle="tab">Lịch diễn ngày mai</a>
+                    </li>
+                </ul>
+
+                <div class="tab-content">
+                    <div class="tab-pane fade active in" id="modal-show-schedule-current-today">
+                        <div class="item" ng-click="onClose()" ng-repeat="x in showSchedule.listCurrent[0] track by $index" ng-if="x.startTime">
+                            <div class="time">
+                                {{helper.formatTime(x.startTime)}} - {{helper.formatTime(x.endTime)}}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="modal-show-schedule-current-all">
+                        <div class="item" ng-click="onClose()" ng-repeat="x in showSchedule.listCurrent[1] track by $index" ng-if="x.startTime">
+                            <div class="time">
+                                {{helper.formatTime(x.startTime)}} - {{helper.formatTime(x.endTime)}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-pane fade active in" id="modal-show-schedule-other">
+            <div class="alert alert-info" ng-if="showSchedule.otherStatus == 'loading'">
+                <i class="fa fa-spin fa-circle-o-notch"></i> Đang tải...
+            </div>
+
+            <div class="alert alert-danger" ng-if="showSchedule.otherStatus == 'error'">
+                {{showSchedule.currentError}}
+            </div>
+
+            <div class="alert alert-success" ng-if="showSchedule.otherStatus == 'loaded' && showSchedule.listOther.length == 0">
+                Hiện chưa có thông tin để xếp hạng
+            </div>
+
+            <div ng-if="showSchedule.otherStatus == 'loaded'">
+                <ul class="nav nav-tabs">
+                    <li class="active">
+                        <a data-target="#modal-show-schedule-other-today" data-toggle="tab">Lịch diễn hiện tại</a>
+                    </li>
+                    <li>
+                        <a data-target="#modal-show-schedule-other-all" data-toggle="tab">Lịch diễn ngày mai</a>
+                    </li>
+                </ul>
+
+                <div class="tab-content">
+                    <div class="tab-pane fade active in" id="modal-show-schedule-other-today">
+                        <div class="item" ng-click="onClose()" ng-repeat="x in showSchedule.listOther[0]">
+                            <uc-show-item show-model="x"></uc-show-item>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="modal-show-schedule-other-all">
+                        <div class="item" ng-click="onClose()" ng-repeat="x in showSchedule.listOther[1]">
+                            <uc-show-item show-model="x"></uc-show-item>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

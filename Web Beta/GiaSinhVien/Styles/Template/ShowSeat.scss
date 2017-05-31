@@ -1,0 +1,91 @@
+﻿@import "../_lib.scss";
+@import "../_core.scss";
+
+.show-seat {
+    height: 300px;
+    position: relative;
+
+    .title {
+        background: #f15d69;
+        color: #fff;
+        height: 30px;
+        margin-bottom: 10px;
+        line-height: 30px;
+        padding-left: 10px;
+        font-size: 13px;
+        border-radius: 4px;
+    }
+
+    .list-seat {
+        @include clearfix;
+        list-style-type: none;
+        padding-left: 10px;
+
+
+        .seat-item {
+            position: absolute;
+            float: left;
+            text-align: center;
+
+            &.location-1 {
+                left: 20%;
+                top: 55px;
+            }
+
+            &.location-2 {
+                left: 60%;
+                top: 55px;
+            }
+
+            &.location-3 {
+                left: 10%;
+                top: 175px;
+            }
+
+            &.location-4 {
+                left: 40%;
+                top: 175px;
+            }
+
+            &.location-5 {
+                left: 70%;
+                top: 175px;
+            }
+
+            .avatar {
+                border-radius: 50%;
+                height: 55px;
+                width: 55px;
+            }
+
+            .seat-icon {
+                height: 55px;
+            }
+
+            .user {
+                position: relative;
+
+                .name {
+                    font-size: 14px;
+                    margin-top: 3px;
+                    width: 80px;
+                    white-space: nowrap;
+                    overflow: hidden;
+
+                    span {
+                        background: rgba(255,255,255,.85);
+                    }
+                }
+
+                .photobackground {
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    z-index: 1;
+                }
+            }
+        }
+    }
+}

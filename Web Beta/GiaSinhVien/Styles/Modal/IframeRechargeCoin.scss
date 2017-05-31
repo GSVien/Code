@@ -1,0 +1,29 @@
+﻿.modal-show-iframe-recharge-coin {
+
+    .modal-dialog {
+        top: -100px !important;
+        height: 600px;
+
+        .modal-content {
+            height: 100%;
+
+            .modal-header {
+                padding: 3px;
+   
+
+                .modal-title {
+                    margin-top: 5px;
+                }
+
+                .close {
+                    color: white;
+                }
+            }
+
+            .modal-body {
+                padding: 0;
+                height: 94%;
+            }
+        }
+    }
+}

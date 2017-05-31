@@ -1,0 +1,30 @@
+﻿<div class="show-item list-item-animate">
+    <a href="{{link}}">
+        <div class="photo-avatar" ng-if="issample===true">
+            <img src="../../Content/Image/Iconmenu/avatar-thuviec.png"/>
+            <div style="color: white;">
+                <b>EXP</b>
+                <div class="percent-level-process" tooltip-placement="bottom" uib-tooltip="{{helper.formatNumber(persamper)}} %">
+                    <div style="width: {{persamper}}% "></div>
+                </div>
+            </div>
+        </div>
+        <div class="photo">
+            <img class="photo" ng-src="{{helper.linkImage(photo, 320)}}"/>
+        </div>
+        <img ng-if="phone == 1 && phone == 2" class="phone" ng-src="{{phone == 1 && isLive || phone == 2 && isLive ? '/Content/Image/Phone/icon_live.png' : '/Content/Image/Phone/icon_off.png'}}"/>
+    </a>   
+    <div class="name">{{name}}</div>
+    <div class="start-time" uib-tooltip="Bắt đầu lúc {{startTime | date: 'HH:mm dd/MM/yyyy' : '+7'}}" ng-if="startTime && !isLive">
+        <div ng-if="startTimeType == 'time'">
+            <i class="fa fa-clock-o" ></i> {{startTime | date: "HH:mm" : "+7"}}
+        </div>
+        <div ng-if="startTimeType == 'date'"><i class="fa fa-calendar" ></i> {{startTime | date: "HH:mm" : "+7"}}</div>
+    </div>
+    <div class="show-info" ng-if="isLive===true">
+        <img class="live" ng-src="/Content/Image/live1.gif" />
+        <span class="view"> | <i class="fa fa-user"></i> {{view | number: 0}}</span>
+    </div>
+    <img class="level" ng-src="{{levelPhoto}}" data-toggle="tooltip" data-placement="top" title="{{levelName}}" />
+    <!-- <uc-follow-button status="{{followStatus}}" target-user-id="{{starId}}"></uc-follow-button>-->
+</div>

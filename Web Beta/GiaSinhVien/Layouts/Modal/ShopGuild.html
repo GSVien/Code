@@ -1,0 +1,53 @@
+﻿
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" ng-click="onClose()">
+        <span>&times;</span>
+    </button>
+    <h4 class="modal-title">
+        <div class="level">level {{nexlevel.CurrentLevel.LevelIndex}}</div>
+        <img ng-src="/Content/Image/Guild/tthgt.png" />
+    </h4>
+    <!--    <button class="btn btn-blue" ng-click="showInfoTower()">Thông tin</button>-->
+</div>
+<div class="modal-body">
+    <img class="border" src="/Content/Image/Guild/khung dong1.png">
+    <div class="group">
+        <div class="" role="main">
+            <div class="star-panel">
+                <ul class="nav nav-tabs">
+                    <li class="active">
+                        <a class="title " data-target="#shop-catelogy" data-toggle="tab">Trang bị</a>
+                    </li>
+                    <li>
+                        <a class="title" data-target="#shop-vip" data-toggle="tab">Vip</a>
+                    </li>
+                </ul>
+
+                <div class="tab-content">
+                    <!-------------------------------- shop-catelogy --------------------------- -->
+                    <div class="tab-pane active fade in" id="shop-catelogy">
+<!--                        <div class="category" ng-repeat="x in ListItemCatelogy">-->
+<!--                            <div class="name" ng-if="x.ItemCategory.Id != 2">{{x.ItemCategory.Name}}</div>-->
+                            <div class="category">
+                                <div class="name">Danh sách trang bị</div>
+                                <div class="child-category-3 list-item">
+                                    <div class="col col-xs-6 col-sm-4 col-md-3" ng-repeat="y in ListShopCatelogy">
+                                        <uc-shop-catelogy-item catelogy-model="y" buy="{{1}}"></uc-shop-catelogy-item>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="shop-vip">
+                            <div class="list-item">
+                                <div class=" col col-xs-6 col-sm-4 col-md-3" ng-repeat="y in ListShopVip">
+                                    <uc-shop-vip-item vip-model="y"></uc-shop-vip-item>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+

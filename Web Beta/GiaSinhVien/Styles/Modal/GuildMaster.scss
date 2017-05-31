@@ -1,0 +1,456 @@
+﻿@import "../_lib.scss";
+@import "../_core.scss";
+
+.modal-guild-master {
+    .guild-rank {
+        &:hover, &:active, &:focus {
+            text-decoration: none;
+        }
+    }
+
+    .rank-item {
+        border-bottom: 1px solid $color-border-gray;
+    }
+
+    .modal-dialog {
+        .modal-content {
+            border: 0;
+            box-shadow: none;
+            background: transparent;
+        }
+
+        .modal-header {
+            position: relative;
+            background: transparent;
+            border-bottom: 0;
+
+            .modal-title {
+                margin: 0;
+                line-height: 28px;
+                margin-right: 10px;
+                position: absolute;
+                left: 50%;
+                transform: translate(-50%);
+                top: 5px;
+                z-index: 99;
+            }
+
+            .level {
+                position: absolute;
+                top: 60%;
+                left: 50%;
+                transform: translate(-50%);
+                font-size: 13px;
+            }
+
+            .btn-blue {
+                position: absolute;
+                top: 8px;
+                right: 40px;
+                background: #5bc0de;
+
+                &:hover {
+                    color: #fff;
+                }
+            }
+        }
+
+        .modal-body {
+            @include clearfix;
+            background-image: url('../../Content/Image/Guild/khung dong1.png');
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            margin: 15px;
+            padding-top: 50px;
+            min-height: 500px;
+            background: $color-white;
+
+            .border {
+                position: absolute;
+                left: -20px;
+                top: -13px;
+                width: 104%;
+                height: 104%;
+
+                @media(max-width:768px) {
+                    position: absolute;
+                    left: -10px;
+                    top: -10px;
+                    width: 104%;
+                    height: 103%;
+                }
+            }
+        }
+    }
+
+    .list_guild {
+        .tab {
+            @include clearfix;
+
+            .nav-pills {
+                float: left;
+                margin-top: 10px;
+                margin-right: 10px;
+
+                li {
+                    position: relative;
+                    @include clear;
+
+                    a {
+                        width: 200px;
+                        height: 40px;
+                        @include clear;
+                        padding: 0 10px;
+                        line-height: 40px;
+                        border-radius: 0;
+                        color: $color-black;
+                        font-size: $font-size-large-1;
+                        background: $color-border-gray;
+
+                        &:hover {
+                            background: rgba(246, 95, 107, 0.25);
+                        }
+                    }
+
+                    &.active {
+                        z-index: 1;
+                        border-color: $color-primary;
+                        color: $color-white;
+                        border-right-width: 5px;
+                        background: $color-primary;
+
+                        a {
+                            background: none;
+                            color: inherit;
+
+                            &:hover {
+                                background: rgba(246, 95, 107, 0.25);
+                            }
+                        }
+                    }
+                }
+
+                @media (max-width:420px) {
+                    width: 100%;
+
+                    li {
+                        a {
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+        }
+
+        .guild-master {
+            @include clearfix;
+            margin-bottom: 10px;
+
+            .guild-rank {
+                &:active, &:focus {
+                    outline: none;
+                }
+
+                .avatar {
+                    float: left;
+                    width: 100px;
+                    height: 100px;
+                    border-radius: 50%;
+                    object-fit: cover;
+                }
+
+                .edit-avatar {
+                    position: absolute;
+                    top: 50%;
+                    left: 7%;
+                    transform: translate(0%,-50%);
+                    color: black;
+                    background: rgba(251, 251, 255, 0.6);
+                    border-radius: 4px;
+                    display: none;
+                    padding: 3px;
+                }
+
+                .team-name {
+                    font-size: 15px;
+                    font-weight: 600;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    -webkit-text-overflow: ellipsis;
+                    -moz-text-overflow: ellipsis;
+                    -ms-text-overflow: ellipsis;
+                    -o-text-overflow: ellipsis;
+                    text-overflow: ellipsis;
+                }
+
+                .coin {
+                }
+
+                .level {
+                    height: 20px;
+                }
+
+                .info {
+                    width: calc(100% - 110px);
+                    margin-left: 7px;
+                    padding-top: 10px;
+                    float: left;
+                }
+
+                .div-level {
+                    margin: 0;
+                    height: 20px;
+                    width: 100%;
+                    FLOAT: LEFT;
+                    font-size: 18px;
+                    margin-top: 4px;
+                    margin-bottom: 8px;
+                    margin-top: 8px;
+
+                    .progress {
+                        margin: 0;
+                        position: relative;
+                    }
+
+                    .phantram {
+                        width: 100%;
+                        height: 100%;
+                        text-align: center;
+                        line-height: 20px;
+                        font-size: 11px;
+                        position: absolute;
+                        font-weight: bold;
+                        color: $color-black;
+                    }
+                }
+
+                &:hover {
+                    .edit-avatar {
+                        display: block;
+                    }
+                }
+            }
+        }
+
+        .tab-content {
+            float: left;
+            width: calc(100% - 216px);
+
+            .tab-pane {
+                border-left: 1px solid #E8E6E8;
+                margin-top: 10px;
+                @include clearfix;
+                min-height: 300px;
+
+                .list-user {
+                    padding-right: 0;
+                    padding-top: 10px;
+                    border-top: 1px solid #e6e0e0;
+                    height: 440px;
+                    overflow-y: auto;
+                    overflow-x: hidden;
+
+                    .list-user-guild {
+                        .title {
+                            line-height: 30px;
+                            font-weight: 700;
+                            height: 50px;
+                            background: $color-primary;
+                            border-radius: 4px;
+                            color: $color-white;
+                            margin-bottom: 10px;
+                            padding-left: 5px;
+                        }
+                    }
+
+                    .list {
+                        > div {
+                            position: relative;
+
+                            .btn-default {
+                                position: absolute;
+                                right: 10px;
+                                top: 50%;
+                                transform: translate(0,-50%);
+                            }
+
+                            .btn-primary {
+                                position: absolute;
+                                right: 10px;
+                                top: 50%;
+                                transform: translate(0,-50%);
+                            }
+                        }
+
+                        .next {
+                            text-align: center;
+                            margin-bottom: 10px;
+                            margin-top: 10px;
+
+                            button {
+                                width: 300px;
+                            }
+                        }
+                    }
+                }
+
+                .alert {
+                    margin: 10px;
+                }
+
+                .get-reward {
+                    position: absolute;
+                    right: 5px;
+                }
+
+                .support {
+                    position: absolute;
+                    right: 5px;
+                    top: -30px;
+                }
+
+                .tooltip.top .tooltip-arrow {
+                    left: 5px;
+
+                    i {
+                        font-size: 18px;
+                    }
+                }
+            }
+
+            @media(max-width:420px) {
+                width: 100%;
+
+                .tab-pane {
+                    width: 100%;
+
+                    .get-reward {
+                        width: 100%;
+                        position: relative;
+                        margin-bottom: 10px;
+                        right: 0;
+                    }
+                }
+            }
+        }
+
+        .count-user-guild {
+            position: absolute;
+            right: 10px;
+            top: 60px;
+
+            img {
+                float: left;
+                height: 31px;
+            }
+
+            .pull-left {
+                .title {
+                    opacity: 0.7;
+                }
+
+                .value {
+                    font-weight: 700;
+                }
+            }
+        }
+
+        .master-user {
+            position: absolute;
+            top: 60px;
+
+            img {
+                float: left;
+                margin-right: 4px;
+            }
+
+            .pull-left {
+                white-space: nowrap;
+                overflow: hidden;
+                width: calc(100% - 35px);
+                -webkit-text-overflow: ellipsis;
+                -moz-text-overflow: ellipsis;
+                -ms-text-overflow: ellipsis;
+                -o-text-overflow: ellipsis;
+                text-overflow: ellipsis;
+
+                .title {
+                    opacity: 0.7;
+                }
+
+                .value {
+                    font-weight: 700;
+                }
+            }
+        }
+    }
+
+    .list-user-in-guild {
+        > div {
+            position: relative;
+
+            .btn-primary {
+                position: absolute;
+                right: 0px;
+                top: 50%;
+                transform: translate(0,-50%);
+                padding: 0px;
+                width: 30px;
+                font-size: 20px;
+            }
+
+            .list-guild-rank {
+                .info {
+                    height: 55px;
+
+                    .team-name {
+                        text-overflow: ellipsis;
+                        line-height: 55px;
+                        overflow: inherit;
+                        width: auto;
+                        font-weight: 700;
+                        color: $color-black;
+                        font-size: 15px;
+                    }
+
+                    .name {
+                        position: absolute;
+                        left: 50%;
+                        font-weight: 700;
+                        color: $color-black;
+                        opacity: 1;
+                    }
+
+                    .point {
+                        position: absolute;
+                        right: 120px;
+                        color: #41cbb0;
+                        margin: 0;
+
+                        .coin-icon {
+                            background-image: url("../../Content/Image/ruby-green.png");
+                            width: 16px;
+                            height: 16px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .row {
+        margin: 0;
+
+        .show-item {
+            width: 100%;
+            height: 190px;
+
+            .photo {
+            }
+        }
+    }
+
+    @media (max-width:420px) {
+        width: 100%;
+    }
+}

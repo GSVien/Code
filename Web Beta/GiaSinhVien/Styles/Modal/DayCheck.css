@@ -1,0 +1,36 @@
+﻿/*#region [Variable]*/
+/*#endregion*/
+.modal-daycheck {
+  text-align: center; }
+  .modal-daycheck .list-day-check {
+    border-bottom: 1px solid rgba(201, 184, 185, 0.23); }
+    .modal-daycheck .list-day-check:after {
+      display: table;
+      content: " ";
+      clear: both; }
+    .modal-daycheck .list-day-check .col {
+      width: calc(100% / 5);
+      border-right: 1px solid rgba(201, 184, 185, 0.23);
+      float: left; }
+      .modal-daycheck .list-day-check .col:first-child {
+        border-left: 1px solid rgba(201, 184, 185, 0.23); }
+      .modal-daycheck .list-day-check .col img {
+        width: 100%; }
+        .modal-daycheck .list-day-check .col img.check {
+          -webkit-filter: grayscale(100%); }
+      .modal-daycheck .list-day-check .col .name {
+        display: block;
+        text-align: center;
+        font-weight: bold;
+        margin: 10px 0px; }
+      .modal-daycheck .list-day-check .col .description {
+        display: block;
+        text-align: center; }
+  .modal-daycheck .btn-red {
+    height: auto;
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    background-color: #eb0000;
+    color: white; }
+

@@ -1,0 +1,15 @@
+﻿.modal-show-iframe-recharge-coin .modal-dialog {
+  top: -100px !important;
+  height: 600px; }
+  .modal-show-iframe-recharge-coin .modal-dialog .modal-content {
+    height: 100%; }
+    .modal-show-iframe-recharge-coin .modal-dialog .modal-content .modal-header {
+      padding: 3px; }
+      .modal-show-iframe-recharge-coin .modal-dialog .modal-content .modal-header .modal-title {
+        margin-top: 5px; }
+      .modal-show-iframe-recharge-coin .modal-dialog .modal-content .modal-header .close {
+        color: white; }
+    .modal-show-iframe-recharge-coin .modal-dialog .modal-content .modal-body {
+      padding: 0;
+      height: 94%; }
+

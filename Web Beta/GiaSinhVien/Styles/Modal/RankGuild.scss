@@ -1,0 +1,234 @@
+﻿@import "../_core.scss";
+@import "../_lib.scss";
+
+.modal-rank-guild {
+    .modal-dialog {
+        .modal-content {
+            background: transparent;
+            box-shadow: none;
+            border: none;
+
+            .modal-header {
+                position: relative;
+                background: transparent;
+
+                .modal-title {
+                    margin: 0;
+                    line-height: 28px;
+                    margin-right: 10px;
+                    position: absolute;
+                    left: 50%;
+                    transform: translate(-50%);
+                    z-index: 99;
+                    top: -10px;
+                }
+            }
+
+            .modal-body {
+                @include clearfix;
+                background-size: 100% 100%;
+                background-repeat: no-repeat;
+                background: $color-white;
+
+                .border {
+                    position: absolute;
+                    left: -20px;
+                    top: -15px;
+                    width: 104%;
+                    height: 104%;
+
+                    @media(max-width:768px) {
+                        position: absolute;
+                        left: -10px;
+                        top: -10px;
+                        width: 104%;
+                        height: 103%;
+                    }
+                }
+
+                .tab {
+                    position: relative;
+                    padding-top: 30px;
+
+                    .nav-tabs {
+                        position: absolute;
+                        top: -31px;
+                        left: 0;
+                        border-bottom: none;
+
+                        li {
+                            a {
+                                padding: 0 0px;
+                                border: none;
+                                border-bottom: 3px solid transparent;
+                                background: none;
+                                font-size: 20px;
+
+                                @media(max-width:425px) {
+                                    font-size: 15px;
+                                }
+                            }
+
+                            &.active {
+                                a {
+                                    border-bottom: 3px solid;
+                                    border-bottom-color: $color-primary;
+                                    color: $color-black;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .col-top-1 {
+                    margin-top: 10px;
+                    margin-bottom: 10px;
+                    height: 300px;
+                    border-left: 1px solid $color-border-gray;
+                    text-align: center;
+
+                    .info {
+                        margin-top: 30px;
+                    }
+
+                    .team-name {
+                        font-weight: 700;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        -webkit-text-overflow: ellipsis;
+                        -moz-text-overflow: ellipsis;
+                        -ms-text-overflow: ellipsis;
+                        -o-text-overflow: ellipsis;
+                        text-overflow: ellipsis;
+                    }
+
+                    .level {
+                        height: 20px;
+                    }
+
+                    .name {
+                        color: $color-black;
+                        opacity: 0.5;
+                    }
+
+                    .avatar {
+                        width: 115px;
+                        height: 115px;
+                        object-fit: cover;
+                        border-radius: 50%;
+                    }
+
+                    &:first-child {
+                        padding-left: 0px;
+                        border: 0px;
+                    }
+
+                    &:last-child {
+                        padding-right: 0px;
+                    }
+
+                    .guild-rank-1 {
+                        padding: 10px;
+                        width: 170px;
+                    }
+
+                    .top-1 {
+                        height: 100%;
+                        @include clearfix;
+
+                        .point {
+                            color: #eb0000;
+                        }
+
+                        .guild-rank-1 {
+                            @include clearfix;
+                            position: absolute;
+                            left: 50%;
+                            transform: translate(-50%);
+                            bottom: 10px;
+                            background: url(https://teenidol.vn/Content/Image/Guild/team-top-2.png);
+                            background-size: 100%;
+                            background-repeat: no-repeat;
+
+                            &:focus, &:visited, &:active {
+                                outline: none;
+                            }
+                        }
+                    }
+
+                    .top-2 {
+                        height: 100%;
+                        @include clearfix;
+
+                        .point {
+                            color: #eb0000;
+                        }
+
+                        .guild-rank-1 {
+                            @include clearfix;
+                            left: 50%;
+                            top: -10px;
+                            position: absolute;
+                            transform: translate(-50%);
+                            background: url(https://teenidol.vn/Content/Image/Guild/team-top-1.png);
+                            background-size: 100%;
+                            background-repeat: no-repeat;
+
+                            &:focus, &:visited, &:active {
+                                outline: none;
+                            }
+                        }
+                    }
+
+                    .top-3 {
+                        height: 100%;
+                        @include clearfix;
+
+                        .point {
+                            color: #eb0000;
+                        }
+
+                        .guild-rank-1 {
+                            @include clearfix;
+                            position: absolute;
+                            left: 50%;
+                            transform: translate(-50%);
+                            bottom: -10px;
+                            background: url(https://teenidol.vn/Content/Image/Guild/team-top-3.png);
+                            background-size: 100%;
+                            background-repeat: no-repeat;
+
+                            &:focus, &:visited, &:active {
+                                outline: none;
+                            }
+                        }
+                    }
+                }
+
+                .col {
+                    margin-bottom: 10px;
+
+                    &.col-top-4 {
+                    }
+
+                    &:last-child {
+                        padding-right: 0px;
+                    }
+
+                    .list {
+                        border: 1px solid $color-border-gray;
+
+                        .rank-item {
+                            border-bottom: 1px solid $color-border-gray;
+                            background: #fff;
+
+                            &:hover {
+                                background: $color-border-gray;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

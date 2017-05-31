@@ -1,0 +1,321 @@
+﻿/*#region [Variable]*/
+/*#endregion*/
+.modal-guild-master .guild-rank:hover, .modal-guild-master .guild-rank:active, .modal-guild-master .guild-rank:focus {
+  text-decoration: none; }
+
+.modal-guild-master .rank-item {
+  border-bottom: 1px solid #EBE5E4; }
+
+.modal-guild-master .modal-dialog .modal-content {
+  border: 0;
+  box-shadow: none;
+  background: transparent; }
+
+.modal-guild-master .modal-dialog .modal-header {
+  position: relative;
+  background: transparent;
+  border-bottom: 0; }
+  .modal-guild-master .modal-dialog .modal-header .modal-title {
+    margin: 0;
+    line-height: 28px;
+    margin-right: 10px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    top: 5px;
+    z-index: 99; }
+  .modal-guild-master .modal-dialog .modal-header .level {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%);
+    font-size: 13px; }
+  .modal-guild-master .modal-dialog .modal-header .btn-blue {
+    position: absolute;
+    top: 8px;
+    right: 40px;
+    background: #5bc0de; }
+    .modal-guild-master .modal-dialog .modal-header .btn-blue:hover {
+      color: #fff; }
+
+.modal-guild-master .modal-dialog .modal-body {
+  background-image: url("../../Content/Image/Guild/khung dong1.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  margin: 15px;
+  padding-top: 50px;
+  min-height: 500px;
+  background: #fff; }
+  .modal-guild-master .modal-dialog .modal-body:after {
+    display: table;
+    content: " ";
+    clear: both; }
+  .modal-guild-master .modal-dialog .modal-body .border {
+    position: absolute;
+    left: -20px;
+    top: -13px;
+    width: 104%;
+    height: 104%; }
+    @media (max-width: 768px) {
+      .modal-guild-master .modal-dialog .modal-body .border {
+        position: absolute;
+        left: -10px;
+        top: -10px;
+        width: 104%;
+        height: 103%; } }
+
+.modal-guild-master .list_guild .tab:after {
+  display: table;
+  content: " ";
+  clear: both; }
+
+.modal-guild-master .list_guild .tab .nav-pills {
+  float: left;
+  margin-top: 10px;
+  margin-right: 10px; }
+  .modal-guild-master .list_guild .tab .nav-pills li {
+    position: relative;
+    margin: 0;
+    padding: 0; }
+    .modal-guild-master .list_guild .tab .nav-pills li a {
+      width: 200px;
+      height: 40px;
+      margin: 0;
+      padding: 0;
+      padding: 0 10px;
+      line-height: 40px;
+      border-radius: 0;
+      color: #252525;
+      font-size: 14px;
+      background: #EBE5E4; }
+      .modal-guild-master .list_guild .tab .nav-pills li a:hover {
+        background: rgba(246, 95, 107, 0.25); }
+    .modal-guild-master .list_guild .tab .nav-pills li.active {
+      z-index: 1;
+      border-color: #f15d69;
+      color: #fff;
+      border-right-width: 5px;
+      background: #f15d69; }
+      .modal-guild-master .list_guild .tab .nav-pills li.active a {
+        background: none;
+        color: inherit; }
+        .modal-guild-master .list_guild .tab .nav-pills li.active a:hover {
+          background: rgba(246, 95, 107, 0.25); }
+  @media (max-width: 420px) {
+    .modal-guild-master .list_guild .tab .nav-pills {
+      width: 100%; }
+      .modal-guild-master .list_guild .tab .nav-pills li a {
+        width: 100%; } }
+
+.modal-guild-master .list_guild .guild-master {
+  margin-bottom: 10px; }
+  .modal-guild-master .list_guild .guild-master:after {
+    display: table;
+    content: " ";
+    clear: both; }
+  .modal-guild-master .list_guild .guild-master .guild-rank:active, .modal-guild-master .list_guild .guild-master .guild-rank:focus {
+    outline: none; }
+  .modal-guild-master .list_guild .guild-master .guild-rank .avatar {
+    float: left;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover; }
+  .modal-guild-master .list_guild .guild-master .guild-rank .edit-avatar {
+    position: absolute;
+    top: 50%;
+    left: 7%;
+    transform: translate(0%, -50%);
+    color: black;
+    background: rgba(251, 251, 255, 0.6);
+    border-radius: 4px;
+    display: none;
+    padding: 3px; }
+  .modal-guild-master .list_guild .guild-master .guild-rank .team-name {
+    font-size: 15px;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    -webkit-text-overflow: ellipsis;
+    -moz-text-overflow: ellipsis;
+    -ms-text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis; }
+  .modal-guild-master .list_guild .guild-master .guild-rank .level {
+    height: 20px; }
+  .modal-guild-master .list_guild .guild-master .guild-rank .info {
+    width: calc(100% - 110px);
+    margin-left: 7px;
+    padding-top: 10px;
+    float: left; }
+  .modal-guild-master .list_guild .guild-master .guild-rank .div-level {
+    margin: 0;
+    height: 20px;
+    width: 100%;
+    FLOAT: LEFT;
+    font-size: 18px;
+    margin-top: 4px;
+    margin-bottom: 8px;
+    margin-top: 8px; }
+    .modal-guild-master .list_guild .guild-master .guild-rank .div-level .progress {
+      margin: 0;
+      position: relative; }
+    .modal-guild-master .list_guild .guild-master .guild-rank .div-level .phantram {
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      line-height: 20px;
+      font-size: 11px;
+      position: absolute;
+      font-weight: bold;
+      color: #252525; }
+  .modal-guild-master .list_guild .guild-master .guild-rank:hover .edit-avatar {
+    display: block; }
+
+.modal-guild-master .list_guild .tab-content {
+  float: left;
+  width: calc(100% - 216px); }
+  .modal-guild-master .list_guild .tab-content .tab-pane {
+    border-left: 1px solid #E8E6E8;
+    margin-top: 10px;
+    min-height: 300px; }
+    .modal-guild-master .list_guild .tab-content .tab-pane:after {
+      display: table;
+      content: " ";
+      clear: both; }
+    .modal-guild-master .list_guild .tab-content .tab-pane .list-user {
+      padding-right: 0;
+      padding-top: 10px;
+      border-top: 1px solid #e6e0e0;
+      height: 440px;
+      overflow-y: auto;
+      overflow-x: hidden; }
+      .modal-guild-master .list_guild .tab-content .tab-pane .list-user .list-user-guild .title {
+        line-height: 30px;
+        font-weight: 700;
+        height: 50px;
+        background: #f15d69;
+        border-radius: 4px;
+        color: #fff;
+        margin-bottom: 10px;
+        padding-left: 5px; }
+      .modal-guild-master .list_guild .tab-content .tab-pane .list-user .list > div {
+        position: relative; }
+        .modal-guild-master .list_guild .tab-content .tab-pane .list-user .list > div .btn-default {
+          position: absolute;
+          right: 10px;
+          top: 50%;
+          transform: translate(0, -50%); }
+        .modal-guild-master .list_guild .tab-content .tab-pane .list-user .list > div .btn-primary {
+          position: absolute;
+          right: 10px;
+          top: 50%;
+          transform: translate(0, -50%); }
+      .modal-guild-master .list_guild .tab-content .tab-pane .list-user .list .next {
+        text-align: center;
+        margin-bottom: 10px;
+        margin-top: 10px; }
+        .modal-guild-master .list_guild .tab-content .tab-pane .list-user .list .next button {
+          width: 300px; }
+    .modal-guild-master .list_guild .tab-content .tab-pane .alert {
+      margin: 10px; }
+    .modal-guild-master .list_guild .tab-content .tab-pane .get-reward {
+      position: absolute;
+      right: 5px; }
+    .modal-guild-master .list_guild .tab-content .tab-pane .support {
+      position: absolute;
+      right: 5px;
+      top: -30px; }
+    .modal-guild-master .list_guild .tab-content .tab-pane .tooltip.top .tooltip-arrow {
+      left: 5px; }
+      .modal-guild-master .list_guild .tab-content .tab-pane .tooltip.top .tooltip-arrow i {
+        font-size: 18px; }
+  @media (max-width: 420px) {
+    .modal-guild-master .list_guild .tab-content {
+      width: 100%; }
+      .modal-guild-master .list_guild .tab-content .tab-pane {
+        width: 100%; }
+        .modal-guild-master .list_guild .tab-content .tab-pane .get-reward {
+          width: 100%;
+          position: relative;
+          margin-bottom: 10px;
+          right: 0; } }
+
+.modal-guild-master .list_guild .count-user-guild {
+  position: absolute;
+  right: 10px;
+  top: 60px; }
+  .modal-guild-master .list_guild .count-user-guild img {
+    float: left;
+    height: 31px; }
+  .modal-guild-master .list_guild .count-user-guild .pull-left .title {
+    opacity: 0.7; }
+  .modal-guild-master .list_guild .count-user-guild .pull-left .value {
+    font-weight: 700; }
+
+.modal-guild-master .list_guild .master-user {
+  position: absolute;
+  top: 60px; }
+  .modal-guild-master .list_guild .master-user img {
+    float: left;
+    margin-right: 4px; }
+  .modal-guild-master .list_guild .master-user .pull-left {
+    white-space: nowrap;
+    overflow: hidden;
+    width: calc(100% - 35px);
+    -webkit-text-overflow: ellipsis;
+    -moz-text-overflow: ellipsis;
+    -ms-text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis; }
+    .modal-guild-master .list_guild .master-user .pull-left .title {
+      opacity: 0.7; }
+    .modal-guild-master .list_guild .master-user .pull-left .value {
+      font-weight: 700; }
+
+.modal-guild-master .list-user-in-guild > div {
+  position: relative; }
+  .modal-guild-master .list-user-in-guild > div .btn-primary {
+    position: absolute;
+    right: 0px;
+    top: 50%;
+    transform: translate(0, -50%);
+    padding: 0px;
+    width: 30px;
+    font-size: 20px; }
+  .modal-guild-master .list-user-in-guild > div .list-guild-rank .info {
+    height: 55px; }
+    .modal-guild-master .list-user-in-guild > div .list-guild-rank .info .team-name {
+      text-overflow: ellipsis;
+      line-height: 55px;
+      overflow: inherit;
+      width: auto;
+      font-weight: 700;
+      color: #252525;
+      font-size: 15px; }
+    .modal-guild-master .list-user-in-guild > div .list-guild-rank .info .name {
+      position: absolute;
+      left: 50%;
+      font-weight: 700;
+      color: #252525;
+      opacity: 1; }
+    .modal-guild-master .list-user-in-guild > div .list-guild-rank .info .point {
+      position: absolute;
+      right: 120px;
+      color: #41cbb0;
+      margin: 0; }
+      .modal-guild-master .list-user-in-guild > div .list-guild-rank .info .point .coin-icon {
+        background-image: url("../../Content/Image/ruby-green.png");
+        width: 16px;
+        height: 16px; }
+
+.modal-guild-master .row {
+  margin: 0; }
+  .modal-guild-master .row .show-item {
+    width: 100%;
+    height: 190px; }
+
+@media (max-width: 420px) {
+  .modal-guild-master {
+    width: 100%; } }
+

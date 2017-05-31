@@ -1,0 +1,76 @@
+﻿@mixin property($property, $value, $crossStyle: "key") {
+    @if ($crossStyle == "key") {
+        -webkit-#{$property}: #{$value};
+        -moz-#{$property}: #{$value};
+        -ms-#{$property}: #{$value};
+        -o-#{$property}: #{$value};
+    }
+    @else if ($crossStyle == "value") {
+        #{$property}: -webkit-#{$value};
+        #{$property}: -moz-#{$value};
+        #{$property}: -ms-#{$value};
+        #{$property}: -o-#{$value};
+    }
+
+    #{$property}: #{$value};
+}
+
+@mixin text-ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    @include property(text-overflow, ellipsis);
+}
+
+@mixin pos-center {
+    top: 50%;
+    left: 50%;
+    @include property(transform, translate(-50%, -50%));
+}
+
+@mixin pos-center-h {
+    left: 50%;
+    @include property(transform, translateX(-50%));
+}
+
+@mixin pos-center-v {
+    top: 50%;
+    @include property(transform, translateY(-50%));
+}
+
+@mixin clearfix {
+    &:after {
+        display: table;
+        content: " ";
+        clear: both;
+    }
+}
+
+@mixin fa {
+    font-family: FontAwesome;
+}
+
+@mixin clear {
+    margin: 0;
+    padding: 0;
+}
+
+@mixin transform($property) {
+    -moz-transform:$property;
+    -ms-transform: $property;
+    -webkit-transform:$property;
+    transform: $property;
+}
+
+@mixin keyframes($name) {
+    @-webkit-keyframes #{$name} { @content; }
+    @-moz-keyframes #{$name} { @content; }
+    @-o-keyframes #{$name} { @content; }
+    @keyframes #{$name} { @content; }
+}
+
+@mixin animation($parameters) {
+    -webkit-animation: $parameters;
+    -moz-animation: $parameters;
+    -o-animation: $parameters;
+    animation: $parameters;
+}

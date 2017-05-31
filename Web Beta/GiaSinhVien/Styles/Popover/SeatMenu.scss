@@ -1,0 +1,51 @@
+﻿@import "../_core.scss";
+@import "../_lib.scss";
+
+.popover-seat-menu {
+    width: auto;
+
+    .user-info {
+        padding-bottom: 10px;
+        border-bottom: 1px solid #e2e2e2;
+    }
+
+    > ul {
+        list-style-type: none;
+        padding-left: 0;
+
+        > li {
+            padding: 5px;
+
+            &:not(:first-child) {
+                border-top: 1px solid #e2e2e2;
+            }
+        }
+
+        .current-price {
+            span {
+                font-weight: bold;
+                width: 100px;
+            }
+        }
+
+        .buy {
+            form {
+                @include clearfix;
+
+                .ui-select-container {
+                    float: left;
+                    // width: calc(100% - 74px);
+                    margin-right: 10px;
+                }
+
+                .btn {
+                    float: left;
+                }
+            }
+
+            span {
+                width: 100px;
+            }
+        }
+    }
+}

@@ -1,0 +1,42 @@
+﻿<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" ng-click="onClose()">
+<!--        <span>&times;</span>-->
+    </button>
+    <h4 class="modal-title">
+<!--        <div class="level">Level {{sessionService.data().user.GuildLevel.LevelIndex}}</div><img ng-src="/Content/Image/Guild/ttcgt.png" />-->
+    </h4>
+</div>
+
+<div class="modal-body">
+    <img class="border" src="/Content/Image/Guild/khung dong1.png">
+    <div class="col-md-12 list-user">
+        <div class="alert alert-info" ng-if="ListUserJoinGuild.status == 'loading'">
+            <i class="fa fa-spin fa-circle-o-notch"></i> Đang tải...
+        </div>
+        <div class="alert alert-warning" ng-if="ListUserJoinGuild.status == 'error'">
+            {{ListUserJoinGuild.message}}
+        </div>
+        <div class="alert alert-warning" ng-if="!ListUserJoinGuild.Items">Hiện chưa có người nào gủi yêu cầu tham gia.</div>
+        <div class="list" ng-show="ListUserJoinGuild.status=='loaded'">
+            <div ng-repeat="(i,z) in ListUserJoinGuild.Items" style="position: relative">
+                <list-guild-rank link="{{'user/' + z.User.Id}}"
+                                 link-new-tab="{{true}}"
+                                 avatar="{{z.User.AvatarPhoto}}"
+                                 team-name="{{z.User.Name}}"
+                                 name="{{z.GuildPosition.Name}}"
+                                 level-name="{{z.StarLevel ? z.StarLevel.Name : z.GroupLevel.Name}}"
+                                 level-photo="{{z.StarLevel ? z.StarLevel.Photo : z.GroupLevel.Photo}}"
+                                 next-level-point-need="{{z.NextGroupLevel.Point - z.UserStarData.CoinGetFromGift | number}}"
+                                 display="coin"
+                                 coin="z.User.TotalCoinUsed"
+                                 free-coin="getPoint(z)"
+                                 index-value="i + 1"></list-guild-rank>
+                <button class="get-reward btn btn-primary" ng-click="onAcceptUserJoinGuild(z.User.Id)">Chấp Nhận</button>
+                <button style="right: 110px" class="get-reward btn  btn-default" ng-click="onDeclineUserJoinGuild(z.User.Id)">Không Chấp Nhận</button>
+            </div>
+            <div class="next ng-scope" style="text-align: center">
+                <button ng-if="ListUserJoinGuild.nextList && ListUserJoinGuild.Items != '' && ListUserJoinGuild.Items != null" class="btn btn-hover-primary" ng-click="onGetListUserJoinGuild(ListUserJoinGuild.pageIndex)">Xem Thêm</button>
+            </div>
+        </div>
+    </div>
+</div>

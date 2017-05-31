@@ -1,0 +1,120 @@
+﻿/*#region [Variable]*/
+/*#endregion*/
+.uc-show-item {
+  float: left;
+  position: relative;
+  width: 220px;
+  height: 220px;
+  margin: 10px;
+  border: 1px solid #e2e2e2;
+  border-radius: 3px;
+  overflow: hidden; }
+  .uc-show-item a {
+    display: inline-block;
+    width: 100%;
+    height: 100%; }
+  .uc-show-item .photo {
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    background: url(/Content/Image/Background-Item/Meo-gif.gif) center;
+    -moz-transition: all .3s;
+    -webkit-transition: all .3s;
+    transition: all .3s; }
+  .uc-show-item .name {
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    min-height: 33px;
+    bottom: 0;
+    left: 0;
+    padding-top: 10px;
+    padding: 5px 10px;
+    padding-right: 80px;
+    font-size: 16px;
+    color: #fff;
+    pointer-events: none;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0+0,0.65+70 */
+    background: -moz-linear-gradient(top, transparent 0%, rgba(0, 0, 0, 0.65) 70%, rgba(0, 0, 0, 0.65) 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, transparent 0%, rgba(0, 0, 0, 0.65) 70%, rgba(0, 0, 0, 0.65) 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.65) 70%, rgba(0, 0, 0, 0.65) 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000',GradientType=0 );
+    /* IE6-9 */
+    font-weight: bold; }
+  .uc-show-item .start-time {
+    position: absolute;
+    z-index: 2;
+    bottom: 5px;
+    right: 0;
+    padding: 3px 5px;
+    border-bottom-left-radius: 3px;
+    font-size: 14px;
+    color: #fff; }
+    .uc-show-item .start-time .fa {
+      margin-right: 5px; }
+  .uc-show-item .show-info {
+    position: absolute;
+    z-index: 2;
+    bottom: 10px;
+    right: 0;
+    padding: 0px 5px;
+    border-bottom-left-radius: 3px;
+    color: #fff;
+    pointer-events: none; }
+    .uc-show-item .show-info .live {
+      height: 13px;
+      margin-right: 8px;
+      vertical-align: middle; }
+    .uc-show-item .show-info .view {
+      line-height: 14px;
+      font-size: 14px; }
+  .uc-show-item .level {
+    visibility: hidden;
+    position: absolute;
+    z-index: 2;
+    top: 10px;
+    right: 10px;
+    height: 18px; }
+  .uc-show-item .uc-follow-button {
+    visibility: hidden;
+    position: absolute;
+    z-index: 2;
+    top: 10px;
+    right: 10px;
+    border-radius: 3px;
+    opacity: 0.7; }
+    .uc-show-item .uc-follow-button:hover {
+      opacity: 1; }
+  .uc-show-item:hover .photo:before, .uc-show-item:focus .photo:before {
+    content: " ";
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%; }
+  .uc-show-item:hover .photo:hover:after, .uc-show-item:focus .photo:hover:after {
+    font-family: FontAwesome;
+    content: "\f04b";
+    position: absolute;
+    z-index: 1;
+    left: 50%;
+    top: 40%;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    padding: 5px 15px;
+    background-color: rgba(37, 37, 37, 0.8);
+    border-radius: 5px;
+    color: #f15d69;
+    font-size: 30px; }
+  .uc-show-item:hover .level, .uc-show-item:focus .level {
+    visibility: visible; }
+  .uc-show-item:hover .uc-follow-button, .uc-show-item:focus .uc-follow-button {
+    visibility: visible; }
+

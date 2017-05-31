@@ -1,0 +1,48 @@
+﻿<div class="main-panel">
+    <uib-tabset class="tab tab-count-4 .tab-height" style="height: 100%;">
+        <uib-tab>
+            <uib-tab-heading>
+                <i class="fa fa-gift" aria-hidden="true"></i>  <span style="color: #eb0000; top: -1px; position: absolute; font-size: 10px; font-weight: bold; padding: 4px;"></span>
+            </uib-tab-heading>
+            <unit-changed schedule-id="{{scheduleId}}" star-id="{{starId}}" show-id="{{showId}}" message="message"></unit-changed>
+        </uib-tab>
+
+        <!--<uib-tab>
+            <uib-tab-heading>
+                <i class="fa fa-users" aria-hidden="true"></i> <span style="color: #eb0000; top: -1px; position: absolute; font-size: 10px; font-weight: bold; padding: 4px;"></span>
+            </uib-tab-heading>
+            <guild-info show-id="{{showId}}" ></guild-info>
+        </uib-tab>-->
+
+        <!--<uib-tab>
+            <uib-tab-heading>
+                <i class="fa fa-diamond" aria-hidden="true"></i> <span style="color: #eb0000; top: -1px; position: absolute; font-size: 10px; font-weight: bold; padding: 4px;">{{numberTurnRotation ? numberTurnRotation : '00'}}</span>
+            </uib-tab-heading>
+            <lucky-wheel schedule-id="{{scheduleId}}" star-id="{{starId}}"></lucky-wheel>
+        </uib-tab>-->
+
+        <uib-tab deselect="onPrivateMessagePanelDeselect()" active="1==1">
+            <uib-tab-heading>
+                <i class="fa fa-comment-o"></i>
+            </uib-tab-heading>
+
+            <uc-show-global-message></uc-show-global-message>
+        </uib-tab>
+
+        <uib-tab>
+            <uib-tab-heading>
+                <i class="fa fa-star"></i>
+            </uib-tab-heading>
+            <show-sent-gift style="height: 100%" schedule-id="scheduleId" list-gift="listSentGift"></show-sent-gift>
+        </uib-tab>
+
+        <uib-tab select="onPrivateMessagePanelSelect()" deselect="onPrivateMessagePanelDeselect()" active="privateMessagePanelIsSelected">
+            <uib-tab-heading>
+                <i class="fa fa-envelope"></i>
+                <div class="badge">{{privateMessagePanelAlert}}</div>
+            </uib-tab-heading>
+
+            <uc-private-message number-of-conversation="3"></uc-private-message>
+        </uib-tab>
+    </uib-tabset>
+</div>

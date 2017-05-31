@@ -1,0 +1,92 @@
+﻿<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" ng-click="onClose()">
+        <span>&times;</span>
+    </button>
+    <h4 class="modal-title">
+        <img ng-src="/Content/Image/Guild/xhgt.png" />
+    </h4>
+</div>
+
+<div class="modal-body">
+    <img class="border" src="/Content/Image/Guild/khung dong1.png">
+    <uib-tabset class="tab tab-animate" active="page.currentTab">
+        <uib-tab select="onListScheduletoday()">
+            <div class="alert alert-info" ng-if="ListguildRank.status == 'loading'">
+                <i class="fa fa-spin fa-circle-o-notch"></i> Đang tải...
+            </div>
+            <div class="alert alert-warning" ng-if="ListguildRank.status == 'error'">
+                Hiện chưa có dữ liệu.
+            </div>
+            <div class="col-top-1 col-md-4">
+                <div class="top-1" ng-show="ListguildRank.status=='loaded'">
+                    <div class="list-item-animate">
+                        <a class="guild-rank-1" href="{{'Guild/' + ListguildRank.Items2.Guild.Id}}" target="_blank">
+                            <img class="avatar" ng-src="{{ListguildRank.Items2.Guild.PhotoLink}}" />
+                            <div class="info">
+                                <div class="team-name">{{ListguildRank.Items2.Guild.Name}}</div>
+                                <img class="level" ng-src="{{ListguildRank.Items2.GuildLevel.Photo}}" />
+                                <div class="name">{{ListguildRank.Items2.Owner.Name}}</div>
+                                <div class="point coin">
+                                    <!-- <i class="coin-icon"></i> {{ListguildRank.Items2.Guild.Ruby}} k-->
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-top-1 col-md-4">
+                <div class="top-2" ng-show="ListguildRank.status=='loaded'">
+                    <div class="list-item-animate">
+                        <a class="guild-rank-1" href="{{'Guild/' + ListguildRank.Items1.Guild.Id}}" target="_blank">
+                            <img class="avatar" ng-src="{{ListguildRank.Items1.Guild.PhotoLink}}" />
+                            <div class="info">
+                                <div class="team-name">{{ListguildRank.Items1.Guild.Name}}</div>
+                                <img class="level" ng-src="{{ListguildRank.Items2.GuildLevel.Photo ? ListguildRank.Items1.GuildLevel.Photo: 'undefined' }}" />
+                                <div class="name">{{ListguildRank.Items1.Owner.Name}}</div>
+                                <div class="point coin">
+                                    <!-- <i class="coin-icon"></i> {{ListguildRank.Items1.Guild.Ruby}} k-->
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-top-1 col-md-4">
+                <div class="top-3" ng-show="ListguildRank.status=='loaded'">
+                    <div class="list-item-animate">
+                        <a class="guild-rank-1" href="{{'Guild/' + ListguildRank.Items3.Guild.Id}}" target="_blank">
+                            <img class="avatar" ng-src="{{ListguildRank.Items3.Guild.PhotoLink }}" />
+                            <div class="info">
+                                <div class="team-name">{{ListguildRank.Items3.Guild.Name}}</div>
+                                <img class="level" ng-src="{{ListguildRank.Items3.GuildLevel.Photo ? ListguildRank.Items3.GuildLevel.Photo: 'undefined' }}" alt="{{levelName}}" />
+                                <div class="name">{{ListguildRank.Items3.Owner.Name}}</div>
+                                <div class="point coin">
+                                    <!-- <i class="coin-icon"></i> {{ListguildRank.Items3.Guild.Ruby}} k-->
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col col-md-4 col-top-4" ng-repeat="(i,z) in ListguildRank.Items4">
+                <div class="list" ng-show="ListguildRank.status=='loaded'">
+                    <list-guild-rank link="{{'Guild/'+z.Guild.Id}}"
+                                     link-new-tab="{{true}}"
+                                     avatar="{{z.Guild.PhotoLink}}"
+                                     name="{{z.Owner.Name}}"
+                                     team-name="{{z.Guild.Name}}"
+                                     level-name="{{z.StarLevel ? z.StarLevel.Name : z.GuildLevel.Name}}"
+                                     level-photo="{{z.StarLevel ? z.StarLevel.Photo : z.GuildLevel.Photo}}"
+                                     next-level-point-need="{{z.NextGroupLevel.Point - z.UserStarData.CoinGetFromGift | number}}"
+                                        free-coin="getPoint(z)"
+                                        index-value="i + 4"></list-guild-rank>
+                </div>
+            </div>
+            <uib-pagination ng-if="ListScheduletoday.status == 'loaded' && ListScheduletoday.total > 0"
+                            previous-text="<" next-text=">" ng-disabled="ListScheduletoday.isBusy"
+                            ng-model="ListScheduletoday.pageindex" total-items="ListScheduletoday.total" max-size="4" items-per-page="ListScheduletoday.pageSize" force-ellipses="true"
+                            ng-change="onListScheduletoday()"></uib-pagination>
+        </uib-tab>
+    </uib-tabset>
+</div>

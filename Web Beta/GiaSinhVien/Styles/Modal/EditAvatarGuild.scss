@@ -1,0 +1,29 @@
+﻿.modal-edit-avatar-guild {
+    .modal-body {
+        .cropit-image-preview {
+            background-repeat: no-repeat;
+            position: relative;
+            height: 268px;
+
+            img {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                border-radius: 50%;
+                object-fit: cover;
+            }
+
+            &.icon {
+                height: 16px;
+                text-align: center;
+
+                img {
+                    width: auto;
+                    height: 100%;
+                    border-radius: 0;
+                    border: none;
+                }
+            }
+        }
+    }
+}

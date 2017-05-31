@@ -1,0 +1,39 @@
+﻿<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" ng-click="onClose()">
+        <span>&times;</span>
+    </button>
+    <h4 class="modal-title">Thông tin tower</h4>
+</div>
+
+<div class="modal-body">
+    <div class="form-group">
+        <label class="name">{{infoTower.Tower.Name}} ({{infoTower.CurrentLevel.Name}})</label>
+    </div>
+    <div class="form-group">
+        <textarea class="form-control" disabled="disabled" ng-bind-html="infoTower.Tower.Description ? infoTower.Tower.Description :'Hiện chưa có mô tả cho tòa nhà'" style="resize: none;"></textarea>
+    </div>
+    <div class="form-group">
+        <div class="div-level">
+            <div class="progress">
+                <div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar"
+                     aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: {{phantram}}% ; color:black">
+                </div>
+                <div class="center" style="width: 100%;text-align: center;position: absolute;line-height: 20px;">
+                    {{infoTower.BankAccount.Balance }} / {{infoTower.NextLevel.Coin}}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group" ng-if="isShowButton.isBusy">
+        <label>Chọn số tiền đóng góp</label>
+        <select class="form-control" ng-model="amount.Items">
+            <option value="">---Chọn---</option>
+            <option ng-repeat="x in listMoney" value="{{x.value}}">{{x.value}}</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <buntton class="btn btn-primary" ng-if="!isShowButton.isBusy" ng-click="isShow()">Đóng góp</buntton>
+        <buntton ng-if="isShowButton.isBusy" class="btn btn-primary" ng-click="onDonateTower()">Xác nhận</buntton>
+    </div>
+</div>

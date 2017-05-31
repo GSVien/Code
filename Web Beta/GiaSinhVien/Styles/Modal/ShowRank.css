@@ -1,0 +1,53 @@
+﻿/*#region [Variable]*/
+/*#endregion*/
+.modal-show-rank .modal-dialog {
+  width: 500px; }
+
+.modal-show-rank .modal-body {
+  padding: 0; }
+
+.modal-show-rank .nav-tabs {
+  margin: 10px; }
+
+.modal-show-rank .tab-pane {
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  overflow: hidden; }
+  .modal-show-rank .tab-pane > div {
+    max-height: 350px;
+    overflow-y: auto; }
+
+.modal-show-rank .list-item {
+  padding: 10px;
+  border-top: 1px solid #e2e2e2; }
+  .modal-show-rank .list-item:after {
+    display: table;
+    content: " ";
+    clear: both; }
+  .modal-show-rank .list-item:nth-child(2n) {
+    background: #f3f3f3; }
+  .modal-show-rank .list-item .rank-number {
+    float: left;
+    width: 20px;
+    margin-right: 10px;
+    line-height: 42px;
+    font-size: 14px;
+    font-weight: bold; }
+  .modal-show-rank .list-item .rank-item {
+    float: left;
+    width: -webkit-calc(100% - 130px);
+    width: -moz-calc(100% - 130px);
+    width: -ms-calc(100% - 130px);
+    width: -o-calc(100% - 130px);
+    width: calc(100% - 130px);
+    height: 42px; }
+    .modal-show-rank .list-item .rank-item .uc-user-list-item {
+      padding: 0; }
+  .modal-show-rank .list-item .value {
+    float: left;
+    width: 100px;
+    text-align: right;
+    line-height: 42px;
+    font-size: 16px;
+    font-weight: bold; }
+

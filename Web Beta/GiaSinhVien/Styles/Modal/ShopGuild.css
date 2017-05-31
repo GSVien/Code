@@ -1,0 +1,91 @@
+﻿/*#region [Variable]*/
+/*#endregion*/
+.modal-shop-guild .btn-blue {
+  position: absolute;
+  top: 8px;
+  right: 40px;
+  background: #5bc0de; }
+  .modal-shop-guild .btn-blue:hover {
+    color: #fff; }
+
+.modal-shop-guild .modal-dialog .modal-content {
+  background: transparent;
+  box-shadow: none;
+  border: none; }
+
+.modal-shop-guild .modal-dialog .modal-header {
+  position: relative;
+  background: transparent; }
+  .modal-shop-guild .modal-dialog .modal-header .modal-title {
+    margin: 0;
+    line-height: 28px;
+    margin-right: 10px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    z-index: 99;
+    top: -10px; }
+  .modal-shop-guild .modal-dialog .modal-header .level {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%);
+    font-size: 13px; }
+
+.modal-shop-guild .modal-dialog .modal-body {
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background: #fff;
+  height: 625px;
+  max-height: 625px; }
+  .modal-shop-guild .modal-dialog .modal-body:after {
+    display: table;
+    content: " ";
+    clear: both; }
+  .modal-shop-guild .modal-dialog .modal-body .border {
+    position: absolute;
+    left: -20px;
+    top: -15px;
+    width: 104%;
+    height: 104%; }
+    @media (max-width: 768px) {
+      .modal-shop-guild .modal-dialog .modal-body .border {
+        position: absolute;
+        left: -10px;
+        top: -10px;
+        width: 104%;
+        height: 103%; } }
+
+.modal-shop-guild .nav-tabs li a {
+  font-size: 20px; }
+
+.modal-shop-guild .name {
+  font-size: 16px;
+  font-weight: 700; }
+
+.modal-shop-guild .animation-item {
+  margin-bottom: 10px;
+  text-align: center; }
+  .modal-shop-guild .animation-item:after {
+    display: table;
+    content: " ";
+    clear: both; }
+  .modal-shop-guild .animation-item .photo {
+    height: 140px;
+    object-fit: cover; }
+  .modal-shop-guild .animation-item .price {
+    margin-bottom: 10px; }
+
+.modal-shop-guild #shop-vip .vip-item {
+  width: 100%;
+  text-align: center; }
+  .modal-shop-guild #shop-vip .vip-item .photo {
+    width: 80%;
+    object-fit: cover;
+    margin-bottom: 10px; }
+  .modal-shop-guild #shop-vip .vip-item .price {
+    margin-top: 5px;
+    margin-bottom: 10px; }
+  .modal-shop-guild #shop-vip .vip-item .info {
+    font-size: 17px; }
+

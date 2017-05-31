@@ -1,0 +1,50 @@
+﻿@import "../_lib.scss";
+@import "../_core.scss";
+
+.modal-daycheck {
+    text-align: center;
+
+    .list-day-check {
+        @include clearfix;
+        border-bottom:  1px solid rgba(201, 184, 185, 0.23);
+
+        .col {
+            width: calc(100% / 5);
+            border-right:  1px solid rgba(201, 184, 185, 0.23);
+            float: left;
+
+            &:first-child {
+                border-left: 1px solid rgba(201, 184, 185, 0.23);
+            }
+
+            img {
+                width: 100%;
+
+                &.check {
+                    -webkit-filter: grayscale(100%);
+                }
+            }
+
+            .name {
+                display: block;
+                text-align: center;
+                font-weight: bold;
+                margin: 10px 0px;
+            }
+
+            .description {
+                display: block;
+                text-align: center;
+            }
+        }
+    }
+
+    .btn-red {
+        height: auto;
+        margin-top: 10px;
+        font-size: 14px;
+        font-weight: bold;
+        background-color: rgb(235, 0, 0);
+        color: rgb(255, 255, 255);
+    }
+}

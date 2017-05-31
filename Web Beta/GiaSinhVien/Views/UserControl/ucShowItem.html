@@ -1,0 +1,17 @@
+﻿<div class="uc-show-item list-item-animate">
+    <a href="{{link}}">
+        <img class="photo" ng-src="{{photo}}">
+    </a>
+    <div class="name">{{name}}</div>
+    <div class="start-time" data-toggle="tooltip" data-placement="top" uib-tooltip="Bắt đầu lúc {{startTimeText | date: 'HH:mm dd/MM/yyyy' : '+7'}}" ng-if="startTime && status != 2">
+        <i class="fa fa-clock-o" ng-if="startTimeType == 'time'"></i>
+        <i class="fa fa-calendar" ng-if="startTimeType == 'date'"></i>
+        {{shortStartTime | date: "HH:mm" : "+7"}}
+    </div>
+    <div class="show-info" ng-if="status == 2">
+        <img class="live" ng-src="/Content/Image/live1.gif" />
+        <span class="view"> | <i class="fa fa-user"></i> {{view}}</span>
+    </div>
+    <img class="level" ng-src="{{starLevelPhoto}}" data-toggle="tooltip" data-placement="top" title="{{starLevelName}}" />
+    <!-- <uc-follow-button status="{{followStatus}}" target-user-id="{{starId}}"></uc-follow-button>-->
+</div>

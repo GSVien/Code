@@ -1,0 +1,51 @@
+﻿<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" ng-click="onClose()">
+        <span>&times;</span>
+    </button>
+    <h4 class="modal-title">Nhận phần thưởng</h4>
+</div>
+
+<div class="modal-body">
+    <img class="background" src="/Content/Image/Event-2016/Eventthang12/btn-br-nhanthuong.png" />
+    <div style="margin-top: -160px">
+        <!-- <div class="name-idol">Idol: ⭐{{RewardIdol.Items.idolInfo.Name}}⭐</div>-->
+        <div style="min-height: 100px;">
+            <div class="name-idol">Idol nhận được</div>
+            <div class="countmission" ng-repeat="(i,x) in RewardIdol.Items.IdolRewardInfo">
+                <div class="insistence">
+                    <div class="photo">
+                        <img src="{{x.Photo}}"/>
+                    </div>
+                    {{x.Quantity}}
+                </div>
+                <div class="insistence">
+                    <div class="photo">
+                        <img src="/Content/Image/Event-2016/Eventthang12/thong.png" />
+                    </div>
+                    ?
+                </div>
+            </div>
+            <!-- <div class="name-user">⭐{{RewardIdol.Items.userInfo.Name ? RewardIdol.Items.userInfo.Name : 'User'}}⭐</div>-->
+            <div class="name-user">User nhận được</div>
+            <div class="countmission">
+                <div class="insistence" ng-repeat="(i,x) in RewardIdol.Items.UserRewardInfo">
+                    <div class="photo">
+                        <img src="{{x.Photo}}" ng-if="x.ObjectTypeId!=4" />
+                        <i class="free-coin-icon" ng-if="x.ObjectTypeId==4"></i>
+                    </div>
+                    {{x.Description}}
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+
+        <div class="button-taking" ng-if="sessionService.data().user.GroupUser.Id == 2">
+            <button class="btn btn-primary nhan" disabled="disabled" ng-if="RewardIdol.Items.idolQuestState !=2">Nhận thưởng</button>
+            <button class="btn btn-primary nhan" ng-click="onUserDoneIdolQuest()" ng-if="RewardIdol.Items.idolQuestState == 2">Nhận thưởng</button>
+            <button class="btn btn-primary huy" ng-click="onClose()">Đóng</button>
+        </div>
+        <div class="button-taking" ng-if="sessionService.data().user.GroupUser.Id != 2">
+            <button class="btn btn-primary nhan" ng-click="onClose()">Tiếp tục nhiệm vụ</button>
+        </div>
+    </div>
+</div>

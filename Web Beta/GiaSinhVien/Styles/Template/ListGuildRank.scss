@@ -1,0 +1,96 @@
+﻿@import "../_lib.scss";
+@import "../_core.scss";
+
+.rank-item {
+    @include clearfix;
+
+    &:hover {
+        background: $color-border-gray;
+    }
+
+    .rank-no {
+        width: 20px;
+        float: left;
+        line-height: 75px;
+        text-align: center;
+        font-size: 18px;
+        font-weight: bold;
+        color: #999;
+    }
+}
+
+.list-guild-rank {
+    @include clearfix;
+    display: inline-block;
+    padding: 10px;
+    width: calc(100% - 25px);
+
+    .avatar {
+        float: left;
+        width: 55px;
+        height: 55px;
+        margin-right: 10px;
+        border-radius: 50%;
+        background: url(/Content/Image/Background-Item/Meo-gif.gif) center;
+        background-size: auto 42px;
+        object-fit: cover;
+        -moz-transition: all .3s;
+        -webkit-transition: all .3s;
+        transition: all .3s;
+    }
+
+    .info {
+        float: left;
+        @include clearfix;
+        @include property(width, calc(100% - 70px), value);
+
+        .vip, .badge {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .team-name {
+            font-weight: 700;
+            max-height: 18px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .name {
+            display: inline-block;
+            width: 100%;
+            vertical-align: middle;
+            //  margin-top: 5px;
+            @include text-ellipsis;
+            color: $color-black;
+            opacity: 0.5;
+        }
+
+        .vip + .name {
+            @include property(width, calc(100% - 30px), value);
+        }
+
+        .vip + .badge + .name {
+            @include property(width, calc(100% - 60px), value);
+        }
+
+        .level {
+            float: left;
+            height: 17px;
+            margin-right: 10px;
+        }
+
+        .point {
+            float: left;
+            margin-top: 3px;
+
+            &.coin {
+                color: $color-red;
+            }
+
+            &.free-coin {
+                color: $color-orange;
+            }
+        }
+    }
+}

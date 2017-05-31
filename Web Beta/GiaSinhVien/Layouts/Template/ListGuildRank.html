@@ -1,0 +1,20 @@
+﻿<div class="rank-item list-item-animate">
+    <div class="rank-no" ng-if="indexValue">
+        {{indexValue == 1 || indexValue == 2 || indexValue == 3 ? '' : indexValue }}
+        <img width="100%" style="margin: 2px" ng-if="indexValue == 1 || indexValue == 2 || indexValue == 3" ng-src="/Content/Image/Guild/number/number{{indexValue}}.png">
+    </div>
+    <a class="list-guild-rank" href="{{link ? link:'#'}}" target="{{linkNewTab ? '_blank' : ''}}">
+        <img class="avatar" ng-src="{{helper.linkImage(avatar, 80)}}" />
+        <div class="info">
+            <img class="vip" ng-if="vipName && vipPhoto" ng-src="{{vipPhoto}}" alt="{{vipName}}" uib-tooltip="{{vipName}}" />
+            <img class="badge" ng-src="{{badgePhoto}}" data-toggle="tooltip" data-placement="top" data-html="true" title="{{badgeName}}" ng-if="showVipBadge && badgeName && badgePhoto" />
+            <div class="team-name" ng-style="{'color': vipColor}">{{teamName}}</div>
+            <div class="name-position" ng-style="{'color': vipColor}">{{namePosition}}</div>
+            <div class="name" ng-if="name" ng-style="{'color': vipColor}">{{name}}</div>
+            <img class="level" ng-if="levelPhoto" ng-src="{{levelPhoto ? levelPhoto :'http://teenidol.vn/Flash/leveluser1_112.png'}}" alt="{{levelName}}" data-toggle="tooltip" data-placement="top" data-html="true" title="{{}}"/>
+            <div class="point coin" ng-if="display == 'coin' && coin">
+                 <i class="coin-icon" ></i> {{coin | number:0}}
+            </div>
+        </div>
+    </a>
+</div>

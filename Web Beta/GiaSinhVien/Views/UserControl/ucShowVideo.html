@@ -1,0 +1,224 @@
+﻿<div class="uc-show-video panel" ng-class="{'full-screen': isFullScreen}">
+    <div class="video-panel">
+        <div class="show-offline" ng-if="sessionService.userId() != starId && showStatus !== 2 && !offlineVideoLink"></div>
+
+        <iframe ng-src="{{offlineVideoLink + '?rel=0&controls=0&showinfo=0'}}" width="100%" height="100%" frameborder="0" allowfullscreen ng-if="browser != 'desktop' && offlineVideoLink || (sessionService.userId() != starId && showStatus !== 2 && offlineVideoLink && helper.isYoutubeVideo(offlineVideoLink))"></iframe>
+
+        <video width="100%" height="100%" autoplay ng-if="sessionService.userId() != starId && showStatus !== 2 && offlineVideoLink && !helper.isYoutubeVideo(offlineVideoLink)">
+            <source src="offlineVideoLink" type="video/mp4">
+        </video>
+
+        <!-- flash -->
+        <div class="flash-container" ng-if="browser == 'desktop' && (sessionService.userId() == starId || showStatus === 2)">
+            <object type="application/x-shockwave-flash" id="flash-player" data="/Content/Flash/streamer.swf" ng-if="videomode=='idol'" width="100%" height="100%">
+                <param name="menu" value="false">
+                <param name="quality" value="high">
+                <param name="scale" value="ShowAll">
+                <param name="allowscriptaccess" value="always">
+                <param name="allowFullScreen" value="true">
+                <param name="wmode" value="opaque">
+            </object>
+
+            <object type="application/x-shockwave-flash" id="flash-player" data="/Content/Flash/player.swf" ng-if="videomode=='user' && !showMobile" width="100%" height="100%">
+                <param name="menu" value="false">
+                <param name="quality" value="high">
+                <param name="scale" value="ShowAll">
+                <param name="allowscriptaccess" value="always">
+                <param name="allowFullScreen" value="true">
+                <param name="wmode" value="opaque">
+            </object>
+
+            <object type="application/x-shockwave-flash" id="flash-player" data="/Content/Flash/playermobile.swf" ng-if="showMobile" width="100%" height="100%">
+                <param name="menu" value="false">
+                <param name="quality" value="high">
+                <param name="scale" value="ShowAll">
+                <param name="allowscriptaccess" value="always">
+                <param name="allowFullScreen" value="true">
+                <param name="wmode" value="opaque">
+            </object>
+
+            <script type="text/javascript">
+                function swfReady() {
+                    var ctrl = angular.element($(".uc-show-video")).scope()._ctrl;
+                    ctrl.startFlash();
+                }
+            </script>
+        </div>
+        <!-- end flash -->
+        <!-- popup-content -->
+        <div class="popup-content" ng-if="loadPopup='loaded'" ng:class="{true: '', false: 'hide'}[ShowHide == true]">
+            <img style="width:90%;height:90%" src="{{popupcontent}}" class="img-responsive" alt="Cinque Terre">
+        </div>
+        <!-- end popup -->
+
+        <div class="offline-text" ng-if="sessionService.userId() != starId && showStatus !== 2 && pageStatus == 'user'">
+            Giờ này Idol đi giải cứu thế giới rồi ! quay lại vào lúc {{isShowToday ? (startTime | date: 'HH:mm dd/MM/yyyy' : '+0') : (startTime | date: 'HH:mm dd/MM/yyyy' : '+0')}} hoặc xem video cho đỡ ghiền nhé :)
+        </div>
+
+        <div class="photo-avatar" ng-if="sampleStar == true" >
+            <img src="../../Content/Image/Iconmenu/avatar-thuviec.png"/><br>
+            <div style="color: white;">
+                <b>EXP</b>
+                <div class="percent-level-process" tooltip-placement="bottom" uib-tooltip="{{helper.formatNumber(percentSample)}} %">
+                    <div style="width: {{percentSample}}% "></div>
+                </div>
+            </div>
+            
+        </div>
+
+        <div class="top-info">
+            <div class="alert alert-info" ng-if="starStatus == 'loading'">
+                <i class="fa fa-spin fa-circle-o-notch"></i> Đang tải...
+            </div>
+
+            <div class="alert alert-danger" ng-if="starStatus == 'error'">
+                {{ starError }}
+            </div>
+
+            <div class="content" ng-if="starStatus == 'loaded'">
+                <img-scale class="avatar pull-left" link="{{helper.linkImage(starAvatar, 80)}}"></img-scale>
+
+                <div class="pull-right">
+                    <div class="name">{{starName}}</div>
+                    <img class="star-level" ng-src="{{starLevelPhoto}}" data-toggle="tooltip" data-placement="bottom" title="{{starLevelName}}" />
+                    <div class="star-next-level-process" tooltip-placement="bottom" uib-tooltip="Còn {{helper.formatNumber(starNextLevelNeed)}} điểm nữa để lên cấp">
+                        <div style="width:{{starNextLevelProgress}}% "></div>
+                    </div>
+                    <!--<img class="star-next-level" ng-src="{{starNextLevelPhoto}}" data-toggle="tooltip" data-placement="bottom" title="{{starNextLevelName}}" ng-if="starNextLevelName && starNextLevelPhoto" />-->
+                </div>
+
+                <div class="pull-right">
+                    <div class="coin">
+                        <i class="coin-icon-star"></i> {{helper.formatNumber(starCoinGet)}}
+                    </div>
+                    <div class="free-coin">
+                        <i class="free-coin-icon"></i> {{helper.formatNumber(starFreeCoinGet)}}
+                    </div>
+                    <!--                    <div class="star" data-toggle="tooltip" data-placement="bottom" title="Số sao đã nhận">-->
+                    <!--                        <i class="fa fa-star"></i> {{totalStar ? helper.formatNumber(totalStar) : 0}}-->
+                    <!--                    </div>-->
+                    <div class="start-time" data-toggle="tooltip" data-placement="bottom" title="Thời gian bắt đầu diễn">
+                        <i class="fa fa-clock-o"></i> {{starStarShow | date: 'HH:mm' : '-0'}}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bottom-info">
+            <div class="alert alert-info" ng-if="starStatus == 'loading'">
+                <i class="fa fa-spin fa-circle-o-notch"></i> Đang tải...
+            </div>
+
+            <div class="alert alert-danger" ng-if="starStatus == 'error'">
+                {{ starError }}
+            </div>
+
+            <div class="content" ng-if="starStatus == 'loaded'">
+                <div class="pull-left">
+                    <uc-follow-button status="{{starFollowStatus}}" target-user-id="{{starId}}"></uc-follow-button>
+
+                    <button class="btn btn-facebook" data-toggle="tooltip" data-placement="top" title="Share" ng-click="onShareFacebook($event)">
+                        Share
+                    </button>
+                </div>
+
+                <div class="pull-right">
+                    <button class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Xem ở chế độ toàn màn hình" ng-click="onFullscreen($event)" ng-if="allowFullscreen && supportFullScreen && isFullScreen == false && !showMobile">
+                        <i class="fa fa-arrows-alt"></i>
+                    </button>
+                    <button class="quality-warn btn btn-red" data-toggle="tooltip" data-placement="top" title="Đường truyền của bạn đang quá tải. Xin thay đổi đổi chất lượng webcam hoặc liên hệ với kỹ thuật." ng-if="!qualityIsOk">
+                        <i class="fa fa-warning"></i>
+                    </button>
+                    <select ng-if="sessionService.data().user.GroupUser.Id == 2" class="quality form-control" ng-model="quality.current" ng-options="x.text for x in quality.list track by x.id"></select>
+                    <a target="_blank" href="{{helper.linkAction('/user/' + starId)}}" class="btn btn-yellow" data-toggle="tooltip" data-placement="top" title="Thông tin cá nhân">
+                        <i class="fa fa-info"></i>
+                    </a>
+                    <a target="_blank" href="{{starFacebookLink}}" class="btn btn-facebook" data-toggle="tooltip" data-placement="top" title="Facebook" ng-if="starFacebookLink && sessionService.userId() != starId">
+                        <i class="fa fa-facebook-f"></i>
+                    </a>
+
+                    <button class="btn btn-facebook" ng-if="sessionService.userId() == starId" ng-click="onLiveFacebook($event)">
+                        <div ng-if="!facebookLive.handle">
+                            <i class="fa fa-facebook-f"></i> Live
+                        </div>
+                        <div ng-if="facebookLive.handle">
+                            Còn {{facebookLive.minutesLeft}} phút {{facebookLive.secondsLeft}} giây
+                        </div>
+                    </button>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        <div class="animation-heart">
+            <div class="center"></div>
+        </div>
+        <!--<button class="start-flash btn btn-primary" ng-if="sessionService.userId() != starId && showStartFlashButton == true" ng-click="onStartFlash($event)">Click để xem</button>-->
+    </div>
+
+    <div class="seat-panel list-item-animate" ng-hide="isFullScreen">
+
+        <div class="alert alert-danger" ng-if="seatStatus == 'error'">
+            {{ seatError }}
+        </div>
+
+        <!--<div class="top-user seat" ng-if="seatStatus == 'loaded'" >
+            <img-scale class="gold-seat" link="/Content/Image/gold-seat.png" scale="best-fit"></img-scale>
+
+            <a class="user" ng-if="topUser[0]" href="/user/{{topUser[0].id}}" target="_blank" uib-tooltip="Ghế vàng: {{topUser[0].name}} với {{helper.formatNumber(topUser[0].coin)}} ruby" tooltip-class="gold-user" tooltip-append-to-body="false">
+                <img-scale class="avatar" link="{{helper.linkImage(topUser[0].avatar, 80)}}"></img-scale>
+            </a>
+        </div>-->
+
+        <div class="seat index-{{x.index}}" style="background: url({{x.imageseat}}) center;background-size: 50px 70px;background-repeat: no-repeat;" ng-repeat="x in listSeat" ng-if="seatStatus == 'loaded' && listSeat" data-index="{{x.index}}" data-jq-dropdown="#dropdown-seat">
+            <div class="user index-{{x.index}}" ng-if="x.userId" ng-animate="animate">
+                <img ng-src="{{x.Animation}}" class="photobackground" ng-if="x.Animation" />
+                <img-scale class="avatar" link="{{helper.linkImage(x.avatar, 80)}}"></img-scale>
+                <div class="name"><marquee SCROLLDELAY=200><span>{{x.name}}</span></marquee></div>
+            </div>
+
+            <div class="empty" ng-if="!x.userId">
+                <img-scale class="seat-icon" link="/Content/Image/seat.gif" scale="best-fit"></img-scale>
+            </div>
+        </div>
+
+        <!--<div class="top-user seat" ng-if="seatStatus == 'loaded'">
+            <img-scale class="gold-seat" link="/Content/Image/gold-seat.png" scale="best-fit"></img-scale>
+
+            <a class="user" ng-if="topUser[1]" href="/user/{{topUser[1].id}}" target="_blank" uib-tooltip="Ghế vàng: {{topUser[1].name}} với {{helper.formatNumber(topUser[1].coin)}} ruby" tooltip-class="gold-user" tooltip-append-to-body="false">
+                <img-scale class="avatar" link="{{helper.linkImage(topUser[1].avatar, 80)}}"></img-scale>
+            </a>
+        </div>-->
+    </div>
+
+    <div id="dropdown-seat" class="jq-dropdown jq-dropdown-tip">
+        <ul class="jq-dropdown-menu">
+            <li ng-if="seatCurrentUserId">
+                <span>Đã được mua với giá: <i class="coin-icon"></i>{{helper.formatNumber(seatCurrentPrice)}}</span>
+                    <span style="float: left">Ngày mua: </span> <span>{{seatCurrentCreateDate|date:'HH:mm:ss MM/dd/yyyy' : "+0"}}</span>
+                    <span style="float: left">Thời hạn: </span> <span>{{(seatCurrentEndDate - seatCurrentCreateDate)/3600000}} giờ</span>
+            </li>
+            <li class="jq-dropdown-divider" ng-if="seatCurrentUserId"></li>
+            <li ng-if="seatCurrentUserId">
+                <a href="{{helper.linkAction('/user/' + seatCurrentUserId)}}">Xem thông tin cá nhân</a>
+            </li>
+            <li ng-if="seatCurrentUserId">
+                <a href="#" ud-role="send-private-message" user-id="{{seatCurrentUserId}}">Gửi tin nhắn riêng</a>
+            </li>
+            <li class="jq-dropdown-divider" ng-if="seatCurrentUserId"></li>
+            <li ng-if="(listSeatPrice | currentListSeatPrice:seatCurrentPrice).length === 0">
+                <span>Ghế đã được mua với giá cao nhất</span>
+            </li>
+            <li ng-if="(listSeatPrice | currentListSeatPrice:seatCurrentPrice).length > 0">
+                <form class="form-inline" ng-submit="onBuySeat($event)" data-current-index="{{seatCurrentIndex}}">
+                    <div class="form-group">
+                        <label>Mua với giá: <i class="coin-icon"></i></label>
+                        <select class="price form-control">
+                            <option ng-repeat="(i,x) in listSeatPrice | currentListSeatPrice:seatCurrentPrice  | limitTo:3" value="{{x}}">{{x ? helper.formatNumber(x) : ""}}</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Mua ghế</button>
+                </form>
+            </li>
+        </ul>
+    </div>
+</div>

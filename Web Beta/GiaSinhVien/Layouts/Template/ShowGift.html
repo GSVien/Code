@@ -1,0 +1,55 @@
+﻿<div class="show-gift tab tab-count-{{listGiftCategory.length}}">
+    <div class="alert alert-info" ng-if="listGiftCategory.status == 'loading'">
+    </div>
+    <ul class="nav nav-tabs">
+        <li ng-class="{active: $index==0}" ng-repeat="x in listGiftCategory">
+            <a data-target="#gift-category-{{x.id}}" data-toggle="tab">{{x.name}}</a>
+        </li>
+    </ul>
+
+    <div class="tab-content">
+        <div class="alert alert-info ng-scope" ng-if="listGiftCategory.status == 'loading'"></div>
+        <div id="gift-category-{{x.id}}" class="gift-category tab-pane fade" data-index="{{$index}}" ng-class="{'in active': $index==0}" ng-repeat="x in listGiftCategory">
+            <div class="gift-item" ng-class="{active: selectedGift.id == y.id}" data-id="{{y.id}}" data-index="{{$index}}"
+                 data-toggle="tooltip" data-placement="top" data-html="true" title="{{y.name + ' - ' + ' <i class=\'coin-icon\'></i> ' + helper.formatNumber(y.price)}}"
+                 ng-click="onSelectGiftItem($event)"
+                 ng-repeat="y in x.listGift">
+                <img-scale link="{{y.photo}}" scale="best-fit"></img-scale>
+                <img-scale style="top: 10px; position: absolute" link="{{y.IconLink}}" scale="best-fit" ng-if="y.IconLink != undefined"></img-scale>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel">
+        <ui-select class="gift-quantity" ng-model="selectedGift.selectedQuantity">
+            <ui-select-match placeholder="Chọn quà">
+                <div class="gift-quantity-item">
+                    <img-scale class="photo" link="{{$select.selected.photo}}" scale="best-fit"></img-scale>
+                    <div class="name">{{$select.selected.quantity}}</div>
+                </div>
+            </ui-select-match>
+            <ui-select-choices repeat="x in (selectedGift.listQuantity) track by x.quantity">
+                <div class="gift-quantity-item">
+                    <img-scale class="photo" link="{{x.photo}}" scale="best-fit"></img-scale>
+                    <div class="name">{{x.quantity}}</div>
+                </div>
+            </ui-select-choices>
+        </ui-select>
+        <button class="give btn btn-primary" ng-disabled="!selectedGift.selectedQuantity" ng-click="onSendGift($event)">Tặng</button>      
+        <div class="btn-group dropup">
+            <button class="give-free-coin btn btn-red" ng-click="onSendFreeCoin($event)" data-toggle="tooltip" data-placement="top" data-html="true" title="Gửi tặng  <i class='free-coin-icon'></i> cho idol">
+                {{freeCoinQuantity ? freeCoinQuantity : '10'}} <i class="free-coin-icon"></i>
+            </button>
+            <button class="btn btn-red dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+            <ul class="dropdown-menu">
+                <li><a href="#" ng-click="setfreeCoinQuantity(10)">10 tim</a></li>
+                <li><a href="#" ng-click="setfreeCoinQuantity(100)">100 tim</a></li>
+                <li><a href="#" ng-click="setfreeCoinQuantity(500)">500 tim</a></li>
+             </ul>
+        </div>
+       
+        <button class="recharge-coin btn btn-green" ng-click="onUserRechargeCoin()" style="margin-right: 0">
+            Nạp <i class="coin-icon"></i>
+        </button>
+    </div>
+</div>

@@ -1,0 +1,60 @@
+﻿@import "../_lib.scss";
+@import "../_core.scss";
+
+.show-sent-gift {
+    .panel-body {
+        @include property(height, calc(100% - 2px), value);
+        padding: 10px !important;
+
+        .list {
+            height: 100%;
+            overflow: auto;
+        }
+    }
+
+    .sent-gift-item {
+        @include clearfix;
+
+        &:not(:last-child) {
+            margin-bottom: 10px;
+        }
+
+        > div {
+            float: left;
+
+            &:not(:last-child) {
+                margin-right: 5px;
+            }
+
+            &.time {
+                width: 15px;
+            }
+
+            &.user {
+                @include property(width, calc(100% - 55px), value);
+            }
+
+            &.gift {
+                width: 30px;
+            }
+        }
+
+        .time {
+            text-align: center;
+        }
+
+        .user {
+            a {
+                display: block;
+                @include text-ellipsis;
+            }
+        }
+
+        .gift {
+            .img-container {
+                width: 30px;
+                height: 20px;
+            }
+        }
+    }
+}

@@ -1,0 +1,15 @@
+﻿@import "../_lib.scss";
+@import "../_core.scss";
+
+.modal-show-opening {
+    .modal-dialog {
+        width: 750px;
+    }
+
+    .modal-body {
+        height: 400px;
+        padding: 5px;
+        overflow-y: auto;
+        @include clearfix;
+    }
+}

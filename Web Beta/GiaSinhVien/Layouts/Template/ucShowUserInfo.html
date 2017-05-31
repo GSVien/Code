@@ -1,0 +1,63 @@
+﻿<div class="uc-show-user-info">
+    <div class="anonymous" ng-if="!sessionService.isSigned()">
+        <button class="btn" ud-role="sign-in">
+            <i class="fa fa-sign-in"></i> Đăng nhập
+        </button>
+        <button class="btn" ud-role="sign-up">
+            <i class="fa fa-key"></i> Đăng ký
+        </button>
+    </div>
+
+    <div class="user panel" ng-if="sessionService.isSigned()">
+        <a href="#" class="pull-left" ud-role="user-popup" user-id="{{sessionService.data().user.User.Id}}">
+            <img-scale class="avatar" link="{{helper.linkImage(sessionService.data().user.User.AvatarPhoto, 80)}}"></img-scale>
+            <div>
+                <div>
+                    <img class="vip" ng-src="{{sessionService.data().user.VipItem.PhotoLink}}" data-toggle="tooltip" data-placement="bottom" data-html="true" title="{{sessionService.data().user.VipItem.Name}}" ng-if="sessionService.data().user.VipItem" />
+                    <img class="badge" ng-src="{{sessionService.data().user.Badge.Photo}}" data-toggle="tooltip" data-placement="bottom" data-html="true" title="{{sessionService.data().user.Badge.Name}}" ng-if="sessionService.data().user.Badge" />
+                    <div class="name" ng-class="{'vip-text': sessionService.data().user.VipItem}" style=" { {sessionService.data().user.VipItem ?'color '+sessionService.data().user.VipItem.HexColor: ' '}}">{{sessionService.data().user.User.Name}}</div>
+                </div>
+                <div>
+                    <div class="coin" uib-tooltip="{{helper.formatNumber(sessionService.data().user.User.Coin)}}" tooltip-placement="bottom">
+                        <i class="coin-icon"></i> {{helper.formatNumber(sessionService.data().user.User.Coin)}}
+                    </div>
+                    <div class="free-coin" uib-tooltip="{{helper.formatNumber(sessionService.data().user.User.TotalFreeCoin)}}" tooltip-placement="bottom">
+                        <i class="free-coin-icon"></i> {{helper.formatNumber(sessionService.data().user.User.TotalFreeCoin)}}
+                    </div>
+                </div>
+            </div>
+        </a>
+        <button class="sign-out btn pull-right" data-toggle="tooltip" data-placement="bottom" title="Thoát" ud-role="sign-out">
+            <i class="fa fa-sign-out"></i>
+        </button>
+        <div class="clearfix"></div>
+    </div>
+
+    <div class="user-action">
+        <button class="day-check btn" data-toggle="tooltip" data-placement="bottom" title="Báo danh" ng-click="onUserDayCheck()">
+            <i class="fa fa-check-square-o"></i>
+        </button>
+        <button class="live-support btn" data-toggle="tooltip" data-placement="bottom" title="Hỗ trợ" ud-role="live-support">
+            <a style="width: 30px" href="javascript:void(Tawk_API.toggle())"><i class="fa fa-question-circle" style="color: #fff; font-size: 16px;"></i></a>
+        </button>
+        <button class="btn btn-success" ng-click="onShowReport(starId)"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i></button>
+        <!--<button class="btn btn-danger" ud-role="modal-youtube-inshow">
+                  <a style="width: 30px" href="#modal-youtube-inshow"  data-backdrop="false" data-toggle="modal"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
+               </button>-->
+    </div>
+    <!--<div id="modal-youtube-inshow" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h5 class="modal-title">Youtube</h5>
+                </div>
+                <div class="modal-body">
+                    <iframe height="100%" width="100%" src="https://docs.google.com/forms/d/1c5leeMGOfe5sv92BdGK_YZp_THKWd-bPZkduGkBf4yc/viewform?c=0&w=1" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>-->
+</div>
+
+

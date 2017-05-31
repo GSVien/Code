@@ -1,0 +1,268 @@
+﻿<nav class="header navbar navbar-default" ng-show="layoutShowHeader">
+    <div class="hidden-xs">
+        <div class="container">
+            <ul class="no-signed pull-right list-inline" ng-if="!sessionService.isSigned()">
+                <li>
+                    <a href="#" ud-role="sign-in"><i class="fa fa-user"></i> Đăng nhập</a>
+                </li>
+                <li>
+                    <a href="#" ud-role="sign-up">Đăng ký</a>
+                </li>
+            </ul>
+
+            <ul class="signed pull-right list-inline" ng-if="sessionService.isSigned()">
+                <li ng-if="sessionService.data().user.GroupUser.Id == 2">
+                    <a href="/mySchedulenews">
+                        <i class="fa fa-calendar"></i> Lịch diễn
+                    </a>
+                </li>
+                <li>
+                    <a href="#" ng-click="onUserRechargeCoin()">
+                        Nạp tiền
+                        <span><i class="coin-icon"></i> {{ helper.formatNumber(userSession().User.Coin) }}</span>
+                        <span><i class="free-coin-icon"></i> {{ helper.formatNumber(userSession().User.TotalFreeCoin) }}</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ helper.linkAction('/user/' + userSession().User.Id) }}">
+                        <img class="avatar" ng-src="{{ helper.linkImage(userSession().User.AvatarPhoto, 80) }}" />
+                        <span class="user-name">{{ userSession().User.Name }}</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ helper.linkAction('/user/' + userSession().User.Id) + '/inbox' }}">
+                        <i class="fa fa-envelope"></i>
+                    </a>
+                </li>
+                <!--<li ng-if="sessionService.isSigned()">
+                    <div class="dropdown" style="cursor: pointer">
+                        <i class="fa fa-bell" aria-hidden="true" data-toggle="dropdown">
+                            <div ng-if="statusGuild.NoReadNotification" class="count-status"><span>{{statusGuild.NoReadNotification}}</span></div>
+                        </i>
+                        <ul class="dropdown-menu">
+                            <li class="{{x.User_Notification.Status == 2 ? '' : 'what'}}" ng-repeat="x in statusGuild.Items">
+                                <a href="#" ng-click="onActionReadNotification(x.User_Notification.Id)">
+                                    <img class="avatar" ng-src="{{ helper.linkImage(userSession().User.AvatarPhoto, 80) }}">
+                                    <div class="status">{{x.Notification.Message}}</div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>-->
+                <li>
+                    <a href="#" ud-role="sign-out">Đăng xuất</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div>
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">
+                    <img alt="Teen Idol" src="/Content/Image/Logo/logo-w-200.png">
+                </a>
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#header-navbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+
+            <div id="header-navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="/">
+                            <i class="fa fa-home"></i>
+                            <span>Trang chủ</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ helper.linkAction('/schedule') }}">
+                            <i class="fa fa-th-list"></i>
+                            <span>Lịch diễn</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ helper.linkAction('/star') }}">
+                            <i class="fa fa-female"></i>
+                            <span>Star</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ helper.linkAction('/rank') }}">
+                            <i class="fa fa-bar-chart"></i>
+                            <span>Xếp hạng</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ helper.linkAction('/guild') }}">
+                            <i class="fa fa-users"></i>
+                            <span>Gia tộc</span>
+                            @*<img style="position: absolute; top: 3px;right:-10px" src="../Content/Image/Guild/NEW.gif" alt="" />*@
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ helper.linkAction('/shop') }}">
+                            <i class="fa fa-university"></i>
+                            <span>Cửa hàng</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ helper.linkAction('/news') }}">
+                            <i class="fa fa-clipboard"></i>
+                            <span>Sự Kiện</span>
+                        </a>
+                    </li>
+                </ul>
+
+                <form class="search navbar-form navbar-right">
+                    <div class="form-group">
+                        <input type="text" id="search-text" class="search-text form-control" placeholder="Tìm kiếm...">
+                    </div>
+                    <button type="submit" ng-click="onSearchIdol()" class="btn btn-default"><i class="fa fa-search"></i></button>
+                </form>
+                <ul class="nav navbar-nav visible-xs visible-sm visible-md">
+                    <li ng-if="userSession().User.GroupUserId != 2">
+                        <a href="#" ng-click="onRegisterstar()">
+                            <i class="fa fa-star"></i>
+                            <span>Đăng ký Idol</span>
+                        </a>
+                    </li>
+
+                    <li ng-if="userSession().User.GroupUserId == 2">
+                        <a href="/show/{{userSession().Show.Id}}">
+                            <i class="fa fa-star"></i>
+                            <span>Vào Show</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#" ng-click="onUserDayCheck()">
+                            <i class="fa fa-check-square-o"></i>
+                            <span>Báo danh</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#" ng-click="onUserMission()">
+                            <i class="fa fa-crosshairs"></i>
+                            <span>Nhiệm vụ</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/payment">
+                            <i class="fa fa-credit-card"></i>
+                            <span>Nạp Tiền</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="left-bar hidden-sm" ng-if="layoutShowLeftBar">
+    <div class="fb-like" data-href="https://www.facebook.com/Teenidol-1616269841968329" data-width="70px" data-layout="box_count" data-action="like" data-show-faces="true" data-share="true"></div>
+    <!--<a href="https://teenidol.vn/hang-nga-tha-thinh-can-thinh-nhan-qua" target="_blank">
+        <img class="cau-chuc" ng-src="/Content/Image/Event-2016/EventIdol/banner L.jpg"/>
+    </a>-->
+    <!--<div class="gold-seat">
+        <a class="user" ng-if="topUser[0]" href="/user/{{topUser[0].id}}" target="_blank" uib-tooltip="Ghế vàng: {{topUser[0].name}} với {{helper.formatNumber(topUser[0].coin)}} ruby" tooltip-class="gold-user" tooltip-placement="right">
+            <img-scale class="avatar" link="{{helper.linkImage(topUser[0].avatar, 80)}}"></img-scale>
+        </a>
+        <img class="seat" ng-src="/Content/Image/gold-seat.png"/>
+        <img class="seat-desc" ng-src="/Content/Image/NewYear/ghe-vang-1.png"/>
+    </div>-->
+</div>
+
+<div class="right-bar" ng-if="layoutShowRightBar">
+    <!--<a href="https://teenidol.vn/hang-nga-tha-thinh-can-thinh-nhan-qua" target="_blank"><img class="cau-chuc" ng-src="/Content/Image/Event-2016/EventIdol/banner R.jpg"/></a>
+    <div class="gold-seat">
+        <a class="user" ng-if="topUser[0]" href="/user/{{topUser[1].id}}" target="_blank" uib-tooltip="Ghế vàng: {{topUser[1].name}} với {{helper.formatNumber(topUser[1].coin)}} ruby" tooltip-class="gold-user" tooltip-placement="left">
+            <img-scale class="avatar" link="{{helper.linkImage(topUser[1].avatar, 80)}}"></img-scale>
+        </a>
+        <img class="seat" ng-src="/Content/Image/gold-seat.png"/>
+        <img class="seat-desc" ng-src="/Content/Image/NewYear/ghe-vang-2.png"/>
+    </div>-->
+    <!-- <div class="toggle btn" data-jq-dropdown="#dropdown-right-bar">
+        <i class="fa fa-cog"></i>
+    </div>
+    <div id="dropdown-right-bar" class="jq-dropdown jq-dropdown-tip">
+        <div class="jq-dropdown-panel">
+            <button class="action-go-show btn" ng-if="userSession().User.GroupUserId == 2">
+                <a href="{{ helper.linkAction('/show/' + userSession().Show.Id) }}">
+                    <i class="fa fa-star"></i>
+                    <span>Vào show</span>
+                </a>
+            </button>
+            <button class="action-register-star btn" ng-if="userSession().ShowTopic">
+                <a href="{{ helper.linkAction('/show/' + userSession().ShowTopic.Id) }}" style="color: white">
+                    <i class="fa fa-star"></i>
+                    <span>Show C.Đề</span>
+                </a>
+            </button>
+            <button class="action-register-star btn" ng-click="onRegisterstar()" ng-if="userSession().User.GroupUserId != 2">
+                <div class="icon">
+                    <i class="fa fa-edit"></i>
+                    <i class="fa fa-star"></i>
+                </div>
+                <span>ĐK Idol</span>
+            </button>
+            <button class="action-day-check btn" ng-click="onUserDayCheck()">
+                <i class="fa fa-check-square-o"></i>
+                <span>Báo danh</span>
+            </button>
+            <button class="action-mission btn" ng-click="onUserMission()">
+                <i class="fa fa-crosshairs"></i>
+                <span>Nhiệm vụ</span>
+            </button>
+        </div>
+    </div>-->
+    <button class="action-go-show btn" ng-if="userSession().User.GroupUserId == 2">
+        <a href="{{ helper.linkAction('/show/' + userSession().Show.Id) }}">
+            <i class="fa fa-star"></i>
+            <span>Vào show</span>
+        </a>
+    </button>
+    <button class="action-register-star btn" ng-click="onRegisterstar()" ng-if="userSession().User.GroupUserId != 2">
+        <div class="icon">
+            <i class="fa fa-edit"></i>
+            <i class="fa fa-star"></i>
+        </div>
+        <span>ĐK Idol</span>
+    </button>
+    <button class="action-day-check btn" ng-click="onUserDayCheck()">
+        <i class="fa fa-check-square-o"></i>
+        <span>Báo danh</span>
+    </button>
+    <button class="action-mission btn" ng-click="onUserMission()">
+        <i class="fa fa-crosshairs"></i>
+        <span>Nhiệm vụ</span>
+    </button>
+</div>
+
+<div class="banner container" ng-if="layoutShowBanner">
+    <ul class="banner-carousel" rn-carousel rn-carousel-auto-slide rn-carousel-pause-on-hover>
+        <!--<li>
+            <a target="_blank" href="https://teenidol.vn/giut-ghe-cuop-qua">
+                <img-scale link="https://file.teenidol.vn/Image/f56af7ced353414aa2fd.jpg" scale="best-fit" rescaleonresize="true"></img-scale>
+            </a>
+        </li>-->
+        <li ng-repeat="item in listBannerTop">
+            <a target="_blank" href="{{item.link}}">
+                <img-scale link="{{item.image}}" scale="best-fit" rescaleonresize="true"></img-scale>
+            </a>
+        </li>
+        <li ng-if="!listBannerTop">
+            <a target="_blank" href="https://teenidol.vn/app">
+                <img-scale link="https://file.teenidol.vn/Image/3233dd39111d448c96be.jpg" scale="best-fit" rescaleonresize="true"></img-scale>
+            </a>
+        </li>
+        <li ng-if="!listBannerTop">
+            <a target="_blank" href="https://teenidol.vn/app">
+                <img-scale link="https://file.teenidol.vn/Image/ce8ccbe8a6724eb58c83.jpg" scale="best-fit" rescaleonresize="true"></img-scale>
+            </a>
+        </li>
+    </ul>
+</div>

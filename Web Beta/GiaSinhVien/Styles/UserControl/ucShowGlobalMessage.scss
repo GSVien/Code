@@ -1,0 +1,203 @@
+﻿@import "../_lib.scss";
+@import "../_core.scss";
+
+.uc-show-global-message {
+    position: relative;
+
+    .list {
+        @include property(height, calc(100% - 100px), value);
+        padding: 5px;
+        background-color: $color-white;
+        border-bottom: 1px solid $color-line-gray;
+        border-radius: $border-radius;
+        overflow: auto;
+
+        .list-item {
+            line-height: 20px;
+
+            .emoticon {
+                width: 20px;
+                height: 20px;
+                vertical-align: middle;
+            }
+
+            .animation-item, .gift {
+                width: 30px;
+                height: 30px;
+            }
+
+            .vip, .badge {
+                height: 14px;
+                margin-right: 5px;
+                margin-top: -2px;
+            }
+
+            [ud-role] {
+                font-weight: bold;
+            }
+
+            .alert {
+                @include clear;
+            }
+
+            .message {
+                @include clearfix;
+
+                .fa-caret-right {
+                    float: left;
+                    line-height: 17px;
+                    margin-right: 5px;
+                }
+
+                .user {
+                    @include clearfix;
+                    float: left;
+                    margin-right: 5px;
+
+                    .vip, .badge {
+                        float: left;
+                    }
+
+                    .name {
+                        float: left;
+                    }
+                }
+            }
+        }
+    }
+
+    .water-mark {
+        position: absolute;
+        width: 277px;
+        height: 158px;
+        @include pos-center-h;
+        bottom: 107px;
+        opacity: 0.2;
+        pointer-events: none;
+
+        background: {
+            image: url("/Content/Image/NewYear/bar-4.png");
+            repeat: no-repeat;
+        }
+    }
+
+    .toolbar {
+        margin-top: 10px;
+        @include clearfix;
+
+        .message-target {
+            float: left;
+            @include property(width, calc(100% - 60px), value);
+
+            .message-target-item {
+                @include clearfix;
+
+                .avatar {
+                    float: left;
+                    width: 15px;
+                    height: 15px;
+                    margin-right: 10px;
+                }
+
+                .name {
+                    float: left;
+                }
+            }
+        }
+
+        .auto-scroll {
+            float: right;
+        }
+    }
+
+    form {
+        $height: 50px;
+
+        @include clearfix;
+        height: $height;
+        margin-top: 10px;
+
+        .message-panel {
+            position: relative;
+            float: left;
+            @include clearfix;
+            @include property(width, calc(100% - 60px), value);
+            height: 100%;
+            margin-right: 10px;
+            padding: 5px;
+            background-color: $color-white;
+            border: 1px solid $color-line-gray;
+            border-radius: $border-radius;
+
+            .message-text {
+                float: left;
+                @include property(width, calc(100% - 40px), value);
+                height: 100%;
+                margin-right: 10px;
+                border: none;
+                outline: none;
+                resize: none;
+            }
+
+            .message-emoticon {
+                float: right;
+                @include clear;
+                width: 30px;
+                height: 30px;
+                margin-top: $height / 2 - 20px;
+            }
+
+            .btn-message-ruby {
+                position: absolute;
+                right: 40px;
+                width: 30px;
+                margin-top: 5px;
+            }
+
+            label {
+                position: absolute;
+                right: 40px;
+                width: 30px;
+                height: 30px;
+                margin-top: 5px;
+                background: url(/Content/Image/rocket-312583__180.png) center;
+                background-size: 50% 50%;
+                background-repeat: no-repeat;
+                border-radius: 4px;
+                border: 1px solid #ccc;
+
+                &:after {
+                    content: '';
+                    width: 30px;
+                    height: 30px;
+                    position: absolute;
+                    background: $color-primary;
+                    opacity: 0;
+                    border-radius: 4px;
+                }
+
+                &:hover::after {
+                    opacity: 0.3;
+                    right: -1px;
+                    top: -1px;
+                }
+            }
+
+            input[type=checkbox] {
+                visibility: hidden;
+
+                &:checked + label:after {
+                    opacity: 0.4;
+                    right: -1px;
+                    top: -1px;
+                }
+            }
+        }
+
+        [type=submit] {
+            @include clear;
+            width: 50px;
+            height: $height;
+        }
+    }
+}

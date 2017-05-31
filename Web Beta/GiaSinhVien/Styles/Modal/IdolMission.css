@@ -1,0 +1,58 @@
+﻿.modal-idol-mission .modal-content .modal-body {
+  padding: 0;
+  text-align: center;
+  color: black; }
+  .modal-idol-mission .modal-content .modal-body .background {
+    width: 100%; }
+  .modal-idol-mission .modal-content .modal-body .level {
+    font-weight: 500;
+    font-size: 16px;
+    position: absolute;
+    left: 50%;
+    width: 100%;
+    transform: translate(-50%);
+    bottom: 85px; }
+    .modal-idol-mission .modal-content .modal-body .level .fa {
+      margin-right: 3px;
+      font-size: 18px; }
+      .modal-idol-mission .modal-content .modal-body .level .fa.fa-star {
+        color: #f15d69; }
+      .modal-idol-mission .modal-content .modal-body .level .fa.fa-star-o {
+        color: #f15d69; }
+  .modal-idol-mission .modal-content .modal-body .countmission {
+    font-weight: 600;
+    font-size: 16px;
+    height: 30px;
+    position: absolute;
+    left: 50%;
+    width: 100%;
+    transform: translate(-50%);
+    bottom: 55px; }
+    .modal-idol-mission .modal-content .modal-body .countmission .insistence {
+      height: 100%;
+      width: 80px;
+      display: inline-block;
+      font-weight: 600;
+      line-height: 30px;
+      margin-right: 10px; }
+      .modal-idol-mission .modal-content .modal-body .countmission .insistence .photo {
+        width: 30px;
+        height: 100%;
+        float: left;
+        border-radius: 4px;
+        margin-right: 3px; }
+        .modal-idol-mission .modal-content .modal-body .countmission .insistence .photo img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover; }
+  .modal-idol-mission .modal-content .modal-body .button-taking {
+    padding: 10px;
+    background: rgba(235, 224, 224, 0.6);
+    text-transform: uppercase; }
+    .modal-idol-mission .modal-content .modal-body .button-taking .btn {
+      width: 47%;
+      padding: 7px;
+      text-transform: uppercase; }
+      .modal-idol-mission .modal-content .modal-body .button-taking .btn.huy {
+        float: right; }
+

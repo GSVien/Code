@@ -1,0 +1,293 @@
+﻿@{
+    
+}
+<!DOCTYPE html>
+<html lang="en" ng-app="giasinhvienApp" ng-controller="layoutController">
+<head>
+    <meta charset="utf-8">
+    <meta ng-if="!event" http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta ng-if="!event" name="viewport" content="width=device-width, initial-scale=1">
+    
+
+    <title ng-bind="layoutTitle">GiaSinhVien</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/Content/Image/favicon.png" />
+    <base href="/">
+
+    <link type="text/css" rel="stylesheet" href="/App_Lib/lib.min.css" />
+    <link type="text/css" rel="stylesheet" href="/Styles/_app.min.css" />
+
+    <script type="text/javascript" src="https://www.gstatic.com/swiffy/v8.0/runtime.js"></script>
+    <script type="text/javascript" src="/App_Lib/lib.min.js"></script>
+    <script src="~/config.js"></script>
+    <script type="text/javascript" src="/Scripts/_app.min.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js?hl=vi"></script>
+    <script src="https://js.braintreegateway.com/v2/braintree.js"></script>
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+    <script src="/App_Lib/winwhell/Winwheel.js"></script>
+    <script src="/App_Lib/flipclock/flipclock.min.js"></script>
+    <link rel="stylesheet" href="/App_Lib/flipclock/flipclock.css">
+    <script src="/App_Lib/winwhell/TwheenMax.js"></script>
+</head>
+
+<body>
+
+    <element ng-include src="layoutShowHeader ? '/Layouts/Banner.html' : ''"></element>
+
+    <input type="hidden" id="isModelMobile" value="@ViewBag.isModelMobile" />
+
+    <div class="body" ng-class="{container: !layoutFullBody}" ng-view></div>
+
+
+
+    <!--#region [Modal]-->
+    <div id="modal-authentication" class="modal fade modal-wide">
+        <div class="modal-dialog modal-lg ezCustTrans">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" ng-if="!showPopupInterval">
+                        <span>&times;</span>
+                    </button>
+                    <h4 class="modal-title">Tham gia TeenIdol</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="pull-left">
+                        <img src="/Content/Image/Dangnhap1.png">
+                    </div>
+
+                    <div class="pull-right">
+                        <div class="alert hidden"></div>
+
+                        <ul class="nav nav-tabs">
+                            <li class="active">
+                                <a data-target="#modal-authentication-sign-in" data-toggle="tab">Đăng nhập</a>
+                            </li>
+                            <li>
+                                <a data-target="#modal-authentication-sign-up" data-toggle="tab">Đăng ký</a>
+                            </li>
+                            <li>
+                                <a data-target="#modal-authentication-re-pass" data-toggle="tab">Quên Mật Khẩu</a>
+                            </li>
+                        </ul>
+
+                        <div class="tab-content">
+                            <div class="tab-pane active fade in" id="modal-authentication-sign-in">
+                                <form ng-submit="onSignInWithEmail($event)">
+                                    <div class="form-group">
+                                        <input type="email" class="email form-control" placeholder="Email">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" class="password form-control" placeholder="Mật khẩu">
+                                    </div>
+                                    <div class="align-right">
+                                        <button type="submit" class="btn btn-default btn-primary">Đăng nhập</button>
+                                    </div>
+                                    <div class="align-right" style="margin-top: 10px">
+                                        <a href="#" ud-role="re-pass">Quên Mật Khẩu</a>
+                                    </div>
+                                </form>
+                                <div class="quick-access">
+                                    <button class="btn btn-facebook btn-block" ng-click="onSignInWithFacebook($event)">
+                                        <i class="fa fa-facebook-f"></i> Đăng Nhập Facebook
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane fade" id="modal-authentication-sign-up">
+                                <form name="signup" class="form-horizontal" validate-submit="onSignUp()">
+                                    <div class="form-group">
+                                        <input name="email" type="email" class="email form-control has-error" ng-model="signUp.email" placeholder="Email" required>
+                                        <validate-error target="signup.email">
+                                            <span when="$error.required">Xin nhập thông tin này</span>
+                                        </validate-error>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" name="password" class="password form-control" ng-model="signUp.password" placeholder="Mật khẩu" required>
+                                        <validate-error target="signup.password">
+                                            <span when="$error.required">Xin nhập thông tin này</span>
+                                        </validate-error>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" name="repassword" class="re-password form-control" ng-model="signUp.repassword" required placeholder="Nhập lại mật khẩu"
+                                               ui-validate-watch="'signUp.password'" ui-validate="{isSame: '!signUp.repassword || signUp.repassword!=signUp.password'}">
+                                        <validate-error target="signup.repassword">
+                                            <span when="$error.required">Xin nhập thông tin này</span>
+                                            <span when="$error.isSame">Mật khẩu không trùng khớp.</span>
+                                        </validate-error>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" name="name" class="name form-control" ng-model="signUp.name" placeholder="Tên hiển thị" required>
+                                        <validate-error target="signup.name">
+                                            <span when="$error.required">Xin nhập thông tin này</span>
+                                        </validate-error>
+                                    </div>
+                                    <div class="form-group">
+                                        <select name="gender" class="gender form-control" ng-model="signUp.gender">
+                                            <option value="0" checked="checked">Giới Tính</option>
+                                            <option value="1">Nam</option>
+                                            <option value="2">Nữ</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <div id="recaptchasignup" class="g-recaptcha" data-size="normal" data-sitekey="6LfOWRATAAAAAEmZ4bcvkm3wnD3QJ-b6dQ_WWJ_D"></div>
+                                    </div>
+                                    <div class="align-right">
+                                        <button type="submit" class="btn btn-default btn-primary" is-loading="signUp.isBusy">Đăng ký</button>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <div class="tab-pane fade" id="modal-authentication-re-pass">
+                                <form name="form" ng-submit="onForgetPassword($event)">
+                                    <div class="form-group">
+                                        <input type="email" class="email form-control" placeholder="Email" ng-model="forgetpassword.email" required>
+                                    </div>
+                                    <div class="quick-access">
+                                        <div class="align-center">
+                                            <button type="submit" class="btn btn-default btn-primary">Lấy Lại Mật Khẩu</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--#endregion-->
+    <!--#region [Dropdown]-->
+    <div id="dropdown-user-info" class="jq-dropdown jq-dropdown-tip">
+        <div class="jq-dropdown-panel">
+            <div class="alert alert-info" ng-if="dropdownStatus == 'loading'">
+                <i class="fa fa-spin fa-circle-o-notch"></i> Đang tải...
+            </div>
+
+            <div class="alert alert-error" ng-if="dropdownStatus == 'error'">
+                {{dropdownMessage}}
+            </div>
+
+            <div class="info-user" ng-if="dropdownStatus == 'loaded' && dropdownUserId.vipId != 100">
+                <uc-user-list-item display-point="" model="dropdownUserData" link="{{helper.linkAction('/user/' + dropdownUserData.User.Id)}}"></uc-user-list-item>
+                <div class="show-guild-info" ng-if="guildInfo.guildBusy">
+                    <a href="guild/{{guildInfo.Id}}" target="_blank">
+                        <div class="title"></div>
+                        <img class="icon-guild" src="{{guildInfo.iconGuild}}">
+                        <div class="name" style="">{{guildInfo.nameGuild}}</div>
+                    </a>
+                </div>
+                <ul style="max-height: 195px; overflow: auto;">
+                    <li ng-if="sessionService.userId() === dropdownUserId.userId">
+                        <a href="#" ud-role="recharge-coin">Hiện có: <i class="coin-icon"></i> {{helper.formatNumber(dropdownUserData.User.Coin)}}</a>
+                    </li>
+                    <li ng-if="sessionService.userId() === dropdownUserId.userId">
+                        <span>Hiện có: <i class="free-coin-icon"></i> {{helper.formatNumber(dropdownUserData.User.TotalFreeCoin)}}</span>
+                    </li>
+                    <li ng-click="onUserRechargeCoin()" ng-if="sessionService.userId() === dropdownUserId.userId">
+                        <a href="#">Nạp Tiền</a>
+                    </li>
+                    <li ng-if="sessionService.userId() === dropdownUserId.userId">
+                        <a href="#" ud-role="sign-out">Đăng xuất</a>
+                    </li>
+                    <li ng-if="sessionService.userId() !== dropdownUserId.userId && dropdownUserId.scheduleId">
+                        <a href="#" ng-click="onDropdownUserSendQuickGlobalMessage($event)">Gửi tin nhanh</a>
+                    </li>
+                    <li ng-if="sessionService.userId() !== dropdownUserId.userId && dropdownUserId.scheduleId">
+                        <a href="#" ng-click="onDropdownUserSendPrivateMessage($event)">Chat riêng</a>
+                    </li>
+                    <li ng-if="sessionService.userId() !== dropdownUserId.userId && dropdownUserId.scheduleId && dropdownUserData.isCanChat">
+                        <a href="#" ng-click="onDropdownUserBlockGlobalMessage($event)">Chặn trò chuyện</a>
+                    </li>
+                    <li ng-if="sessionService.userId() !== dropdownUserId.userId && dropdownUserId.scheduleId && !dropdownUserData.isCanChat">
+                        <a href="#" ng-click="onDropdownUserAllowGlobalMessage($event)">Cho phép trò chuyện</a>
+                    </li>
+                    <li ng-if="sessionService.userId() !== dropdownUserId.userId && dropdownUserId.scheduleId">
+                        <a href="#" ng-click="onDropdownUserKick($event)">Kick khỏi phòng {{userSession().User.GroupUser.Id}}</a>
+                    </li>
+                    <li ng-if="sessionService.userId() !== dropdownUserId.userId && dropdownUserId.scheduleId && sessionService.data().user.GroupUser.Id == 4  && !dropdownUserData.isMod || sessionService.userId() !== dropdownUserId.userId && dropdownUserId.scheduleId && sessionService.data().user.GroupUser.Id == 6  && !dropdownUserData.isMod ||sessionService.userId() !== dropdownUserId.userId && dropdownUserId.scheduleId && sessionService.data().user.GroupUser.Id == 7  && !dropdownUserData.isMod ||sessionService.userId() !== dropdownUserId.userId && dropdownUserId.scheduleId && sessionService.data().user.GroupUser.Id == 2 && !dropdownUserData.isMod">
+                        <a href="#" ng-click="onDropdownUserSetMod($event)">Cấp quyền quản lý</a>
+                    </li>
+                    <li ng-if="sessionService.userId() !== dropdownUserId.userId && dropdownUserId.scheduleId && sessionService.data().user.GroupUser.Id == 4  && dropdownUserData.isMod || sessionService.userId() !== dropdownUserId.userId && dropdownUserId.scheduleId && sessionService.data().user.GroupUser.Id == 6  && dropdownUserData.isMod ||sessionService.userId() !== dropdownUserId.userId && dropdownUserId.scheduleId && sessionService.data().user.GroupUser.Id == 7  && dropdownUserData.isMod ||sessionService.userId() !== dropdownUserId.userId && dropdownUserId.scheduleId && sessionService.data().user.GroupUser.Id == 2 && dropdownUserData.isMod">
+                        <a href="#" ng-click="onDropdownUserUnsetMod($event)">Hủy quyền quản lý</a>
+                    </li>
+                    <li ng-if="sessionService.userId() !== dropdownUserId.userId && dropdownUserId.scheduleId && sessionService.data().user.GroupUser.Id == 4 || sessionService.userId() !== dropdownUserId.userId && dropdownUserId.scheduleId && sessionService.data().user.GroupUser.Id == 6 ||sessionService.userId() !== dropdownUserId.userId && dropdownUserId.scheduleId && sessionService.data().user.GroupUser.Id == 7 ||sessionService.userId() !== dropdownUserId.userId && dropdownUserId.scheduleId && sessionService.data().user.GroupUser.Id == 2">
+                        <a href="#" ng-click="onDropdownAdminKick($event)">Kick chỉ dành cho CC && Admin</a>
+                    </li>
+                    <li ng-if="sessionService.userId() !== dropdownUserId.userId && dropdownUserId.scheduleId && sessionService.data().user.GroupUser.Id == 4 || sessionService.userId() !== dropdownUserId.userId && dropdownUserId.scheduleId && sessionService.data().user.GroupUser.Id == 6 ||sessionService.userId() !== dropdownUserId.userId && dropdownUserId.scheduleId && sessionService.data().user.GroupUser.Id == 7">
+                        <a href="#" ng-click="onDropdownLockUser($event)">Lock User</a>
+                    </li>
+                    <li ng-if="sessionService.userId() !== dropdownUserId.userId && dropdownUserId.scheduleId && sessionService.data().user.GroupUser.Id == 4 || sessionService.userId() !== dropdownUserId.userId && dropdownUserId.scheduleId && sessionService.data().user.GroupUser.Id == 6 ||sessionService.userId() !== dropdownUserId.userId && dropdownUserId.scheduleId && sessionService.data().user.GroupUser.Id == 7 ||sessionService.userId() !== dropdownUserId.userId && dropdownUserId.scheduleId && sessionService.data().user.GroupUser.Id == 2">
+                        <a href="#" ng-click="onDropdownAdminJoin($event)">Cho phép vào phòng</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div ng-if="dropdownStatus == 'loaded' && dropdownUserId.vipId == 100">
+                <ul>
+                    <li ng-if="dropdownUserId.isCanChatFacebook">
+                        <a href="#" ng-click="onDropdownUserBlockFacebookChat($event)">Chặn trò chuyện</a>
+                    </li>
+                    <li ng-if="!dropdownUserId.isCanChatFacebook">
+                        <a href="#" ng-click="onDropdownUserAllowFacebookChat($event)">Cho phép trò chuyện</a>
+                    </li>
+                </ul>
+            </div>
+
+            @*<div class="event_t4">
+                <img class="img-br" src="../Content/Image/Event-2017/Thang4/user_infobr.png" />
+                <img class="img-avatar" src="../Content/Image/Event-2017/Thang4/user_infoavatar.png" />
+                <img class="user-avatar" src="{{dropdownUserData.User.AvatarPhoto}}" />
+                <div class="user-title"><b>Phu Quân</b></div>
+                <div class="user-name">{{dropdownUserData.User.Name}}</div>
+                <div class="div-content">
+                    <div class="item-data" ng-repeat="(i,x) in ListIdolOfUser">
+                        <div class="titel-content"><b>Bà {{i == 0 ? 'Cả' : i+1}}</b></div>
+                        <div class="name-content">{{x.userInfo.Name}}</div>
+                        <div class="date-content">{{x.dateLeft}}</div>
+                    </div>
+                </div>
+            </div>*@
+        </div>
+    </div>
+
+    <div id="dropdown-message-emoticon" class="jq-dropdown jq-dropdown-tip">
+        <div class="jq-dropdown-panel">
+            <div class="emoticon-item" ng-repeat="x in emoticon" uib-tooltip="{{'{o-' + x + '}'}}" ng-click="onMessageEmoticon($event)" data-emoticon-code="{{'{o-' + x + '}'}}">
+                <img ng-src="{{'/Content/Image/Emoticon/o/' + x + '.gif'}}" />
+            </div>
+        </div>
+    </div>
+    <!--#endregion-->
+    <!--#region [Footer]-->
+    <element ng-include src="layoutShowHeader ? '/Layouts/Footer.html' : ''"></element>
+
+    <element ng-if="showAppBanner" ng-include src="'Views/Include/CheckAppMobile.html'"></element>
+
+    <script id="top-notification-template" type="text/x-kendo-template">
+        <div class="top-notification">
+            <img class="logo" src="/Content/Image/Logo/logo-no-text-32.png" />
+            <span class="message">#= message #</span>
+            <img class="logo" src="/Content/Image/Logo/logo-no-text-32.png" />
+        </div>
+    </script>
+
+    <audio id="sound" type="audio/mpeg" autoplay="autoplay"></audio>
+    <!--#endregion-->
+    <script type="text/javascript">
+        /* <![CDATA[ */
+        var google_conversion_id = 874089163;
+        var google_custom_params = window.google_tag_params;
+        var google_remarketing_only = true;
+        /* ]]> */
+    </script>
+    <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+
+    </script>
+    <div style="display: inline;">
+        <img height="1" width="1" style="border-style: none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/874089163/?guid=ON&amp;script=0" />
+    </div>
+</body>
+
+</html>

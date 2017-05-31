@@ -1,0 +1,554 @@
+﻿@import "../_lib.scss";
+@import "../_core.scss";
+
+@font-face {
+    font-family: "Bambola W00 Regular";
+    src: url("//fast.fonts.net/dv2/2/e806f436-8904-4e5e-91ab-dc0fc4b25b45.eot?d44f19a684109620e484147fa790e81859e92aaaea3d337f84586d5df8888fe5455f55e0f83ed0be044ddfaa95e824a4b1318d5b552aaa24a44025e9&projectid=74f39a9d-a5dc-405f-9690-1c1fd4590ae4");
+    src: url("//fast.fonts.net/dv2/2/e806f436-8904-4e5e-91ab-dc0fc4b25b45.eot?d44f19a684109620e484147fa790e81859e92aaaea3d337f84586d5df8888fe5455f55e0f83ed0be044ddfaa95e824a4b1318d5b552aaa24a44025e9&projectid=74f39a9d-a5dc-405f-9690-1c1fd4590ae4#iefix") format("embedded-opentype"), url("//fast.fonts.net/dv2/14/e91701d7-ab66-4727-ba0b-2af02fcc5a11.woff2?d44f19a684109620e484147fa790e81859e92aaaea3d337f84586d5df8888fe5455f55e0f83ed0be044ddfaa95e824a4b1318d5b552aaa24a44025e9&projectid=74f39a9d-a5dc-405f-9690-1c1fd4590ae4") format("woff2"), url("//fast.fonts.net/dv2/3/04b340a2-2415-4740-8eaa-79ff1ee57cab.woff?d44f19a684109620e484147fa790e81859e92aaaea3d337f84586d5df8888fe5455f55e0f83ed0be044ddfaa95e824a4b1318d5b552aaa24a44025e9&projectid=74f39a9d-a5dc-405f-9690-1c1fd4590ae4") format("woff"), url("//fast.fonts.net/dv2/1/e941d59d-8707-429d-be2e-48655bdddfd4.ttf?d44f19a684109620e484147fa790e81859e92aaaea3d337f84586d5df8888fe5455f55e0f83ed0be044ddfaa95e824a4b1318d5b552aaa24a44025e9&projectid=74f39a9d-a5dc-405f-9690-1c1fd4590ae4") format("truetype"), url("//fast.fonts.net/dv2/11/96be3455-e191-4925-b7e3-acbb2eebc64c.svg?d44f19a684109620e484147fa790e81859e92aaaea3d337f84586d5df8888fe5455f55e0f83ed0be044ddfaa95e824a4b1318d5b552aaa24a44025e9&projectid=74f39a9d-a5dc-405f-9690-1c1fd4590ae4#96be3455-e191-4925-b7e3-acbb2eebc64c") format("svg");
+}
+
+.unit-changed {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    margin-top: 0px;
+
+    .event1_1 {
+        .data-user {
+            height: 40%;
+            text-align: center;
+
+            .unit-item {
+                height: 55px;
+                width: 19%;
+                float: left;
+                margin-left: 5%;
+                margin-top: 140px;
+                position: relative;
+
+                img {
+                    width: 100%;
+                    bottom: 0px;
+                    position: absolute;
+                }
+
+                .number-user {
+                    position: absolute;
+                    font-size: 13px;
+                    bottom: 2px;
+                    right: -20%;
+                    color: black;
+
+                    .num {
+                        text-align: center;
+                    }
+
+                    .text {
+                        margin-right: 3px;
+                    }
+                }
+            }
+        }
+
+        .data-require {
+            padding: 5px;
+            margin-top: -10px;
+            /*@include clearfix;*/
+            .main-item {
+                width: calc(100%/4 - 2px);
+                height: 100px;
+                padding: 1px;
+                background-color: white;
+                border: solid 4px rgba(205, 184, 184, 0.69);
+                border-radius: 5px;
+                margin-left: 2px;
+                margin-top: 3px;
+                position: relative;
+                float: left;
+
+                .icon-require {
+                    position: absolute;
+                    left: 50%;
+                    transform: translate(-50%);
+
+                    .name-require {
+                        height: 100%;
+                        float: left;
+                        text-align: center;
+                        width: 110px;
+                        position: relative;
+
+                        .photo {
+                            height: 50px;
+                            width: 100px;
+                            margin-left: 10%;
+
+                            img {
+                                height: 100%;
+                                object-fit: cover;
+                            }
+                        }
+
+                        .photoname {
+                            position: absolute;
+                            bottom: -30px;
+                            left: 7%;
+                            width: 100px;
+                        }
+
+                        div {
+                            clear: left;
+                            margin-top: 3px;
+                            /*padding-right: 5px;
+                    padding-left: 5px;*/
+                            color: #fdc854;
+                        }
+                    }
+                }
+
+                .info-require {
+                    display: none;
+                    position: absolute;
+                    left: 50%;
+                    transform: translate(-50%);
+
+                    .data-item {
+                        float: left;
+                        padding-left: 3px;
+                        text-align: center;
+
+                        .photoname {
+                            width: 100px;
+                        }
+
+                        .list-require {
+                            color: black;
+                            font-family: Verdana, Geneva, sans-serif;
+
+                            .photoicon {
+                                width: 20px;
+                            }
+                        }
+
+                        .img-item {
+                            img {
+                                width: 80px;
+                                cursor: pointer;
+                            }
+                        }
+                    }
+                }
+
+                @media(max-width:500px) {
+                    width: 100%;
+                }
+            }
+
+            .second-item {
+                width: calc(100%/3 - 2px);
+                height: 150px;
+                padding: 1px;
+                margin-left: 2px;
+                margin-top: 3px;
+                position: relative;
+                float: left;
+
+                .icon-second {
+                    position: absolute;
+                    left: 50%;
+                    transform: translate(-50%);
+                    width: 140px;
+
+                    .name-second {
+                        height: 100%;
+                        float: left;
+                        text-align: center;
+                        width: 110px;
+                        position: relative;
+
+                        .photo {
+                            height: 50px;
+                            width: 100px;
+                            left: 30px;
+                            top: 30px;
+                            position: absolute;
+
+                            img {
+                                height: 100%;
+                                object-fit: cover;
+                            }
+                        }
+
+                        .photoname {
+                            /*margin-left: 15%;*/
+                            width: 140px;
+                        }
+                    }
+                }
+
+                .info-second {
+                    display: none;
+                    position: absolute;
+                    left: 50%;
+                    transform: translate(-50%);
+                    width: 140px;
+
+                    .data-item {
+                        position: relative;
+
+                        .listitem {
+                            position: absolute;
+                            top: 50px;
+                            left: 50px;
+                            text-align: center;
+
+                            .list-require {
+                                .photoicon {
+                                    width: 10px;
+                                }
+                            }
+                        }
+
+                        .img-item {
+                            .number {
+                                position: absolute;
+                                top: 30px;
+                                left: 40px;
+                                width: 60px;
+                                cursor: pointer;
+                            }
+                        }
+
+                        .photonameinfo {
+                            /*margin-left: 15%;*/
+                            width: 140px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .event3_4 {
+
+        .data-collection {
+
+            .main-item {
+                text-align: center;
+                width: 100%;
+                margin-top: 25%;
+                left: 50%;
+                transform: translate(-50%);
+                position: absolute;
+
+                .unit-item {
+                    width: 70%;
+                    height: 50px;
+                    margin-left: 15%;
+                    margin-top: 5px;
+                    position: relative;
+                    overflow: hidden;
+
+                    .name-collection {
+                        width: 90px;
+                        float: left;
+                        height: 50px;
+                        background-color: #008000;
+                        position: absolute;
+                        z-index: 2;
+                        line-height: 50px;
+                        PADDING-LEFT: 5PX;
+                        color: white;
+                        font-size: 18px;
+                        font-family: 'Crocante W01', 'fallback-font';
+                        font-style: italic;
+                    }
+
+                    .mask-collection {
+                        width: 100px;
+                        float: left;
+                        position: relative;
+                        height: 65px;
+                        background-color: #008000;
+                        position: absolute;
+                        transform: rotate(-13deg);
+                        z-index: 1;
+                    }
+
+
+                    .info-collection {
+                        width: 100%;
+                        /*background-color: rgba(248, 253, 255, 0.65);*/
+                        height: 50px;
+                        margin-left: calc(90px);
+
+                        .photo-item {
+                            width: calc(100%/9);
+                            height: 40px;
+                            float: left;
+                            margin-left: 10px;
+                            margin-top: 5px;
+
+                            .ghe-photo {
+                                height: 100%;
+                            }
+
+                            .user-photo {
+                                object-fit: cover;
+                                border-radius: 50%;
+                                /* margin-top: -57px; rgba(36, 245, 33, 0.75);*/
+                                width: 20px;
+                                height: 20px;
+                                margin-left: -25px;
+                                position: absolute;
+                            }
+                        }
+                    }
+
+                    .info-collection1 {
+                        background-color: rgba(36, 245, 33, 0.75);
+                    }
+
+                    .info-collection2 {
+                        background-color: rgba(248, 253, 255, 0.65);
+                    }
+                }
+            }
+        }
+    }
+
+    .event4_2 {
+        background-image: url('/Content/Image/Event-2017/Thang4/event2_brunit.png');
+        background-size: 100% 100%;
+        background-position: center;
+        background-repeat: none;
+        width: 100%;
+        height: 100%;
+
+        .info {
+            .box-text {
+                margin-top: 10px;
+                margin-left: 10px;
+                width: 48%;
+                float: left;
+                max-height: 50px;
+                min-height: 60px;
+                overflow-y: scroll;
+                background-color: rgba(0, 0, 0, 0.5);
+
+                &::-webkit-scrollbar {
+                    width: 5px;
+                    height: 10px;
+                }
+
+                &::-webkit-scrollbar-track {
+                    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+                    -webkit-border-radius: 0px;
+                    border-radius: 0px;
+                }
+
+                &::-webkit-scrollbar-thumb {
+                    -webkit-border-radius: 0px;
+                    border-radius: 0px;
+                    background: rgba(0, 0, 0, 0.1);
+                    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
+                }
+
+                &::-webkit-scrollbar-thumb:window-inactive {
+                    background: rgba(255, 0, 0, 0.1);
+                }
+
+                .text-noti {
+                    margin-bottom: 5px;
+                    border-bottom: 1px;
+                    border-bottom-color: rgba(255, 255, 255, 0.5);
+                    border-bottom-style: solid;
+                    font-size: 13px;
+                    color: #ffa500;
+                }
+            }
+        }
+    }
+
+    .logo {
+        width: 200px;
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%);
+    }
+
+    .last {
+        width: 70%;
+        margin-left: 15%;
+        float: left;
+        padding: 5px;
+        background-color: rgba(142, 20, 20, 0.53);
+        border: solid 1px #ffa300;
+        margin-top: 5px;
+    }
+
+    #modal-event-thang-1 {
+        .modal-content {
+            background: transparent;
+
+            .modal-body {
+                padding: 0px;
+
+                .background {
+                    width: 100%;
+                }
+
+                .content {
+                    position: absolute;
+                    left: 50%;
+                    top: 60%;
+                    transform: translate(-50%,-50%);
+                    text-align: center;
+                    background-color: white;
+                    padding: 10px;
+                    border-radius: 6px;
+                    padding-left: 50px;
+                    padding-right: 50px;
+                    border: solid 4px rgba(141, 98, 98, 0.64);
+                }
+
+
+                .title {
+                    font-size: 20px;
+                    font-weight: 900;
+                    color: #ed2224;
+                    margin-bottom: 10px;
+                }
+
+                .phanthuong {
+                    /*background-color: rgba(224, 44, 44, 0.81);*/
+                    /*padding: 4px;*/
+                    text-align: center;
+                    min-width: 230px;
+                    border-radius: 4px;
+                    margin-bottom: 5px;
+                    font-weight: 900;
+                    font-size: 13px;
+                    color: #d21d26;
+                }
+
+                .btn-default {
+                    background: url("/Content/Image/Event-2017/Thang2/nhanngay.png");
+                    background-size: 90px;
+                    border: 0;
+                    width: 90px;
+                    position: absolute;
+                    bottom: 10px;
+                    left: 50%;
+                    transform: translate(-50%);
+                }
+            }
+        }
+    }
+
+    #modal-info-thang-1 {
+        .modal-content {
+            background: transparent;
+
+            .modal-body {
+                padding: 0px;
+
+                .background {
+                    width: 100%;
+                }
+
+                .content {
+                    position: absolute;
+                    left: 70%;
+                    top: 60%;
+                    transform: translate(-50%,-50%);
+                    text-align: center;
+                }
+
+
+                .title {
+                    font-size: 15px;
+                    font-weight: 900;
+                    color: #ed2224;
+                    margin-bottom: 10px;
+                }
+
+                .phanthuong {
+                    background-color: rgba(224, 44, 44, 0.81);
+                    padding: 4px;
+                    text-align: center;
+                    min-width: 150px;
+                    border-radius: 4px;
+                    margin-bottom: 5px;
+                    font-weight: 900;
+                    font-size: 13px;
+                    color: #ffcc00;
+                }
+
+                .btn-default {
+                    background: url("/Content/Image/Event-2017/Thang1/popup_nhan.png");
+                    background-size: 90px;
+                    border: 0;
+                    width: 90px;
+                    position: absolute;
+                    bottom: 10px;
+                    left: 50%;
+                    transform: translate(-50%);
+                }
+            }
+        }
+    }
+
+    #modal-event-thang-fail {
+        .modal-content {
+            background: transparent;
+
+            .modal-body {
+                padding: 0px;
+
+                .background {
+                    width: 100%;
+                }
+
+                .content {
+                    position: absolute;
+                    left: 50%;
+                    top: 75%;
+                    width: 80%;
+                    transform: translate(-50%,-50%);
+                    text-align: center;
+
+                    .title {
+                        font-family: -webkit-pictograph;
+                        font-size: 25px;
+                        font-weight: 900;
+                        color: white;
+                        margin-bottom: 10px;
+                    }
+                }
+
+                .bt-control {
+                    position: absolute;
+                    bottom: 10px;
+                    text-align: center;
+                    left: calc(50%);
+                    transform: translate(-50%);
+
+                    .btn-default {
+                        background: url("/Content/Image/Event-2017/Thang2/dongy.png");
+                        background-size: 90px;
+                        border: 0;
+                        width: 90px;
+                    }
+
+                    .btn-default1 {
+                        background: url("/Content/Image/Event-2017/Thang2/huy.png");
+                        background-size: 90px;
+                        border: 0;
+                        width: 90px;
+                    }
+                }
+            }
+        }
+    }
+}

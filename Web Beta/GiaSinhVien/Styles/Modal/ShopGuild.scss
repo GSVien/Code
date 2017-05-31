@@ -1,0 +1,123 @@
+﻿@import "../_lib.scss";
+@import "../_core.scss";
+
+.modal-shop-guild {
+    .btn-blue {
+        position: absolute;
+        top: 8px;
+        right: 40px;
+        background: #5bc0de;
+
+        &:hover {
+            color: #fff;
+        }
+    }
+
+    .modal-dialog {
+        .modal-content {
+            background: transparent;
+            box-shadow: none;
+            border: none;
+        }
+
+        .modal-header {
+            position: relative;
+            background: transparent;
+
+            .modal-title {
+                margin: 0;
+                line-height: 28px;
+                margin-right: 10px;
+                position: absolute;
+                left: 50%;
+                transform: translate(-50%);
+                z-index: 99;
+                top: -10px;
+            }
+
+            .level {
+                position: absolute;
+                top: 60%;
+                left: 50%;
+                transform: translate(-50%);
+                font-size: 13px;
+            }
+        }
+
+        .modal-body {
+            @include clearfix;
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            background: $color-white;
+            height: 625px;
+            max-height: 625px;
+
+            .border {
+                position: absolute;
+                left: -20px;
+                top: -15px;
+                width: 104%;
+                height: 104%;
+
+                @media(max-width:768px) {
+                    position: absolute;
+                    left: -10px;
+                    top: -10px;
+                    width: 104%;
+                    height: 103%;
+                }
+            }
+        }
+    }
+
+    .nav-tabs {
+        li {
+            a {
+                font-size: 20px;
+            }
+        }
+    }
+
+    .name {
+        font-size: 16px;
+        font-weight: 700;
+    }
+
+    .animation-item {
+        @include clearfix;
+        margin-bottom: 10px;
+        text-align: center;
+
+        .photo {
+            height: 140px;
+            object-fit: cover;
+        }
+
+        .price {
+            margin-bottom: 10px;
+        }
+    }
+
+    #shop-vip {
+
+        .vip-item {
+            width: 100%;
+            text-align: center;
+
+            .photo {
+                width: 80%;
+                object-fit: cover;
+                margin-bottom: 10px;
+            }
+
+            .price {
+                margin-top: 5px;
+                margin-bottom: 10px;
+            }
+
+            .info {
+                font-size: 17px;
+            }
+        }
+    }
+}

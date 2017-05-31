@@ -1,0 +1,45 @@
+﻿/*#region [Variable]*/
+/*#endregion*/
+.uc-show-control:after {
+  display: table;
+  content: " ";
+  clear: both; }
+
+.uc-show-control .toolbar:after {
+  display: table;
+  content: " ";
+  clear: both; }
+
+.uc-show-control .toolbar .btn {
+  float: left;
+  width: 35px;
+  margin: 0;
+  padding: 0;
+  height: 35px;
+  line-height: 38px;
+  color: #fff;
+  background: rgba(37, 37, 37, 0.8); }
+  .uc-show-control .toolbar .btn .fa {
+    font-size: 20px; }
+  .uc-show-control .toolbar .btn:not(:last-child) {
+    margin-right: 8px; }
+  .uc-show-control .toolbar .btn:hover, .uc-show-control .toolbar .btn:focus {
+    background: #252525; }
+
+.uc-show-control #modal-edit-show .description {
+  resize: none; }
+
+.uc-show-control #modal-edit-show .image-cropper .cropit-image-preview {
+  width: 100px;
+  height: 100px;
+  margin: auto;
+  margin-bottom: 15px;
+  background: #e2e2e2;
+  cursor: all-scroll; }
+
+.uc-show-control #modal-edit-show .image-cropper .cropit-image-zoom-input {
+  margin-top: 5px; }
+
+.uc-show-control #modal-edit-show .image-cropper .form-group:last-child {
+  margin-bottom: 0; }
+

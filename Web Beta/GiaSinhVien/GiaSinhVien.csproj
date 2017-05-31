@@ -1,0 +1,1553 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{816F6F23-291B-4F2D-A433-6AE47E0183D5}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TeenIdol</RootNamespace>
+    <AssemblyName>TeenIdol</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>1.8</TypeScriptToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="TFL.Lib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\TFL.Lib.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Lib\angular-1.5.0\angular-animate.js" />
+    <Content Include="App_Lib\angular-1.5.0\angular-aria.js" />
+    <Content Include="App_Lib\angular-1.5.0\angular-cookies.js" />
+    <Content Include="App_Lib\angular-1.5.0\angular-loader.js" />
+    <Content Include="App_Lib\angular-1.5.0\angular-message-format.js" />
+    <Content Include="App_Lib\angular-1.5.0\angular-messages.js" />
+    <Content Include="App_Lib\angular-1.5.0\angular-mocks.js" />
+    <Content Include="App_Lib\angular-1.5.0\angular-resource.js" />
+    <Content Include="App_Lib\angular-1.5.0\angular-route.js" />
+    <Content Include="App_Lib\angular-1.5.0\angular-sanitize.js" />
+    <Content Include="App_Lib\angular-1.5.0\angular-scenario.js" />
+    <Content Include="App_Lib\angular-1.5.0\angular-touch.js" />
+    <Content Include="App_Lib\angular-1.5.0\angular.js" />
+    <Content Include="App_Lib\angular-bootstrap-calendar-0.18.2\angular-bootstrap-calendar-tpls.js" />
+    <Content Include="App_Lib\angular-bootstrap-calendar-0.18.2\angular-bootstrap-calendar.css" />
+    <Content Include="App_Lib\angular-carousel\angular-carousel.css" />
+    <Content Include="App_Lib\angular-carousel\angular-carousel.js" />
+    <Content Include="App_Lib\angular-ellipsis\angular-ellipsis.js" />
+    <Content Include="App_Lib\angular-ui-bootstrap\ui-bootstrap-tpls-0.14.3.js" />
+    <Content Include="App_Lib\angular-ui-notification-1.0\angular-ui-notification.css" />
+    <Content Include="App_Lib\angular-ui-notification-1.0\angular-ui-notification.js" />
+    <Content Include="App_Lib\angular-ui-select\select.css" />
+    <Content Include="App_Lib\angular-ui-select\select.js" />
+    <Content Include="App_Lib\bootstrap-3.3.6\css\bootstrap.css" />
+    <Content Include="App_Lib\bootstrap-3.3.6\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="App_Lib\bootstrap-3.3.6\js\bootstrap.js" />
+    <Content Include="App_Lib\fingerprint-1.1.3\fingerprint2.js" />
+    <Content Include="App_Lib\flipclock\bgNumber.png" />
+    <Content Include="App_Lib\flipclock\eventcd22122016.png" />
+    <Content Include="App_Lib\flipclock\flipclock.css" />
+    <Content Include="App_Lib\flipclock\flipclock.js" />
+    <Content Include="App_Lib\flipclock\flipclock.min.js" />
+    <Content Include="App_Lib\font-awesome-4.5.0\css\font-awesome.css" />
+    <Content Include="App_Lib\font-awesome-4.5.0\fonts\fontawesome-webfont.svg" />
+    <Content Include="App_Lib\fullscreen-api\fullscreen-api.js" />
+    <Content Include="App_Lib\html2canvas-0.5.0-alpha1\html2canvas.js" />
+    <Content Include="App_Lib\html2canvas-0.5.0-alpha1\html2canvas.min.js" />
+    <Content Include="App_Lib\html2canvas-0.5.0-alpha1\html2canvas.svg.js" />
+    <Content Include="App_Lib\html2canvas-0.5.0-alpha1\html2canvas.svg.min.js" />
+    <Content Include="App_Lib\image-scale-2.1\image-scale.js" />
+    <Content Include="App_Lib\jquery-2.2.1\jquery-ui-1.9.2.custom.css" />
+    <Content Include="App_Lib\jquery-2.2.1\jquery-ui.js" />
+    <Content Include="App_Lib\jquery-2.2.1\jquery.js" />
+    <Content Include="App_Lib\jquery-dropdown\jquery.dropdown.css" />
+    <Content Include="App_Lib\jquery-dropdown\jquery.dropdown.js" />
+    <Content Include="App_Lib\jquery.cropit\jquery.cropit.js" />
+    <Content Include="App_Lib\jssor.slider\jssor.slider-22.2.16.debug.js" />
+    <Content Include="App_Lib\jssor.slider\jssor.slider-22.2.16.min.js" />
+    <Content Include="App_Lib\jssor.slider\jssor.slider-22.2.16.mini.js" />
+    <Content Include="App_Lib\kendo-ui\css\Black\editor.png" />
+    <Content Include="App_Lib\kendo-ui\css\Black\imagebrowser.png" />
+    <Content Include="App_Lib\kendo-ui\css\Black\indeterminate.gif" />
+    <Content Include="App_Lib\kendo-ui\css\Black\loading-image.gif" />
+    <Content Include="App_Lib\kendo-ui\css\Black\loading.gif" />
+    <Content Include="App_Lib\kendo-ui\css\Black\loading_2x.gif" />
+    <Content Include="App_Lib\kendo-ui\css\Black\markers.png" />
+    <Content Include="App_Lib\kendo-ui\css\Black\markers_2x.png" />
+    <Content Include="App_Lib\kendo-ui\css\Black\slider-h.gif" />
+    <Content Include="App_Lib\kendo-ui\css\Black\slider-v.gif" />
+    <Content Include="App_Lib\kendo-ui\css\Black\sprite.png" />
+    <Content Include="App_Lib\kendo-ui\css\Black\sprite_2x.png" />
+    <Content Include="App_Lib\kendo-ui\css\Black\sprite_kpi.png" />
+    <Content Include="App_Lib\kendo-ui\css\Black\sprite_kpi_2x.png" />
+    <Content Include="App_Lib\kendo-ui\css\BlueOpal\editor.png" />
+    <Content Include="App_Lib\kendo-ui\css\BlueOpal\imagebrowser.png" />
+    <Content Include="App_Lib\kendo-ui\css\BlueOpal\indeterminate.gif" />
+    <Content Include="App_Lib\kendo-ui\css\BlueOpal\loading-image.gif" />
+    <Content Include="App_Lib\kendo-ui\css\BlueOpal\loading.gif" />
+    <Content Include="App_Lib\kendo-ui\css\BlueOpal\loading_2x.gif" />
+    <Content Include="App_Lib\kendo-ui\css\BlueOpal\markers.png" />
+    <Content Include="App_Lib\kendo-ui\css\BlueOpal\markers_2x.png" />
+    <Content Include="App_Lib\kendo-ui\css\BlueOpal\slider-h.gif" />
+    <Content Include="App_Lib\kendo-ui\css\BlueOpal\slider-v.gif" />
+    <Content Include="App_Lib\kendo-ui\css\BlueOpal\sprite.png" />
+    <Content Include="App_Lib\kendo-ui\css\BlueOpal\sprite_2x.png" />
+    <Content Include="App_Lib\kendo-ui\css\BlueOpal\sprite_kpi.png" />
+    <Content Include="App_Lib\kendo-ui\css\BlueOpal\sprite_kpi_2x.png" />
+    <Content Include="App_Lib\kendo-ui\css\Bootstrap\editor.png" />
+    <Content Include="App_Lib\kendo-ui\css\Bootstrap\imagebrowser.png" />
+    <Content Include="App_Lib\kendo-ui\css\Bootstrap\indeterminate.gif" />
+    <Content Include="App_Lib\kendo-ui\css\Bootstrap\loading-image.gif" />
+    <Content Include="App_Lib\kendo-ui\css\Bootstrap\loading.gif" />
+    <Content Include="App_Lib\kendo-ui\css\Bootstrap\loading_2x.gif" />
+    <Content Include="App_Lib\kendo-ui\css\Bootstrap\markers.png" />
+    <Content Include="App_Lib\kendo-ui\css\Bootstrap\markers_2x.png" />
+    <Content Include="App_Lib\kendo-ui\css\Bootstrap\slider-h.gif" />
+    <Content Include="App_Lib\kendo-ui\css\Bootstrap\slider-v.gif" />
+    <Content Include="App_Lib\kendo-ui\css\Bootstrap\sprite.png" />
+    <Content Include="App_Lib\kendo-ui\css\Bootstrap\sprite_2x.png" />
+    <Content Include="App_Lib\kendo-ui\css\Bootstrap\sprite_kpi.png" />
+    <Content Include="App_Lib\kendo-ui\css\Bootstrap\sprite_kpi_2x.png" />
+    <Content Include="App_Lib\kendo-ui\css\Default\editor.png" />
+    <Content Include="App_Lib\kendo-ui\css\Default\imagebrowser.png" />
+    <Content Include="App_Lib\kendo-ui\css\Default\indeterminate.gif" />
+    <Content Include="App_Lib\kendo-ui\css\Default\loading-image.gif" />
+    <Content Include="App_Lib\kendo-ui\css\Default\loading.gif" />
+    <Content Include="App_Lib\kendo-ui\css\Default\loading_2x.gif" />
+    <Content Include="App_Lib\kendo-ui\css\Default\markers.png" />
+    <Content Include="App_Lib\kendo-ui\css\Default\markers_2x.png" />
+    <Content Include="App_Lib\kendo-ui\css\Default\slider-h.gif" />
+    <Content Include="App_Lib\kendo-ui\css\Default\slider-v.gif" />
+    <Content Include="App_Lib\kendo-ui\css\Default\sprite.png" />
+    <Content Include="App_Lib\kendo-ui\css\Default\sprite_2x.png" />
+    <Content Include="App_Lib\kendo-ui\css\Default\sprite_kpi.png" />
+    <Content Include="App_Lib\kendo-ui\css\Default\sprite_kpi_2x.png" />
+    <Content Include="App_Lib\kendo-ui\css\Fiori\editor.png" />
+    <Content Include="App_Lib\kendo-ui\css\Fiori\imagebrowser.png" />
+    <Content Include="App_Lib\kendo-ui\css\Fiori\indeterminate.gif" />
+    <Content Include="App_Lib\kendo-ui\css\Fiori\loading-image.gif" />
+    <Content Include="App_Lib\kendo-ui\css\Fiori\loading.gif" />
+    <Content Include="App_Lib\kendo-ui\css\Fiori\loading_2x.gif" />
+    <Content Include="App_Lib\kendo-ui\css\Fiori\markers.png" />
+    <Content Include="App_Lib\kendo-ui\css\Fiori\markers_2x.png" />
+    <Content Include="App_Lib\kendo-ui\css\Fiori\slider-h.gif" />
+    <Content Include="App_Lib\kendo-ui\css\Fiori\slider-v.gif" />
+    <Content Include="App_Lib\kendo-ui\css\Fiori\sprite.png" />
+    <Content Include="App_Lib\kendo-ui\css\Fiori\sprite_2x.png" />
+    <Content Include="App_Lib\kendo-ui\css\Fiori\sprite_kpi.png" />
+    <Content Include="App_Lib\kendo-ui\css\Fiori\sprite_kpi_2x.png" />
+    <Content Include="App_Lib\kendo-ui\css\Flat\editor.png" />
+    <Content Include="App_Lib\kendo-ui\css\Flat\imagebrowser.png" />
+    <Content Include="App_Lib\kendo-ui\css\Flat\indeterminate.gif" />
+    <Content Include="App_Lib\kendo-ui\css\Flat\loading-image.gif" />
+    <Content Include="App_Lib\kendo-ui\css\Flat\loading.gif" />
+    <Content Include="App_Lib\kendo-ui\css\Flat\loading_2x.gif" />
+    <Content Include="App_Lib\kendo-ui\css\Flat\markers.png" />
+    <Content Include="App_Lib\kendo-ui\css\Flat\markers_2x.png" />
+    <Content Include="App_Lib\kendo-ui\css\Flat\slider-h.gif" />
+    <Content Include="App_Lib\kendo-ui\css\Flat\slider-v.gif" />
+    <Content Include="App_Lib\kendo-ui\css\Flat\sprite.png" />
+    <Content Include="App_Lib\kendo-ui\css\Flat\sprite_2x.png" />
+    <Content Include="App_Lib\kendo-ui\css\Flat\sprite_kpi.png" />
+    <Content Include="App_Lib\kendo-ui\css\Flat\sprite_kpi_2x.png" />
+    <Content Include="App_Lib\kendo-ui\css\fonts\DejaVu\LICENSE.txt" />
+    <Content Include="App_Lib\kendo-ui\css\fonts\glyphs\KendoUIGlyphs.svg" />
+    <Content Include="App_Lib\kendo-ui\css\HighContrast\editor.png" />
+    <Content Include="App_Lib\kendo-ui\css\HighContrast\imagebrowser.png" />
+    <Content Include="App_Lib\kendo-ui\css\HighContrast\indeterminate.gif" />
+    <Content Include="App_Lib\kendo-ui\css\HighContrast\loading-image.gif" />
+    <Content Include="App_Lib\kendo-ui\css\HighContrast\loading.gif" />
+    <Content Include="App_Lib\kendo-ui\css\HighContrast\loading_2x.gif" />
+    <Content Include="App_Lib\kendo-ui\css\HighContrast\markers.png" />
+    <Content Include="App_Lib\kendo-ui\css\HighContrast\markers_2x.png" />
+    <Content Include="App_Lib\kendo-ui\css\HighContrast\slider-h.gif" />
+    <Content Include="App_Lib\kendo-ui\css\HighContrast\slider-v.gif" />
+    <Content Include="App_Lib\kendo-ui\css\HighContrast\sprite.png" />
+    <Content Include="App_Lib\kendo-ui\css\HighContrast\sprite_2x.png" />
+    <Content Include="App_Lib\kendo-ui\css\HighContrast\sprite_kpi.png" />
+    <Content Include="App_Lib\kendo-ui\css\HighContrast\sprite_kpi_2x.png" />
+    <Content Include="App_Lib\kendo-ui\css\images\back.png" />
+    <Content Include="App_Lib\kendo-ui\css\images\kendoui.svg" />
+    <Content Include="App_Lib\kendo-ui\css\images\wp8_icons.png" />
+    <Content Include="App_Lib\kendo-ui\css\images\wp8_inverseicons.png" />
+    <Content Include="App_Lib\kendo-ui\css\kendo.black.min.css" />
+    <Content Include="App_Lib\kendo-ui\css\kendo.black.mobile.min.css" />
+    <Content Include="App_Lib\kendo-ui\css\kendo.blueopal.min.css" />
+    <Content Include="App_Lib\kendo-ui\css\kendo.blueopal.mobile.min.css" />
+    <Content Include="App_Lib\kendo-ui\css\kendo.bootstrap.min.css" />
+    <Content Include="App_Lib\kendo-ui\css\kendo.bootstrap.mobile.min.css" />
+    <Content Include="App_Lib\kendo-ui\css\kendo.common-bootstrap.core.min.css" />
+    <Content Include="App_Lib\kendo-ui\css\kendo.common-bootstrap.min.css" />
+    <Content Include="App_Lib\kendo-ui\css\kendo.common-fiori.core.min.css" />
+    <Content Include="App_Lib\kendo-ui\css\kendo.common-fiori.min.css" />
+    <Content Include="App_Lib\kendo-ui\css\kendo.common-material.core.min.css" />
+    <Content Include="App_Lib\kendo-ui\css\kendo.common-material.min.css" />
+    <Content Include="App_Lib\kendo-ui\css\kendo.common-nova.core.min.css" />
+    <Content Include="App_Lib\kendo-ui\css\kendo.common-nova.min.css" />
+    <Content Include="App_Lib\kendo-ui\css\kendo.common-office365.min.css" />
+    <Content Include="App_Lib\kendo-ui\css\kendo.common.core.min.css" />
+    <Content Include="App_Lib\kendo-ui\css\kendo.common.min.css" />
+    <Content Include="App_Lib\kendo-ui\css\kendo.dataviz.black.min.css" />
+    <Content Include="App_Lib\kendo-ui\css\kendo.dataviz.blueopal.min.css" />
+    <Content Include="App_Lib\kendo-ui\css\kendo.dataviz.bootstrap.min.css" />
+    <Content Include="App_Lib\kendo-ui\css\kendo.dataviz.default.min.css" />
+    <Content Include="App_Lib\kendo-ui\css\kendo.dataviz.fiori.min.css" />
+    <Content Include="App_Lib\kendo-ui\css\kendo.dataviz.flat.min.css" />
+    <Content Include="App_Lib\kendo-ui\css\kendo.dataviz.highcontrast.min.css" />
+    <Content Include="App_Lib\kendo-ui\css\kendo.dataviz.material.min.css" />
+    <Content Include="App_Lib\kendo-ui\css\kendo.dataviz.materialblack.min.css" />
+    <Content Include="App_Lib\kendo-ui\css\kendo.dataviz.metro.min.css" />
+    <Content Include="App_Lib\kendo-ui\css\kendo.dataviz.metroblack.min.css" />
+    <Content Include="App_Lib\kendo-ui\css\kendo.dataviz.min.css" />
+    <Content Include="App_Lib\kendo-ui\css\kendo.dataviz.mobile.min.css" />
+    <Content Include="App_Lib\kendo-ui\css\kendo.dataviz.moonlight.min.css" />
+    <Content Include="App_Lib\kendo-ui\css\kendo.dataviz.nova.min.css" />
+    <Content Include="App_Lib\kendo-ui\css\kendo.dataviz.office365.min.css" />
+    <Content Include="App_Lib\kendo-ui\css\kendo.dataviz.silver.min.css" />
+    <Content Include="App_Lib\kendo-ui\css\kendo.dataviz.uniform.min.css" />
+    <Content Include="App_Lib\kendo-ui\css\kendo.default.min.css" />
+    <Content Include="App_Lib\kendo-ui\css\kendo.default.mobile.min.css" />
+    <Content Include="App_Lib\kendo-ui\css\kendo.fiori.min.css" />
+    <Content Include="App_Lib\kendo-ui\css\kendo.fiori.mobile.min.css" />
+    <Content Include="App_Lib\kendo-ui\css\kendo.flat.min.css" />
+    <Content Include="App_Lib\kendo-ui\css\kendo.flat.mobile.min.css" />
+    <Content Include="App_Lib\kendo-ui\css\kendo.highcontrast.min.css" />
+    <Content Include="App_Lib\kendo-ui\css\kendo.highcontrast.mobile.min.css" />
+    <Content Include="App_Lib\kendo-ui\css\kendo.material.min.css" />
+    <Content Include="App_Lib\kendo-ui\css\kendo.material.mobile.min.css" />
+    <Content Include="App_Lib\kendo-ui\css\kendo.materialblack.min.css" />
+    <Content Include="App_Lib\kendo-ui\css\kendo.materialblack.mobile.min.css" />
+    <Content Include="App_Lib\kendo-ui\css\kendo.metro.min.css" />
+    <Content Include="App_Lib\kendo-ui\css\kendo.metro.mobile.min.css" />
+    <Content Include="App_Lib\kendo-ui\css\kendo.metroblack.min.css" />
+    <Content Include="App_Lib\kendo-ui\css\kendo.metroblack.mobile.min.css" />
+    <Content Include="App_Lib\kendo-ui\css\kendo.mobile.all.min.css" />
+    <Content Include="App_Lib\kendo-ui\css\kendo.mobile.android.dark.min.css" />
+    <Content Include="App_Lib\kendo-ui\css\kendo.mobile.android.light.min.css" />
+    <Content Include="App_Lib\kendo-ui\css\kendo.mobile.blackberry.min.css" />
+    <Content Include="App_Lib\kendo-ui\css\kendo.mobile.common.min.css" />
+    <Content Include="App_Lib\kendo-ui\css\kendo.mobile.fiori.min.css" />
+    <Content Include="App_Lib\kendo-ui\css\kendo.mobile.flat.min.css" />
+    <Content Include="App_Lib\kendo-ui\css\kendo.mobile.ios.min.css" />
+    <Content Include="App_Lib\kendo-ui\css\kendo.mobile.material.min.css" />
+    <Content Include="App_Lib\kendo-ui\css\kendo.mobile.meego.min.css" />
+    <Content Include="App_Lib\kendo-ui\css\kendo.mobile.nova.min.css" />
+    <Content Include="App_Lib\kendo-ui\css\kendo.mobile.office365.min.css" />
+    <Content Include="App_Lib\kendo-ui\css\kendo.mobile.wp8.min.css" />
+    <Content Include="App_Lib\kendo-ui\css\kendo.moonlight.min.css" />
+    <Content Include="App_Lib\kendo-ui\css\kendo.moonlight.mobile.min.css" />
+    <Content Include="App_Lib\kendo-ui\css\kendo.nova.min.css" />
+    <Content Include="App_Lib\kendo-ui\css\kendo.nova.mobile.min.css" />
+    <Content Include="App_Lib\kendo-ui\css\kendo.office365.min.css" />
+    <Content Include="App_Lib\kendo-ui\css\kendo.office365.mobile.min.css" />
+    <Content Include="App_Lib\kendo-ui\css\kendo.rtl.css" />
+    <Content Include="App_Lib\kendo-ui\css\kendo.rtl.min.css" />
+    <Content Include="App_Lib\kendo-ui\css\kendo.silver.min.css" />
+    <Content Include="App_Lib\kendo-ui\css\kendo.silver.mobile.min.css" />
+    <Content Include="App_Lib\kendo-ui\css\kendo.uniform.min.css" />
+    <Content Include="App_Lib\kendo-ui\css\kendo.uniform.mobile.min.css" />
+    <Content Include="App_Lib\kendo-ui\css\MaterialBlack\editor.png" />
+    <Content Include="App_Lib\kendo-ui\css\MaterialBlack\imagebrowser.png" />
+    <Content Include="App_Lib\kendo-ui\css\MaterialBlack\indeterminate.gif" />
+    <Content Include="App_Lib\kendo-ui\css\MaterialBlack\loading-image.gif" />
+    <Content Include="App_Lib\kendo-ui\css\MaterialBlack\loading.gif" />
+    <Content Include="App_Lib\kendo-ui\css\MaterialBlack\loading_2x.gif" />
+    <Content Include="App_Lib\kendo-ui\css\MaterialBlack\markers.png" />
+    <Content Include="App_Lib\kendo-ui\css\MaterialBlack\markers_2x.png" />
+    <Content Include="App_Lib\kendo-ui\css\MaterialBlack\slider-h.gif" />
+    <Content Include="App_Lib\kendo-ui\css\MaterialBlack\slider-v.gif" />
+    <Content Include="App_Lib\kendo-ui\css\MaterialBlack\sprite.png" />
+    <Content Include="App_Lib\kendo-ui\css\MaterialBlack\sprite_2x.png" />
+    <Content Include="App_Lib\kendo-ui\css\MaterialBlack\sprite_kpi.png" />
+    <Content Include="App_Lib\kendo-ui\css\MaterialBlack\sprite_kpi_2x.png" />
+    <Content Include="App_Lib\kendo-ui\css\Material\editor.png" />
+    <Content Include="App_Lib\kendo-ui\css\Material\imagebrowser.png" />
+    <Content Include="App_Lib\kendo-ui\css\Material\indeterminate.gif" />
+    <Content Include="App_Lib\kendo-ui\css\Material\loading-image.gif" />
+    <Content Include="App_Lib\kendo-ui\css\Material\loading.gif" />
+    <Content Include="App_Lib\kendo-ui\css\Material\loading_2x.gif" />
+    <Content Include="App_Lib\kendo-ui\css\Material\markers.png" />
+    <Content Include="App_Lib\kendo-ui\css\Material\markers_2x.png" />
+    <Content Include="App_Lib\kendo-ui\css\Material\slider-h.gif" />
+    <Content Include="App_Lib\kendo-ui\css\Material\slider-v.gif" />
+    <Content Include="App_Lib\kendo-ui\css\Material\sprite.png" />
+    <Content Include="App_Lib\kendo-ui\css\Material\sprite_2x.png" />
+    <Content Include="App_Lib\kendo-ui\css\Material\sprite_kpi.png" />
+    <Content Include="App_Lib\kendo-ui\css\Material\sprite_kpi_2x.png" />
+    <Content Include="App_Lib\kendo-ui\css\MetroBlack\editor.png" />
+    <Content Include="App_Lib\kendo-ui\css\MetroBlack\imagebrowser.png" />
+    <Content Include="App_Lib\kendo-ui\css\MetroBlack\indeterminate.gif" />
+    <Content Include="App_Lib\kendo-ui\css\MetroBlack\loading-image.gif" />
+    <Content Include="App_Lib\kendo-ui\css\MetroBlack\loading.gif" />
+    <Content Include="App_Lib\kendo-ui\css\MetroBlack\loading_2x.gif" />
+    <Content Include="App_Lib\kendo-ui\css\MetroBlack\markers.png" />
+    <Content Include="App_Lib\kendo-ui\css\MetroBlack\markers_2x.png" />
+    <Content Include="App_Lib\kendo-ui\css\MetroBlack\slider-h.gif" />
+    <Content Include="App_Lib\kendo-ui\css\MetroBlack\slider-v.gif" />
+    <Content Include="App_Lib\kendo-ui\css\MetroBlack\sprite.png" />
+    <Content Include="App_Lib\kendo-ui\css\MetroBlack\sprite_2x.png" />
+    <Content Include="App_Lib\kendo-ui\css\MetroBlack\sprite_kpi.png" />
+    <Content Include="App_Lib\kendo-ui\css\MetroBlack\sprite_kpi_2x.png" />
+    <Content Include="App_Lib\kendo-ui\css\Metro\editor.png" />
+    <Content Include="App_Lib\kendo-ui\css\Metro\imagebrowser.png" />
+    <Content Include="App_Lib\kendo-ui\css\Metro\indeterminate.gif" />
+    <Content Include="App_Lib\kendo-ui\css\Metro\loading-image.gif" />
+    <Content Include="App_Lib\kendo-ui\css\Metro\loading.gif" />
+    <Content Include="App_Lib\kendo-ui\css\Metro\loading_2x.gif" />
+    <Content Include="App_Lib\kendo-ui\css\Metro\markers.png" />
+    <Content Include="App_Lib\kendo-ui\css\Metro\markers_2x.png" />
+    <Content Include="App_Lib\kendo-ui\css\Metro\slider-h.gif" />
+    <Content Include="App_Lib\kendo-ui\css\Metro\slider-v.gif" />
+    <Content Include="App_Lib\kendo-ui\css\Metro\sprite.png" />
+    <Content Include="App_Lib\kendo-ui\css\Metro\sprite_2x.png" />
+    <Content Include="App_Lib\kendo-ui\css\Metro\sprite_kpi.png" />
+    <Content Include="App_Lib\kendo-ui\css\Metro\sprite_kpi_2x.png" />
+    <Content Include="App_Lib\kendo-ui\css\Moonlight\editor.png" />
+    <Content Include="App_Lib\kendo-ui\css\Moonlight\imagebrowser.png" />
+    <Content Include="App_Lib\kendo-ui\css\Moonlight\indeterminate.gif" />
+    <Content Include="App_Lib\kendo-ui\css\Moonlight\loading-image.gif" />
+    <Content Include="App_Lib\kendo-ui\css\Moonlight\loading.gif" />
+    <Content Include="App_Lib\kendo-ui\css\Moonlight\loading_2x.gif" />
+    <Content Include="App_Lib\kendo-ui\css\Moonlight\markers.png" />
+    <Content Include="App_Lib\kendo-ui\css\Moonlight\markers_2x.png" />
+    <Content Include="App_Lib\kendo-ui\css\Moonlight\slider-h.gif" />
+    <Content Include="App_Lib\kendo-ui\css\Moonlight\slider-v.gif" />
+    <Content Include="App_Lib\kendo-ui\css\Moonlight\sprite.png" />
+    <Content Include="App_Lib\kendo-ui\css\Moonlight\sprite_2x.png" />
+    <Content Include="App_Lib\kendo-ui\css\Moonlight\sprite_kpi.png" />
+    <Content Include="App_Lib\kendo-ui\css\Moonlight\sprite_kpi_2x.png" />
+    <Content Include="App_Lib\kendo-ui\css\Nova\editor.png" />
+    <Content Include="App_Lib\kendo-ui\css\Nova\imagebrowser.png" />
+    <Content Include="App_Lib\kendo-ui\css\Nova\indeterminate.gif" />
+    <Content Include="App_Lib\kendo-ui\css\Nova\loading-image.gif" />
+    <Content Include="App_Lib\kendo-ui\css\Nova\loading.gif" />
+    <Content Include="App_Lib\kendo-ui\css\Nova\loading_2x.gif" />
+    <Content Include="App_Lib\kendo-ui\css\Nova\markers.png" />
+    <Content Include="App_Lib\kendo-ui\css\Nova\markers_2x.png" />
+    <Content Include="App_Lib\kendo-ui\css\Nova\slider-h.gif" />
+    <Content Include="App_Lib\kendo-ui\css\Nova\slider-v.gif" />
+    <Content Include="App_Lib\kendo-ui\css\Nova\sprite.png" />
+    <Content Include="App_Lib\kendo-ui\css\Nova\sprite_2x.png" />
+    <Content Include="App_Lib\kendo-ui\css\Nova\sprite_kpi.png" />
+    <Content Include="App_Lib\kendo-ui\css\Nova\sprite_kpi_2x.png" />
+    <Content Include="App_Lib\kendo-ui\css\Office365\editor.png" />
+    <Content Include="App_Lib\kendo-ui\css\Office365\imagebrowser.png" />
+    <Content Include="App_Lib\kendo-ui\css\Office365\indeterminate.gif" />
+    <Content Include="App_Lib\kendo-ui\css\Office365\loading-image.gif" />
+    <Content Include="App_Lib\kendo-ui\css\Office365\loading.gif" />
+    <Content Include="App_Lib\kendo-ui\css\Office365\loading_2x.gif" />
+    <Content Include="App_Lib\kendo-ui\css\Office365\markers.png" />
+    <Content Include="App_Lib\kendo-ui\css\Office365\markers_2x.png" />
+    <Content Include="App_Lib\kendo-ui\css\Office365\slider-h.gif" />
+    <Content Include="App_Lib\kendo-ui\css\Office365\slider-v.gif" />
+    <Content Include="App_Lib\kendo-ui\css\Office365\sprite.png" />
+    <Content Include="App_Lib\kendo-ui\css\Office365\sprite_2x.png" />
+    <Content Include="App_Lib\kendo-ui\css\Office365\sprite_kpi.png" />
+    <Content Include="App_Lib\kendo-ui\css\Office365\sprite_kpi_2x.png" />
+    <Content Include="App_Lib\kendo-ui\css\Silver\editor.png" />
+    <Content Include="App_Lib\kendo-ui\css\Silver\imagebrowser.png" />
+    <Content Include="App_Lib\kendo-ui\css\Silver\indeterminate.gif" />
+    <Content Include="App_Lib\kendo-ui\css\Silver\loading-image.gif" />
+    <Content Include="App_Lib\kendo-ui\css\Silver\loading.gif" />
+    <Content Include="App_Lib\kendo-ui\css\Silver\loading_2x.gif" />
+    <Content Include="App_Lib\kendo-ui\css\Silver\markers.png" />
+    <Content Include="App_Lib\kendo-ui\css\Silver\markers_2x.png" />
+    <Content Include="App_Lib\kendo-ui\css\Silver\slider-h.gif" />
+    <Content Include="App_Lib\kendo-ui\css\Silver\slider-v.gif" />
+    <Content Include="App_Lib\kendo-ui\css\Silver\sprite.png" />
+    <Content Include="App_Lib\kendo-ui\css\Silver\sprite_2x.png" />
+    <Content Include="App_Lib\kendo-ui\css\Silver\sprite_kpi.png" />
+    <Content Include="App_Lib\kendo-ui\css\Silver\sprite_kpi_2x.png" />
+    <Content Include="App_Lib\kendo-ui\css\textures\brushed-metal.png" />
+    <Content Include="App_Lib\kendo-ui\css\textures\dots1.png" />
+    <Content Include="App_Lib\kendo-ui\css\textures\dots10.png" />
+    <Content Include="App_Lib\kendo-ui\css\textures\dots11.png" />
+    <Content Include="App_Lib\kendo-ui\css\textures\dots12.png" />
+    <Content Include="App_Lib\kendo-ui\css\textures\dots13.png" />
+    <Content Include="App_Lib\kendo-ui\css\textures\dots2.png" />
+    <Content Include="App_Lib\kendo-ui\css\textures\dots3.png" />
+    <Content Include="App_Lib\kendo-ui\css\textures\dots4.png" />
+    <Content Include="App_Lib\kendo-ui\css\textures\dots5.png" />
+    <Content Include="App_Lib\kendo-ui\css\textures\dots6.png" />
+    <Content Include="App_Lib\kendo-ui\css\textures\dots7.png" />
+    <Content Include="App_Lib\kendo-ui\css\textures\dots8.png" />
+    <Content Include="App_Lib\kendo-ui\css\textures\dots9.png" />
+    <Content Include="App_Lib\kendo-ui\css\textures\glass-lighter.png" />
+    <Content Include="App_Lib\kendo-ui\css\textures\glass.png" />
+    <Content Include="App_Lib\kendo-ui\css\textures\highlight.png" />
+    <Content Include="App_Lib\kendo-ui\css\textures\hsv-gradient.png" />
+    <Content Include="App_Lib\kendo-ui\css\textures\hue.png" />
+    <Content Include="App_Lib\kendo-ui\css\textures\leather1.png" />
+    <Content Include="App_Lib\kendo-ui\css\textures\leather2.png" />
+    <Content Include="App_Lib\kendo-ui\css\textures\noise.png" />
+    <Content Include="App_Lib\kendo-ui\css\textures\stripe1.png" />
+    <Content Include="App_Lib\kendo-ui\css\textures\stripe2.png" />
+    <Content Include="App_Lib\kendo-ui\css\textures\stripe3.png" />
+    <Content Include="App_Lib\kendo-ui\css\textures\stripe4.png" />
+    <Content Include="App_Lib\kendo-ui\css\textures\stripe5.png" />
+    <Content Include="App_Lib\kendo-ui\css\textures\stripe6.png" />
+    <Content Include="App_Lib\kendo-ui\css\textures\transparency.png" />
+    <Content Include="App_Lib\kendo-ui\css\textures\transtexture.png" />
+    <Content Include="App_Lib\kendo-ui\css\Uniform\editor.png" />
+    <Content Include="App_Lib\kendo-ui\css\Uniform\imagebrowser.png" />
+    <Content Include="App_Lib\kendo-ui\css\Uniform\indeterminate.gif" />
+    <Content Include="App_Lib\kendo-ui\css\Uniform\loading-image.gif" />
+    <Content Include="App_Lib\kendo-ui\css\Uniform\loading.gif" />
+    <Content Include="App_Lib\kendo-ui\css\Uniform\loading_2x.gif" />
+    <Content Include="App_Lib\kendo-ui\css\Uniform\markers.png" />
+    <Content Include="App_Lib\kendo-ui\css\Uniform\markers_2x.png" />
+    <Content Include="App_Lib\kendo-ui\css\Uniform\slider-h.gif" />
+    <Content Include="App_Lib\kendo-ui\css\Uniform\slider-v.gif" />
+    <Content Include="App_Lib\kendo-ui\css\Uniform\sprite.png" />
+    <Content Include="App_Lib\kendo-ui\css\Uniform\sprite_2x.png" />
+    <Content Include="App_Lib\kendo-ui\css\Uniform\sprite_kpi.png" />
+    <Content Include="App_Lib\kendo-ui\css\Uniform\sprite_kpi_2x.png" />
+    <Content Include="App_Lib\kendo-ui\js\cultures\kendo.culture.vi-VN.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\cultures\kendo.culture.vi.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.all.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.angular.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.angular2.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.autocomplete.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.binder.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.button.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.calendar.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.color.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.colorpicker.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.columnmenu.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.columnsorter.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.combobox.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.core.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.data.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.data.odata.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.data.signalr.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.data.xml.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.dataviz.barcode.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.dataviz.chart.funnel.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.dataviz.chart.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.dataviz.chart.polar.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.dataviz.core.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.dataviz.diagram.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.dataviz.gauge.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.dataviz.map.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.dataviz.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.dataviz.mobile.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.dataviz.qrcode.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.dataviz.sparkline.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.dataviz.stock.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.dataviz.themes.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.dataviz.treemap.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.datepicker.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.datetimepicker.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.dom.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.draganddrop.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.drawing.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.dropdownlist.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.editable.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.editor.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.excel.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.filebrowser.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.filtercell.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.filtermenu.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.fx.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.gantt.list.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.gantt.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.gantt.timeline.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.grid.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.groupable.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.imagebrowser.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.list.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.listview.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.maskedtextbox.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.menu.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.mobile.actionsheet.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.mobile.application.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.mobile.button.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.mobile.buttongroup.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.mobile.collapsible.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.mobile.drawer.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.mobile.listview.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.mobile.loader.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.mobile.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.mobile.modalview.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.mobile.navbar.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.mobile.pane.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.mobile.popover.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.mobile.scroller.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.mobile.scrollview.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.mobile.shim.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.mobile.splitview.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.mobile.switch.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.mobile.tabstrip.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.mobile.view.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.multiselect.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.notification.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.numerictextbox.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.ooxml.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.pager.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.panelbar.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.pdf.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.pivot.configurator.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.pivot.fieldmenu.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.pivotgrid.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.popup.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.progressbar.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.reorderable.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.resizable.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.responsivepanel.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.router.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.scheduler.agendaview.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.scheduler.dayview.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.scheduler.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.scheduler.monthview.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.scheduler.recurrence.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.scheduler.timelineview.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.scheduler.view.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.selectable.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.slider.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.sortable.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.splitter.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.spreadsheet.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.tabstrip.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.timepicker.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.timezones.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.toolbar.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.tooltip.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.touch.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.treelist.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.treeview.draganddrop.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.treeview.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.upload.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.userevents.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.validator.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.view.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.virtuallist.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.web.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.webcomponents.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\kendo.window.min.js" />
+    <Content Include="App_Lib\kendo-ui\js\pako_deflate.min.js" />
+    <Content Include="App_Lib\lib.css" />
+    <Content Include="App_Lib\lib.js" />
+    <Content Include="App_Lib\lib.min.css">
+      <DependentUpon>lib.css</DependentUpon>
+    </Content>
+    <Content Include="App_Lib\media-player\mediaelement-and-player.js" />
+    <Content Include="App_Lib\media-player\mediaelement-and-player.min.js" />
+    <Content Include="App_Lib\media-player\mediaelement.js" />
+    <Content Include="App_Lib\media-player\mediaelement.min.js" />
+    <Content Include="App_Lib\media-player\mediaelementplayer.css" />
+    <Content Include="App_Lib\media-player\mediaelementplayer.js" />
+    <Content Include="App_Lib\media-player\mediaelementplayer.min.js" />
+    <Content Include="App_Lib\moment-2.12.0\moment-with-locales.js" />
+    <Content Include="App_Lib\owl.carousel.2.0.0-beta.2.4\owl.carousel.css" />
+    <Content Include="App_Lib\owl.carousel.2.0.0-beta.2.4\owl.carousel.js" />
+    <Content Include="App_Lib\owl.carousel.2.0.0-beta.2.4\owl.carousel.min.js" />
+    <Content Include="App_Lib\signalR-2.2.0\jquery.signalR.js" />
+    <Content Include="App_Lib\winwhell\TwheenMax.js" />
+    <Content Include="App_Lib\winwhell\Winwheel.js" />
+    <Content Include="Content\Image\404-image.jpg" />
+    <Content Include="Content\Image\android-download.png" />
+    <Content Include="Content\Image\App\background_app.png" />
+    <Content Include="Content\Image\App\background_app1.png" />
+    <Content Include="Content\Image\app_1.png" />
+    <Content Include="Content\Image\app_2.png" />
+    <Content Include="Content\Image\background-home.jpg" />
+    <Content Include="Content\Image\Background-home\1.jpg" />
+    <Content Include="Content\Image\Background-home\3.jpg" />
+    <Content Include="Content\Image\Background-home\2.jpg" />
+    <Content Include="Content\Image\Background-home\4.jpg" />
+    <Content Include="Content\Image\Background-home\5.jpg" />
+    <Content Include="Content\Image\Background-home\6.jpg" />
+    <Content Include="Content\Image\Background-home\bodybrtet.png" />
+    <Content Include="Content\Image\Background-home\brshowtett.png" />
+    <Content Include="Content\Image\Background-home\Theme_show.png" />
+    <Content Include="Content\Image\Background-home\Theme_valentine.png" />
+    <Content Include="Content\Image\Background-Item\Meo-gif.gif" />
+    <Content Include="Content\Image\banner-1.jpg" />
+    <Content Include="Content\Image\banner-2.jpg" />
+    <Content Include="Content\Image\Banner\app.jpg" />
+    <Content Include="Content\Image\Banner\banner boc tham-990x90.jpg" />
+    <Content Include="Content\Image\Banner\banner-event-nap-the.jpg" />
+    <Content Include="Content\Image\Banner\eventcd22122016.png" />
+    <Content Include="Content\Image\Banner\full-banner-bg.png" />
+    <Content Include="Content\Image\Banner\full-banner.png" />
+    <Content Include="Content\Image\Banner\noel-event-idol.jpg" />
+    <Content Include="Content\Image\Banner\noel-event-user.jpg" />
+    <Content Include="Content\Image\Banner\app1.jpg" />
+    <Content Include="Content\Image\bar.png" />
+    <Content Include="Content\Image\button-thanhvien.png" />
+    <Content Include="Content\Image\cc_image.gif" />
+    <Content Include="Content\Image\Dangnhap1.png" />
+    <Content Include="Content\Image\default-avatar.jpg" />
+    <Content Include="Content\Image\Emoticon\o\0.gif" />
+    <Content Include="Content\Image\Emoticon\o\1.gif" />
+    <Content Include="Content\Image\Emoticon\o\10.gif" />
+    <Content Include="Content\Image\Emoticon\o\11.gif" />
+    <Content Include="Content\Image\Emoticon\o\12.gif" />
+    <Content Include="Content\Image\Emoticon\o\13.gif" />
+    <Content Include="Content\Image\Emoticon\o\14.gif" />
+    <Content Include="Content\Image\Emoticon\o\15.gif" />
+    <Content Include="Content\Image\Emoticon\o\16.gif" />
+    <Content Include="Content\Image\Emoticon\o\17.gif" />
+    <Content Include="Content\Image\Emoticon\o\18.gif" />
+    <Content Include="Content\Image\Emoticon\o\19.gif" />
+    <Content Include="Content\Image\Emoticon\o\2.gif" />
+    <Content Include="Content\Image\Emoticon\o\20.gif" />
+    <Content Include="Content\Image\Emoticon\o\21.gif" />
+    <Content Include="Content\Image\Emoticon\o\22.gif" />
+    <Content Include="Content\Image\Emoticon\o\23.gif" />
+    <Content Include="Content\Image\Emoticon\o\24.gif" />
+    <Content Include="Content\Image\Emoticon\o\25.gif" />
+    <Content Include="Content\Image\Emoticon\o\26.gif" />
+    <Content Include="Content\Image\Emoticon\o\27.gif" />
+    <Content Include="Content\Image\Emoticon\o\28.gif" />
+    <Content Include="Content\Image\Emoticon\o\29.gif" />
+    <Content Include="Content\Image\Emoticon\o\3.gif" />
+    <Content Include="Content\Image\Emoticon\o\30.gif" />
+    <Content Include="Content\Image\Emoticon\o\31.gif" />
+    <Content Include="Content\Image\Emoticon\o\32.gif" />
+    <Content Include="Content\Image\Emoticon\o\33.gif" />
+    <Content Include="Content\Image\Emoticon\o\34.gif" />
+    <Content Include="Content\Image\Emoticon\o\35.gif" />
+    <Content Include="Content\Image\Emoticon\o\36.gif" />
+    <Content Include="Content\Image\Emoticon\o\37.gif" />
+    <Content Include="Content\Image\Emoticon\o\38.gif" />
+    <Content Include="Content\Image\Emoticon\o\39.gif" />
+    <Content Include="Content\Image\Emoticon\o\4.gif" />
+    <Content Include="Content\Image\Emoticon\o\40.gif" />
+    <Content Include="Content\Image\Emoticon\o\41.gif" />
+    <Content Include="Content\Image\Emoticon\o\42.gif" />
+    <Content Include="Content\Image\Emoticon\o\43.gif" />
+    <Content Include="Content\Image\Emoticon\o\44.gif" />
+    <Content Include="Content\Image\Emoticon\o\45.gif" />
+    <Content Include="Content\Image\Emoticon\o\46.gif" />
+    <Content Include="Content\Image\Emoticon\o\47.gif" />
+    <Content Include="Content\Image\Emoticon\o\48.gif" />
+    <Content Include="Content\Image\Emoticon\o\49.gif" />
+    <Content Include="Content\Image\Emoticon\o\5.gif" />
+    <Content Include="Content\Image\Emoticon\o\50.gif" />
+    <Content Include="Content\Image\Emoticon\o\51.gif" />
+    <Content Include="Content\Image\Emoticon\o\52.gif" />
+    <Content Include="Content\Image\Emoticon\o\53.gif" />
+    <Content Include="Content\Image\Emoticon\o\54.gif" />
+    <Content Include="Content\Image\Emoticon\o\55.gif" />
+    <Content Include="Content\Image\Emoticon\o\56.gif" />
+    <Content Include="Content\Image\Emoticon\o\57.gif" />
+    <Content Include="Content\Image\Emoticon\o\58.gif" />
+    <Content Include="Content\Image\Emoticon\o\59.gif" />
+    <Content Include="Content\Image\Emoticon\o\6.gif" />
+    <Content Include="Content\Image\Emoticon\o\60.gif" />
+    <Content Include="Content\Image\Emoticon\o\61.gif" />
+    <Content Include="Content\Image\Emoticon\o\62.gif" />
+    <Content Include="Content\Image\Emoticon\o\63.gif" />
+    <Content Include="Content\Image\Emoticon\o\64.gif" />
+    <Content Include="Content\Image\Emoticon\o\65.gif" />
+    <Content Include="Content\Image\Emoticon\o\7.gif" />
+    <Content Include="Content\Image\Emoticon\o\8.gif" />
+    <Content Include="Content\Image\Emoticon\o\9.gif" />
+    <Content Include="Content\Image\event.png" />
+    <Content Include="Content\Image\error-404.png" />
+    <Content Include="Content\Image\facebook-logo-blue.png" />
+    <Content Include="Content\Image\follow.gif" />
+    <Content Include="Content\Image\gold-seat.png" />
+    <Content Include="Content\Image\heart.png" />
+    <Content Include="Content\Image\icon-cc-2.gif" />
+    <Content Include="Content\Image\icon-cc.gif" />
+    <Content Include="Content\Image\icon-idol.gif" />
+    <Content Include="Content\Image\Iconmenu\avatar-thuviec.png" />
+    <Content Include="Content\Image\Iconmenu\guid-1.png" />
+    <Content Include="Content\Image\Iconmenu\guid.png" />
+    <Content Include="Content\Image\Iconmenu\home-1.png" />
+    <Content Include="Content\Image\Iconmenu\home.png" />
+    <Content Include="Content\Image\Iconmenu\percent.png" />
+    <Content Include="Content\Image\Iconmenu\rank-1.png" />
+    <Content Include="Content\Image\Iconmenu\rank.png" />
+    <Content Include="Content\Image\Iconmenu\schedule-1.png" />
+    <Content Include="Content\Image\Iconmenu\schedule.png" />
+    <Content Include="Content\Image\Iconmenu\shop-1.png" />
+    <Content Include="Content\Image\Iconmenu\shop.png" />
+    <Content Include="Content\Image\Iconmenu\star-1.png" />
+    <Content Include="Content\Image\Iconmenu\star.png" />
+    <Content Include="Content\Image\iphone-download.png" />
+    <Content Include="Content\Image\favicon.png" />
+    <Content Include="Content\Image\live.gif" />
+    <Content Include="Content\Image\live1.gif" />
+    <Content Include="Content\Image\loadWeb.gif" />
+    <Content Include="Content\Image\logo-youtube.png" />
+    <Content Include="Content\Image\Logo\logo-128.png" />
+    <Content Include="Content\Image\Logo\logo-256.png" />
+    <Content Include="Content\Image\Logo\logo-64.png" />
+    <Content Include="Content\Image\Logo\logo-no-text-128.png" />
+    <Content Include="Content\Image\Logo\logo-no-text-256.png" />
+    <Content Include="Content\Image\Logo\logo-no-text-32.png" />
+    <Content Include="Content\Image\Logo\logo-no-text-64.png" />
+    <Content Include="Content\Image\Logo\logo-no-text.png" />
+    <Content Include="Content\Image\Logo\logo-w-200.png" />
+    <Content Include="Content\Image\Logo\logo-w-noel-200.png" />
+    <Content Include="Content\Image\Logo\logo-w-noel.png" />
+    <Content Include="Content\Image\Logo\logo-w.png" />
+    <Content Include="Content\Image\Logo\logo.png" />
+    <Content Include="Content\Image\naptienquocte.png" />
+    <Content Include="Content\Image\popup dang nhap.png" />
+    <Content Include="Content\Image\popupdangky.png" />
+    <Content Include="Content\Image\popupdangky1.png" />
+    <Content Include="Content\Image\rocket-312583__180.png" />
+    <Content Include="Content\Image\ruby-green.png" />
+    <Content Include="Content\Image\ruby.png" />
+    <Content Include="Content\Image\seat.gif" />
+    <Content Include="Content\Image\Show-Background\1.jpg" />
+    <Content Include="Content\Image\Show-Background\10.jpg" />
+    <Content Include="Content\Image\Show-Background\11.jpg" />
+    <Content Include="Content\Image\Show-Background\2.jpg" />
+    <Content Include="Content\Image\Show-Background\3.jpg" />
+    <Content Include="Content\Image\Show-Background\4.jpg" />
+    <Content Include="Content\Image\Show-Background\5.jpg" />
+    <Content Include="Content\Image\Show-Background\6.jpg" />
+    <Content Include="Content\Image\Show-Background\7.jpg" />
+    <Content Include="Content\Image\Show-Background\8.jpg" />
+    <Content Include="Content\Image\Show-Background\9.jpg" />
+    <Content Include="Content\Image\showlive.jpg" />
+    <Content Include="Content\Image\star_new.png" />
+    <Content Include="Content\Image\ten lua.png" />
+    <Content Include="Content\Image\tim-bd.png" />
+    <Content Include="Content\Image\top-1.png" />
+    <Content Include="Content\Image\top-2.png" />
+    <Content Include="Content\Image\top-3.png" />
+    <Content Include="Content\Image\tuyendungidol.jpg" />
+    <Content Include="Content\Image\windows-phone-download.png" />
+    <Content Include="Content\Image\uplevel.png" />
+    <Content Include="Global.asax" />
+    <Content Include="config.js" />
+    <Content Include="Layouts\Banner.html" />
+    <Content Include="Layouts\DropDownUser.html" />
+    <Content Include="Layouts\Footer.html" />
+    <Content Include="Layouts\Modal\AlertKickAdmin.html" />
+    <Content Include="Layouts\Modal\Alert - Copy.min.html">
+      <DependentUpon>AlertKickAdmin.html</DependentUpon>
+    </Content>
+    <Content Include="Layouts\Modal\Alert.html" />
+    <Content Include="Layouts\Modal\Alert.min.html">
+      <DependentUpon>Alert.html</DependentUpon>
+    </Content>
+    <Content Include="Layouts\Modal\BannerEvent.html" />
+    <Content Include="Layouts\Modal\BannerEvent.min.html">
+      <DependentUpon>BannerEvent.html</DependentUpon>
+    </Content>
+    <Content Include="Layouts\Modal\ChangePassword.html" />
+    <Content Include="Layouts\Modal\ChangePassword.min.html">
+      <DependentUpon>ChangePassword.html</DependentUpon>
+    </Content>
+    <Content Include="Layouts\Modal\DetailGuild.html" />
+    <Content Include="Layouts\Modal\DetailGuild.min.html">
+      <DependentUpon>DetailGuild.html</DependentUpon>
+    </Content>
+    <Content Include="Layouts\Modal\EditAvatarGuild.html" />
+    <Content Include="Layouts\Modal\EditGuild.html" />
+    <Content Include="Layouts\Modal\FacebookLive.html" />
+    <Content Include="Layouts\Modal\ListUserJoin.html" />
+    <Content Include="Layouts\Modal\IdolDoneMission.html" />
+    <Content Include="Layouts\Modal\IdolMission.html" />
+    <Content Include="Layouts\Modal\Report.html" />
+    <Content Include="Layouts\Modal\TakingMission.html" />
+    <Content Include="Layouts\Modal\GoldMine.html" />
+    <Content Include="Layouts\Modal\GuildMaster.html" />
+    <Content Include="Layouts\Modal\IframeRechargeCoin.html" />
+    <Content Include="Layouts\Modal\IframeRechargeCoin.min.html">
+      <DependentUpon>IframeRechargeCoin.html</DependentUpon>
+    </Content>
+    <Content Include="Layouts\Modal\InfoTower.html" />
+    <Content Include="Layouts\Modal\RankGuild.html" />
+    <Content Include="Layouts\Modal\RechargeCoin.html" />
+    <Content Include="Layouts\Modal\DayCheck.html" />
+    <Content Include="Layouts\Modal\DayCheck.min.html">
+      <DependentUpon>DayCheck.html</DependentUpon>
+    </Content>
+    <Content Include="Layouts\Modal\RechargeCoin.min.html">
+      <DependentUpon>RechargeCoin.html</DependentUpon>
+    </Content>
+    <Content Include="Layouts\Modal\Registerstar.html" />
+    <Content Include="Layouts\Modal\Registerstar.min.html">
+      <DependentUpon>Registerstar.html</DependentUpon>
+    </Content>
+    <Content Include="Layouts\Modal\ShopGuild.html" />
+    <Content Include="Layouts\Modal\ShowOpening.html" />
+    <Content Include="Layouts\Modal\ShowOpening.min.html">
+      <DependentUpon>ShowOpening.html</DependentUpon>
+    </Content>
+    <Content Include="Layouts\Modal\ShowPopupEvent.html" />
+    <Content Include="Layouts\Modal\ShowPopupEvent.min.html">
+      <DependentUpon>ShowPopupEvent.html</DependentUpon>
+    </Content>
+    <Content Include="Layouts\Modal\ShowRank.html" />
+    <Content Include="Layouts\Modal\ShowRank.min.html">
+      <DependentUpon>ShowRank.html</DependentUpon>
+    </Content>
+    <Content Include="Layouts\Modal\ShowSchedule.html" />
+    <Content Include="Layouts\Modal\ShowSchedule.min.html">
+      <DependentUpon>ShowSchedule.html</DependentUpon>
+    </Content>
+    <Content Include="Layouts\Modal\UserMission.html" />
+    <Content Include="Layouts\Modal\UserMission.min.html">
+      <DependentUpon>UserMission.html</DependentUpon>
+    </Content>
+    <Content Include="Layouts\Popover\SeatMenu.html" />
+    <Content Include="Layouts\Template\ListGuildRank.html" />
+    <Content Include="Layouts\Template\ListGuildRank.min.html">
+      <DependentUpon>ListGuildRank.html</DependentUpon>
+    </Content>
+    <Content Include="Layouts\Template\GuildInfo.html" />
+    <Content Include="Layouts\Template\UnitChanged.html" />
+    <Content Include="Layouts\Template\LuckyWheel.html" />
+    <Content Include="Layouts\Template\ShowGift.min.html">
+      <DependentUpon>ShowGift.html</DependentUpon>
+    </Content>
+    <Content Include="Layouts\Template\ShowItem.html" />
+    <Content Include="Layouts\Template\ShowItem.min.html">
+      <DependentUpon>ShowItem.html</DependentUpon>
+    </Content>
+    <Content Include="Layouts\Template\ShowListUser.html" />
+    <Content Include="Layouts\Template\showListUser.min.html">
+      <DependentUpon>ShowListUser.html</DependentUpon>
+    </Content>
+    <Content Include="Layouts\Template\ShowMessage.html" />
+    <Content Include="Layouts\Template\ShowMessage.min.html">
+      <DependentUpon>ShowMessage.html</DependentUpon>
+    </Content>
+    <Content Include="Layouts\Template\ShowSeat.html" />
+    <Content Include="Layouts\Template\ShowSentGift.min.html">
+      <DependentUpon>ShowSentGift.html</DependentUpon>
+    </Content>
+    <Content Include="Layouts\Template\ShowStatus.min.html">
+      <DependentUpon>ShowStatus.html</DependentUpon>
+    </Content>
+    <Content Include="Layouts\Template\UserListItem.html" />
+    <Content Include="Layouts\Template\UserListItem.min.html">
+      <DependentUpon>UserListItem.html</DependentUpon>
+    </Content>
+    <Content Include="Scripts\Controller\New\eventnewscontroller.js" />
+    <Content Include="Scripts\Controller\homeController.js" />
+    <Content Include="Scripts\Controller\New\detailnewscontroller.js" />
+    <Content Include="Scripts\Controller\User\userfollowController.js" />
+    <Content Include="Scripts\Controller\_layoutController.js" />
+    <Content Include="Scripts\Directive\compile.js" />
+    <Content Include="Scripts\Directive\dropdown.js" />
+    <Content Include="Scripts\Directive\fileread.js" />
+    <Content Include="Scripts\Directive\formatText.js" />
+    <Content Include="Scripts\Directive\fbLike.js" />
+    <Content Include="Scripts\Directive\head.js" />
+    <Content Include="Scripts\Directive\isLoading.js" />
+    <Content Include="Scripts\Directive\kendoTemplate.js" />
+    <Content Include="Scripts\Directive\img.js" />
+    <Content Include="Scripts\config.js" />
+    <Content Include="Scripts\Directive\owlSlide.js" />
+    <Content Include="Scripts\Directive\validateError.js" />
+    <Content Include="Scripts\Directive\validateSubmit.js" />
+    <Content Include="Scripts\lib.js" />
+    <Content Include="Scripts\Modal\modalChangePasswordController.js" />
+    <Content Include="Scripts\Modal\modalEditGuildController.js" />
+    <Content Include="Scripts\Modal\modalEditAvatarGuildController.js" />
+    <Content Include="Scripts\Modal\modalFacebookLiveController.js" />
+    <Content Include="Scripts\Modal\modalAlertController.js" />
+    <Content Include="Scripts\Modal\modalDetailGuildController.js" />
+    <Content Include="Scripts\Modal\modalListUserJoinController.js" />
+    <Content Include="Scripts\Modal\modalIdolDoneMissionController.js" />
+    <Content Include="Scripts\Modal\modalIdolMissionController.js" />
+    <Content Include="Scripts\Modal\modalReportController.js" />
+    <Content Include="Scripts\Modal\modalTakingMissionController.js" />
+    <Content Include="Scripts\Modal\modalGoldMineController.js" />
+    <Content Include="Scripts\Modal\modalGuildMasterController.js" />
+    <Content Include="Scripts\Modal\modalIframeRechargeCoinController.js" />
+    <Content Include="Scripts\Modal\modalBannerEventController.js" />
+    <Content Include="Scripts\Modal\modalDayCheckController.js" />
+    <Content Include="Scripts\Modal\modalInfoTowerController.js" />
+    <Content Include="Scripts\Modal\modalPopupEventController.js" />
+    <Content Include="Scripts\Modal\modalRankGuildController.js" />
+    <Content Include="Scripts\Modal\modalRechargeCoinController.js" />
+    <Content Include="Scripts\Modal\modalShopGuildController.js" />
+    <Content Include="Scripts\Modal\modalShowScheduleController.js" />
+    <Content Include="Scripts\Modal\modalShowOpeningController.js" />
+    <Content Include="Scripts\Modal\modalShowRank.js" />
+    <Content Include="Scripts\Modal\modalRegisterstarController.js" />
+    <Content Include="Scripts\Modal\modalUserMission.js" />
+    <Content Include="Scripts\Popover\popoverSeatMenuController.js" />
+    <Content Include="Scripts\Service\apiService.js" />
+    <Content Include="Scripts\Service\modalService.js" />
+    <Content Include="Scripts\Service\popoverService.js" />
+    <Content Include="Scripts\Template\listGuildRank.js" />
+    <Content Include="Scripts\Template\guildInfo.js" />
+    <Content Include="Scripts\Template\unitChanged.js" />
+    <Content Include="Scripts\Template\showItem.js" />
+    <Content Include="Scripts\Template\showMessage.js" />
+    <Content Include="Scripts\Template\showGift.js" />
+    <Content Include="Scripts\Template\showSeat.js" />
+    <Content Include="Scripts\Template\luckyWheel.js" />
+    <Content Include="Scripts\Template\userListItem.js" />
+    <Content Include="Scripts\UserControl\ucMenuUser.js" />
+    <Content Include="Scripts\Directive\paging.js" />
+    <Content Include="Scripts\Directive\toggle.js" />
+    <Content Include="Scripts\Directive\modal.js" />
+    <Content Include="Scripts\Directive\imgScale.js" />
+    <Content Include="Scripts\Directive\udRole.js" />
+    <Content Include="Scripts\Filter\currentListSeatPrice.js" />
+    <Content Include="Scripts\Service\authenticationService.js" />
+    <Content Include="Scripts\Service\formService.js" />
+    <Content Include="Scripts\Service\notificationService.js" />
+    <Content Include="Scripts\Service\sessionService.js" />
+    <Content Include="Scripts\Service\helperService.js" />
+    <Content Include="Scripts\Service\signalRService.js" />
+    <Content Include="Scripts\Service\webService.js" />
+    <Content Include="Scripts\UserControl\ucFollowButton.js" />
+    <Content Include="Scripts\UserControl\ucPrivateMessage.js" />
+    <Content Include="Scripts\UserControl\ucShopCatelogyItem.js" />
+    <Content Include="Scripts\UserControl\ucShowGlobalMessage.js" />
+    <Content Include="Scripts\UserControl\ucShowControl.js" />
+    <Content Include="Scripts\Template\ucShowUserInfo.js" />
+    <Content Include="Scripts\UserControl\ucShowItem.js" />
+    <Content Include="Scripts\Template\showStatus.js" />
+    <Content Include="Scripts\UserControl\ucShowAction.js" />
+    <Content Include="Scripts\UserControl\ucShowVideo.js" />
+    <Content Include="Scripts\Template\showSentGift.js" />
+    <Content Include="Scripts\Template\ucShowToolbar.js" />
+    <Content Include="Scripts\UserControl\ucShopVipItem.js" />
+    <Content Include="Scripts\UserControl\ucUserListItem.js" />
+    <Content Include="Scripts\_app.js" />
+    <Content Include="Scripts\_app.min.js">
+      <DependentUpon>_app.js</DependentUpon>
+    </Content>
+    <Content Include="Styles\default.css">
+      <DependentUpon>default.scss</DependentUpon>
+    </Content>
+    <Content Include="Styles\default.min.css">
+      <DependentUpon>default.css</DependentUpon>
+    </Content>
+    <Content Include="Styles\global.css">
+      <DependentUpon>global.scss</DependentUpon>
+    </Content>
+    <Content Include="Styles\global.min.css">
+      <DependentUpon>global.css</DependentUpon>
+    </Content>
+    <Content Include="Styles\Modal\BannerEvent.css">
+      <DependentUpon>BannerEvent.scss</DependentUpon>
+    </Content>
+    <Content Include="Styles\Modal\BannerEvent.min.css">
+      <DependentUpon>BannerEvent.css</DependentUpon>
+    </Content>
+    <Content Include="Styles\Modal\ChangePassword.css">
+      <DependentUpon>ChangePassword.scss</DependentUpon>
+    </Content>
+    <Content Include="Styles\Modal\ChangePassword.min.css">
+      <DependentUpon>ChangePassword.css</DependentUpon>
+    </Content>
+    <Content Include="Styles\Modal\DayCheck.css">
+      <DependentUpon>DayCheck.scss</DependentUpon>
+    </Content>
+    <Content Include="Styles\Modal\DayCheck.min.css">
+      <DependentUpon>DayCheck.css</DependentUpon>
+    </Content>
+    <Content Include="Styles\Modal\DetailGuild.css">
+      <DependentUpon>DetailGuild.scss</DependentUpon>
+    </Content>
+    <Content Include="Styles\Modal\DetailGuild.min.css">
+      <DependentUpon>DetailGuild.css</DependentUpon>
+    </Content>
+    <Content Include="Styles\Modal\EditAvatarGuild.css">
+      <DependentUpon>EditAvatarGuild.scss</DependentUpon>
+    </Content>
+    <Content Include="Styles\Modal\EditAvatarGuild.min.css">
+      <DependentUpon>EditAvatarGuild.css</DependentUpon>
+    </Content>
+    <Content Include="Styles\Modal\EditGuild.css">
+      <DependentUpon>EditGuild.scss</DependentUpon>
+    </Content>
+    <Content Include="Styles\Modal\EditGuild.min.css">
+      <DependentUpon>EditGuild.css</DependentUpon>
+    </Content>
+    <Content Include="Styles\Modal\GoldMine.css">
+      <DependentUpon>GoldMine.scss</DependentUpon>
+    </Content>
+    <Content Include="Styles\Modal\GoldMine.min.css">
+      <DependentUpon>GoldMine.css</DependentUpon>
+    </Content>
+    <Content Include="Styles\Modal\GuildMaster.css">
+      <DependentUpon>GuildMaster.scss</DependentUpon>
+    </Content>
+    <Content Include="Styles\Modal\GuildMaster.min.css">
+      <DependentUpon>GuildMaster.css</DependentUpon>
+    </Content>
+    <Content Include="Styles\Modal\IdolDoneMission.css">
+      <DependentUpon>IdolDoneMission.scss</DependentUpon>
+    </Content>
+    <Content Include="Styles\Modal\IdolDoneMission.min.css">
+      <DependentUpon>IdolDoneMission.css</DependentUpon>
+    </Content>
+    <Content Include="Styles\Modal\IdolMission.css">
+      <DependentUpon>IdolMission.scss</DependentUpon>
+    </Content>
+    <Content Include="Styles\Modal\IdolMission.min.css">
+      <DependentUpon>IdolMission.css</DependentUpon>
+    </Content>
+    <Content Include="Styles\Modal\IframeRechargeCoin.css">
+      <DependentUpon>IframeRechargeCoin.scss</DependentUpon>
+    </Content>
+    <Content Include="Styles\Modal\IframeRechargeCoin.min.css">
+      <DependentUpon>IframeRechargeCoin.css</DependentUpon>
+    </Content>
+    <Content Include="Styles\Modal\InfoTower.css">
+      <DependentUpon>InfoTower.scss</DependentUpon>
+    </Content>
+    <Content Include="Styles\Modal\InfoTower.min.css">
+      <DependentUpon>InfoTower.css</DependentUpon>
+    </Content>
+    <Content Include="Styles\Modal\ListUserJoin.css">
+      <DependentUpon>ListUserJoin.scss</DependentUpon>
+    </Content>
+    <Content Include="Styles\Modal\ListUserJoin.min.css">
+      <DependentUpon>ListUserJoin.css</DependentUpon>
+    </Content>
+    <Content Include="Styles\Modal\RankGuild.css">
+      <DependentUpon>RankGuild.scss</DependentUpon>
+    </Content>
+    <Content Include="Styles\Modal\RankGuild.min.css">
+      <DependentUpon>RankGuild.css</DependentUpon>
+    </Content>
+    <Content Include="Styles\Modal\RechargeCoin.css">
+      <DependentUpon>RechargeCoin.scss</DependentUpon>
+    </Content>
+    <Content Include="Styles\Modal\RechargeCoin.min.css">
+      <DependentUpon>RechargeCoin.css</DependentUpon>
+    </Content>
+    <Content Include="Styles\Modal\Registerstar.css">
+      <DependentUpon>Registerstar.scss</DependentUpon>
+    </Content>
+    <Content Include="Styles\Modal\Registerstar.min.css">
+      <DependentUpon>Registerstar.css</DependentUpon>
+    </Content>
+    <Content Include="Styles\Modal\Report.css">
+      <DependentUpon>Report.scss</DependentUpon>
+    </Content>
+    <Content Include="Styles\Modal\Report.min.css">
+      <DependentUpon>Report.css</DependentUpon>
+    </Content>
+    <Content Include="Styles\Modal\ShopGuild.css">
+      <DependentUpon>ShopGuild.scss</DependentUpon>
+    </Content>
+    <Content Include="Styles\Modal\ShopGuild.min.css">
+      <DependentUpon>ShopGuild.css</DependentUpon>
+    </Content>
+    <Content Include="Styles\Modal\ShowOpening.css">
+      <DependentUpon>ShowOpening.scss</DependentUpon>
+    </Content>
+    <Content Include="Styles\Modal\ShowOpening.min.css">
+      <DependentUpon>ShowOpening.css</DependentUpon>
+    </Content>
+    <Content Include="Styles\Modal\ShowPopupEvent.css">
+      <DependentUpon>ShowPopupEvent.scss</DependentUpon>
+    </Content>
+    <Content Include="Styles\Modal\ShowPopupEvent.min.css">
+      <DependentUpon>ShowPopupEvent.css</DependentUpon>
+    </Content>
+    <Content Include="Styles\Modal\ShowRank.css">
+      <DependentUpon>ShowRank.scss</DependentUpon>
+    </Content>
+    <Content Include="Styles\Modal\ShowRank.min.css">
+      <DependentUpon>ShowRank.css</DependentUpon>
+    </Content>
+    <Content Include="Styles\Modal\ShowSchedule.css">
+      <DependentUpon>ShowSchedule.scss</DependentUpon>
+    </Content>
+    <Content Include="Styles\Modal\ShowSchedule.min.css">
+      <DependentUpon>ShowSchedule.css</DependentUpon>
+    </Content>
+    <Content Include="Styles\Modal\TakingMission.css">
+      <DependentUpon>TakingMission.scss</DependentUpon>
+    </Content>
+    <Content Include="Styles\Modal\TakingMission.min.css">
+      <DependentUpon>TakingMission.css</DependentUpon>
+    </Content>
+    <Content Include="Styles\Modal\UserMission.css">
+      <DependentUpon>UserMission.scss</DependentUpon>
+    </Content>
+    <Content Include="Styles\Modal\UserMission.min.css">
+      <DependentUpon>UserMission.css</DependentUpon>
+    </Content>
+    <Content Include="Styles\Popover\SeatMenu.css">
+      <DependentUpon>SeatMenu.scss</DependentUpon>
+    </Content>
+    <Content Include="Styles\Popover\SeatMenu.min.css">
+      <DependentUpon>SeatMenu.css</DependentUpon>
+    </Content>
+    <Content Include="Styles\Template\GuildInfo.css">
+      <DependentUpon>GuildInfo.scss</DependentUpon>
+    </Content>
+    <Content Include="Styles\Template\GuildInfo.min.css">
+      <DependentUpon>GuildInfo.css</DependentUpon>
+    </Content>
+    <Content Include="Styles\Template\ListGuildRank.css">
+      <DependentUpon>ListGuildRank.scss</DependentUpon>
+    </Content>
+    <Content Include="Styles\Template\ListGuildRank.min.css">
+      <DependentUpon>ListGuildRank.css</DependentUpon>
+    </Content>
+    <Content Include="Styles\Template\LuckyWheel.css">
+      <DependentUpon>LuckyWheel.scss</DependentUpon>
+    </Content>
+    <Content Include="Styles\Template\LuckyWheel.min.css">
+      <DependentUpon>LuckyWheel.css</DependentUpon>
+    </Content>
+    <Content Include="Styles\Template\ShowGift.css">
+      <DependentUpon>ShowGift.scss</DependentUpon>
+    </Content>
+    <Content Include="Styles\Template\ShowGift.min.css">
+      <DependentUpon>ShowGift.css</DependentUpon>
+    </Content>
+    <Content Include="Styles\Template\ShowItem.css">
+      <DependentUpon>ShowItem.scss</DependentUpon>
+    </Content>
+    <Content Include="Styles\Template\ShowItem.min.css">
+      <DependentUpon>ShowItem.css</DependentUpon>
+    </Content>
+    <Content Include="Styles\Template\ShowListUser.css">
+      <DependentUpon>ShowListUser.scss</DependentUpon>
+    </Content>
+    <Content Include="Styles\Template\ShowListUser.min.css">
+      <DependentUpon>ShowListUser.css</DependentUpon>
+    </Content>
+    <Content Include="Styles\Template\ShowSeat.css">
+      <DependentUpon>ShowSeat.scss</DependentUpon>
+    </Content>
+    <Content Include="Styles\Template\ShowSeat.min.css">
+      <DependentUpon>ShowSeat.css</DependentUpon>
+    </Content>
+    <Content Include="Styles\Template\ShowSentGift.css">
+      <DependentUpon>ShowSentGift.scss</DependentUpon>
+    </Content>
+    <Content Include="Styles\Template\ShowSentGift.min.css">
+      <DependentUpon>ShowSentGift.css</DependentUpon>
+    </Content>
+    <Content Include="Styles\Template\ShowStatus.css">
+      <DependentUpon>ShowStatus.scss</DependentUpon>
+    </Content>
+    <Content Include="Styles\Template\ShowStatus.min.css">
+      <DependentUpon>ShowStatus.css</DependentUpon>
+    </Content>
+    <Content Include="Styles\Template\UnitChanged.css">
+      <DependentUpon>UnitChanged.scss</DependentUpon>
+    </Content>
+    <Content Include="Styles\Template\UnitChanged.min.css">
+      <DependentUpon>UnitChanged.css</DependentUpon>
+    </Content>
+    <Content Include="Styles\Template\UserListItem.css">
+      <DependentUpon>UserListItem.scss</DependentUpon>
+    </Content>
+    <Content Include="Styles\Template\UserListItem.min.css">
+      <DependentUpon>UserListItem.css</DependentUpon>
+    </Content>
+    <Content Include="Styles\UserControl\ucFollowButton.css">
+      <DependentUpon>ucFollowButton.scss</DependentUpon>
+    </Content>
+    <Content Include="Styles\UserControl\ucFollowButton.min.css">
+      <DependentUpon>ucFollowButton.css</DependentUpon>
+    </Content>
+    <Content Include="Styles\UserControl\ucMenuUser.css">
+      <DependentUpon>ucMenuUser.scss</DependentUpon>
+    </Content>
+    <Content Include="Styles\UserControl\ucMenuUser.min.css">
+      <DependentUpon>ucMenuUser.css</DependentUpon>
+    </Content>
+    <Content Include="Styles\UserControl\ucPrivateMessage.css">
+      <DependentUpon>ucPrivateMessage.scss</DependentUpon>
+    </Content>
+    <Content Include="Styles\UserControl\ucPrivateMessage.min.css">
+      <DependentUpon>ucPrivateMessage.css</DependentUpon>
+    </Content>
+    <Content Include="Styles\UserControl\ucShopCatelogyItem.css">
+      <DependentUpon>ucShopCatelogyItem.scss</DependentUpon>
+    </Content>
+    <Content Include="Styles\UserControl\ucShopCatelogyItem.min.css">
+      <DependentUpon>ucShopCatelogyItem.css</DependentUpon>
+    </Content>
+    <Content Include="Styles\UserControl\ucShopVipItem.css">
+      <DependentUpon>ucShopVipItem.scss</DependentUpon>
+    </Content>
+    <Content Include="Styles\UserControl\ucShopVipItem.min.css">
+      <DependentUpon>ucShopVipItem.css</DependentUpon>
+    </Content>
+    <Content Include="Styles\UserControl\ucShowAction.css">
+      <DependentUpon>ucShowAction.scss</DependentUpon>
+    </Content>
+    <Content Include="Styles\UserControl\ucShowAction.min.css">
+      <DependentUpon>ucShowAction.css</DependentUpon>
+    </Content>
+    <Content Include="Styles\UserControl\ucShowControl.css">
+      <DependentUpon>ucShowControl.scss</DependentUpon>
+    </Content>
+    <Content Include="Styles\UserControl\ucShowControl.min.css">
+      <DependentUpon>ucShowControl.css</DependentUpon>
+    </Content>
+    <Content Include="Styles\UserControl\ucShowGlobalMessage.css">
+      <DependentUpon>ucShowGlobalMessage.scss</DependentUpon>
+    </Content>
+    <Content Include="Styles\UserControl\ucShowGlobalMessage.min.css">
+      <DependentUpon>ucShowGlobalMessage.css</DependentUpon>
+    </Content>
+    <Content Include="Styles\UserControl\ucShowItem.css">
+      <DependentUpon>ucShowItem.scss</DependentUpon>
+    </Content>
+    <Content Include="Styles\UserControl\ucShowItem.min.css">
+      <DependentUpon>ucShowItem.css</DependentUpon>
+    </Content>
+    <Content Include="Styles\Template\ucShowToolbar.css">
+      <DependentUpon>ucShowToolbar.scss</DependentUpon>
+    </Content>
+    <Content Include="Styles\Template\ucShowToolbar.min.css">
+      <DependentUpon>ucShowToolbar.css</DependentUpon>
+    </Content>
+    <Content Include="Styles\Template\ucShowUserInfo.css">
+      <DependentUpon>ucShowUserInfo.scss</DependentUpon>
+    </Content>
+    <Content Include="Styles\Template\ucShowUserInfo.min.css">
+      <DependentUpon>ucShowUserInfo.css</DependentUpon>
+    </Content>
+    <Content Include="Styles\UserControl\ucShowVideo.css">
+      <DependentUpon>ucShowVideo.scss</DependentUpon>
+    </Content>
+    <Content Include="Styles\UserControl\ucShowVideo.min.css">
+      <DependentUpon>ucShowVideo.css</DependentUpon>
+    </Content>
+    <Content Include="Styles\UserControl\ucUserListItem.css">
+      <DependentUpon>ucUserListItem.scss</DependentUpon>
+    </Content>
+    <Content Include="Styles\UserControl\ucUserListItem.min.css">
+      <DependentUpon>ucUserListItem.css</DependentUpon>
+    </Content>
+    <Content Include="Styles\Views\Home.css">
+      <DependentUpon>Home.scss</DependentUpon>
+    </Content>
+    <Content Include="Styles\Views\Home.min.css">
+      <DependentUpon>Home.css</DependentUpon>
+    </Content>
+    <Content Include="Styles\UserControl\ucFollowButton.scss" />
+    <Content Include="Styles\UserControl\ucShowItem.scss" />
+    <Content Include="Styles\Template\ucShowToolbar.scss" />
+    <Content Include="Styles\UserControl\ucUserListItem.scss" />
+    <Content Include="Styles\UserControl\ucShopVipItem.scss" />
+    <Content Include="Styles\UserControl\ucShopCatelogyItem.scss" />
+    <Content Include="Styles\UserControl\ucMenuUser.scss" />
+    <Content Include="Scripts\Controller\User\usercoinlogController.js" />
+    <Content Include="Scripts\Controller\User\userinboxcontroller.js" />
+    <Content Include="Scripts\Controller\User\userinventorycontroller.js" />
+    <Content Include="Scripts\Controller\User\usermodroomcontroller.js" />
+    <Content Include="Scripts\Controller\User\userrewardController.js" />
+    <Content Include="Styles\UserControl\ucShowVideo.scss" />
+    <Content Include="Styles\Template\ShowGift.scss" />
+    <Content Include="Styles\Template\ucShowUserInfo.scss" />
+    <Content Include="Styles\Template\ShowStatus.scss" />
+    <Content Include="Styles\UserControl\ucShowAction.scss" />
+    <Content Include="Styles\UserControl\ucShowGlobalMessage.scss" />
+    <Content Include="Styles\UserControl\ucPrivateMessage.scss" />
+    <Content Include="Styles\UserControl\ucShowControl.scss" />
+    <Content Include="Content\Font\UVNBanhMi.TTF" />
+    <Content Include="Layouts\web.config" />
+    <Content Include="Layouts\_layout.cshtml" />
+    <Content Include="App_Lib\bootstrap-3.3.6\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="App_Lib\bootstrap-3.3.6\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="App_Lib\bootstrap-3.3.6\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="App_Lib\bootstrap-3.3.6\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="App_Lib\font-awesome-4.5.0\fonts\fontawesome-webfont.eot" />
+    <Content Include="App_Lib\font-awesome-4.5.0\fonts\fontawesome-webfont.ttf" />
+    <Content Include="App_Lib\font-awesome-4.5.0\fonts\fontawesome-webfont.woff" />
+    <Content Include="App_Lib\font-awesome-4.5.0\fonts\fontawesome-webfont.woff2" />
+    <Content Include="App_Lib\font-awesome-4.5.0\fonts\FontAwesome.otf" />
+    <Content Include="App_Lib\kendo-ui\css\fonts\DejaVu\DejaVuSans-Bold.ttf" />
+    <Content Include="App_Lib\kendo-ui\css\fonts\DejaVu\DejaVuSans-BoldOblique.ttf" />
+    <Content Include="App_Lib\kendo-ui\css\fonts\DejaVu\DejaVuSans-ExtraLight.ttf" />
+    <Content Include="App_Lib\kendo-ui\css\fonts\DejaVu\DejaVuSans-Oblique.ttf" />
+    <Content Include="App_Lib\kendo-ui\css\fonts\DejaVu\DejaVuSans.ttf" />
+    <Content Include="App_Lib\kendo-ui\css\fonts\DejaVu\DejaVuSansMono-Bold.ttf" />
+    <Content Include="App_Lib\kendo-ui\css\fonts\DejaVu\DejaVuSansMono-BoldOblique.ttf" />
+    <Content Include="App_Lib\kendo-ui\css\fonts\DejaVu\DejaVuSansMono-Oblique.ttf" />
+    <Content Include="App_Lib\kendo-ui\css\fonts\DejaVu\DejaVuSansMono.ttf" />
+    <Content Include="App_Lib\kendo-ui\css\fonts\DejaVu\DejaVuSerif-Bold.ttf" />
+    <Content Include="App_Lib\kendo-ui\css\fonts\DejaVu\DejaVuSerif-BoldItalic.ttf" />
+    <Content Include="App_Lib\kendo-ui\css\fonts\DejaVu\DejaVuSerif-Italic.ttf" />
+    <Content Include="App_Lib\kendo-ui\css\fonts\DejaVu\DejaVuSerif.ttf" />
+    <Content Include="App_Lib\kendo-ui\css\fonts\glyphs\KendoUIGlyphs.eot" />
+    <Content Include="App_Lib\kendo-ui\css\fonts\glyphs\KendoUIGlyphs.ttf" />
+    <Content Include="App_Lib\kendo-ui\css\fonts\glyphs\KendoUIGlyphs.woff" />
+    <Content Include="App_Lib\kendo-ui\css\images\kendoui.ttf" />
+    <Content Include="App_Lib\kendo-ui\css\images\kendoui.woff" />
+    <Content Include="Styles\Modal\ShowPopupEvent.scss" />
+    <Content Include="Styles\Modal\UserMission.scss" />
+    <Content Include="Styles\Modal\DayCheck.scss" />
+    <Content Include="Styles\Modal\Registerstar.scss" />
+    <Content Include="Styles\Modal\RechargeCoin.scss" />
+    <Content Include="Styles\Modal\ShowRank.scss" />
+    <Content Include="Styles\Modal\ShowOpening.scss" />
+    <Content Include="Styles\Modal\ShowSchedule.scss" />
+    <Content Include="Styles\Modal\BannerEvent.scss" />
+    <Content Include="Styles\Template\UserListItem.scss" />
+    <Content Include="Styles\default.scss" />
+    <Content Include="Styles\Template\ShowItem.scss" />
+    <Content Include="Styles\Modal\IframeRechargeCoin.scss" />
+    <Content Include="Styles\Template\ShowListUser.scss" />
+    <Content Include="Styles\Template\ShowSentGift.scss" />
+    <Content Include="Styles\Template\ListGuildRank.scss" />
+    <Content Include="Styles\Modal\DetailGuild.scss" />
+    <Content Include="Styles\Modal\ChangePassword.scss" />
+    <Content Include="Styles\Modal\GuildMaster.scss" />
+    <Content Include="Styles\Modal\ShopGuild.scss" />
+    <Content Include="Layouts\comingSoon.cshtml" />
+    <Content Include="Styles\Modal\GoldMine.scss" />
+    <Content Include="Styles\Modal\RankGuild.scss" />
+    <Content Include="Styles\Modal\InfoTower.scss" />
+    <Content Include="Styles\Modal\TakingMission.scss" />
+    <Content Include="Styles\Modal\IdolMission.scss" />
+    <Content Include="Styles\Modal\IdolDoneMission.scss" />
+    <Content Include="Styles\Modal\ListUserJoin.scss" />
+    <Content Include="Styles\Modal\EditAvatarGuild.scss" />
+    <Content Include="Styles\Modal\EditGuild.scss" />
+    <Content Include="Styles\Modal\Report.scss" />
+    <Content Include="Styles\Template\ShowSeat.scss" />
+    <Content Include="Styles\Popover\SeatMenu.scss" />
+    <Content Include="Styles\Template\LuckyWheel.scss" />
+    <Content Include="Layouts\TestDeep.cshtml" />
+    <Content Include="Layouts\_layout_app.cshtml" />
+    <Content Include="Styles\Template\UnitChanged.scss" />
+    <Content Include="Styles\Template\GuildInfo.scss" />
+    <Content Include="Styles\_app.css" />
+    <Content Include="Styles\_app.min.css">
+      <DependentUpon>_app.css</DependentUpon>
+    </Content>
+    <Content Include="Views\Include\CheckAppMobile.html" />
+    <Content Include="Views\About.min.html">
+      <DependentUpon>About.html</DependentUpon>
+    </Content>
+    <Content Include="Views\About.html" />
+    <Content Include="Views\Home.html" />
+    <Content Include="Views\Home.min.html">
+      <DependentUpon>Home.html</DependentUpon>
+    </Content>
+    <Content Include="Views\Error\404.html" />
+    <Content Include="Views\UserControl\ucFollowButton.html" />
+    <Content Include="Views\UserControl\ucFollowButton.min.html">
+      <DependentUpon>ucFollowButton.html</DependentUpon>
+    </Content>
+    <Content Include="Views\UserControl\ucPrivateMessage.min.html">
+      <DependentUpon>ucPrivateMessage.html</DependentUpon>
+    </Content>
+    <Content Include="Views\UserControl\ucShopCatelogyItem.html" />
+    <Content Include="Views\UserControl\ucShopCatelogyItem.min.html">
+      <DependentUpon>ucShopCatelogyItem.html</DependentUpon>
+    </Content>
+    <Content Include="Views\UserControl\ucShopVipItem.html" />
+    <Content Include="Views\UserControl\ucShopVipItem.min.html">
+      <DependentUpon>ucShopVipItem.html</DependentUpon>
+    </Content>
+    <Content Include="Views\UserControl\ucShowAction.html" />
+    <Content Include="Views\UserControl\ucShowAction.min.html">
+      <DependentUpon>ucShowAction.html</DependentUpon>
+    </Content>
+    <Content Include="Views\UserControl\ucPrivateMessage.html" />
+    <Content Include="Views\UserControl\ucShowControl.min.html">
+      <DependentUpon>ucShowControl.html</DependentUpon>
+    </Content>
+    <Content Include="Views\UserControl\ucShowGlobalMessage.html" />
+    <Content Include="Views\UserControl\ucShowGlobalMessage.min.html">
+      <DependentUpon>ucShowGlobalMessage.html</DependentUpon>
+    </Content>
+    <Content Include="Views\UserControl\ucShowControl.html" />
+    <Content Include="Layouts\Template\ucShowUserInfo.html" />
+    <Content Include="Views\UserControl\ucShowItem.html" />
+    <Content Include="Views\UserControl\ucShowItem.min.html">
+      <DependentUpon>ucShowItem.html</DependentUpon>
+    </Content>
+    <Content Include="Layouts\Template\ShowGift.html" />
+    <Content Include="Layouts\Template\ucShowUserInfo.min.html">
+      <DependentUpon>ucShowUserInfo.html</DependentUpon>
+    </Content>
+    <Content Include="Layouts\Template\ShowStatus.html" />
+    <Content Include="Views\UserControl\ucShowVideo.html" />
+    <Content Include="Layouts\Template\ShowSentGift.html" />
+    <Content Include="Layouts\Template\ucShowToolbar.html" />
+    <Content Include="Layouts\Template\ucShowToolbar.min.html">
+      <DependentUpon>ucShowToolbar.html</DependentUpon>
+    </Content>
+    <Content Include="Views\UserControl\ucShowVideo.min.html">
+      <DependentUpon>ucShowVideo.html</DependentUpon>
+    </Content>
+    <Content Include="Views\UserControl\ucUserListItem.html" />
+    <Content Include="Views\UserControl\ucUserListItem.min.html">
+      <DependentUpon>ucUserListItem.html</DependentUpon>
+    </Content>
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\AppController.cs" />
+    <Compile Include="App_Start\Helper.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+    <None Include="bundleconfig.json" />
+    <Content Include="Styles\_core.scss" />
+    <Content Include="Styles\global.scss" />
+    <None Include="compilerconfig.json" />
+    <None Include="compilerconfig.json.defaults">
+      <DependentUpon>compilerconfig.json</DependentUpon>
+    </None>
+    <Content Include="Styles\Views\Home.scss" />
+    <None Include="Properties\PublishProfiles\beta.teenidol.vn.pubxml" />
+    <Content Include="Styles\_lib.scss" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Lib\jquery-2.2.1\images\" />
+    <Folder Include="bin\" />
+    <Folder Include="Content\Image\TeenIdol_profile\" />
+    <Folder Include="Views\Home\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\Template\showListUser.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>50870</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:50870/</IISUrl>
+          <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
+          <IISAppRootUrl>http://localhost:50870/</IISAppRootUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\BuildWebCompiler.1.11.315\build\BuildWebCompiler.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\BuildWebCompiler.1.11.315\build\BuildWebCompiler.targets'))" />
+  </Target>
+  <Import Project="..\packages\BuildWebCompiler.1.11.315\build\BuildWebCompiler.targets" Condition="Exists('..\packages\BuildWebCompiler.1.11.315\build\BuildWebCompiler.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

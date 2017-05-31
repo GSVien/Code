@@ -1,0 +1,16 @@
+﻿.modal-gold-mine .modal-header .btn-blue {
+  position: absolute;
+  top: 8px;
+  right: 40px;
+  background: #5bc0de; }
+  .modal-gold-mine .modal-header .btn-blue:hover {
+    color: #fff; }
+
+.modal-gold-mine .modal-body {
+  text-align: center; }
+  .modal-gold-mine .modal-body .photo {
+    width: 50%;
+    margin-bottom: 10px; }
+  .modal-gold-mine .modal-body .center {
+    text-align: center; }
+

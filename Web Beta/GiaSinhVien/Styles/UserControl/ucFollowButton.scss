@@ -1,0 +1,32 @@
+﻿@import "../_lib.scss";
+@import "../_core.scss";
+
+.uc-follow-button {
+    background-color: $color-primary;
+    border-color: $color-primary;
+    color: $color-white;
+    padding: 7px 8px;
+    padding-left: 9px;
+    border-radius: 5px;
+
+    &:hover, &:focus {
+        background-color: $color-primary;
+        border-color: $color-primary;
+        color: $color-white;
+    }
+
+    &.followed {
+        background-color: $color-green;
+        border-color: $color-green;
+
+        &:hover, &:focus {
+            background-color: $color-green;
+            border-color: $color-green;
+        }
+    }
+
+    .fa-plus {
+       // margin-right: 5px;
+       padding:2px 2px;
+    }
+}

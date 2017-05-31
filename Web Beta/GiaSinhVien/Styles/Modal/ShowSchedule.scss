@@ -1,0 +1,75 @@
+﻿@import "../_lib.scss";
+@import "../_core.scss";
+
+.modal-show-schedule {
+    .modal-dialog {
+        width: 771px;
+    }
+
+    .modal-title {
+        ul {
+            @include clear;
+
+            li {
+                &.active {
+                    a {
+                        color: $color-white;
+                    }
+                }
+            }
+        }
+    }
+
+    .modal-body {
+        .nav-tabs {
+            @include clear;
+            border-bottom: 1px solid $color-line-gray;
+
+            li {
+                @include clear;
+                margin-bottom: -1px;
+                padding: 5px;
+                border: 1px solid transparent;
+
+                a {
+                    border: none;
+                }
+
+                &.active {
+                    border-color: $color-line-gray;
+                    border-bottom-color: $color-white;
+                }
+            }
+        }
+
+        .nav-tabs + .tab-content {
+            border: 1px solid $color-line-gray;
+            border-top: none;
+
+            .tab-pane {
+                height: 400px;
+                overflow-y: auto;
+            }
+        }
+
+        #modal-show-schedule-current {
+            .item {
+                padding: 5px 10px;
+
+                &:nth-child(2n) {
+                    background-color: $color-background-gray;
+                }
+            }
+        }
+
+        #modal-show-schedule-other {
+            .tab-pane {
+                @include clearfix;
+            }
+
+            .item {
+                float: left;
+            }
+        }
+    }
+}

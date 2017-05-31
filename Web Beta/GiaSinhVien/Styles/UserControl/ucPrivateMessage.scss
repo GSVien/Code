@@ -1,0 +1,208 @@
+﻿@import "../_lib.scss";
+@import "../_core.scss";
+
+.uc-private-message {
+    .list-target {
+        @include clearfix;
+        border-top-left-radius: $border-radius;
+        border-top-right-radius: $border-radius;
+        background-color: $color-white;
+        white-space: nowrap;
+        overflow-x: auto;
+
+        .list-top-target, .list-message-target {
+            display: inline-block;
+        }
+
+        .list-top-target {
+            border-right: 1px solid $color-line-gray;
+        }
+
+        .target-item {
+            position: relative;
+            display: inline-block;
+            width: 100px;
+            padding: 5px;
+            text-align: center;
+            cursor: pointer;
+
+            &:hover, &:focus {
+                background-color: $color-background-gray;
+            }
+
+            &.active {
+                .avatar {
+                    border-color: $color-primary;
+                }
+            }
+
+            .badge {
+                position: absolute;
+                top: 5px;
+                right: 5px;
+                background-color: $color-red;
+                color: $color-white;
+            }
+
+            .avatar {
+                width: 30px;
+                height: 30px;
+                border: 2px solid transparent;
+            }
+
+            .name {
+                display: block;
+                @include text-ellipsis;
+            }
+        }
+    }
+
+    .list-message {
+        @include property(height, calc(100% - 155px), value);
+        padding: 5px;
+        border-bottom-left-radius: $border-radius;
+        border-bottom-right-radius: $border-radius;
+        border-top: 1px solid $color-line-gray;
+        border-bottom: 1px solid $color-line-gray;
+        background-color: $color-white;
+        overflow: auto;
+
+        .load-more {
+            position: relative;
+            margin-bottom: 10px;
+            text-align: center;
+
+            &:before {
+                content: "";
+                position: absolute;
+                width: 100%;
+                height: 1px;
+                left: 0;
+                @include pos-center-v;
+                background: $color-line-gray;
+            }
+
+            a {
+                position: relative;
+                z-index: 1;
+                padding: 5px;
+                background: $color-white;
+            }
+        }
+
+        .message-item {
+            @include clearfix;
+            margin-bottom: 10px;
+
+            .emoticon {
+                width: 20px;
+                height: 20px;
+            }
+
+            .vip, .badge {
+                margin-right: 5px;
+            }
+
+            > div {
+                float: right;
+
+                &.from-target {
+                    float: left;
+
+                    > div {
+                        background-color: $color-primary;
+                        color: $color-white;
+                    }
+                }
+
+                .user {
+                    @include clearfix;
+                    float: left;
+                    margin-right: 5px;
+
+                    .avatar {
+                        float: left;
+                        width: 30px;
+                        height: 30px;
+                        margin-right: 5px;
+                    }
+                }
+
+                > div {
+                    float: left;
+                    position: relative;
+                    min-width: 100px;
+                    padding: 5px;
+                    padding-bottom: 25px;
+                    border: 1px solid $color-line-gray;
+                    border-radius: $border-radius;
+
+                    .date {
+                        position: absolute;
+                        bottom: 0;
+                        right: 5px;
+                        font-size: $font-size-small-1;
+                    }
+                }
+            }
+        }
+    }
+
+    .toolbar {
+        margin-top: 10px;
+        @include clearfix;
+
+        .message-target {
+            float: left;
+            @include property(width, calc(100% - 60px), value);
+        }
+
+        .auto-scroll {
+            float: right;
+        }
+    }
+
+    form {
+        $height: 50px;
+
+        @include clearfix;
+        height: $height;
+        margin-top: 10px;
+
+        .message-panel {
+            float: left;
+            @include clearfix;
+            @include property(width, calc(100% - 60px), value);
+            height: 100%;
+            margin-right: 10px;
+            padding: 5px;
+            background-color: $color-white;
+            border: 1px solid $color-line-gray;
+            border-radius: $border-radius;
+
+            .message-text {
+                float: left;
+                @include property(width, calc(100% - 40px), value);
+                height: 100%;
+                margin-right: 10px;
+                border: none;
+                outline: none;
+                resize: none;
+            }
+
+            .message-emoticon {
+                float: right;
+                @include clear;
+                width: 30px;
+                height: 30px;
+                margin-top: $height / 2 - 20px;
+            }
+        }
+
+        [type=submit] {
+            @include clear;
+            width: 50px;
+            height: $height;
+        }
+    }
+}

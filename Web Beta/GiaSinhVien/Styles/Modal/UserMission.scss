@@ -1,0 +1,207 @@
+﻿@import "../_lib.scss";
+@import "../_core.scss";
+
+.modal-usermission {
+    text-align: center;
+
+    .modal-dialog {
+      //  top: -100px;
+
+        .modal-header {
+            padding: 5px;
+
+            .modal-title {
+                // line-height: 1;
+            }
+        }
+
+        .close {
+            position: absolute;
+            right: 2px;
+            top: 8px;
+        }
+
+        .nav-tabs {
+            margin: 0;
+
+            li {
+                span {
+                    font-size: 18px;
+                }
+
+                &.active {
+                    color: #fff;
+                }
+            }
+        }
+    }
+
+    .list-day-check {
+        @include clearfix;
+
+        .col {
+            width: calc(100% / 5 -10px);
+            border-right: 1px solid rgba(201, 184, 185, 0.23);
+            float: left;
+            margin: 5px;
+
+            &:first-child {
+            }
+
+            &:last-child {
+                border: none;
+            }
+
+            img {
+                width: 100%;
+
+                &.check {
+                    -webkit-filter: grayscale(100%);
+                }
+            }
+
+            .name {
+                display: block;
+                text-align: center;
+                font-weight: bold;
+                margin: 10px 0px;
+                height: 60px;
+            }
+
+            .description {
+                display: block;
+                text-align: center;
+            }
+
+            .get-reward {
+                margin-left: -5px;
+                margin-top: 5px;
+            }
+
+            .btn-red {
+                padding-right: 0;
+                padding-left: 0;
+            }
+        }
+    }
+
+    @media(max-width:425px) {
+        .list-day-check {
+            .col {
+                width: 100%;
+                float: none;
+
+                img {
+                    width: 30%;
+                    float: left;
+                }
+
+                .name {
+                    width: 40%;
+                    margin-top: 20px;
+                    float: left;
+                }
+
+                .description {
+                    vertical-align: middle;
+                    line-height: 90px;
+                }
+            }
+        }
+    }
+
+    .modal-body {
+        padding: 0;
+    }
+
+    .table {
+        margin-bottom: 0px;
+
+        tbody {
+            tr {
+                &:first-child {
+                    td {
+                        border-top: 0px;
+
+                        &:first-child {
+                            width: 100px;
+                        }
+
+                        &:last-child {
+                            width: 100px;
+                        }
+                    }
+                }
+
+                td {
+                    border-right: 1px solid rgba(173, 159, 159, 0.25);
+                    /*vertical-align: middle;*/
+                    .btn-primary {
+                        background: $color-primary;
+                    }
+
+                    .fa {
+                        color: $color-primary;
+                    }
+                }
+            }
+        }
+
+        .level {
+            .name_level {
+                font-weight: bold;
+            }
+
+            .photo {
+                width: 30px;
+
+                &:img {
+                    width: 100%;
+                }
+            }
+        }
+
+        .list_name_gift {
+            float: left;
+            text-align: left;
+            width: 27%;
+
+            p {
+                margin: 0 0 0;
+            }
+
+            @media(max-width:425px) {
+                width: 100%;
+            }
+        }
+
+        .list_photo_gift {
+            float: left;
+            margin-left: 10px;
+            width: 70%;
+            max-height: 85px;
+            overflow-x: auto;
+
+            .photo {
+                height: 40px;
+                float: right;
+                background: #fff;
+                border: 1px solid rgba(255, 0, 0, 0.36);
+                margin-left: 5px;
+                margin-bottom: 5px;
+
+                img {
+                }
+            }
+
+            @media(max-width:425px) {
+                width: 100%;
+                margin-left: 0;
+
+                .photo {
+                    float: left;
+                }
+            }
+        }
+    }
+}

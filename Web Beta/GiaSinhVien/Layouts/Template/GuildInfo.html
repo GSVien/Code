@@ -1,0 +1,24 @@
+﻿
+<div class="guild-info">
+    <img class="logo" src="/Content/Image/Event-2017/Thang3/ev3_logo.png" />
+    <div class="event3_3" ng-if="eventId == 1">
+        <div class="name-guild">
+            <img class="icon-guild" src="{{currphoto}}" />
+            <div class="div-title">Gia Tộc</div>
+            <div class="title-name">{{currName}}</div>
+        </div>
+        <div class="number-guild">
+            <img class="icon-number" src="/Content/Image/Event-2017/Thang3/ev3_icon.png" />
+            {{currNum | number:0}}
+        </div>
+        <img class="icon-bxh" src="/Content/Image/Event-2017/Thang3/ev3_btbxh.png" ng-click="RedirectRank()"/>
+        <div class="content-limit">
+            <div class="main-item" ng-repeat="(i,x) in listReward">
+                <div class="icon-require">
+                    <img class="photoname" src="{{x.Photo}}" /><br />
+                    <img ng-if="currNum >= x.GuildPointLimit1" class="icon-done" src="/Content/Image/Event-2017/Thang3/ev3_btbxh.png" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

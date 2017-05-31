@@ -1,0 +1,371 @@
+﻿<div class="show-status">
+    <div class="mission" style="width: 100%; height: 100%;" ng-if="statusCode == 1">
+        <!--<div id="" class="carousel slide" data-ride="carousel">
+            <ul style="width: calc(100% + 40px); height: 100%;margin-left: -40px;" class="carousel-inner" role="listbox">-->
+        <div class="in0 item" ng-if="TypeMission == 0" >
+            <div class="name">
+                <img src="../../Content/Image/Event-2017/Thang4/eve1_btnhannv.png" ng-click="showGetMission()" />
+            </div>
+            <!--<div class="description">
+                <button class="btn btn-mission" ng-click="showGetMission()">NHẬN NHIỆM VỤ</button>
+            </div>-->
+        </div>
+        <div class="in1 item" ng-if="TypeMission == 1">
+            <div class="content-mission">
+                <div class="name-mission">
+                    <div class="name">
+                        <b>{{NameMission}}</b>
+                    </div>
+                    <div class="value">
+                        <b>Quyến Rũ : {{NumStarPoint}}</b>
+                    </div>
+                    <!--<span style="float: left; position: relative; height: 17px; width: 17px; margin-right: 3px; left: -7px" ng-repeat="(i,x) in [1,2,3,4,5]">
+                        <img style="position: absolute; height: 17px; width: 17px; top: 1px" src="/Content/Image/Event-2016/Eventthang12/den1.png" ng-if="i <= missionIdol.questInfo.Level - 1" />
+                        <img style="position: absolute; height: 17px; width: 17px; top: 1px" src="/Content/Image/Event-2016/Eventthang12/den.png" ng-if="i > missionIdol.questInfo.Level - 1" />
+                    </span>-->
+                </div>
+                <div class="description">
+                    <div class="insistence" ng-repeat="x in ListGiftInfo">
+                        <div class="photo">
+                            <img src="{{x.Photo}}" />
+                        </div>
+                        {{x.Received}}/{{x.Quantity}}
+                    </div>
+                    <img class="img-huy" src="/Content/Image/Event-2017/Thang4/eve1_bthuy.png" ng-click="onDeleteQuest()" ng-if="sessionService.data().user.GroupUser.Id == 2">
+                </div>
+            </div>
+            <div class="info-mission">
+                <img class="avatar-star1" src="../../Content/Image/Event-2017/Thang4/eve1_stavatar2.png"/>
+                <img class="avatar-star2" src="{{UserMission.AvatarPhoto}}" ng-if="UserMission" />
+                <div class="name-avatar"><b>Phu Quân</b></div>
+                <div class="name-user" ng-if="UserMission"><b>{{UserMission.Name}}</b></div>
+            </div>
+        </div>
+        <div class="in2 item" ng-if="TypeMission == 2">
+            <div class="content-mission">
+                <div class="name-mission">
+                    <div class="name">
+                        <b>{{NameMission}}</b>
+                    </div>
+                    <div class="value">
+                        <b>Quyến Rũ : {{NumStarPoint}}</b>
+                    </div>
+                </div>
+                <div class="description">
+                    <div class="insistence" ng-repeat="x in ListGiftInfo">
+                        <div class="photo">
+                            <img src="{{x.Photo}}" />
+                        </div>
+                        {{x.Received}}/{{x.Quantity}}
+                    </div>
+                    <img class="img-huy" src="/Content/Image/Event-2017/Thang4/eve1_bthuy2.png" ng-click="onDeleteQuest()" ng-if="sessionService.data().user.GroupUser.Id == 2">
+                </div>
+            </div>
+            <div class="info-mission">
+                <div class="info-sms" ng-if="!UserMission">{{TextSmsMission}}</div>
+                <img class="avatar-star1" src="../../Content/Image/Event-2017/Thang4/eve1_stavatar2.png" />
+                <img class="avatar-star2" src="{{UserMission.AvatarPhoto}}" ng-if="UserMission" />
+                <div class="name-avatar" ><b>Phu Quân</b></div>
+                <div class="name-user" ng-if="UserMission"><b>{{UserMission.Name}}</b></div>
+            </div>
+        </div>
+        <!--</ul>-->
+        <!--<a class="right carousel-control" href="#" role="button" data-slide="next">
+            <span class="icon-next" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>-->
+        <!--</div>-->
+    </div>
+    <!--<div class="mission-thang-8" style="width: 100%" ng-if="eventMissionIdol">
+        <div class="in">
+            <div class="name-mission">
+                <div style="float: left">
+                    HẸN HÒ Ô THƯỚC
+                </div>
+                <button class="btn btn-top" uib-tooltip="Đổi thưởng">
+                    <a href="/phan-thuong-nhiem-vu-hen-ho-o-thuoc" target="_blank"><i style="font-size: 15px;" class="fa fa-gift" aria-hidden="true"></i></a>
+                </button>
+                <a href="/hen-ho-o-thuoc-ruoc-ngay-qua-khung" target="_blank" uib-tooltip="Bảng xêp hạng">
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                </a>
+            </div>
+            <div class="description">
+                <div class="insistence">
+                    <div class="photo" uib-tooltip="{{missionIdol.Gift.Name}}">
+                        <img src="{{missionIdol.Gift.PhotoLink}}" />
+                    </div>
+                    {{missionIdol.QuanlytiGift}}
+                </div>
+                <div class="level" data-toggle="tooltip" data-placement="top" data-original-title="{{'Cần ' + (missionIdol.NextLimit.RequireGiftAmount - missionIdol.QuanlytiGift | number:0) + ' quà tặng nữa'}}">
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar"
+                             aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: {{((missionIdol.QuanlytiGift - missionIdol.CurrentLimit.RequireGiftAmount) / (missionIdol.NextLimit.RequireGiftAmount - missionIdol.CurrentLimit.RequireGiftAmount)) * 100 }}%; color: black" data-toggle="tooltip" data-placement="top">
+                        </div>
+                    </div>
+                    <img uib-tooltip="Nhận được {{missionIdol.NextLimit.RewardDolar}} chim thước" src="Content/Image/Event-2016/EventThang8/count-show.png"/ >
+                    <div class="RequireGiftAmount {{class}}">+{{missionIdol.NextLimit.RewardDolar}}</div>
+                </div>
+                <button class="btn btn-ring">
+                    <div>HẠNG HÔM NAY | <b>{{missionIdol.Rank != 0 ? missionIdol.Rank : '-'}}</b></div>
+                </button>
+            </div>
+        </div>
+    </div>-->
+    <!--</div>-->
+    <div class="status" ng-if="statusCode == 2">
+        <div class="event-thang1">
+            <div class="info">
+                <img src="../../Content/Image/Event-2017/Thang1/status_noti.png" />
+                <div class="box-text">
+                    <div class="text-noti" ng-repeat="x in message">{{x.sms}}</div>
+                </div>
+
+            </div>
+            <div class="rank">
+                <img style="right: 15%; position: ABSOLUTE;" src="https://file.teenidol.vn/File/File/congaVang.png" />
+                <div class="number-rank">{{IdolValue}}</div>
+            </div>
+        </div>
+    </div>
+    <div class="status3" ng-if="statusCode == 3">
+        <div class="event-thang1-1">
+            <div class="info">
+                <div class="box-text">
+                    <div class="text-noti" ng-repeat="x in message">{{x.sms}}</div>
+                </div>
+
+            </div>
+        </div>
+        <div class="event-thang1-2">
+            <div class="unitinfo">
+                <div class="value-unit">
+                    <b>{{ChocoValue}}</b>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="status4" ng-if="statusCode == 4">
+        <div class="event-thang3-1">
+            <table>
+                <tbody>
+                    <tr>
+                        <td>
+                            <img src="../../Content/Image/Event-2017/Thang3/hoado.png" />
+                            <span class="sp1"><b>{{HoaDo}}</b></span>
+                        </td>
+                        <td>
+                            <img src="../../Content/Image/Event-2017/Thang3/hoaxanh.png" />
+                            <span class="sp2"><b>{{HoaXanh}}</b></span>
+                        </td>
+                        <td>
+                            <img src="../../Content/Image/Event-2017/Thang3/hoatim.png" />
+                            <span class="sp3"><b>{{HoaHong}}</b></span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+<div class="status5" ng-if="statusCode == 5">
+    <div class="event-thang3-1">
+        <img src="../../Content/Image/Event-2017/Thang3/ev4_logo.png"/>
+        <div class="box-text">
+            <div class="text-noti" ng-repeat="x in message">{{x.sms}}</div>
+        </div>
+    </div>
+    <div class="event-thang3-2">
+        <img src="../../Content/Image/Event-2017/Thang3/ev4_logoshow.png"/>
+        <div class="unitinfo">
+            <div class="value-unit">
+                <b>{{ThinhUnitType}}</b>
+            </div>
+            <img class="img-bt" src="../../Content/Image/Event-2017/Thang3/thathinh.png" ng-click="openListUserGiveCoin()"/>
+        </div>
+    </div>
+</div>
+    <div class="mission30_4" style="width: 100%; height: 100%;" ng-if="check">
+        <div class="in0 item" ng-if="TypeMission == 0">
+            <img class="item1" src="../../Content/Image/Event-2017/Thang4/event2_sttitem3.png" ng-click="IdolGetMission(3)" />
+            <img class="item2" src="../../Content/Image/Event-2017/Thang4/event2_sttitem1.png" ng-click="IdolGetMission(1)"/>
+            <img class="item3" src="../../Content/Image/Event-2017/Thang4/event2_sttitem2.png" ng-click="IdolGetMission(2)"/>
+
+        </div>
+        <div class="in1 item" ng-if="TypeMission == 1">
+            <!--<img class="icon-mission" src="{{Mission.Photo}}" href="#" data-placement="top"/>-->
+            <div class="content-mission"  >
+                <div class="name-mission">{{Mission.Name}}</div>
+                <div style="margin-top: 5px;" >
+                    <div class="percent-level-process" href="#" data-placement="top" tooltip-placement="bottom" uib-tooltip="{{Percent}}%">
+                        <div class="had1" style="width: {{Percent}}%"  ng-if="Percent <= 30"></div>
+                        <div class="had" style="width: {{Percent}}%"ng-if="Percent > 30"></div>
+                        <img class="icon-precent" style="margin-left:{{Percent}}%" src="{{Mission.Photo}}" />
+                        <div class="lost"  style="width: {{Percent}}%"></div>
+                    </div>
+                </div>
+                <div class="point-mission">
+                    <div class="point-list">
+
+                    </div>
+                </div>
+                <!--<img class="icon-gift"  src="../../Content/Image/Event-2017/Thang4/event2_stticonqua.png" />-->
+            </div>
+            <div class="control-mission">
+                <img class="bxh" src="../../Content/Image/Event-2017/Thang4/event2_sttbtbxh.png" ng-click="RedirectRank()" />
+                <img class="delete-mission" src="../../Content/Image/Event-2017/Thang4/event2_sttbthuy.png" ng-click="IdolDeleteMission()"/>
+            </div>
+        </div>
+    </div>
+
+
+<div class="status" ng-if="!check">
+        <div class="in">
+            <div class="name">
+                {{showInfo.name}}
+            </div>
+            <div class="description" data-ellipsis data-ng-bind="showInfo.description"></div>
+            <!--<object ng-if="showId==8888" class="PromotionValueDescription" data="/Content/Image/Event-2016/EventThang5/bang.swf" wmode="transparent"></object>-->
+        </div>
+    </div>
+
+    <div class="modal fade in" id="modal-event-thang-3" style="z-index: 1">
+        <div class="modal-dialog modal-md">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" ng-click="closeListUserGiveCoin()">
+                        <span>&times;</span>
+                    </button>
+                    <h4 class="modal-title">User thân thiết</h4>
+                </div>
+                <div class="modal-body">
+                    <ul class="nav nav-tabs">
+                        <li class="active">
+                            <a data-target="#modal-show-rank-current" data-toggle="tab">Show hiện tại</a>
+                        </li>
+                    </ul>
+                    <img class="img-thinhstar" src="../../Content/Image/Event-2017/Thang3/ev4_logoshow.png" />
+                    <div class="div-thinhstar">{{currentThinh}}</div>
+                    <div class="tab-content">
+                        <div class="tab-pane active " id="modal-show-rank-current">
+                            <div class="alert alert-info" ng-if="currentStatus == 'loading'">
+                                <i class="fa fa-spin fa-circle-o-notch"></i> Đang tải...
+                            </div>
+
+                            <div class="alert alert-danger" ng-if="currentStatus == 'error'">
+                                {{currentError}}
+                            </div>
+
+                            <div class="alert alert-success" ng-if="currentStatus == 'loaded' && (listCurrent == null || listCurrent.length == 0)">
+                                Hiện chưa có thông tin để xếp hạng
+                            </div>
+
+                            <div ng-if="currentStatus == 'loaded' && listCurrent.length > 0">
+                                <div class="list-item" ng-repeat="x in listCurrent">
+                                    <div class="rank-number">{{$index + 1}}</div>
+                                    <uc-user-list-item link="user/{{x.SenderUser.Id}}"
+                                                       id="{{x.SenderUser.Id}}"
+                                                       avatar="{{x.SenderUser.AvatarPhoto}}"
+                                                       name="{{x.SenderUser.Name}}"
+                                                       level-name="{{x.SenderUserLevel.Name}}"
+                                                       level-photo="{{x.SenderUserLevel.Photo}}"></uc-user-list-item>
+                                    <div class="value">
+                                        <i class="coin-icon"></i> {{x.TotalPrice | number}}
+                                    </div>
+                                    <img class="us-bt" src="../../Content/Image/Event-2017/Thang3/thathinh.png" ng-click="onStarGiveGranary(x.SenderUser.Id)" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade in" id="modal-info-thang-4-1" style="z-index: 1;">
+        <div class="modal-dialog modal-md">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">{{NameTypeMission}}</h4>
+                </div>
+                <div class="modal-body">
+                    <img class="logo" src="/Content/Image/Event-2017/Thang4/eve1_logo.png" />
+                    <div class="content">
+                        <div class="fisrt-mission">
+                            <div class="first-item" ng-repeat="x in ListFirstMission">
+                                <b class="b-text">{{x.IdolQuestMission.Name}}</b>
+                                <img class="img-item" src="../../Content/Image/Event-2017/Thang4/eve1_popupitem.png" />
+                                <div class="first-data">
+                                    <div class="data-item" ng-repeat="y in x.ListGift">
+                                        <img class="photo" src="{{y.Photo}}" />
+                                        <div class="data">
+                                            <b>{{y.MaxQuantity}}</b>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <img class="img-nhan" src="../../Content/Image/Event-2017/Thang4/eve1_btnhan.png" ng-click="IdolAddNewQuest(x.IdolQuestMission.Id)" />
+                            </div>
+                        </div>
+                        <div class="second-mission">
+                            <div class="second-item" ng-repeat="x in ListSecondMission">
+                                <b class="b-text">{{x.IdolQuestMission.Name}}</b>
+                                <img class="img-item" src="../../Content/Image/Event-2017/Thang4/eve1_popupitem.png" />
+                                <div class="second-data">
+                                    <div class="data-item" ng-repeat="y in x.ListGift">
+                                        <img class="photo" src="{{y.Photo}}" />
+                                        <div class="data">
+                                            <b>{{y.MaxQuantity}}</b>
+                                        </div>
+                                    </div>
+                                </div>
+                                <img class="img-nhan" src="../../Content/Image/Event-2017/Thang4/eve1_btnhan.png"  ng-click="IdolAddNewQuest(x.IdolQuestMission.Id)" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade in" id="modal-info-thang-4-2" style="z-index: 1;">
+        <div class="modal-dialog modal-md">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <img class="img-br" src="../../Content/Image/Event-2017/Thang4/eve1_po2br.png" />
+                    <div class="text-content">{{PopupSmsMissionOne}}</div>
+                    <div class="div-control">
+                        <img class="img-dongy" src="../../Content/Image/Event-2017/Thang4/eve1_btdongy.png" ng-click="onAcceptQuest()" />
+                        <img class="img-kodongy" src="../../Content/Image/Event-2017/Thang4/eve1_btkothem.png" ng-click="onRefuseQuest()" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<div class="modal fade in" id="modal-info-thang-4-3" style="z-index: 1;">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-body">
+                <i class="fa fa-remove" ng-click="onClosePopupKetHon()"></i>
+                <div class="img-content">
+                    <img class="avatar-user" src="../../Content/Image/Event-2017/Thang4/eve1_stavatar2.png"/>
+                    <img class="img-user" src=""/>
+                    <img class="avatar-idol" src="../../Content/Image/Event-2017/Thang4/eve1_stavatar2.png"/>
+                    <img class="img-idol" src=""/>
+                </div>
+                <div class="text-content">
+                    <div class="user-name"><b>{{UserMission.Name}}</b>
+                    </div>
+                    <div class="vs-text">&</div>
+                    <div class="idol-name"><b>{{PopupIdolName}}</b>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="display: none" class="popover-data">
+    <div  class='item-popover'>HP: {{CurrentHp}}</div>
+    <div class='item-popover'>TỐC ĐỘ : {{CurrentMiss}}</div>
+</div>
+    
+</div>

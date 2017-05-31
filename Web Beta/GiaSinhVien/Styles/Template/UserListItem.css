@@ -1,0 +1,94 @@
+﻿/*#region [Variable]*/
+/*#endregion*/
+.rank-item:after {
+  display: table;
+  content: " ";
+  clear: both; }
+
+.user-list-item {
+  display: inline-block;
+  padding: 10px; }
+  .user-list-item:after {
+    display: table;
+    content: " ";
+    clear: both; }
+  .user-list-item .avatar {
+    float: left;
+    width: 42px;
+    height: 42px;
+    margin-right: 10px;
+    border-radius: 50%;
+    background: url(/Content/Image/Background-Item/Meo-gif.gif) center;
+    background-size: auto 42px;
+    object-fit: cover;
+    -moz-transition: all .3s;
+    -webkit-transition: all .3s;
+    transition: all .3s; }
+  .user-list-item .info {
+    float: left;
+    width: -webkit-calc(100% - 70px);
+    width: -moz-calc(100% - 70px);
+    width: -ms-calc(100% - 70px);
+    width: -o-calc(100% - 70px);
+    width: calc(100% - 70px); }
+    .user-list-item .info:after {
+      display: table;
+      content: " ";
+      clear: both; }
+    .user-list-item .info .vip, .user-list-item .info .badge {
+      display: inline-block;
+      vertical-align: middle; }
+    .user-list-item .info .name {
+      display: inline-block;
+      width: 100%;
+      vertical-align: middle;
+      margin-top: 5px;
+      white-space: nowrap;
+      overflow: hidden;
+      -webkit-text-overflow: ellipsis;
+      -moz-text-overflow: ellipsis;
+      -ms-text-overflow: ellipsis;
+      -o-text-overflow: ellipsis;
+      text-overflow: ellipsis;
+      color: #252525; }
+    .user-list-item .info .vip + .name {
+      width: -webkit-calc(100% - 30px);
+      width: -moz-calc(100% - 30px);
+      width: -ms-calc(100% - 30px);
+      width: -o-calc(100% - 30px);
+      width: calc(100% - 30px); }
+    .user-list-item .info .name.nguulan {
+      width: -webkit-calc(100% - 105px);
+      width: -moz-calc(100% - 105px);
+      width: -ms-calc(100% - 105px);
+      width: -o-calc(100% - 105px);
+      width: calc(100% - 105px); }
+    .user-list-item .info .vip + .badge + .name {
+      width: -webkit-calc(100% - 60px);
+      width: -moz-calc(100% - 60px);
+      width: -ms-calc(100% - 60px);
+      width: -o-calc(100% - 60px);
+      width: calc(100% - 60px); }
+    .user-list-item .info .level {
+      float: left;
+      height: 20px;
+      margin-right: 10px; }
+    .user-list-item .info .point {
+      float: left;
+      margin-top: 3px; }
+      .user-list-item .info .point.coin {
+        color: #eb0000; }
+      .user-list-item .info .point.free-coin {
+        color: #f87423; }
+    .user-list-item .info .name-guild {
+      margin-top: 3px;
+      white-space: nowrap;
+      overflow: hidden;
+      -webkit-text-overflow: ellipsis;
+      -moz-text-overflow: ellipsis;
+      -ms-text-overflow: ellipsis;
+      -o-text-overflow: ellipsis;
+      text-overflow: ellipsis; }
+    .user-list-item .info .icon-guild {
+      margin-top: 3px; }
+

@@ -1,0 +1,165 @@
+﻿@import "../_lib.scss";
+@import "../_core.scss";
+
+.uc-show-action {
+    .group {
+        &:not(:first-child) {
+            margin-top: 10px;
+        }
+
+        .title {
+            margin-bottom: 5px;
+            font-size: $font-size-large-2;
+        }
+
+        .body {
+            @include property(height, calc(100% - 27px), value);
+            background: $color-white;
+            border-radius: $border-radius;
+        }
+
+        .header, .list > div {
+            @include clearfix;
+
+            > div {
+                float: left;
+
+                &:not(:last-child) {
+                    margin-right: 10px;
+                }
+            }
+        }
+
+        .header {
+            padding: 5px 10px;
+            border-bottom: 1px solid $color-line-gray;
+
+            > div {
+                font-weight: bold;
+            }
+        }
+
+        .list {
+            @include property(height, calc(100% - 31px), value);
+            overflow: auto;
+
+            > div {
+                padding: 5px 10px;
+
+                &:last-child {
+                    border-bottom-left-radius: $border-radius;
+                    border-bottom-right-radius: $border-radius;
+                }
+
+                &:hover, &:focus {
+                    background-color: $color-background-gray;
+                }
+            }
+        }
+    }
+
+    .star-action, .user-action {
+        @include property(height, calc((100% - 54px) / 2));
+    }
+
+    .star-action {
+        .header, .star-action-item {
+            > .name {
+                @include property(width, calc(100% - 160px), value);
+            }
+
+            > .coin {
+                width: 50px;
+            }
+
+            > .vote {
+                width: 50px;
+            }
+
+            > .action {
+                width: 30px;
+            }
+        }
+
+        .star-action-item {
+            > div {
+                line-height: 30px;
+            }
+
+            .name {
+                @include text-ellipsis;
+            }
+
+            > .action {
+                > button {
+                    padding: 0;
+                    width: 100%;
+                }
+            }
+        }
+    }
+
+    .user-action {
+        .header, .user-action-item {
+            > .name {
+                @include property(width, calc(100% - 260px), value);
+            }
+
+            > .coin {
+                width: 50px;
+            }
+
+            > .user {
+                width: 150px;
+            }
+
+            > .action {
+                width: 30px;
+            }
+        }
+
+        .user-action-item {
+            > div {
+                line-height: 30px;
+            }
+
+            .name {
+                @include text-ellipsis;
+            }
+
+            > .user {
+                @include text-ellipsis;
+            }
+
+            > .action {
+                > button {
+                    padding: 0;
+                    width: 100%;
+                }
+            }
+        }
+    }
+
+    form {
+        @include clearfix;
+        margin-top: 10px;
+
+        .name {
+            float: left;
+            @include property(width, calc(100% - 170px), value);
+            margin-right: 10px;
+        }
+
+        .coin {
+            float: left;
+            width: 100px;
+            margin-right: 10px;
+        }
+
+        [type=submit] {
+            width: 50px;
+            height: 34px;
+            float: left;
+        }
+    }
+}

@@ -1,0 +1,22 @@
+﻿/*#region [Variable]*/
+/*#endregion*/
+.uc-follow-button {
+  background-color: #f15d69;
+  border-color: #f15d69;
+  color: #fff;
+  padding: 7px 8px;
+  padding-left: 9px;
+  border-radius: 5px; }
+  .uc-follow-button:hover, .uc-follow-button:focus {
+    background-color: #f15d69;
+    border-color: #f15d69;
+    color: #fff; }
+  .uc-follow-button.followed {
+    background-color: #029578;
+    border-color: #029578; }
+    .uc-follow-button.followed:hover, .uc-follow-button.followed:focus {
+      background-color: #029578;
+      border-color: #029578; }
+  .uc-follow-button .fa-plus {
+    padding: 2px 2px; }
+

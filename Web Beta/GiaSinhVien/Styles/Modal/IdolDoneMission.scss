@@ -1,0 +1,71 @@
+﻿.modal-idol-done-mission {
+    .modal-content {
+        .modal-body {
+            padding: 0;
+            text-align: center;
+            color: black;
+
+            .background {
+                width: 100%;
+            }
+
+            .name-idol {
+                font-weight: 600;
+                font-size: 16px;
+            }
+
+            .name-user {
+                font-weight: 600;
+                font-size: 16px;
+            }
+
+            .countmission {
+                font-weight: 500;
+                font-size: 15px;
+                //height: 30px;
+                margin-bottom: 0px;
+
+                .insistence {
+                    //height: 100%;
+                    //width: 80px;
+                    display: inline-block;
+                    font-weight: 500;
+                    line-height: 20px;
+                    margin-right: 10px;
+
+                    &:first-child {
+                    }
+
+                    .photo {
+                        width: 25px;
+                        height: 100%;
+                        float: left;
+                        border-radius: 4px;
+                        margin-right: 3px;
+                        background: #fff;
+                        padding: 1px;
+
+                        img {
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                        }
+                    }
+                }
+            }
+
+            .button-taking {
+                padding: 15px;
+                background: rgba(235, 224, 224, 0.6);
+
+                .btn {
+                    width: 47%;
+
+                    &.huy {
+                      //  float: right;
+                    }
+                }
+            }
+        }
+    }
+}

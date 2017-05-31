@@ -1,0 +1,6 @@
+﻿
+<button class="uc-follow-button btn" ng-class="{followed: status == 1}" ng-click="Follow($event)">
+    <i class="fa fa-check" ng-if="status == 1" ng-mouseenter="showIt()" ng-mouseleave="hideIt()"></i>
+    <i class="fa fa-plus" ng-if="status != 1"></i>
+    {{status == 1 ? '' : ''}}
+</button>

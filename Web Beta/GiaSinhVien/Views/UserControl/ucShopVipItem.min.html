@@ -1,0 +1,7 @@
+<div class="vip-item pull-left"><img kendo-tooltip k-content=Description class=photo ng-src={{avatar}}><div kendo-tooltip k-content=Description class=k-group><div class="name pull-left">{{name}}</div><div class="info pull-right" tabindex=0 role=button data-toggle=popover data-trigger=focus data-placement=top data-html data-content="
+                  <div>{{name}}</div>
+                  <div>
+                      <span>Danh sách tính năng:</span><br />
+                      <p >- {{Description}}</p>
+                  </div>
+              "><i class="fa fa-info-circle"></i></div><div class=clearfix></div></div><select class="price form-control" name=listPricevip-{{id}}><option ng-repeat="x in listPrice" value={{x.Id}}>{{x.Price}} {{x.Currency}} / {{x.NumberOfDayExprire}} Ngày</option></select><button type=button class="buy btn btn-primary center-block" data-id={{id}} ng-click=BuyItems($event)>Mua</button></div>

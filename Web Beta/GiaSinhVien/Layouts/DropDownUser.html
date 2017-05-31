@@ -1,0 +1,123 @@
+﻿<div id="dropdown-user-info" class="jq-dropdown jq-dropdown-tip">
+    <div class="jq-dropdown-panel">
+        <div class="alert alert-info" ng-if="dropdownStatus == 'loading'">
+            <i class="fa fa-spin fa-circle-o-notch"></i> Đang tải...
+        </div>
+
+        <div class="alert alert-error" ng-if="dropdownStatus == 'error'">
+            {{dropdownMessage}}
+        </div>
+
+        <div ng-if="dropdownStatus == 'loaded' && dropdownUserId.vipId != 100">
+            <uc-user-list-item display-point="" model="dropdownUserData" link="{{helper.linkAction('/user/' + dropdownUserData.User.Id)}}"></uc-user-list-item>
+            <div class="show-guild-info" ng-if="guildInfo.guildBusy">
+                <a href="guild/{{guildInfo.Id}}" target="_blank">
+                    <div class="title"></div>
+                    <img class="icon-guild" src="{{guildInfo.iconGuild}}">
+                    <div class="name" style="">{{guildInfo.nameGuild}}</div>
+                </a>
+            </div>
+            <ul style="max-height: 195px; overflow: auto;">
+                <li ng-if="sessionService.userId() === dropdownUserId.userId">
+                    <a href="#" ud-role="recharge-coin">Hiện có: <i class="coin-icon"></i> {{helper.formatNumber(dropdownUserData.User.Coin)}}</a>
+                </li>
+                <li ng-if="sessionService.userId() === dropdownUserId.userId">
+                    <span>Hiện có: <i class="free-coin-icon"></i> {{helper.formatNumber(dropdownUserData.User.TotalFreeCoin)}}</span>
+                </li>
+                <li ng-click="onUserRechargeCoin()" ng-if="sessionService.userId() === dropdownUserId.userId">
+                    <a href="#">Nạp Tiền</a>
+                </li>
+                <li ng-if="sessionService.userId() === dropdownUserId.userId">
+                    <a href="#" ud-role="sign-out">Đăng xuất</a>
+                </li>
+                <li ng-if="sessionService.userId() !== dropdownUserId.userId && dropdownUserId.scheduleId">
+                    <a href="#" ng-click="onDropdownUserSendQuickGlobalMessage($event)">Gửi tin nhanh</a>
+                </li>
+                <li ng-if="sessionService.userId() !== dropdownUserId.userId && dropdownUserId.scheduleId">
+                    <a href="#" ng-click="onDropdownUserSendPrivateMessage($event)">Chat riêng</a>
+                </li>
+                <li ng-if="sessionService.userId() !== dropdownUserId.userId && dropdownUserId.scheduleId && dropdownUserData.isCanChat">
+                    <a href="#" ng-click="onDropdownUserBlockGlobalMessage($event)">Chặn trò chuyện</a>
+                </li>
+                <li ng-if="sessionService.userId() !== dropdownUserId.userId && dropdownUserId.scheduleId && !dropdownUserData.isCanChat">
+                    <a href="#" ng-click="onDropdownUserAllowGlobalMessage($event)">Cho phép trò chuyện</a>
+                </li>
+                <li ng-if="sessionService.userId() !== dropdownUserId.userId && dropdownUserId.scheduleId">
+                    <a href="#" ng-click="onDropdownUserKick($event)">Kick khỏi phòng {{userSession().User.GroupUser.Id}}</a>
+                </li>
+                <li ng-if="sessionService.userId() !== dropdownUserId.userId && dropdownUserId.scheduleId && sessionService.data().user.GroupUser.Id == 4  && !dropdownUserData.isMod || sessionService.userId() !== dropdownUserId.userId && dropdownUserId.scheduleId && sessionService.data().user.GroupUser.Id == 6  && !dropdownUserData.isMod ||sessionService.userId() !== dropdownUserId.userId && dropdownUserId.scheduleId && sessionService.data().user.GroupUser.Id == 7  && !dropdownUserData.isMod ||sessionService.userId() !== dropdownUserId.userId && dropdownUserId.scheduleId && sessionService.data().user.GroupUser.Id == 2 && !dropdownUserData.isMod">
+                    <a href="#" ng-click="onDropdownUserSetMod($event)">Cấp quyền quản lý</a>
+                </li>
+                <li ng-if="sessionService.userId() !== dropdownUserId.userId && dropdownUserId.scheduleId && sessionService.data().user.GroupUser.Id == 4  && dropdownUserData.isMod || sessionService.userId() !== dropdownUserId.userId && dropdownUserId.scheduleId && sessionService.data().user.GroupUser.Id == 6  && dropdownUserData.isMod ||sessionService.userId() !== dropdownUserId.userId && dropdownUserId.scheduleId && sessionService.data().user.GroupUser.Id == 7  && dropdownUserData.isMod ||sessionService.userId() !== dropdownUserId.userId && dropdownUserId.scheduleId && sessionService.data().user.GroupUser.Id == 2 && dropdownUserData.isMod">
+                    <a href="#" ng-click="onDropdownUserUnsetMod($event)">Hủy quyền quản lý</a>
+                </li>
+                <li ng-if="sessionService.userId() !== dropdownUserId.userId && dropdownUserId.scheduleId && sessionService.data().user.GroupUser.Id == 4 || sessionService.userId() !== dropdownUserId.userId && dropdownUserId.scheduleId && sessionService.data().user.GroupUser.Id == 6 ||sessionService.userId() !== dropdownUserId.userId && dropdownUserId.scheduleId && sessionService.data().user.GroupUser.Id == 7 ||sessionService.userId() !== dropdownUserId.userId && dropdownUserId.scheduleId && sessionService.data().user.GroupUser.Id == 2">
+                    <a href="#" ng-click="onDropdownAdminKick($event)">Kick chỉ dành cho CC && Admin</a>
+                </li>
+                <li ng-if="sessionService.userId() !== dropdownUserId.userId && dropdownUserId.scheduleId && sessionService.data().user.GroupUser.Id == 4 || sessionService.userId() !== dropdownUserId.userId && dropdownUserId.scheduleId && sessionService.data().user.GroupUser.Id == 6 ||sessionService.userId() !== dropdownUserId.userId && dropdownUserId.scheduleId && sessionService.data().user.GroupUser.Id == 7">
+                    <a href="#" ng-click="onDropdownLockUser($event)">Lock User</a>
+                </li>
+                <li ng-if="sessionService.userId() !== dropdownUserId.userId && dropdownUserId.scheduleId && sessionService.data().user.GroupUser.Id == 4 || sessionService.userId() !== dropdownUserId.userId && dropdownUserId.scheduleId && sessionService.data().user.GroupUser.Id == 6 ||sessionService.userId() !== dropdownUserId.userId && dropdownUserId.scheduleId && sessionService.data().user.GroupUser.Id == 7 ||sessionService.userId() !== dropdownUserId.userId && dropdownUserId.scheduleId && sessionService.data().user.GroupUser.Id == 2">
+                    <a href="#" ng-click="onDropdownAdminJoin($event)">Cho phép vào phòng</a>
+                </li>
+            </ul>
+            <!-- <div class="show-guild-info" ng-if="guildInfo.guildBusy">
+                <a href="#" ud-role="open-guild" data-id="{{guildInfo.Id}}">
+                    <img class="avatar" src="{{guildInfo.photoGuild}}">
+                    <div class="info">
+                        <div class="name" style="">{{guildInfo.nameGuild}}</div>
+                        <img class="level" src="{{guildInfo.levelPhoto}}">
+                    </div>
+                </a>
+            </div>
+            <div class="show-guild-info bottom" ng-if="guildInfo.guildBusy">
+                <a>
+                    <img class="avatar-guild" src="/Content/Image/Guild/master.jpg">
+                    <div class="info">
+                        <div class="master" style="">Trưởng tộc</div>
+                        <div class="name-master" style="">{{guildInfo.nameMaster}}</div>
+                    </div>
+                </a>
+                <a style="float: right">
+                    <img class="avatar-guild" src="/Content/Image/Guild/countuser.jpg">
+                    <div class="info">
+                        <div class="master">Thành viên</div>
+                        <div class="name-master" style="">{{guildInfo.totalUserGuild}}/{{guildInfo.totalUserMaxGuild}}</div>
+                    </div>
+                </a>
+            </div>-->
+        </div>
+
+        <div ng-if="dropdownStatus == 'loaded' && dropdownUserId.vipId == 100">
+            <ul>
+                <li ng-if="dropdownUserId.isCanChatFacebook">
+                    <a href="#" ng-click="onDropdownUserBlockFacebookChat($event)">Chặn trò chuyện</a>
+                </li>
+                <li ng-if="!dropdownUserId.isCanChatFacebook">
+                    <a href="#" ng-click="onDropdownUserAllowFacebookChat($event)">Cho phép trò chuyện</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="event_t4">
+            <img class="img-br" src="../Content/Image/Event-2017/Thang4/user_infobr.png" />
+            <img class="img-avatar" src="../Content/Image/Event-2017/Thang4/user_infoavatar.png"/>
+            <img class="user-avatar" src="https://yt3.ggpht.com/-BA67g__x6Pg/AAAAAAAAAAI/AAAAAAAAAAA/HysfaVKQYwM/s88-c-k-no-mo-rj-c0xffffff/photo.jpg"/>
+            <div class="div-content">
+                <div class="item-data" ng-repeat="(i,x) in ListIdolOfUser">
+                    <div class="titel-content">Bà {{i}}</div>
+                    <div class="name-content">{{x.Name}}</div>
+                    <div class="date-content">gsgsgsg</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="dropdown-message-emoticon" class="jq-dropdown jq-dropdown-tip">
+    <div class="jq-dropdown-panel">
+        <div class="emoticon-item" ng-repeat="x in emoticon" uib-tooltip="{{'{o-' + x + '}'}}" ng-click="onMessageEmoticon($event)" data-emoticon-code="{{'{o-' + x + '}'}}">
+            <img ng-src="{{'/Content/Image/Emoticon/o/' + x + '.gif'}}" />
+        </div>
+    </div>
+</div>

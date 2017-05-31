@@ -1,0 +1,10 @@
+﻿[
+  {
+    "outputFile": "Styles/global.css",
+    "inputFile": "Styles/global.scss"
+  },
+  {
+    "outputFile": "Styles/Views/Home.css",
+    "inputFile": "Styles/Views/Home.scss"
+  }
+]

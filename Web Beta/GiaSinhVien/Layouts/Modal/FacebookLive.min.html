@@ -1,0 +1,22 @@
+<div class="modal-header">
+    <h3 class="modal-title">Facebook Live</h3>
+</div>
+
+<div class="modal-body">
+    <div class="form-group">
+        <label>Nơi post video:</label>
+        <select class="form-control" ng-options="x.text for x in locations.list track by x.id" ng-model="locations.selected"></select>
+    </div>
+    <div class="form-group">
+        <label>Status trên facebook:</label>
+        <textarea class="form-control" ng-model="message" style="resize: none;"></textarea>
+    </div>
+    <div class="alert alert-warning" ng-if="locations.selected.id == 0">
+        Việc tạo Facebook Live Stream trên trang cá nhân sẽ giúp Idol có thể tiếp cận được rất nhiều User mới trên Facebook. Teenidol khuyến khích các bạn nên khai thác chức năng này và sáng tạo thêm nội dung để show diễn ngày càng thu hút.
+    </div>
+</div>
+
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" ng-click="onClose()">Thoát</button>
+    <button type="button" class="btn btn-primary" ng-click="onLive()" is-loading="isBusy">Live on Facebook</button>
+</div>

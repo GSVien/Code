@@ -1,0 +1,21 @@
+﻿<div class="lucky-wheel content">
+    <img class="logo" src="/Content/Image/Event-2017/Thang2/logovongquay.png" />
+    <div class="content-body">
+        <img src="/Content/Image/Event-2016/EventThang11/event-thang11-1-quay.png" ng-click="startSpin()" style="height: 70px;cursor: pointer;z-index: 5;position: absolute;top: calc(50% - 20px);left: 50%;transform: translate(-50%,-50%);" />
+        <div style="width: 270px; height: 270px; position: absolute; border-radius: 50%; left: 50%; transform: translate(-50%); top: 10px;"></div>
+        <canvas id="canvas" width="250px" height="250px" prizewheel style="position: absolute; ; left: 50%; transform: translate(-50%); padding-top: 20px; padding-bottom: 20px">
+            <p style="color: white" align="center">Xin lỗi, trình duyệt của bạn không hỗ trợ canvas. Vui lòng thử khác.</p>
+        </canvas>
+        <div style="background: transparent; width: 260px; height: 290px; z-index: -100"></div>
+        <img src="/Content/Image/Event-2016/EventThang11/event-thang11-1-solan.png" style="height: 40px; margin-right: 75px"/>
+        <span style="position: absolute; top: 90%;left: calc(50% - 75px); color: #f15d69; font-size: 20px; font-weight: bold;">{{numberTurnRotation ? numberTurnRotation : '00'}}</span>
+        <img src="/Content/Image/Event-2016/EventThang11/event-thang11-1-muiten.png" style="width: 30px; position: absolute; top: 82%; left: 49.7%; transform: translate(-50%);"/>
+        
+        
+        <a href="#" target="_blank"><img src="/Content/Image/Event-2016/EventThang11/event-thang11-1-rank.png" style="height: 40px;margin-left: 10px" /></a>
+    </div>
+    <a id="onluckywheelfinish" ng-click="alertPrize()"></a>
+    <!--<a class="content-body">
+
+    </a>-->
+</div>

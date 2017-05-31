@@ -1,0 +1,83 @@
+[
+  {
+    "outputFileName": "App_Lib/lib.js",
+    "inputFiles": [
+      "App_Lib/jquery-2.2.1/jquery.js",
+      "App_Lib/angular-1.5.0/angular.js",
+      "App_Lib/angular-1.5.0/angular-resource.js",
+      "App_Lib/angular-1.5.0/angular-cookies.js",
+      "App_Lib/angular-1.5.0/angular-route.js",
+      "App_Lib/angular-1.5.0/angular-animate.js",
+      "App_Lib/angular-1.5.0/angular-touch.js",
+      "App_Lib/angular-1.5.0/angular-sanitize.js",
+      "App_Lib/bootstrap-3.3.6/js/bootstrap.js",
+      "App_Lib/moment-2.12.0/moment-with-locales.js",
+      "App_Lib/angular-carousel/angular-carousel.js",
+      "App_Lib/angular-ui-notification-1.0/angular-ui-notification.js",
+      "App_Lib/signalR-2.2.0/jquery.signalR.js",
+      "App_Lib/image-scale-2.1/image-scale.js",
+      "App_Lib/jquery-dropdown/jquery.dropdown.js",
+      "App_Lib/angular-ellipsis/angular-ellipsis.js",
+      "App_Lib/angular-ui-select/select.js",
+      "App_Lib/angular-ui-bootstrap/ui-bootstrap-tpls-0.14.3.js",
+      "App_Lib/angular-bootstrap-calendar-0.18.2/angular-bootstrap-calendar-tpls.js",
+      "App_Lib/jquery.cropit/jquery.cropit.js",
+      "App_Lib/fullscreen-api/fullscreen-api.js",
+      "App_Lib/fingerprint-1.1.3/fingerprint2.js",
+      //"App_Lib/jssor.slider/jssor.slider-22.2.16.min.js",
+      "App_Lib/owl.carousel.2.0.0-beta.2.4/owl.carousel.min.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "preserveImportantComments": false
+    }
+  },
+  {
+    "outputFileName": "App_Lib/lib.css",
+    "inputFiles": [
+      "App_Lib/bootstrap-3.3.6/css/bootstrap.css",
+      "App_Lib/font-awesome-4.5.0/css/font-awesome.css",
+      "App_Lib/jquery-dropdown/jquery.dropdown.css",
+      "App_Lib/angular-carousel/angular-carousel.css",
+      "App_Lib/angular-ui-notification-1.0/angular-ui-notification.css",
+      "App_Lib/angular-ui-select/select.css",
+      "App_Lib/angular-bootstrap-calendar-0.18.2/angular-bootstrap-calendar.css",
+      "App_Lib/owl.carousel.2.0.0-beta.2.4/owl.carousel.css"
+    ],
+    "minify": {
+      "enabled": true,
+      "commentMode": "none"
+    }
+  },
+  {
+    "outputFileName": "Scripts/_app.js",
+    "inputFiles": [
+      "Scripts/**/*.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": false,
+      "preserveImportantComments": false
+    }
+  },
+  {
+    "outputFileName": "Styles/_app.css",
+    "inputFiles": [
+      "Styles/*.min.css",
+      "Styles/UserControl/*.min.css",
+      "Styles/Modal/*.min.css",
+      "Styles/Template/*.min.css",
+      "Styles/Popover/*.min.css"
+    ],
+    "minify": {
+      "enabled": true,
+      "commentMode": "none"
+    }
+  },
+  {
+    "outputFileName": "Layouts/Template/UserListItem.min.html",
+    "inputFiles": [
+      "Layouts/Template/UserListItem.html"
+    ]
+  }
+]

@@ -1,0 +1,66 @@
+﻿@import "../_lib.scss";
+@import "../_core.scss";
+
+.modal-show-rank {
+    .modal-dialog {
+        width: 500px;
+    }
+
+    .modal-body {
+        padding: 0;
+    }
+
+    .nav-tabs {
+        margin: 10px;
+    }
+
+    .tab-pane {
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+        overflow: hidden;
+
+        > div {
+            max-height: 350px;
+            overflow-y: auto;
+        }
+    }
+
+    .list-item {
+        $height: 42px;
+        @include clearfix;
+        padding: 10px;
+        border-top: 1px solid $color-line-gray;
+
+        &:nth-child(2n) {
+            background: $color-background-gray;
+        }
+
+        .rank-number {
+            float: left;
+            width: 20px;
+            margin-right: 10px;
+            line-height: $height;
+            font-size: $font-size-large-1;
+            font-weight: bold;
+        }
+
+        .rank-item {
+            float: left;
+            @include property(width, calc(100% - 130px), value);
+            height: $height;
+
+            .uc-user-list-item {
+                padding: 0;
+            }
+        }
+
+        .value {
+            float: left;
+            width: 100px;
+            text-align: right;
+            line-height: $height;
+            font-size: $font-size-large-2;
+            font-weight: bold;
+        }
+    }
+}

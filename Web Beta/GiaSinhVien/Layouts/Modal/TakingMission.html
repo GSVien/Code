@@ -1,0 +1,24 @@
+﻿<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" ng-click="onClose()">
+        <span>&times;</span>
+    </button>
+    <h4 class="modal-title">Nhận nhiệm vụ</h4>
+</div>
+
+<div class="modal-body">
+    <img class="background" src="/Content/Image/Event-2016/Eventthang12/btn-br-nhannv2.png" />
+    <div class="level">
+        Chọn cấp: <a ng-click="editlevelmission(i)" ng-repeat="(i,x) in level.Items">
+            <img width="18px" src="/Content/Image/Event-2016/Eventthang12/den.png" ng-if="i > level.checked" />
+            <img width="18px" src="/Content/Image/Event-2016/Eventthang12/den1.png" ng-if="i <= level.checked" />
+<!--            <i class="fa fa-star-o" aria-hidden="true" ng-if="i > level.checked"></i>-->
+<!--            <i class="fa fa-star" aria-hidden="true" ng-if="i <= level.checked"></i>-->
+        </a>
+    </div>
+    <div class="countmission">SỐ LẦN NHẬN HÔM NAY: <b>{{level.countQuestInDay}} / {{level.maxQuestInDay}}</b>
+    </div>
+    <div class="button-taking">
+        <button class="btn btn-primary nhan" ng-click="onIdolGetQuest()">Nhận nhiệm vụ</button>
+        <!--        <button class="btn btn-primary huy" ng-click="onClose()">Đóng</button>-->
+    </div>
+</div>

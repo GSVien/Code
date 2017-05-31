@@ -1,0 +1,71 @@
+﻿.modal-taking-mission {
+    .modal-content {
+        .modal-body {
+            padding: 0;
+            text-align: center;
+            position: relative;
+            color: black;
+
+            .background {
+                width: 100%;
+            }
+
+            .level {
+                font-weight: 500;
+                font-size: 16px;
+                position: absolute;
+                left: 50%;
+                width: 100%;
+                transform: translate(-50%);
+                bottom: 85px;
+
+                a {
+                    text-decoration: none;
+
+                    .fa {
+                        margin-right: 3px;
+                        font-size: 18px;
+
+                        &.fa-star {
+                            color: #f15d69;
+                        }
+
+                        &.fa-star-o {
+                            color: #f15d69;
+                        }
+                    }
+                }
+            }
+
+            .countmission {
+                font-weight: 500;
+                font-size: 16px;
+                position: absolute;
+                left: 50%;
+                width: 100%;
+                transform: translate(-50%);
+                bottom: 55px;
+
+                b {
+                    color: #f15d69;
+                }
+            }
+
+            .button-taking {
+                padding: 10px;
+                background: rgba(235, 224, 224, 0.6);
+                text-transform: uppercase;
+
+                .btn {
+                    width: 47%;
+                    padding: 7px;
+                    text-transform: uppercase;
+
+                    &.huy {
+                        float: right;
+                    }
+                }
+            }
+        }
+    }
+}

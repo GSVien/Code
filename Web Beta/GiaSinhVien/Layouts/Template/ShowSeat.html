@@ -1,0 +1,19 @@
+﻿<div class="show-seat panel">
+    <div class="title">Sảnh đại gia</div>
+    <ul class="list-seat">
+        <li class="seat-item list-item-animate location-{{i+1}}" ng-repeat="(i,x) in listSeat.items"
+            popover-trigger="outsideClick"
+            uib-popover-template="popover.seatMenu.template()"
+            popover-placement="bottom"
+            ng-click="onItemClick($index)" style="background: url({{x.buyer.seat}}) center;background-size: 71px 90px;background-repeat: no-repeat;padding-bottom: 7px">
+            <div class="user" ng-if="x.buyer">
+                <img class="avatar" ng-src="{{helper.linkImage(x.buyer.avatar, 40)}}" alt="{{x.buyer.name}}" />
+                <div class="name"><marquee scrolldelay="200"><span>{{x.buyer.name}}</span></marquee></div>
+                <img ng-src="{{x.buyer.currentAnimation}}" class="photobackground" ng-if="x.buyer.currentAnimation" />
+            </div>
+            <div class="empty" ng-if="!x.buyer">
+                <img class="seat-icon" src="/Content/Image/seat.gif" alt="Ghế trống" />
+            </div>
+        </li>
+    </ul>
+</div>

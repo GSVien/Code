@@ -1,0 +1,26 @@
+﻿.lucky-wheel.content {
+  background-image: url("/Content/Image/Event-2017/Thang2/vongquay.png");
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: none;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  text-align: center; }
+  .lucky-wheel.content .logo {
+    width: 110px;
+    left: 50%;
+    transform: translate(-50%);
+    position: absolute; }
+
+.lucky-wheel .content-body {
+  position: relative;
+  top: calc(10% + 30px); }
+
+.lucky-wheel #onluckywheelfinish {
+  width: 0px !important;
+  height: 0px !important;
+  position: absolute;
+  top: 0;
+  z-index: -100; }
+

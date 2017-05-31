@@ -1,0 +1,47 @@
+﻿/*#region [Variable]*/
+/*#endregion*/
+.modal-show-schedule .modal-dialog {
+  width: 771px; }
+
+.modal-show-schedule .modal-title ul {
+  margin: 0;
+  padding: 0; }
+  .modal-show-schedule .modal-title ul li.active a {
+    color: #fff; }
+
+.modal-show-schedule .modal-body .nav-tabs {
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid #e2e2e2; }
+  .modal-show-schedule .modal-body .nav-tabs li {
+    margin: 0;
+    padding: 0;
+    margin-bottom: -1px;
+    padding: 5px;
+    border: 1px solid transparent; }
+    .modal-show-schedule .modal-body .nav-tabs li a {
+      border: none; }
+    .modal-show-schedule .modal-body .nav-tabs li.active {
+      border-color: #e2e2e2;
+      border-bottom-color: #fff; }
+
+.modal-show-schedule .modal-body .nav-tabs + .tab-content {
+  border: 1px solid #e2e2e2;
+  border-top: none; }
+  .modal-show-schedule .modal-body .nav-tabs + .tab-content .tab-pane {
+    height: 400px;
+    overflow-y: auto; }
+
+.modal-show-schedule .modal-body #modal-show-schedule-current .item {
+  padding: 5px 10px; }
+  .modal-show-schedule .modal-body #modal-show-schedule-current .item:nth-child(2n) {
+    background-color: #f3f3f3; }
+
+.modal-show-schedule .modal-body #modal-show-schedule-other .tab-pane:after {
+  display: table;
+  content: " ";
+  clear: both; }
+
+.modal-show-schedule .modal-body #modal-show-schedule-other .item {
+  float: left; }
+

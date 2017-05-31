@@ -1,0 +1,152 @@
+﻿/*#region [Variable]*/
+/*#endregion*/
+.uc-show-action .group:not(:first-child) {
+  margin-top: 10px; }
+
+.uc-show-action .group .title {
+  margin-bottom: 5px;
+  font-size: 16px; }
+
+.uc-show-action .group .body {
+  height: -webkit-calc(100% - 27px);
+  height: -moz-calc(100% - 27px);
+  height: -ms-calc(100% - 27px);
+  height: -o-calc(100% - 27px);
+  height: calc(100% - 27px);
+  background: #fff;
+  border-radius: 3px; }
+
+.uc-show-action .group .header:after, .uc-show-action .group .list > div:after {
+  display: table;
+  content: " ";
+  clear: both; }
+
+.uc-show-action .group .header > div, .uc-show-action .group .list > div > div {
+  float: left; }
+  .uc-show-action .group .header > div:not(:last-child), .uc-show-action .group .list > div > div:not(:last-child) {
+    margin-right: 10px; }
+
+.uc-show-action .group .header {
+  padding: 5px 10px;
+  border-bottom: 1px solid #e2e2e2; }
+  .uc-show-action .group .header > div {
+    font-weight: bold; }
+
+.uc-show-action .group .list {
+  height: -webkit-calc(100% - 31px);
+  height: -moz-calc(100% - 31px);
+  height: -ms-calc(100% - 31px);
+  height: -o-calc(100% - 31px);
+  height: calc(100% - 31px);
+  overflow: auto; }
+  .uc-show-action .group .list > div {
+    padding: 5px 10px; }
+    .uc-show-action .group .list > div:last-child {
+      border-bottom-left-radius: 3px;
+      border-bottom-right-radius: 3px; }
+    .uc-show-action .group .list > div:hover, .uc-show-action .group .list > div:focus {
+      background-color: #f3f3f3; }
+
+.uc-show-action .star-action, .uc-show-action .user-action {
+  -webkit-height: calc((100% - 54px) / 2);
+  -moz-height: calc((100% - 54px) / 2);
+  -ms-height: calc((100% - 54px) / 2);
+  -o-height: calc((100% - 54px) / 2);
+  height: calc((100% - 54px) / 2); }
+
+.uc-show-action .star-action .header > .name, .uc-show-action .star-action .star-action-item > .name {
+  width: -webkit-calc(100% - 160px);
+  width: -moz-calc(100% - 160px);
+  width: -ms-calc(100% - 160px);
+  width: -o-calc(100% - 160px);
+  width: calc(100% - 160px); }
+
+.uc-show-action .star-action .header > .coin, .uc-show-action .star-action .star-action-item > .coin {
+  width: 50px; }
+
+.uc-show-action .star-action .header > .vote, .uc-show-action .star-action .star-action-item > .vote {
+  width: 50px; }
+
+.uc-show-action .star-action .header > .action, .uc-show-action .star-action .star-action-item > .action {
+  width: 30px; }
+
+.uc-show-action .star-action .star-action-item > div {
+  line-height: 30px; }
+
+.uc-show-action .star-action .star-action-item .name {
+  white-space: nowrap;
+  overflow: hidden;
+  -webkit-text-overflow: ellipsis;
+  -moz-text-overflow: ellipsis;
+  -ms-text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis; }
+
+.uc-show-action .star-action .star-action-item > .action > button {
+  padding: 0;
+  width: 100%; }
+
+.uc-show-action .user-action .header > .name, .uc-show-action .user-action .user-action-item > .name {
+  width: -webkit-calc(100% - 260px);
+  width: -moz-calc(100% - 260px);
+  width: -ms-calc(100% - 260px);
+  width: -o-calc(100% - 260px);
+  width: calc(100% - 260px); }
+
+.uc-show-action .user-action .header > .coin, .uc-show-action .user-action .user-action-item > .coin {
+  width: 50px; }
+
+.uc-show-action .user-action .header > .user, .uc-show-action .user-action .user-action-item > .user {
+  width: 150px; }
+
+.uc-show-action .user-action .header > .action, .uc-show-action .user-action .user-action-item > .action {
+  width: 30px; }
+
+.uc-show-action .user-action .user-action-item > div {
+  line-height: 30px; }
+
+.uc-show-action .user-action .user-action-item .name {
+  white-space: nowrap;
+  overflow: hidden;
+  -webkit-text-overflow: ellipsis;
+  -moz-text-overflow: ellipsis;
+  -ms-text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis; }
+
+.uc-show-action .user-action .user-action-item > .user {
+  white-space: nowrap;
+  overflow: hidden;
+  -webkit-text-overflow: ellipsis;
+  -moz-text-overflow: ellipsis;
+  -ms-text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis; }
+
+.uc-show-action .user-action .user-action-item > .action > button {
+  padding: 0;
+  width: 100%; }
+
+.uc-show-action form {
+  margin-top: 10px; }
+  .uc-show-action form:after {
+    display: table;
+    content: " ";
+    clear: both; }
+  .uc-show-action form .name {
+    float: left;
+    width: -webkit-calc(100% - 170px);
+    width: -moz-calc(100% - 170px);
+    width: -ms-calc(100% - 170px);
+    width: -o-calc(100% - 170px);
+    width: calc(100% - 170px);
+    margin-right: 10px; }
+  .uc-show-action form .coin {
+    float: left;
+    width: 100px;
+    margin-right: 10px; }
+  .uc-show-action form [type=submit] {
+    width: 50px;
+    height: 34px;
+    float: left; }
+

@@ -1,0 +1,67 @@
+﻿@import "../_lib.scss";
+@import "../_core.scss";
+
+.rank-item {
+    @include clearfix;
+}
+
+.uc-user-list-item {
+    @include clearfix;
+    display: inline-block;
+    padding: 10px;
+
+    .avatar {
+        float: left;
+        width: 42px;
+        height: 42px;
+        margin-right: 10px;
+        border-radius: 50%;
+    }
+
+    .info {
+        float: left;
+        @include clearfix;
+        @include property(width, calc(100% - 70px), value);
+
+        .vip, .badge {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .name {
+            display: inline-block;
+            width: 100%;
+            vertical-align: middle;
+            margin-top: 5px;
+            @include text-ellipsis;
+            color: $color-black;
+        }
+
+        .vip + .name {
+            @include property(width, calc(100% - 30px), value);
+        }
+
+        .vip + .badge + .name {
+            @include property(width, calc(100% - 60px), value);
+        }
+
+        .level {
+            float: left;
+            height: 20px;
+            margin-right: 10px;
+        }
+
+        .point {
+            float: left;
+            margin-top: 3px;
+
+            &.coin {
+                color: $color-red;
+            }
+
+            &.free-coin {
+                color: $color-orange;
+            }
+        }
+    }
+}

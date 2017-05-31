@@ -1,0 +1,56 @@
+﻿@import "../_lib.scss";
+@import "../_core.scss";
+
+.uc-show-toolbar {
+    @include clearfix;
+
+    a {
+        @include clear;
+        float: left;
+        width: 35px;
+        height: 35px;
+        border: 1px solid $color-panel-background;
+        line-height: 38px;
+        color: $color-white;
+
+        .fa {
+            font-size: 20px;
+        }
+
+        &:hover, &:focus {
+            color: $color-white;
+        }
+
+        &:not(:last-child) {
+            margin-right: 8px;
+        }
+
+        &.home {
+            background-color: $color-primary;
+        }
+
+        &.opening-show {
+            background-color: $color-blue;
+        }
+
+        &.show-schedule {
+            background-color: $color-orange;
+        }
+
+        &.show-rank {
+            background-color: $color-purple;
+        }
+
+        &.shop {
+            background-color: $color-green;
+        }
+
+        &.col-toggle {
+            background-color: rgba($color-black, 0.8);
+
+            &:hover, &:focus {
+                background-color: $color-black;
+            }
+        }
+    }
+}

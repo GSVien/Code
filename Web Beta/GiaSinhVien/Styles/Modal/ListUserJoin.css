@@ -1,0 +1,71 @@
+﻿/*#region [Variable]*/
+/*#endregion*/
+.modal-list-user-join .guild-rank:hover, .modal-list-user-join .guild-rank:active, .modal-list-user-join .guild-rank:focus {
+  text-decoration: none; }
+
+.modal-list-user-join .rank-item {
+  border-bottom: 1px solid #EBE5E4; }
+
+.modal-list-user-join .modal-dialog .modal-content {
+  border: 0;
+  box-shadow: none;
+  background: transparent; }
+
+.modal-list-user-join .modal-dialog .modal-header {
+  position: relative;
+  background: transparent;
+  border-bottom: 0; }
+  .modal-list-user-join .modal-dialog .modal-header .modal-title {
+    margin: 0;
+    line-height: 28px;
+    margin-right: 10px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    top: -20px;
+    z-index: 99; }
+  .modal-list-user-join .modal-dialog .modal-header .level {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%);
+    font-size: 13px; }
+  .modal-list-user-join .modal-dialog .modal-header .btn-blue {
+    position: absolute;
+    top: 8px;
+    right: 40px;
+    background: #5bc0de; }
+    .modal-list-user-join .modal-dialog .modal-header .btn-blue:hover {
+      color: #fff; }
+
+.modal-list-user-join .modal-dialog .modal-body {
+  background-image: url("../../Content/Image/Guild/khung dong1.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  margin: 15px;
+  padding-top: 50px;
+  min-height: 500px;
+  background: #fff; }
+  .modal-list-user-join .modal-dialog .modal-body:after {
+    display: table;
+    content: " ";
+    clear: both; }
+  .modal-list-user-join .modal-dialog .modal-body .border {
+    position: absolute;
+    left: -20px;
+    top: -13px;
+    width: 104%;
+    height: 104%; }
+    @media (max-width: 768px) {
+      .modal-list-user-join .modal-dialog .modal-body .border {
+        position: absolute;
+        left: -10px;
+        top: -10px;
+        width: 104%;
+        height: 103%; } }
+
+.modal-list-user-join .get-reward {
+  top: 30px;
+  position: absolute;
+  right: 10px; }
+

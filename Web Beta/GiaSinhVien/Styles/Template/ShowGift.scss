@@ -1,0 +1,146 @@
+﻿@import "../_lib.scss";
+@import "../_core.scss";
+
+.show-gift {
+    @include clearfix;
+
+    .nav-tabs {
+        li {
+            a {
+                display: block;
+                padding: 2px 0 !important;
+                @include text-ellipsis;
+            }
+        }
+    }
+
+    .tab-content {
+        @include property(height, calc(100% - 68px), value);
+        border-bottom-left-radius: 0 !important;
+        border-bottom-right-radius: 0 !important;
+
+        .tab-pane {
+            height: 100%;
+        }
+    }
+
+    .gift-category {
+        @include clearfix;
+        overflow: auto;
+
+        .gift-item {
+            float: left;
+            padding: 5px;
+            border: 1px solid transparent;
+            border-radius: $border-radius;
+            cursor: pointer;
+            position: relative;
+
+            &.ng-enter {
+                -webkit-transition: 0.5s linear;
+                -moz-transition: 0.5s linear;
+                -o-transition: 0.5s linear;
+                transition: 0.5s linear;
+                opacity: 0;
+            }
+
+            &.ng-enter-active {
+                opacity: 1;
+            }
+
+            .img-container {
+                width: 40px;
+                height: 40px;
+                border-radius: inherit;
+            }
+
+            &:hover, &:focus {
+                border-color: $color-line-gray;
+                background-color: $color-panel-background;
+            }
+
+            &.active {
+                border-color: $color-primary;
+                background-color: $color-panel-background;
+            }
+
+            @media(max-width:414px) {
+                position: relative;
+            }
+        }
+    }
+
+    .panel {
+        $height: 20px;
+        padding: 5px;
+        text-align: center;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        border-top: none;
+
+        .gift-quantity {
+            display: inline-block;
+            width: 120px;
+            margin-right: 10px;
+
+            .ui-select-match {
+                @media(max-width:415px) {
+                    display: none;
+                }
+            }
+
+            .ui-select-toggle {
+                padding: 5px 10px;
+                height: $height + 10px;
+                font-size: $font-size-large-1;
+            }
+
+            .ui-select-placeholder {
+                line-height: $height;
+                font-size: $font-size-large-1;
+            }
+
+            .ui-select-search {
+                padding: 5px 10px;
+                height: $height + 10px;
+                line-height: $height;
+            }
+
+            .gift-quantity-item {
+                @include clearfix;
+
+                .photo {
+                    float: left;
+                    width: $height;
+                    height: $height;
+                    margin-right: 10px;
+                }
+
+                .name {
+                    float: left;
+                    @include property(width, calc(100% - #{$height} - 10px), value);
+                    line-height: $height;
+                }
+            }
+
+            @media(max-width:415px) {
+                width: 0;
+            }
+        }
+
+        .give-free-coin {
+            margin-right: 0px !important;
+        }
+
+        button {
+            margin-right: 10px;
+            height: $height + 10px;
+
+            @media (max-width: $screen-width-1) {
+                &.give-free-coin, &.recharge-coin, &.give {
+                    margin-top: 10px;
+                }
+            }
+        }
+    }
+}

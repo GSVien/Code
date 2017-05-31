@@ -1,0 +1,168 @@
+﻿
+<div class="unit-changed">
+    <div class="event1_1" ng-if="eventId == 3">
+        <div class="data-user">
+            <div class="unit-item">
+                <img class="number" src="/Content/Image/Event-2017/Thang2/tab_sua.png" />
+                <div class="number-user">
+                    <div class="num"><b>{{numberSuaTuoi}}</b></div>
+                    <!--<div class="text">
+                        <b>Gạo Nếp</b>
+                    </div>-->
+                </div>
+            </div>
+            <div class="unit-item">
+                <img class="number" src="/Content/Image/Event-2017/Thang2/tab_cola.png" />
+                <div class="number-user">
+                    <div class="num"><b>{{numberCaCao}}</b></div>
+                    <!--<div class="text">
+                        <b>Đậu Xanh</b>
+                    </div>-->
+                </div>
+            </div>
+            <div class="unit-item">
+                <img class="number" src="/Content/Image/Event-2017/Thang2/tab_co.png" />
+                <div class="number-user">
+                    <div class="num"><b>{{numberCo}}</b></div>
+                    <!--<div class="text">
+                        <b>Thịt Mỡ</b>
+                    </div>-->
+                </div>
+            </div>
+        </div>
+        <div class="data-require">
+            <div class="clearfix"></div>
+            <div class="main-item" ng-mouseenter="showInfo(x.RequireId)" ng-mouseleave="hideInfo(x.RequireId)" ng-repeat="(i,x) in ListFirstItems">
+                <div class="icon-require icon-{{x.RequireId}}">
+                    <div class="name-require" ng-click="ViewGift(x.RequireId,x.Name)">
+                        <div class="photo">
+                            <img src="{{x.Photo}}" />
+                        </div>
+                        <img class="photoname" src="{{x.PhotoName}}" />
+                    </div>
+                </div>
+                <div class="info-require info-{{x.RequireId}}">
+                    <div class="data-item">
+                        <img class="photoname" src="{{x.PhotoName}}" />
+                        <div class="list-require" ng-repeat="(j,k) in x.listRequire">
+                            <img class="photoicon" src="{{k.UnitType.Photo}}" />
+                            <b>{{k.RequireData.Value}}</b>
+                        </div>
+                        <div class="img-item" ng-click="ChangeGift(x.RequireId,x.Name)">
+                            <img class="number" src="/Content/Image/Event-2017/Thang2/lamngay.png" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="second-item" ng-mouseenter="showInfo(x.RequireId)" ng-mouseleave="hideInfo(x.RequireId)" ng-repeat="(i,x) in ListSecondItems">
+                <div class="icon-second icon-{{x.RequireId}}">
+                    <div class="name-second" ng-click="ViewGift(x.RequireId,x.Name)">
+                        <div class="photo">
+                            <img src="{{x.Photo}}" />
+                        </div>
+                        <img class="photoname" src="{{x.PhotoName}}" />
+                    </div>
+                </div>
+                <div class="info-second info-{{x.RequireId}}">
+                    <div class="data-item">
+                        <img class="photonameinfo" src="{{x.PhotoName}}" />
+                        <div class="img-item" ng-click="showModalFail(x.RequireId,x.Name,x.listRequire)">
+                            <img class="number" src="/Content/Image/Event-2017/Thang2/lamngay.png" />
+                        </div>
+                        <div class="listitem">
+                            <div class="list-require" ng-if="k.UnitType.Id != 14" ng-repeat="(j,k) in x.listRequire">
+                                <img class="photoicon" src="{{k.UnitType.Photo}}" />
+                                <b>{{k.RequireData.Value}}</b>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="event3_4" ng-if="eventId == 5">
+        <div class="data-collection">
+            <div class="clearfix"></div>
+            <div class="main-item">
+                <div class="unit-item" ng-repeat="(i,x) in ListCollection">
+                    <div class="name-collection"><b>{{x.Name}}</b>
+                    </div>
+                    <div class="mask-collection">
+                    </div>
+                    <div class="info-collection" ng-style="x.IsComplete && {'background-color':'rgba(36, 245, 33, 0.75)'} || {'background-color': 'rgba(248, 253, 255, 0.65)'}">
+                        <div class="photo-item" ng-repeat="(j,k) in x.listCollection">
+                            <img class="ghe-photo" src="{{k.Photo}}"/>
+                            <img class="user-photo" ng-if="k.UserPhoto != null" src="{{k.UserPhoto}}"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="event4_2" ng-if="eventId == 6">
+        <div class="data-collection">
+            <div class="info">
+                <div class="box-text">
+                    <div class="text-noti" ng-repeat="x in message">{{x.sms}}</div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade in" id="modal-event-thang-1" style="z-index: 1">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-body">
+                <img class="background" src="/Content/Image/Event-2017/Thang2/popup_br.png" />
+                <div class="content">
+                    <div class="title" style="font-family: Bambola W00 Regular;">{{nameMission}}</div>
+                    <div class="phanthuong" style="font-family: Tahoma, Geneva, sans-serif;" ng-repeat="(i,x) in listReward">
+                        {{x.nameReward}}
+                        <img style="width: 20px" ng-if="x.photo" class="background" src="{{x.photo}}" />
+                    </div>
+                </div>
+                <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="closeModal()"></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade in" id="modal-info-thang-1" style="z-index: 1">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-body">
+                <img class="background" src="/Content/Image/Event-2017/Thang2/popup_br.png" />
+                <div class="content">
+                    <div class="title" style="font-family: Tahoma, Geneva, sans-serif;">{{nameMissionInfo}}</div>
+                    <div class="phanthuong" style="font-family: Tahoma, Geneva, sans-serif;" ng-repeat="(i,x) in listRewardInfo">
+                        {{x.nameReward}}
+                        <img style="width: 20px" ng-if="x.photo" class="background" src="{{x.photo}}" />
+                    </div>
+                </div>
+                <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="closeModalInfo()"></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade in" id="modal-event-thang-fail" style="z-index: 1">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-body">
+                <img class="background" src="/Content/Image/Event-2017/Thang2/popupfail.png" />
+                <div class="content">
+                    <div class="title">{{failSms}}</div>
+                </div>
+                <div class="bt-control">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="ChangeGift2(currId,currName)"></button>
+                    <button type="button" class="btn btn-default1" data-dismiss="modal" ng-click="closeModalFail()"></button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+    </div>

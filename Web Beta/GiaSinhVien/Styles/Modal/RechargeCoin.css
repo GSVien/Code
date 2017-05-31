@@ -1,0 +1,181 @@
+﻿/*#region [Variable]*/
+/*#endregion*/
+.modal-recharge-coin .modal-dialog {
+  width: 980px;
+  margin-top: 80px !important; }
+
+.modal-recharge-coin .user-info {
+  margin-bottom: 10px; }
+  .modal-recharge-coin .user-info:after {
+    display: table;
+    content: " ";
+    clear: both; }
+  .modal-recharge-coin .user-info .avatar {
+    width: 57px;
+    height: 57px;
+    margin-right: 10px; }
+  .modal-recharge-coin .user-info .pull-right {
+    width: -webkit-calc(100% - 76px);
+    width: -moz-calc(100% - 76px);
+    width: -ms-calc(100% - 76px);
+    width: -o-calc(100% - 76px);
+    width: calc(100% - 76px); }
+    .modal-recharge-coin .user-info .pull-right > div:not(:last-child) {
+      margin-bottom: 3px; }
+    .modal-recharge-coin .user-info .pull-right > div label {
+      margin: 0;
+      margin-right: 5px; }
+
+.modal-recharge-coin .tab:after {
+  display: table;
+  content: " ";
+  clear: both; }
+
+.modal-recharge-coin .tab .nav-pills {
+  float: left; }
+  .modal-recharge-coin .tab .nav-pills li {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    border: 1px solid #e2e2e2; }
+    .modal-recharge-coin .tab .nav-pills li:not(:first-child) {
+      margin-top: -1px; }
+    .modal-recharge-coin .tab .nav-pills li a {
+      width: 90px;
+      height: 40px;
+      margin: 0;
+      padding: 0;
+      padding: 0 10px;
+      line-height: 40px;
+      border-radius: 0;
+      font-size: 14px; }
+    .modal-recharge-coin .tab .nav-pills li.active {
+      z-index: 1;
+      border-color: #f15d69;
+      border-right-width: 5px; }
+      .modal-recharge-coin .tab .nav-pills li.active a {
+        background: none;
+        color: inherit; }
+
+.modal-recharge-coin .tab .tab-content {
+  float: left;
+  margin: 0;
+  padding: 0;
+  margin-left: -1px;
+  width: -webkit-calc(100%-96px);
+  width: -moz-calc(100%-96px);
+  width: -ms-calc(100%-96px);
+  width: -o-calc(100%-96px);
+  width: calc(100%-96px);
+  border: 1px solid #e2e2e2;
+  border-right: none;
+  border-bottom: none; }
+  .modal-recharge-coin .tab .tab-content .formula {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-bottom: 1px solid #e2e2e2;
+    text-align: center;
+    font-weight: bold; }
+  .modal-recharge-coin .tab .tab-content form .form-group:last-child {
+    margin-bottom: 0;
+    text-align: right; }
+  .modal-recharge-coin .tab .tab-content .card-type:after {
+    display: table;
+    content: " ";
+    clear: both; }
+  .modal-recharge-coin .tab .tab-content .card-type .card-item {
+    float: left;
+    width: 70px;
+    height: 70px;
+    margin-right: 10px;
+    margin-bottom: 10px; }
+    .modal-recharge-coin .tab .tab-content .card-type .card-item input {
+      display: none; }
+    .modal-recharge-coin .tab .tab-content .card-type .card-item label {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      border: 1px solid transparent;
+      border-radius: 3px;
+      cursor: pointer; }
+      .modal-recharge-coin .tab .tab-content .card-type .card-item label img {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        -moz-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        -o-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        width: -webkit-calc(100% - 10px);
+        width: -moz-calc(100% - 10px);
+        width: -ms-calc(100% - 10px);
+        width: -o-calc(100% - 10px);
+        width: calc(100% - 10px);
+        height: auto; }
+    .modal-recharge-coin .tab .tab-content .card-type .card-item input:checked + label {
+      border-color: #f15d69; }
+  .modal-recharge-coin .tab .tab-content .list-bank {
+    margin-left: 10px;
+    margin-bottom: 5px; }
+    .modal-recharge-coin .tab .tab-content .list-bank:after {
+      display: table;
+      content: " ";
+      clear: both; }
+    .modal-recharge-coin .tab .tab-content .list-bank .bank-item {
+      float: left;
+      width: 50px;
+      height: 50px;
+      margin: 5px;
+      border: 1px solid #e2e2e2;
+      border-radius: 3px; }
+      .modal-recharge-coin .tab .tab-content .list-bank .bank-item input {
+        display: none; }
+      .modal-recharge-coin .tab .tab-content .list-bank .bank-item label {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        border: 1px solid transparent;
+        border-radius: 3px;
+        cursor: pointer; }
+        .modal-recharge-coin .tab .tab-content .list-bank .bank-item label img {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          -webkit-transform: translate(-50%, -50%);
+          -moz-transform: translate(-50%, -50%);
+          -ms-transform: translate(-50%, -50%);
+          -o-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+          width: -webkit-calc(100% - 10px);
+          width: -moz-calc(100% - 10px);
+          width: -ms-calc(100% - 10px);
+          width: -o-calc(100% - 10px);
+          width: calc(100% - 10px);
+          height: auto; }
+      .modal-recharge-coin .tab .tab-content .list-bank .bank-item input:checked + label {
+        border-color: #f15d69; }
+  .modal-recharge-coin .tab .tab-content .payment {
+    padding: 0 10px; }
+    .modal-recharge-coin .tab .tab-content .payment .btn {
+      height: auto;
+      font-size: 20px; }
+      .modal-recharge-coin .tab .tab-content .payment .btn .fa {
+        color: #f15d69; }
+
+.modal-recharge-coin .modal-content .modal-body {
+  height: 500px;
+  overflow: auto; }
+
+.form-group {
+  position: relative; }
+  .form-group .validate-error {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: red; }
+

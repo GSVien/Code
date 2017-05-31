@@ -1,0 +1,48 @@
+﻿<div class="popover-seat-menu" ng-controller="popoverSeatMenuController">
+    <div class="alert alert-info show-animate" ng-show="status == 'loading'">
+        <i class="fa fa-spin fa-circle-o-notch"></i> Đang tải...
+    </div>
+
+    <div class="alert alert-danger show-animate" ng-show="status == 'error'">
+        {{message}}
+    </div>
+
+    <div class="user-info show-animate" ng-show="status == 'loaded'" ng-if="user">
+        <user-list-item link="#"
+                        avatar="{{user.avatar}}"
+                        name="{{user.name}}"
+                        level-name="{{user.levelName}}"
+                        level-photo="{{user.levelPhoto}}"
+                        display="coin"
+                        coin="user.coin"
+                        vip-name="{{user.vipName}}"
+                        vip-photo="{{user.vipPhoto}}"
+                        vip-color="{{user.vipColor}}"></user-list-item>
+    </div>
+
+    <ul class="seat-menu show-animate" ng-show="status == 'loaded'">
+        <li class="current-price" ng-if="user">
+            Đã mua với giá: <i class="coin-icon"></i> <span>{{seat.currentPrice | number: 0}}</span><br/>
+            <span style="float: left">Ngày mua: </span> <span>{{seat.createDate|date:'HH:mm:ss MM/dd/yyyy' : "+0"}}</span><br/>
+            <span style="float: left">Thời hạn: </span> <span>{{(seat.endDate - seat.createDate)/3600000}} giờ</span>
+        </li>
+        <li class="buy">
+            <div class="alert alert-info" ng-if="buy.listPrice.length == 0">Ghế này hiện đã được mua với giá cao nhất.</div>
+            <form ng-if="buy.listPrice.length > 0" ng-submit="onSubmit($event)">
+                <ui-select ng-model="buy.selectedPrice">
+                    <ui-select-match class="ui-select-match" placeholder="Mua lại ghế">
+                        <div>
+                            <i class="coin-icon"></i> {{$select.selected | number: 0}}
+                        </div>
+                    </ui-select-match>
+                    <ui-select-choices class="ui-select-choices" repeat="x in buy.listPrice | filter: $select.search" position="up">
+                        <div>
+                            <i class="coin-icon"></i> {{x | number: 0}}
+                        </div>
+                    </ui-select-choices>
+                </ui-select>
+                <button type="submit" class="btn btn-primary" is-loading="buy.isBusy">{{ seat.currentPrice ? "Giành" : "Mua" }}</button>
+            </form>
+        </li>
+    </ul>
+</div>

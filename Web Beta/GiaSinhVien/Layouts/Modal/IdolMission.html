@@ -1,0 +1,30 @@
+﻿<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" ng-click="onClose()">
+        <span>&times;</span>
+    </button>
+    <h4 class="modal-title">Yêu cầu nhiệm vụ</h4>
+</div>
+
+<div class="modal-body">
+    <img class="background" src="/Content/Image/Event-2016/Eventthang12/btn-br-nhannv2.png" />
+    <div class="level">
+        Cấp độ: <a ng-repeat="(i,x) in level.Items">
+            <img width="15px" src="/Content/Image/Event-2016/Eventthang12/den.png" ng-if="i > level.numberlevel" />
+            <img width="15px" src="/Content/Image/Event-2016/Eventthang12/den1.png" ng-if="i <= level.numberlevel" />
+            <!--<i class="fa fa-star-o" aria-hidden="true" ng-if="i > level.numberlevel"></i>-->
+            <!--<i class="fa fa-star" aria-hidden="true" ng-if="i <= level.numberlevel"></i>-->
+        </a>
+    </div>
+    <div class="countmission">
+        <div class="insistence" ng-repeat="(i,x) in showMission.Items.GiftInfo">
+            <div class="photo">
+                <img src="{{x.Photo}}" />
+            </div>
+            {{x.Received}}/{{x.Quantity}}
+        </div>
+    </div>
+    <div class="button-taking">
+        <button class="btn btn-primary nhan" disabled="disabled">Nhận thưởng</button>
+        <button class="btn btn-primary huy" ng-click="onClose()">Đóng</button>
+    </div>
+</div>

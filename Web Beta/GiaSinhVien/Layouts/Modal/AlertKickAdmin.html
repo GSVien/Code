@@ -1,0 +1,21 @@
+﻿<div class="modal-header" ng-if="title">
+    <h4 class="modal-title">{{title}}</h4>
+</div>
+
+<div class="modal-body">
+    Bạn chắc chắn muốn kick người này chứ ?
+    <form style='height: 50px'>
+        <div class='form-group'>
+            <label class='col-sm-3 control-label' style="margin-top: 10px;text-align: right">
+                Nhập Số Phút :
+            </label>
+            <div class='col-sm-6'>
+                <input type='text' id='timekickadmin' class='youtube form-control'/>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="modal-footer" ng-if="listButton.length > 0">
+    <button type="button" class="btn {{x.style}}" ng-repeat="x in listButton" ng-click="onButtonClick($index)">{{x.text}}</button>
+</div>

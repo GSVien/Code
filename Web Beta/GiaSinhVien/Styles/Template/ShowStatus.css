@@ -1,0 +1,1374 @@
+﻿/*#region [Variable]*/
+/*#endregion*/
+/*@import url('https://fonts.googleapis.com/css?family=Oswald');*/
+.show-status {
+  width: 100%;
+  height: 100px;
+  /*@media (max-width: $screen-width-1) {
+        display: none;
+    }*/ }
+  .show-status:after {
+    display: table;
+    content: " ";
+    clear: both; }
+  .show-status .status {
+    padding: 7px;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 3px;
+    position: relative;
+    width: 100%;
+    float: left; }
+    .show-status .status .name {
+      white-space: nowrap;
+      overflow: hidden;
+      -webkit-text-overflow: ellipsis;
+      -moz-text-overflow: ellipsis;
+      -ms-text-overflow: ellipsis;
+      -o-text-overflow: ellipsis;
+      text-overflow: ellipsis;
+      margin-bottom: 5px;
+      padding-bottom: 5px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+      font-size: 16px;
+      font-weight: bold;
+      height: 29px; }
+    .show-status .status .event {
+      white-space: nowrap;
+      overflow: hidden;
+      -webkit-text-overflow: ellipsis;
+      -moz-text-overflow: ellipsis;
+      -ms-text-overflow: ellipsis;
+      -o-text-overflow: ellipsis;
+      text-overflow: ellipsis;
+      margin-bottom: 5px;
+      padding-bottom: 5px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+      font-size: 16px;
+      font-weight: bold;
+      height: 29px; }
+    .show-status .status .description {
+      height: 30px; }
+    .show-status .status .PromotionValueDescription {
+      position: absolute;
+      width: 50%;
+      height: 50%;
+      top: 0;
+      right: 0; }
+  .show-status .mission {
+    padding: 0px;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 3px;
+    position: relative;
+    width: 100%;
+    /*margin-right: 10px;*/
+    float: left;
+    min-height: 88px; }
+    .show-status .mission .in0 {
+      border: 2px solid transparent;
+      background: url("/Content/Image/Event-2017/Thang4/eve1_stbr1.png");
+      background-size: 100% 100%;
+      height: 100px; }
+      .show-status .mission .in0:after {
+        display: table;
+        content: " ";
+        clear: both; }
+      .show-status .mission .in0 .name {
+        color: white;
+        font-size: 25px;
+        margin-top: 25px;
+        text-align: center; }
+        .show-status .mission .in0 .name img {
+          width: 80%; }
+    .show-status .mission .in1 {
+      border: 2px solid transparent;
+      background: url("/Content/Image/Event-2017/Thang4/eve1_stbr1.png");
+      background-size: 100% 100%;
+      background-repeat: no-repeat; }
+      .show-status .mission .in1:after {
+        display: table;
+        content: " ";
+        clear: both; }
+      .show-status .mission .in1 .content-mission {
+        width: calc(100% - 145px);
+        min-width: 260px;
+        float: left;
+        padding-right: 5px;
+        height: 100px; }
+        .show-status .mission .in1 .content-mission .name-mission {
+          height: 40px; }
+          .show-status .mission .in1 .content-mission .name-mission .name {
+            float: left;
+            font-style: oblique;
+            font-size: 16px;
+            width: 160px;
+            margin-top: 15px;
+            margin-left: 35px;
+            color: #fff; }
+          .show-status .mission .in1 .content-mission .name-mission .value {
+            margin-top: 15px;
+            float: right;
+            width: 100px;
+            margin-right: -25px;
+            font-style: italic;
+            font-size: 12px;
+            color: #fff; }
+        .show-status .mission .in1 .content-mission .description {
+          height: 58px;
+          margin-top: 5px;
+          width: 390px;
+          margin-left: 15px; }
+          .show-status .mission .in1 .content-mission .description .insistence {
+            height: 100%;
+            width: 61px;
+            float: left;
+            border-radius: 4px;
+            font-weight: 600;
+            line-height: 30px;
+            margin-right: 5px;
+            color: white;
+            font-size: 9px; }
+            .show-status .mission .in1 .content-mission .description .insistence .photo {
+              width: 25px;
+              height: 25px;
+              /* margin-left: 10px; */
+              background: rgba(255, 255, 255, 0.6);
+              border-radius: 4px;
+              float: left;
+              margin-right: 3px; }
+              .show-status .mission .in1 .content-mission .description .insistence .photo img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover; }
+          .show-status .mission .in1 .content-mission .description .img-huy {
+            float: RIGHT;
+            width: 65px; }
+      .show-status .mission .in1 .info-mission {
+        width: 140px;
+        float: right;
+        height: 100px;
+        position: relative; }
+        .show-status .mission .in1 .info-mission .info-sms {
+          color: white;
+          margin-top: 20px;
+          font-size: 12px;
+          font-style: italic; }
+        .show-status .mission .in1 .info-mission .avatar-star1 {
+          float: left;
+          width: 50px;
+          margin-top: 25px;
+          margin-left: 5px; }
+        .show-status .mission .in1 .info-mission .avatar-star2 {
+          border-radius: 50%;
+          width: 36px;
+          position: absolute;
+          top: 32px;
+          left: 12px; }
+        .show-status .mission .in1 .info-mission .name-avatar {
+          float: left;
+          color: white;
+          margin-top: 30px;
+          margin-left: 5px;
+          font-size: 15px; }
+        .show-status .mission .in1 .info-mission .name-user {
+          color: white;
+          font-size: 10px;
+          font-style: italic;
+          position: absolute;
+          bottom: 30px;
+          right: 5px;
+          width: 80px;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          height: 1.2em;
+          white-space: nowrap; }
+    .show-status .mission .in2 {
+      border: 2px solid transparent;
+      background: url("/Content/Image/Event-2017/Thang4/eve1_stbr2.png");
+      background-size: 100% 100%;
+      background-repeat: no-repeat; }
+      .show-status .mission .in2:after {
+        display: table;
+        content: " ";
+        clear: both; }
+      .show-status .mission .in2 .content-mission {
+        width: calc(100% - 145px);
+        min-width: 260px;
+        float: left;
+        padding-right: 5px;
+        height: 100px; }
+        .show-status .mission .in2 .content-mission .name-mission {
+          height: 40px; }
+          .show-status .mission .in2 .content-mission .name-mission .name {
+            float: left;
+            font-style: oblique;
+            font-size: 16px;
+            width: 160px;
+            margin-top: 15px;
+            margin-left: 35px;
+            color: #fff; }
+          .show-status .mission .in2 .content-mission .name-mission .value {
+            margin-top: 15px;
+            float: right;
+            width: 100px;
+            margin-right: -25px;
+            font-style: italic;
+            font-size: 12px;
+            color: #fff; }
+        .show-status .mission .in2 .content-mission .description {
+          height: 58px;
+          margin-top: 5px;
+          width: 390px;
+          margin-left: 15px; }
+          .show-status .mission .in2 .content-mission .description .insistence {
+            height: 100%;
+            width: 61px;
+            float: left;
+            border-radius: 4px;
+            font-weight: 600;
+            line-height: 30px;
+            margin-right: 5px;
+            color: white;
+            font-size: 9px; }
+            .show-status .mission .in2 .content-mission .description .insistence .photo {
+              width: 25px;
+              height: 25px;
+              /* margin-left: 10px; */
+              background: rgba(255, 255, 255, 0.6);
+              border-radius: 4px;
+              float: left;
+              margin-right: 3px; }
+              .show-status .mission .in2 .content-mission .description .insistence .photo img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover; }
+          .show-status .mission .in2 .content-mission .description .img-huy {
+            float: RIGHT;
+            width: 65px; }
+      .show-status .mission .in2 .info-mission {
+        width: 140px;
+        float: right;
+        height: 100px;
+        position: relative; }
+        .show-status .mission .in2 .info-mission .info-sms {
+          color: white;
+          margin-top: 20px;
+          font-size: 12px;
+          font-style: italic; }
+        .show-status .mission .in2 .info-mission .avatar-star1 {
+          float: left;
+          width: 50px;
+          margin-top: 25px;
+          margin-left: 5px; }
+        .show-status .mission .in2 .info-mission .avatar-star2 {
+          border-radius: 50%;
+          width: 36px;
+          position: absolute;
+          top: 32px;
+          left: 12px; }
+        .show-status .mission .in2 .info-mission .name-avatar {
+          float: left;
+          color: white;
+          margin-top: 30px;
+          margin-left: 5px;
+          font-size: 15px; }
+        .show-status .mission .in2 .info-mission .name-user {
+          color: white;
+          font-size: 10px;
+          font-style: italic;
+          position: absolute;
+          bottom: 30px;
+          right: 5px;
+          width: 90px; }
+    .show-status .mission .intwo {
+      border: 2px solid transparent;
+      background: url("/Content/Image/Event-2016/Eventthang12/XepHang2/background_nv_ct.png");
+      background-size: 100% 100%; }
+      .show-status .mission .intwo:after {
+        display: table;
+        content: " ";
+        clear: both; }
+  .show-status .mission30_4 {
+    background: url("/Content/Image/Event-2017/Thang4/event2_sttbr.png");
+    background-size: 100% 100%;
+    height: 100px; }
+    .show-status .mission30_4 .in0 {
+      position: relative; }
+      .show-status .mission30_4 .in0 .item1 {
+        height: 100px;
+        position: absolute;
+        left: 0px;
+        cursor: pointer; }
+      .show-status .mission30_4 .in0 .item2 {
+        height: 100px;
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%);
+        cursor: pointer; }
+      .show-status .mission30_4 .in0 .item3 {
+        height: 100px;
+        position: absolute;
+        right: 0px;
+        cursor: pointer; }
+    .show-status .mission30_4 .in1 {
+      position: relative; }
+      .show-status .mission30_4 .in1 .icon-mission {
+        height: 90px;
+        width: 140px;
+        margin-left: 5px;
+        margin-top: 5px;
+        float: left; }
+      .show-status .mission30_4 .in1 .content-mission {
+        float: right;
+        width: calc(100% - 240px);
+        position: relative;
+        right: 85px; }
+        .show-status .mission30_4 .in1 .content-mission .name-mission {
+          font-size: 14px;
+          font-style: italic;
+          font-weight: bolder;
+          margin-top: 20px;
+          margin-left: 10px;
+          border-radius: 100px;
+          color: #f00;
+          font-family: "Times New Roman", Georgia, serif; }
+        .show-status .mission30_4 .in1 .content-mission .percent-level-process {
+          position: relative;
+          float: left;
+          width: calc(100% - 40px);
+          height: 25px;
+          margin: -2px 5px;
+          border-radius: 5px;
+          border: 2px solid #f3f3f3;
+          text-align: left;
+          padding: 0.5px;
+          background-color: orange; }
+          .show-status .mission30_4 .in1 .content-mission .percent-level-process .had {
+            height: 21px;
+            margin-top: -0.5px;
+            margin-left: -0.5px;
+            border-radius: 3px;
+            position: absolute;
+            Z-INDEX: 2;
+            background-color: #178619;
+            background-repeat: repeat-x;
+            background-size: auto 100%; }
+          .show-status .mission30_4 .in1 .content-mission .percent-level-process .had1 {
+            height: 21px;
+            margin-top: -0.5px;
+            margin-left: -0.5px;
+            border-radius: 3px;
+            position: absolute;
+            Z-INDEX: 2;
+            background-color: #ea0000;
+            background-repeat: repeat-x;
+            background-size: auto 100%; }
+          .show-status .mission30_4 .in1 .content-mission .percent-level-process .lost {
+            height: 21px;
+            margin-top: -0.5px;
+            margin-left: -0.5px;
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            z-index: 1;
+            border-radius: 6px;
+            background-color: orange;
+            background-repeat: repeat-x;
+            background-size: auto 100%; }
+          .show-status .mission30_4 .in1 .content-mission .percent-level-process .icon-precent {
+            height: 40px;
+            width: 60px;
+            top: -12px;
+            left: -25px;
+            position: absolute;
+            z-index: 3; }
+        .show-status .mission30_4 .in1 .content-mission .point-mission {
+          position: absolute;
+          width: 70px;
+          bottom: 25px;
+          right: 65px; }
+          .show-status .mission30_4 .in1 .content-mission .point-mission .point-list {
+            position: relative;
+            width: 70px;
+            height: 120px; }
+
+@-webkit-keyframes smokeLLL {
+  0% {
+    opacity: 0;
+    left: 0px;
+    top: 0%; }
+  10% {
+    opacity: .1;
+    left: 0px;
+    top: 10%; }
+  20% {
+    opacity: .2;
+    left: 0px;
+    top: 20%; }
+  30% {
+    opacity: .3;
+    left: 0px;
+    top: 30%; }
+  40% {
+    opacity: .4;
+    left: 0px;
+    top: 40%; }
+  50% {
+    opacity: .5;
+    left: 0px;
+    top: 50%; }
+  60% {
+    opacity: .6;
+    left: 0px;
+    top: 60%; }
+  70% {
+    opacity: .7;
+    left: 0px;
+    top: 70%; }
+  80% {
+    opacity: .8;
+    left: 0px;
+    top: 80%; }
+  90% {
+    opacity: .9;
+    left: 0px;
+    top: 90%; }
+  100% {
+    opacity: 1;
+    left: 0px;
+    top: 100%; } }
+
+@-moz-keyframes smokeLLL {
+  0% {
+    opacity: 0;
+    left: 0px;
+    top: 0%; }
+  10% {
+    opacity: .1;
+    left: 0px;
+    top: 10%; }
+  20% {
+    opacity: .2;
+    left: 0px;
+    top: 20%; }
+  30% {
+    opacity: .3;
+    left: 0px;
+    top: 30%; }
+  40% {
+    opacity: .4;
+    left: 0px;
+    top: 40%; }
+  50% {
+    opacity: .5;
+    left: 0px;
+    top: 50%; }
+  60% {
+    opacity: .6;
+    left: 0px;
+    top: 60%; }
+  70% {
+    opacity: .7;
+    left: 0px;
+    top: 70%; }
+  80% {
+    opacity: .8;
+    left: 0px;
+    top: 80%; }
+  90% {
+    opacity: .9;
+    left: 0px;
+    top: 90%; }
+  100% {
+    opacity: 1;
+    left: 0px;
+    top: 100%; } }
+
+@-o-keyframes smokeLLL {
+  0% {
+    opacity: 0;
+    left: 0px;
+    top: 0%; }
+  10% {
+    opacity: .1;
+    left: 0px;
+    top: 10%; }
+  20% {
+    opacity: .2;
+    left: 0px;
+    top: 20%; }
+  30% {
+    opacity: .3;
+    left: 0px;
+    top: 30%; }
+  40% {
+    opacity: .4;
+    left: 0px;
+    top: 40%; }
+  50% {
+    opacity: .5;
+    left: 0px;
+    top: 50%; }
+  60% {
+    opacity: .6;
+    left: 0px;
+    top: 60%; }
+  70% {
+    opacity: .7;
+    left: 0px;
+    top: 70%; }
+  80% {
+    opacity: .8;
+    left: 0px;
+    top: 80%; }
+  90% {
+    opacity: .9;
+    left: 0px;
+    top: 90%; }
+  100% {
+    opacity: 1;
+    left: 0px;
+    top: 100%; } }
+
+@keyframes smokeLLL {
+  0% {
+    opacity: 0;
+    left: 0px;
+    top: 0%; }
+  10% {
+    opacity: .1;
+    left: 0px;
+    top: 10%; }
+  20% {
+    opacity: .2;
+    left: 0px;
+    top: 20%; }
+  30% {
+    opacity: .3;
+    left: 0px;
+    top: 30%; }
+  40% {
+    opacity: .4;
+    left: 0px;
+    top: 40%; }
+  50% {
+    opacity: .5;
+    left: 0px;
+    top: 50%; }
+  60% {
+    opacity: .6;
+    left: 0px;
+    top: 60%; }
+  70% {
+    opacity: .7;
+    left: 0px;
+    top: 70%; }
+  80% {
+    opacity: .8;
+    left: 0px;
+    top: 80%; }
+  90% {
+    opacity: .9;
+    left: 0px;
+    top: 90%; }
+  100% {
+    opacity: 1;
+    left: 0px;
+    top: 100%; } }
+
+@-webkit-keyframes mymove {
+  0% {
+    opacity: 1;
+    top: 100%; }
+  20% {
+    opacity: .8;
+    top: 80%; }
+  40% {
+    opacity: .6;
+    top: 60%; }
+  60% {
+    opacity: .4;
+    top: 40%; }
+  80% {
+    opacity: .2;
+    top: 20%; }
+  100% {
+    opacity: 0;
+    top: 0%; } }
+
+@-moz-keyframes mymove {
+  0% {
+    opacity: 1;
+    top: 100%; }
+  20% {
+    opacity: .8;
+    top: 80%; }
+  40% {
+    opacity: .6;
+    top: 60%; }
+  60% {
+    opacity: .4;
+    top: 40%; }
+  80% {
+    opacity: .2;
+    top: 20%; }
+  100% {
+    opacity: 0;
+    top: 0%; } }
+
+@-o-keyframes mymove {
+  0% {
+    opacity: 1;
+    top: 100%; }
+  20% {
+    opacity: .8;
+    top: 80%; }
+  40% {
+    opacity: .6;
+    top: 60%; }
+  60% {
+    opacity: .4;
+    top: 40%; }
+  80% {
+    opacity: .2;
+    top: 20%; }
+  100% {
+    opacity: 0;
+    top: 0%; } }
+
+@keyframes mymove {
+  0% {
+    opacity: 1;
+    top: 100%; }
+  20% {
+    opacity: .8;
+    top: 80%; }
+  40% {
+    opacity: .6;
+    top: 60%; }
+  60% {
+    opacity: .4;
+    top: 40%; }
+  80% {
+    opacity: .2;
+    top: 20%; }
+  100% {
+    opacity: 0;
+    top: 0%; } }
+            .show-status .mission30_4 .in1 .content-mission .point-mission .point-list .point {
+              width: 70px;
+              font-family: Impact, Charcoal, sans-serif;
+              font-size: 25px;
+              color: #f00;
+              font-style: italic;
+              font-weight: 900;
+              bottom: 0px;
+              position: absolute;
+              -webkit-text-stroke: 1.5px white;
+              text-align: center;
+              -webkit-animation: mymove 2s 0s linear;
+              -moz-animation: mymove 2s 0s linear;
+              -o-animation: mymove 2s 0s linear;
+              animation: mymove 2s 0s linear; }
+              .show-status .mission30_4 .in1 .content-mission .point-mission .point-list .point .div-item {
+                bottom: -15px;
+                text-align: center;
+                width: 80px;
+                right: -20px;
+                font-size: 3vw; }
+              .show-status .mission30_4 .in1 .content-mission .point-mission .point-list .point .img-item {
+                width: 95px; }
+        .show-status .mission30_4 .in1 .content-mission .icon-gift {
+          width: 40px;
+          position: absolute;
+          top: 5px;
+          right: 10px; }
+      .show-status .mission30_4 .in1 .control-mission {
+        width: 80px;
+        height: 100px;
+        right: 10px;
+        position: absolute;
+        top: 10px; }
+        .show-status .mission30_4 .in1 .control-mission .bxh {
+          width: 70px; }
+        .show-status .mission30_4 .in1 .control-mission .delete-mission {
+          width: 70px;
+          margin-top: 10px; }
+      .show-status .mission30_4 .in1 .popover {
+        background-color: rgba(253, 253, 253, 0.5);
+        padding: 0px;
+        top: 5px !important;
+        left: 155px !important;
+        display: block;
+        border-radius: 5px; }
+        .show-status .mission30_4 .in1 .popover .popover-content {
+          padding: 5px 5px;
+          color: black;
+          font-style: italic;
+          font-weight: 600;
+          font-size: 10px; }
+  .show-status .in {
+    padding: 5px;
+    background-color: #f15d69;
+    color: #fff;
+    border-radius: inherit; }
+  .show-status .mission-thang-8 {
+    padding: 5px;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 3px;
+    position: relative;
+    width: 100%;
+    margin-right: 10px;
+    float: left;
+    min-height: 88px; }
+    .show-status .mission-thang-8:before {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 0;
+      top: 10px;
+      left: -8px;
+      border-color: transparent;
+      border-style: solid;
+      border-width: 8px 8px 8px 0;
+      border-right-color: rgba(255, 255, 255, 0.6); }
+    .show-status .mission-thang-8 .name-mission {
+      white-space: nowrap;
+      overflow: hidden;
+      -webkit-text-overflow: ellipsis;
+      -moz-text-overflow: ellipsis;
+      -ms-text-overflow: ellipsis;
+      -o-text-overflow: ellipsis;
+      text-overflow: ellipsis;
+      text-align: right;
+      margin-bottom: 5px;
+      padding-bottom: 5px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+      font-size: 16px;
+      font-weight: bold;
+      height: 29px; }
+      .show-status .mission-thang-8 .name-mission a {
+        border-radius: 4px;
+        background-color: #d95bf4;
+        border-radius: 2px;
+        margin-left: 5px;
+        text-decoration: none;
+        padding: 2px 5px;
+        padding-bottom: 4px; }
+        .show-status .mission-thang-8 .name-mission a:hover {
+          text-decoration: none; }
+        .show-status .mission-thang-8 .name-mission a .fa.fa-star {
+          color: #ffffff; }
+      .show-status .mission-thang-8 .name-mission .btn-top {
+        height: 100%;
+        padding: 0px 6px;
+        background-color: #d95bf4; }
+        .show-status .mission-thang-8 .name-mission .btn-top a {
+          padding: 0;
+          margin: 0;
+          color: #ffffff; }
+          .show-status .mission-thang-8 .name-mission .btn-top a .fa-server {
+            color: #ffffff; }
+    .show-status .mission-thang-8 .description {
+      height: 30px; }
+      .show-status .mission-thang-8 .description .btn-mission {
+        width: 100%;
+        height: 100%;
+        background-color: white;
+        font-size: 17px;
+        font-weight: 600;
+        padding-top: 4px;
+        color: #f15d69; }
+      .show-status .mission-thang-8 .description .btn-ring {
+        padding: 0px 5px;
+        font-size: 15px;
+        font-weight: 500;
+        float: right;
+        margin-left: 5px;
+        background-color: #fe6600;
+        border-radius: 2px; }
+      .show-status .mission-thang-8 .description .insistence {
+        height: 100%;
+        width: auto;
+        float: left;
+        border-radius: 4px;
+        font-weight: 600;
+        line-height: 30px;
+        margin-right: 10px; }
+        .show-status .mission-thang-8 .description .insistence .photo {
+          width: 30px;
+          height: 100%;
+          background: rgba(255, 255, 255, 0.6);
+          border-radius: 4px;
+          float: left;
+          margin-right: 3px; }
+          .show-status .mission-thang-8 .description .insistence .photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; }
+      .show-status .mission-thang-8 .description .level {
+        float: left;
+        width: calc(100% - 300px);
+        position: relative; }
+        .show-status .mission-thang-8 .description .level .progress {
+          margin-bottom: 0px;
+          border-radius: 20px;
+          margin-top: 8px;
+          height: 15px; }
+        .show-status .mission-thang-8 .description .level img {
+          position: absolute;
+          right: -30px;
+          top: -6px; }
+        .show-status .mission-thang-8 .description .level .RequireGiftAmount {
+          font-size: 10px;
+          position: absolute;
+          z-index: 999;
+          top: 5px; }
+          .show-status .mission-thang-8 .description .level .RequireGiftAmount.class {
+            right: -15px; }
+          .show-status .mission-thang-8 .description .level .RequireGiftAmount.class1 {
+            right: -19px; }
+          .show-status .mission-thang-8 .description .level .RequireGiftAmount.class2 {
+            right: -22px; }
+          .show-status .mission-thang-8 .description .level .RequireGiftAmount.class3 {
+            right: -26px; }
+    .show-status .mission-thang-8 .in {
+      border: 2px solid transparent;
+      background-image: url("../../Content/Image/Event-2016/EventThang8/background-show.png"); }
+      .show-status .mission-thang-8 .in:after {
+        display: table;
+        content: " ";
+        clear: both; }
+  .show-status .mission-thang-10-4 {
+    width: 100%;
+    position: relative;
+    background-image: url(/Content/Image/Event-2016/Eventthang10/cover-show-status.png);
+    background-size: 100% 100%; }
+    .show-status .mission-thang-10-4:after {
+      display: table;
+      content: " ";
+      clear: both; }
+    .show-status .mission-thang-10-4 .in {
+      background: transparent; }
+  .show-status .event-thang1 {
+    border: 2px solid transparent;
+    background: url("/Content/Image/Event-2017/Thang1/status_bg1.png");
+    background-size: 100% 100%;
+    min-height: 75px;
+    max-height: 75px; }
+    .show-status .event-thang1:after {
+      display: table;
+      content: " ";
+      clear: both; }
+    .show-status .event-thang1 .info img {
+      width: 25px;
+      margin-left: 7%;
+      margin-top: 10px;
+      float: left; }
+    .show-status .event-thang1 .info .box-text {
+      margin-top: 15px;
+      margin-left: 16px;
+      width: 55%;
+      float: left;
+      max-height: 50px;
+      overflow-y: scroll; }
+      .show-status .event-thang1 .info .box-text::-webkit-scrollbar {
+        width: 5px;
+        height: 10px; }
+      .show-status .event-thang1 .info .box-text::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        -webkit-border-radius: 0px;
+        border-radius: 0px; }
+      .show-status .event-thang1 .info .box-text::-webkit-scrollbar-thumb {
+        -webkit-border-radius: 0px;
+        border-radius: 0px;
+        background: rgba(0, 0, 0, 0.1);
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2); }
+      .show-status .event-thang1 .info .box-text::-webkit-scrollbar-thumb:window-inactive {
+        background: rgba(255, 0, 0, 0.1); }
+      .show-status .event-thang1 .info .box-text .text-noti {
+        font-size: 13px;
+        color: #ffa500; }
+    .show-status .event-thang1 .rank {
+      float: right;
+      max-height: 70px;
+      max-width: 95px;
+      margin-right: 3%; }
+      .show-status .event-thang1 .rank img {
+        width: 40px;
+        margin-top: 15px;
+        float: left; }
+      .show-status .event-thang1 .rank .number-rank {
+        font-size: 30px;
+        color: orange;
+        float: left;
+        margin-top: 15px; }
+  .show-status .status3 {
+    width: 100%; }
+    .show-status .status3 .event-thang1-1 {
+      border: 1px solid transparent;
+      background: url("/Content/Image/Event-2017/Thang2/show_br1.png");
+      background-size: 100% 100%;
+      width: calc(100% - 150px);
+      height: 75px;
+      float: left; }
+      .show-status .status3 .event-thang1-1:after {
+        display: table;
+        content: " ";
+        clear: both; }
+      .show-status .status3 .event-thang1-1 .info img {
+        width: 25px;
+        margin-left: 15%;
+        margin-top: 10px;
+        float: left; }
+      .show-status .status3 .event-thang1-1 .info .box-text {
+        margin-top: 20px;
+        margin-left: 60px;
+        width: 70%;
+        float: left;
+        max-height: 50px;
+        overflow-y: scroll; }
+        .show-status .status3 .event-thang1-1 .info .box-text::-webkit-scrollbar {
+          width: 5px;
+          height: 10px; }
+        .show-status .status3 .event-thang1-1 .info .box-text::-webkit-scrollbar-track {
+          -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+          -webkit-border-radius: 0px;
+          border-radius: 0px; }
+        .show-status .status3 .event-thang1-1 .info .box-text::-webkit-scrollbar-thumb {
+          -webkit-border-radius: 0px;
+          border-radius: 0px;
+          background: rgba(0, 0, 0, 0.1);
+          -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2); }
+        .show-status .status3 .event-thang1-1 .info .box-text::-webkit-scrollbar-thumb:window-inactive {
+          background: rgba(255, 0, 0, 0.1); }
+        .show-status .status3 .event-thang1-1 .info .box-text .text-noti {
+          font-size: 13px;
+          color: white; }
+    .show-status .status3 .event-thang1-2 {
+      border: 1px solid transparent;
+      background: url("/Content/Image/Event-2017/Thang2/show_br2.png");
+      background-size: 100% 100%;
+      height: 75px;
+      min-width: 140px;
+      margin-left: 5px;
+      float: left; }
+      .show-status .status3 .event-thang1-2:after {
+        display: table;
+        content: " ";
+        clear: both; }
+      .show-status .status3 .event-thang1-2 .unitinfo {
+        width: 70px;
+        float: left;
+        margin-left: 2px; }
+        .show-status .status3 .event-thang1-2 .unitinfo img {
+          width: 45px;
+          margin-top: 20px;
+          float: left; }
+        .show-status .status3 .event-thang1-2 .unitinfo .value-unit {
+          color: white;
+          right: 30px;
+          font-size: 20px;
+          position: absolute;
+          margin-top: 20px; }
+  .show-status .status4 {
+    width: 100%; }
+    .show-status .status4 .event-thang3-1 {
+      border: 1px solid transparent;
+      background: url("/Content/Image/Event-2017/Thang3/showbr.png");
+      background-size: 100% 100%;
+      width: calc(100%);
+      height: 75px;
+      float: left; }
+      .show-status .status4 .event-thang3-1:after {
+        display: table;
+        content: " ";
+        clear: both; }
+    .show-status .status4 table {
+      float: right;
+      margin-top: calc(10px);
+      margin-right: 20px; }
+      .show-status .status4 table tbody tr td {
+        padding: 10px; }
+        .show-status .status4 table tbody tr td img {
+          margin-top: -10px; }
+        .show-status .status4 table tbody tr td .sp1 {
+          font-size: 25px;
+          color: #dd4348; }
+        .show-status .status4 table tbody tr td .sp2 {
+          font-size: 25px;
+          color: #3daa70; }
+        .show-status .status4 table tbody tr td .sp3 {
+          font-size: 25px;
+          color: #d13a8f; }
+  .show-status .status5 {
+    width: 100%;
+    height: 95px;
+    background-color: rgba(57, 145, 196, 0.45); }
+    .show-status .status5 .event-thang3-1 {
+      border: 1px solid transparent;
+      background: url("/Content/Image/Event-2017/Thang3/ev4_brshow1.png");
+      background-size: 100% 100%;
+      width: calc(100% - 150px);
+      height: 75px;
+      float: left;
+      margin-left: 10px;
+      margin-top: 10px; }
+      .show-status .status5 .event-thang3-1:after {
+        display: table;
+        content: " ";
+        clear: both; }
+      .show-status .status5 .event-thang3-1 img {
+        width: 120px;
+        margin-left: 5px;
+        margin-top: 2px;
+        float: left; }
+      .show-status .status5 .event-thang3-1 .box-text {
+        margin-top: 10px;
+        margin-left: 10px;
+        width: calc(100% - 150px);
+        float: left;
+        max-height: 60px;
+        min-height: 60px;
+        overflow-y: scroll; }
+        .show-status .status5 .event-thang3-1 .box-text::-webkit-scrollbar {
+          width: 5px;
+          height: 10px; }
+        .show-status .status5 .event-thang3-1 .box-text::-webkit-scrollbar-track {
+          -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+          -webkit-border-radius: 0px;
+          border-radius: 0px; }
+        .show-status .status5 .event-thang3-1 .box-text::-webkit-scrollbar-thumb {
+          -webkit-border-radius: 0px;
+          border-radius: 0px;
+          background: rgba(0, 0, 0, 0.1);
+          -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2); }
+        .show-status .status5 .event-thang3-1 .box-text::-webkit-scrollbar-thumb:window-inactive {
+          background: rgba(255, 0, 0, 0.1); }
+        .show-status .status5 .event-thang3-1 .box-text .text-noti {
+          font-size: 13px;
+          color: white; }
+    .show-status .status5 .event-thang3-2 {
+      border: 1px solid transparent;
+      background: url("/Content/Image/Event-2017/Thang3/ev4_brshow2.png");
+      background-size: 100% 100%;
+      height: 75px;
+      min-width: 120px;
+      margin-left: 5px;
+      float: left;
+      margin-top: 10px;
+      position: relative; }
+      .show-status .status5 .event-thang3-2:after {
+        display: table;
+        content: " ";
+        clear: both; }
+      .show-status .status5 .event-thang3-2 img {
+        width: 45px;
+        margin-top: 15px;
+        float: left;
+        margin-left: 5px; }
+      .show-status .status5 .event-thang3-2 .unitinfo {
+        width: 70px;
+        float: left;
+        margin-left: 2px; }
+        .show-status .status5 .event-thang3-2 .unitinfo .value-unit {
+          color: white;
+          right: 15px;
+          font-size: 20px;
+          position: absolute;
+          margin-top: 15px; }
+        .show-status .status5 .event-thang3-2 .unitinfo .img-bt {
+          width: 60px;
+          position: absolute;
+          bottom: 5px;
+          cursor: pointer; }
+  .show-status #modal-event-thang-3 {
+    background-color: rgba(0, 0, 0, 0.5); }
+    .show-status #modal-event-thang-3 .modal-content {
+      background-color: white; }
+      .show-status #modal-event-thang-3 .modal-content .modal-dialog {
+        width: 500px; }
+      .show-status #modal-event-thang-3 .modal-content .modal-body {
+        padding: 0; }
+        .show-status #modal-event-thang-3 .modal-content .modal-body .img-thinhstar {
+          position: absolute;
+          right: 80px;
+          top: -5px;
+          width: 40px;
+          cursor: pointer; }
+        .show-status #modal-event-thang-3 .modal-content .modal-body .div-thinhstar {
+          line-height: 42px;
+          font-size: 16px;
+          font-weight: bold;
+          color: red;
+          position: absolute;
+          right: 20px;
+          top: -5px; }
+      .show-status #modal-event-thang-3 .modal-content .nav-tabs {
+        margin: 10px;
+        margin-bottom: 15px; }
+      .show-status #modal-event-thang-3 .modal-content .tab-pane {
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+        overflow: hidden; }
+        .show-status #modal-event-thang-3 .modal-content .tab-pane > div {
+          max-height: 350px;
+          overflow-y: auto; }
+      .show-status #modal-event-thang-3 .modal-content .list-item {
+        padding: 10px;
+        border-top: 1px solid #e2e2e2; }
+        .show-status #modal-event-thang-3 .modal-content .list-item:after {
+          display: table;
+          content: " ";
+          clear: both; }
+        .show-status #modal-event-thang-3 .modal-content .list-item:nth-child(2n) {
+          background: #f3f3f3; }
+        .show-status #modal-event-thang-3 .modal-content .list-item .rank-number {
+          float: left;
+          width: 20px;
+          margin-right: 10px;
+          line-height: 42px;
+          font-size: 14px;
+          font-weight: bold; }
+        .show-status #modal-event-thang-3 .modal-content .list-item .rank-item {
+          float: left;
+          width: -webkit-calc(100% - 230px);
+          width: -moz-calc(100% - 230px);
+          width: -ms-calc(100% - 230px);
+          width: -o-calc(100% - 230px);
+          width: calc(100% - 230px);
+          height: 42px; }
+          .show-status #modal-event-thang-3 .modal-content .list-item .rank-item .uc-user-list-item {
+            padding: 0; }
+        .show-status #modal-event-thang-3 .modal-content .list-item .value {
+          color: black;
+          float: left;
+          width: 100px;
+          text-align: right;
+          line-height: 42px;
+          font-size: 16px;
+          font-weight: bold; }
+        .show-status #modal-event-thang-3 .modal-content .list-item .us-bt {
+          margin-left: 10px; }
+  .show-status #modal-info-thang-4-1 {
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2; }
+    .show-status #modal-info-thang-4-1 .modal-content {
+      background-color: white; }
+      .show-status #modal-info-thang-4-1 .modal-content .modal-body {
+        padding: 0;
+        text-align: center;
+        height: 450px;
+        background: url("../../Content/Image/Event-2017/Thang4/eve1_popupbr.png"); }
+        .show-status #modal-info-thang-4-1 .modal-content .modal-body .logo {
+          width: 200px; }
+        .show-status #modal-info-thang-4-1 .modal-content .modal-body .content .fisrt-mission {
+          width: 90%;
+          height: 160px;
+          margin-top: 15px;
+          margin-left: 50%;
+          transform: translate(-50%); }
+          .show-status #modal-info-thang-4-1 .modal-content .modal-body .content .fisrt-mission .first-item {
+            float: left;
+            width: calc(100% / 3);
+            position: relative;
+            height: 100%; }
+            .show-status #modal-info-thang-4-1 .modal-content .modal-body .content .fisrt-mission .first-item .first-data {
+              position: absolute;
+              width: 55%;
+              height: 75px;
+              left: calc(50% + 10px);
+              transform: translate(-50%);
+              top: 50px; }
+              .show-status #modal-info-thang-4-1 .modal-content .modal-body .content .fisrt-mission .first-item .first-data .data-item {
+                width: calc(50%);
+                height: 35px;
+                float: left; }
+                .show-status #modal-info-thang-4-1 .modal-content .modal-body .content .fisrt-mission .first-item .first-data .data-item .photo {
+                  top: 0;
+                  width: 20px;
+                  margin-left: 0px;
+                  float: left; }
+                .show-status #modal-info-thang-4-1 .modal-content .modal-body .content .fisrt-mission .first-item .first-data .data-item .data {
+                  float: left;
+                  color: #f15d69;
+                  margin-left: 3px; }
+            .show-status #modal-info-thang-4-1 .modal-content .modal-body .content .fisrt-mission .first-item .b-text {
+              position: absolute;
+              top: 15px;
+              left: calc(50% + 5px);
+              transform: translate(-50%);
+              z-index: 1;
+              font-size: 10px;
+              width: 100px; }
+            .show-status #modal-info-thang-4-1 .modal-content .modal-body .content .fisrt-mission .first-item .img-item {
+              position: absolute;
+              top: 0px;
+              left: 50%;
+              transform: translate(-50px); }
+            .show-status #modal-info-thang-4-1 .modal-content .modal-body .content .fisrt-mission .first-item .img-nhan {
+              position: absolute;
+              left: calc(50% + 7px);
+              transform: translate(-50%);
+              width: 90px;
+              bottom: 5px;
+              cursor: pointer; }
+        .show-status #modal-info-thang-4-1 .modal-content .modal-body .content .second-mission {
+          width: 70%;
+          height: 160px;
+          margin-top: 15px;
+          margin-left: 50%;
+          transform: translate(-50%); }
+          .show-status #modal-info-thang-4-1 .modal-content .modal-body .content .second-mission .second-item {
+            float: left;
+            width: calc(100% / 2);
+            position: relative;
+            height: 100%; }
+            .show-status #modal-info-thang-4-1 .modal-content .modal-body .content .second-mission .second-item .second-data {
+              position: absolute;
+              width: 55%;
+              height: 75px;
+              left: calc(50% + 10px);
+              transform: translate(-50%);
+              top: 50px; }
+              .show-status #modal-info-thang-4-1 .modal-content .modal-body .content .second-mission .second-item .second-data .data-item {
+                width: calc(50%);
+                height: 35px;
+                float: left; }
+                .show-status #modal-info-thang-4-1 .modal-content .modal-body .content .second-mission .second-item .second-data .data-item .photo {
+                  top: 0;
+                  width: 20px;
+                  margin-left: 0px;
+                  float: left; }
+                .show-status #modal-info-thang-4-1 .modal-content .modal-body .content .second-mission .second-item .second-data .data-item .data {
+                  float: left;
+                  color: #f15d69;
+                  margin-left: 3px; }
+            .show-status #modal-info-thang-4-1 .modal-content .modal-body .content .second-mission .second-item .b-text {
+              position: absolute;
+              top: 15px;
+              left: calc(50% + 5px);
+              transform: translate(-50%);
+              z-index: 1;
+              font-size: 10px;
+              width: 100px; }
+            .show-status #modal-info-thang-4-1 .modal-content .modal-body .content .second-mission .second-item .img-item {
+              position: absolute;
+              top: 0px;
+              left: 50%;
+              transform: translate(-50px); }
+            .show-status #modal-info-thang-4-1 .modal-content .modal-body .content .second-mission .second-item .img-nhan {
+              position: absolute;
+              left: calc(50% + 7px);
+              transform: translate(-50%);
+              width: 90px;
+              bottom: 5px;
+              cursor: pointer; }
+  .show-status #modal-info-thang-4-2 {
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2; }
+    .show-status #modal-info-thang-4-2 .modal-content {
+      background-color: transparent;
+      border: none;
+      box-shadow: none; }
+      .show-status #modal-info-thang-4-2 .modal-content .modal-body .img-br {
+        width: 95%;
+        margin-left: 50%;
+        transform: translate(-50%); }
+      .show-status #modal-info-thang-4-2 .modal-content .modal-body .text-content {
+        position: absolute;
+        color: white;
+        font-size: 20px;
+        top: 46%;
+        left: 50%;
+        transform: translate(-50%);
+        width: 60%; }
+      .show-status #modal-info-thang-4-2 .modal-content .modal-body .div-control {
+        position: absolute;
+        width: 60%;
+        top: 65%;
+        left: calc(50% + 25px);
+        transform: translate(-50%); }
+        .show-status #modal-info-thang-4-2 .modal-content .modal-body .div-control .img-dongy {
+          cursor: pointer; }
+        .show-status #modal-info-thang-4-2 .modal-content .modal-body .div-control .img-kodongy {
+          margin-left: 20px;
+          cursor: pointer; }
+  .show-status #modal-info-thang-4-3 {
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2; }
+    .show-status #modal-info-thang-4-3 .modal-content {
+      background-color: white; }
+      .show-status #modal-info-thang-4-3 .modal-content .modal-body {
+        padding: 0px;
+        height: 550px;
+        width: 600px;
+        background: url("../../Content/Image/Event-2017/Thang4/eve1_popubr2.png");
+        background-size: 100% 100%; }
+        .show-status #modal-info-thang-4-3 .modal-content .modal-body i {
+          position: absolute;
+          font-size: 20px;
+          right: 10px;
+          top: 10px; }
+        .show-status #modal-info-thang-4-3 .modal-content .modal-body .img-content {
+          top: 160px;
+          margin-left: 50%;
+          transform: translate(-50%);
+          width: 50%;
+          position: relative;
+          height: 85px; }
+          .show-status #modal-info-thang-4-3 .modal-content .modal-body .img-content .avatar-user {
+            border-radius: 50%;
+            position: absolute;
+            left: 0px;
+            width: 80px;
+            height: 80px; }
+          .show-status #modal-info-thang-4-3 .modal-content .modal-body .img-content .img-user {
+            border-radius: 50%;
+            position: absolute;
+            left: 0;
+            width: 60px;
+            height: 60px;
+            margin-top: 10px;
+            margin-left: 10px; }
+          .show-status #modal-info-thang-4-3 .modal-content .modal-body .img-content .avatar-idol {
+            border-radius: 50%;
+            position: absolute;
+            right: 0px;
+            width: 80px;
+            height: 80px; }
+          .show-status #modal-info-thang-4-3 .modal-content .modal-body .img-content .img-idol {
+            border-radius: 50%;
+            position: absolute;
+            right: 0;
+            width: 60px;
+            height: 60px;
+            margin-top: 10px;
+            margin-right: 10px; }
+        .show-status #modal-info-thang-4-3 .modal-content .modal-body .text-content {
+          height: 40px;
+          position: relative;
+          top: 165px;
+          color: #f15d69;
+          margin-left: 50%;
+          transform: translate(-50%);
+          width: 60%;
+          text-align: center;
+          font-size: 17px; }
+          .show-status #modal-info-thang-4-3 .modal-content .modal-body .text-content .user-name {
+            float: left;
+            width: 40%; }
+          .show-status #modal-info-thang-4-3 .modal-content .modal-body .text-content .vs-text {
+            float: left;
+            width: 20%;
+            font-size: 30px;
+            margin-top: -15px; }
+          .show-status #modal-info-thang-4-3 .modal-content .modal-body .text-content .idol-name {
+            float: right;
+            width: 40%; }
+
+@media (max-width: 500px) {
+  .name-mission2 {
+    display: none !important; }
+  .description2 {
+    min-width: 200px !important; } }
+

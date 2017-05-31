@@ -1,0 +1,31 @@
+﻿<div class="modal-body">
+    <button type="button" class="close" ng-click="onClose()">&times;</button>
+    <div class="clearfix"></div>
+    <div class="flash-phaohoa"></div>
+    <div class="content">
+        <img class="photo" ng-src="/Content/Image/uplevel.png" />
+    </div>
+    <div class="title">
+        <marquee>{{PopupEvent.titleUp}}</marquee>
+    </div>
+    <div class="title_Item">{{PopupEvent.titleItem}}</div>
+    <div class="image">
+        <div id="bannerCarousel" class="carousel">
+            <div class="carousel-inner">
+                <div class="item" ng:class="{true: 'active', false:' '}[i == 0]" ng-repeat="(i,x) in PopupEvent.PhotoLink">
+                    <a href="#">
+                        <img src="{{x.PhotoLink}}" alt="App">
+                    </a>
+                    <div class="carousel-caption">
+                        {{x.PhotoName}}
+                        <p>« {{i+1}} / {{countGift}} »</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="PromotionName">{{PopupEvent.PromotionName}}</div>
+    <div class="PromotionValueDescription"><object id="PromotionValueDescription" style="width:100%;height:100%" data="/Content/Image/Animation/idollenlevel.swf" wmode="transparent"></object></div>
+</div>
+

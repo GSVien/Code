@@ -1,0 +1,76 @@
+﻿<div class="uc-show-control">
+    <div class="alert alert-info" ng-if="status == 'loading'">
+        <i class="fa fa-spin fa-circle-o-notch"></i> Đang tải...
+    </div>
+
+    <div class="toolbar" ng-if="status == 'loaded'">
+        <button class="start-show btn" uib-tooltip="Bắt đầu show" tooltip-placement="bottom" ng-if="showStatus !== 2" ng-click="onStartShow($event)">
+            <i class="fa fa-play"></i>
+        </button>
+        <button class="stop-show btn" uib-tooltip="Kết thúc show" tooltip-placement="bottom" ng-if="showStatus === 2" ng-click="onStopShow($event)">
+            <i class="fa fa-stop"></i>
+        </button>
+<!--        <button class="edit-show btn" uib-tooltip="Cập nhật show" tooltip-placement="bottom" data-toggle="modal" data-target="#modal-edit-show">-->
+<!--            <i class="fa fa-edit"></i>-->
+<!--        </button>-->
+        <!--<button class="pause-show btn" uib-tooltip="Tạm ngưng show" tooltip-placement="bottom" ng-if="showStatus === 2" ng-click="onPauseShow($event)">
+            <i class="fa fa-pause"></i>
+        </button>-->
+    </div>
+
+    <div id="modal-edit-show" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span>&times;</span>
+                    </button>
+                    <h4 class="modal-title">Cập nhật show diễn</h4>
+                </div>
+                <div class="modal-body">
+                    <form ng-submit="onEditShow($event)">
+                        <div class="form-group">
+                            <label>Tên show</label>
+                            <input type="text" class="name form-control" ng-model="showName">
+                        </div>
+                        <div class="form-group">
+                            <label>Mô tả show</label>
+                            <textarea class="description form-control" ng-model="showDescription"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Ảnh show</label>
+                            <div class="image-cropper">
+                                <div class="cropit-image-preview"></div>
+                                <input type="file" class="cropit-image-input hidden" accept="image/*">
+                                <div class="form-horizontal">
+                                    <div class="form-group">
+                                        <div class="col-sm-12">
+                                            <button type="button" ng-click="onUploadImage($event)" class="upload btn btn-default btn-block">
+                                                <i class="fa fa-upload"></i>
+                                                Chọn ảnh từ máy...
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">Zoom:</label>
+                                        <div class="col-sm-10">
+                                            <input type="range" class="cropit-image-zoom-input" min="0" max="1" step="0.01">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="pull-right">
+                                <button type="submit" class="btn btn-primary">Ghi nhận</button>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

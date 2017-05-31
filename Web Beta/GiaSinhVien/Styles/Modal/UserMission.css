@@ -1,0 +1,112 @@
+﻿/*#region [Variable]*/
+/*#endregion*/
+.modal-usermission {
+  text-align: center; }
+  .modal-usermission .modal-dialog .modal-header {
+    padding: 5px; }
+  .modal-usermission .modal-dialog .close {
+    position: absolute;
+    right: 2px;
+    top: 8px; }
+  .modal-usermission .modal-dialog .nav-tabs {
+    margin: 0; }
+    .modal-usermission .modal-dialog .nav-tabs li span {
+      font-size: 18px; }
+    .modal-usermission .modal-dialog .nav-tabs li.active {
+      color: #fff; }
+  .modal-usermission .list-day-check:after {
+    display: table;
+    content: " ";
+    clear: both; }
+  .modal-usermission .list-day-check .col {
+    width: calc(100% / 5 -10px);
+    border-right: 1px solid rgba(201, 184, 185, 0.23);
+    float: left;
+    margin: 5px; }
+    .modal-usermission .list-day-check .col:last-child {
+      border: none; }
+    .modal-usermission .list-day-check .col img {
+      width: 100%; }
+      .modal-usermission .list-day-check .col img.check {
+        -webkit-filter: grayscale(100%); }
+    .modal-usermission .list-day-check .col .name {
+      display: block;
+      text-align: center;
+      font-weight: bold;
+      margin: 10px 0px;
+      height: 60px; }
+    .modal-usermission .list-day-check .col .description {
+      display: block;
+      text-align: center; }
+    .modal-usermission .list-day-check .col .get-reward {
+      margin-left: -5px;
+      margin-top: 5px; }
+    .modal-usermission .list-day-check .col .btn-red {
+      padding-right: 0;
+      padding-left: 0; }
+  @media (max-width: 425px) {
+    .modal-usermission .list-day-check .col {
+      width: 100%;
+      float: none; }
+      .modal-usermission .list-day-check .col img {
+        width: 30%;
+        float: left; }
+      .modal-usermission .list-day-check .col .name {
+        width: 40%;
+        margin-top: 20px;
+        float: left; }
+      .modal-usermission .list-day-check .col .description {
+        vertical-align: middle;
+        line-height: 90px; } }
+  .modal-usermission .modal-body {
+    padding: 0; }
+  .modal-usermission .table {
+    margin-bottom: 0px; }
+    .modal-usermission .table tbody tr:first-child td {
+      border-top: 0px; }
+      .modal-usermission .table tbody tr:first-child td:first-child {
+        width: 100px; }
+      .modal-usermission .table tbody tr:first-child td:last-child {
+        width: 100px; }
+    .modal-usermission .table tbody tr td {
+      border-right: 1px solid rgba(173, 159, 159, 0.25);
+      /*vertical-align: middle;*/ }
+      .modal-usermission .table tbody tr td .btn-primary {
+        background: #f15d69; }
+      .modal-usermission .table tbody tr td .fa {
+        color: #f15d69; }
+    .modal-usermission .table .level .name_level {
+      font-weight: bold; }
+    .modal-usermission .table .level .photo {
+      width: 30px; }
+      .modal-usermission .table .level .photo:img {
+        width: 100%; }
+    .modal-usermission .table .list_name_gift {
+      float: left;
+      text-align: left;
+      width: 27%; }
+      .modal-usermission .table .list_name_gift p {
+        margin: 0 0 0; }
+      @media (max-width: 425px) {
+        .modal-usermission .table .list_name_gift {
+          width: 100%; } }
+    .modal-usermission .table .list_photo_gift {
+      float: left;
+      margin-left: 10px;
+      width: 70%;
+      max-height: 85px;
+      overflow-x: auto; }
+      .modal-usermission .table .list_photo_gift .photo {
+        height: 40px;
+        float: right;
+        background: #fff;
+        border: 1px solid rgba(255, 0, 0, 0.36);
+        margin-left: 5px;
+        margin-bottom: 5px; }
+      @media (max-width: 425px) {
+        .modal-usermission .table .list_photo_gift {
+          width: 100%;
+          margin-left: 0; }
+          .modal-usermission .table .list_photo_gift .photo {
+            float: left; } }
+
