@@ -1,4 +1,4 @@
-﻿teenidolApp.directive("toggle", [
+﻿giasinhvienApp.directive("toggle", [
     function() {
         return {
             restrict: "A",

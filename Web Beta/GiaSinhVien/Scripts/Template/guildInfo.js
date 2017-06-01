@@ -1,4 +1,4 @@
-﻿teenidolApp.directive("guildInfo", [
+﻿giasinhvienApp.directive("guildInfo", [
       function () {
           return {
               replace: true,

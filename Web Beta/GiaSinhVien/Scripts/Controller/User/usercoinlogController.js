@@ -1,4 +1,4 @@
-﻿teenidolApp.controller("usercoinlogController", [
+﻿giasinhvienApp.controller("usercoinlogController", [
     "$scope", "$routeParams", "sessionService", "webService", "authenticationService", "formService", "helperService", "$log",
     function ($scope, $routeParams, sessionService, webService, authenticationService, formService, helperService, $log) {
         var suggestStarCarousel;

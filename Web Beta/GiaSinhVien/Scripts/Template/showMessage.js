@@ -1,4 +1,4 @@
-﻿teenidolApp.directive("showMessage", [
+﻿giasinhvienApp.directive("showMessage", [
     function () {
         return {
             replace: true,

@@ -1,4 +1,4 @@
-﻿teenidolApp.directive("isLoading", [
+﻿giasinhvienApp.directive("isLoading", [
     function () {
         return {
             restrict: "A",

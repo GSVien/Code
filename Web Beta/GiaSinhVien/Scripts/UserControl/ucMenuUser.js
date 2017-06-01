@@ -1,4 +1,4 @@
-﻿teenidolApp.directive("ucMenuUser", ["$routeParams", function ($routeParams) {
+﻿giasinhvienApp.directive("ucMenuUser", ["$routeParams", function ($routeParams) {
     return {
         restrict: "E",
         transclude: true,

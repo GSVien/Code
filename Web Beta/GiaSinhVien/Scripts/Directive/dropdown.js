@@ -1,4 +1,4 @@
-﻿teenidolApp.directive("jqDropdown", [
+﻿giasinhvienApp.directive("jqDropdown", [
     "$timeout", "helperService", function ($timeout, helperService) {
         return {
             restrict: "C",

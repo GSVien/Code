@@ -1,4 +1,4 @@
-﻿teenidolApp.directive("ucPrivateMessage", [
+﻿giasinhvienApp.directive("ucPrivateMessage", [
     "webService", "sessionService", "helperService", "Notification", "authenticationService", "signalRService", function (webService, sessionService, helperService, Notification, authenticationService, signalRService) {
         var controller = function ($scope, $element) {
             //#region [Field]

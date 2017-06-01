@@ -1,4 +1,4 @@
-﻿teenidolApp.controller("popoverSeatMenuController", ["$scope", "sessionService", "webService", "popoverService",
+﻿giasinhvienApp.controller("popoverSeatMenuController", ["$scope", "sessionService", "webService", "popoverService",
     function ($scope, sessionService, webService, popoverService) {
         //#region [Field]
         $scope.status = "loading";

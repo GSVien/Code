@@ -1,4 +1,4 @@
-﻿teenidolApp.directive("showSeat", [
+﻿giasinhvienApp.directive("showSeat", [
     "helperService", function (helperService) {
         return {
             restrict: "E",

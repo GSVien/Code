@@ -1,4 +1,4 @@
-﻿teenidolApp.factory("formService", [
+﻿giasinhvienApp.factory("formService", [
     function () {
         var service = new function () {
             this.validate = function (o) {

@@ -1,4 +1,4 @@
-﻿teenidolApp.controller("modalInfoTowerController", [
+﻿giasinhvienApp.controller("modalInfoTowerController", [
     "$scope", "sessionService", "webService", "helperService", "Notification", "modalService", "$uibModalInstance", "data",
     function ($scope, sessionService, webService, helperService, Notification, modalService, $uibModalInstance, data) {
         $scope.isShowButton = {

@@ -1,4 +1,4 @@
-﻿teenidolApp.factory("popoverService", [
+﻿giasinhvienApp.factory("popoverService", [
     function () {
         var service = new function () {
             this.userMenu = {

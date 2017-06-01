@@ -1,5 +1,6 @@
-﻿teenidolApp.factory("sessionService", [
-    "$rootScope", "$http", "$interval", "$cookies", "webService", "signalRService", "helperService", "Notification", function ($rootScope, $http, $interval, $cookies, webService, signalRService, helperService, Notification) {
+﻿giasinhvienApp.factory("sessionService", [
+    "$rootScope", "$http", "$interval", "$cookies", "webService", "helperService", "Notification",
+    function ($rootScope, $http, $interval, $cookies, webService, helperService, Notification) {
         var _userId, _key, _data, _level,_groupUserId;
         var _status = "unloaded";
 
@@ -53,28 +54,28 @@
                 _userId = userId;
                 _key = key;
 
-                webService.call({
-                    name: "User_GetDetails",
-                    data: { actionUserId: _userId, userId: _userId, isStar: true, key: _key },
-                    onError: function (error, msg) {
-                        Notification.error(msg + "! Vui lòng F5 để tải lại");
-                        service.clear();
-                    },
-                    onSuccess: function (r) {
-                        _data = {
-                            user: r.Result
-                        };
-                        _groupUserId = r.Result.User.GroupUserId;
-                        $cookies.putObject("session", {
-                            userId: _userId,
-                            key: _key
-                        }, {
-                            expires: moment().add(7, "days").toDate()
-                        });
-                        if (typeof onDone === "function")
-                            onDone();
-                    }
-                });
+                //webService.call({
+                //    name: "User_GetDetails",
+                //    data: { actionUserId: _userId, userId: _userId, isStar: true, key: _key },
+                //    onError: function (error, msg) {
+                //        Notification.error(msg + "! Vui lòng F5 để tải lại");
+                //        service.clear();
+                //    },
+                //    onSuccess: function (r) {
+                //        _data = {
+                //            user: r.Result
+                //        };
+                //        _groupUserId = r.Result.User.GroupUserId;
+                //        $cookies.putObject("session", {
+                //            userId: _userId,
+                //            key: _key
+                //        }, {
+                //            expires: moment().add(7, "days").toDate()
+                //        });
+                //        if (typeof onDone === "function")
+                //            onDone();
+                //    }
+                //});
             };
 
             this.levelidol = function () {
@@ -113,16 +114,16 @@
             };
 
             this.reload = function () {
-                webService.call({
-                    name: "User_GetDetails",
-                    data: { actionUserId: _userId, userId: _userId, isStar: true, key: _key },
-                    onSuccess: function (r) {
-                        _data = {
-                            user: r.Result
-                        };
-                        $rootScope.$apply();
-                    }
-                });
+                //webService.call({
+                //    name: "User_GetDetails",
+                //    data: { actionUserId: _userId, userId: _userId, isStar: true, key: _key },
+                //    onSuccess: function (r) {
+                //        _data = {
+                //            user: r.Result
+                //        };
+                //        $rootScope.$apply();
+                //    }
+                //});
             };
 
             this.isReady = function (callback) {

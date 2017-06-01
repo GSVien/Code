@@ -1,4 +1,4 @@
-﻿teenidolApp.controller("usermodroomController", [
+﻿giasinhvienApp.controller("usermodroomController", [
     "$scope", "$rootScope", "$location", "$routeParams", "sessionService", "webService", "authenticationService", "formService", function ($scope, $rootScope, $location, $routeParams, sessionService, webService, authenticationService, formService) {
         var suggestStarCarousel;
         var carouselData = [];

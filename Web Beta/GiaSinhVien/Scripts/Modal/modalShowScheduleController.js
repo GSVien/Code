@@ -1,4 +1,4 @@
-﻿teenidolApp.controller("modalShowScheduleController", ["$scope", "$uibModalInstance", "data", "sessionService", "webService", "helperService",
+﻿giasinhvienApp.controller("modalShowScheduleController", ["$scope", "$uibModalInstance", "data", "sessionService", "webService", "helperService",
     function ($scope, $uibModalInstance, data, sessionService, webService, helperService) {
         //#region [Field]
         $scope.data = data.data;

@@ -1,4 +1,4 @@
-﻿teenidolApp.controller("userinboxController", [
+﻿giasinhvienApp.controller("userinboxController", [
     "$scope", "$rootScope", "$location", "$routeParams", "sessionService", "webService", "authenticationService", "formService", function ($scope, $rootScope, $location, $routeParams, sessionService, webService, authenticationService, formService) {
 
         //#region [Field]

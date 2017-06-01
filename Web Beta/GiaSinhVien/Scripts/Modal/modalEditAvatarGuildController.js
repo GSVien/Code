@@ -1,4 +1,4 @@
-﻿teenidolApp.controller("modalEditAvatarGuildController", ["$scope", "$rootScope", "$uibModalInstance", "sessionService", "webService", "data", "Notification",
+﻿giasinhvienApp.controller("modalEditAvatarGuildController", ["$scope", "$rootScope", "$uibModalInstance", "sessionService", "webService", "data", "Notification",
     function ($scope, $rootScope, $uibModalInstance, sessionService, webService, data, Notification) {
         //#region [Field]
         $scope.uploadavatarguild = {

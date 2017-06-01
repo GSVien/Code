@@ -1,4 +1,4 @@
-﻿teenidolApp.controller("modalBannerEventController", ["$scope", "$uibModalInstance", "data", "sessionService", "webService", 
+﻿giasinhvienApp.controller("modalBannerEventController", ["$scope", "$uibModalInstance", "data", "sessionService", "webService", 
     function ($scope, $uibModalInstance, data, sessionService, webService) {
         //#region [Field]
         $scope.openingShow = {

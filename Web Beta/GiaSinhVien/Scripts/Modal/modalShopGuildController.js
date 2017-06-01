@@ -1,4 +1,4 @@
-﻿teenidolApp.controller("modalShopGuildController", ["$scope", "$uibModalInstance", "data", "sessionService","webService","modalService",
+﻿giasinhvienApp.controller("modalShopGuildController", ["$scope", "$uibModalInstance", "data", "sessionService","webService","modalService",
     function ($scope, $uibModalInstance, data, sessionService, webService, modalService) {
         var pageindex = 0;
         $scope.onClose = function () {

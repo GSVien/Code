@@ -142,6 +142,9 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BUSCore\Controller.cs" />
+    <Compile Include="BUSCore\Do.cs" />
+    <Compile Include="BUS\ProductCategory.cs" />
     <Compile Include="IService1.cs" />
     <Compile Include="Module\DAO\ProductCategoryDAO.cs" />
     <Compile Include="Module\DAO\UserInfoDAO.cs" />
@@ -166,6 +169,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GSVEntity.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Module\Model\ProductCategoryModel.cs" />
+    <Compile Include="Module\Model\UserInfoModel.cs" />
     <Compile Include="Module\PhotoMedia.cs">
       <DependentUpon>GSVEntity.tt</DependentUpon>
     </Compile>
@@ -204,10 +209,7 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="BUS\" />
-    <Folder Include="Module\Model\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

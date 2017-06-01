@@ -1,4 +1,4 @@
-﻿teenidolApp.directive("luckyWheel", [
+﻿giasinhvienApp.directive("luckyWheel", [
       function () {
           return {
               replace: true,

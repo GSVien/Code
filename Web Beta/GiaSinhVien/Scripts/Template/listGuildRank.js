@@ -1,4 +1,4 @@
-﻿teenidolApp.directive("listGuildRank", [
+﻿giasinhvienApp.directive("listGuildRank", [
     function () {
         return {
             replace: true,

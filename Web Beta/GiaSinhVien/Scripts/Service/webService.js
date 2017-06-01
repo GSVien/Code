@@ -1,4 +1,4 @@
-﻿teenidolApp.factory("webService", [
+﻿giasinhvienApp.factory("webService", [
     "Notification", "mogolab_config", function (Notification, mogolab_config) {
         var _hostLink = mogolab_config.baseUrlWebService;
         //var _hostLink = "https://teenidol.vn:9240/TeenIdolsService.svc/";

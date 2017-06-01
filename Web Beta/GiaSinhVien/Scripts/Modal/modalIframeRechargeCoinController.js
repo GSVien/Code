@@ -1,4 +1,4 @@
-﻿teenidolApp.controller("modalIframeRechargeCoinController", ["$scope", "$uibModalInstance","sessionService",
+﻿giasinhvienApp.controller("modalIframeRechargeCoinController", ["$scope", "$uibModalInstance","sessionService",
     function ($scope, $uibModalInstance, sessionService) {
         //#region [Field]
         $scope.openingShow = {

@@ -1,4 +1,4 @@
-﻿teenidolApp.controller("detailnewsController", [
+﻿giasinhvienApp.controller("detailnewsController", [
     "$scope", "$rootScope", "$routeParams", "$log", "$sce", "sessionService", "webService", "helperService", "$window", "authenticationService", "Notification",
 function ($scope, $rootScope, $routeParams, $log, $sce, sessionService, webService, helperService, $window, authenticationService, Notification) {
     //#region [Field]

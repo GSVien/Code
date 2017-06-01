@@ -1,4 +1,4 @@
-﻿teenidolApp.directive("userListItem", [
+﻿giasinhvienApp.directive("userListItem", [
     function () {
         return {
             replace: true,

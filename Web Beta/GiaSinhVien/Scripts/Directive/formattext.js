@@ -1,4 +1,4 @@
-﻿teenidolApp.factory("formatText", [
+﻿giasinhvienApp.factory("formatText", [
     function () {
         var service = new function () {
             this.formatText = function (input) {

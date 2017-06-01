@@ -1,4 +1,4 @@
-﻿teenidolApp.directive("kendoTemplate", [
+﻿giasinhvienApp.directive("kendoTemplate", [
     "$compile", function ($compile) {
         return {
             restrict: "E",

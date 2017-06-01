@@ -1,4 +1,4 @@
-﻿teenidolApp.controller("modalAlertController", ["$scope", "$uibModalInstance", "data",
+﻿giasinhvienApp.controller("modalAlertController", ["$scope", "$uibModalInstance", "data",
     function ($scope, $uibModalInstance, data) {
         //#region [Field]
 

@@ -1,4 +1,4 @@
-﻿teenidolApp.controller("modalDayCheckController", ["$scope", "$uibModalInstance", "data", "sessionService", "webService", "authenticationService","Notification",
+﻿giasinhvienApp.controller("modalDayCheckController", ["$scope", "$uibModalInstance", "data", "sessionService", "webService", "authenticationService","Notification",
     function ($scope, $uibModalInstance, data, sessionService, webService, authenticationService, Notification) {
         //#region [Field]
         $scope.listDayCheck = {

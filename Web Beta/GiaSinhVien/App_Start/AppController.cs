@@ -14,8 +14,6 @@ namespace TeenIdol.Controllers
     {
         public ActionResult Index()
         {
-            //return Redirect("https://teenidol.vn");
-
             if (!Request.IsLocal && !Request.IsSecureConnection)
             {
                 string redirectUrl = Request.Url.ToString().Replace("http:", "https:");

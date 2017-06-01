@@ -1,4 +1,4 @@
-﻿//teenidolApp.factory("notificationService", [
+﻿//giasinhvienApp.factory("notificationService", [
 //    function() {
 //        var _topNotificationTemplate = "<div id='top-notification' style='display: none;'></div>";
 //        var _screenNotificationTemplate = "<div id='centered-notification' style='display: none;'></div>";

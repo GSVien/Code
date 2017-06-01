@@ -1,4 +1,4 @@
-﻿teenidolApp.filter("currentListSeatPrice",
+﻿giasinhvienApp.filter("currentListSeatPrice",
     function () {
         return function (input, currentPrice) {
             if (!currentPrice || input.constructor !== Array || isNaN(currentPrice))

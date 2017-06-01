@@ -1,4 +1,4 @@
-﻿teenidolApp.directive("ucShopVipItem", [
+﻿giasinhvienApp.directive("ucShopVipItem", [
     "helperService", "sessionService", "webService", "authenticationService", "Notification", "modalService",
     function (helperService, sessionService, webService, authenticationService, Notification, modalService) {
         var controller = function ($scope, $element) {

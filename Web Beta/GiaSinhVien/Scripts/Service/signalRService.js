@@ -1,4 +1,4 @@
-﻿teenidolApp.factory("signalRService", ["mogolab_config",
+﻿giasinhvienApp.factory("signalRService", ["mogolab_config",
     function (mogolab_config) {
         var _hostLink = mogolab_config.baseUrlSignalRService;
         //var _hostLink = "http://teenidol.vn:1239";

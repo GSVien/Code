@@ -1,4 +1,4 @@
-﻿teenidolApp.directive("ucShowVideo", [
+﻿giasinhvienApp.directive("ucShowVideo", [
     "$compile", "$timeout", "$interval", "webService", "sessionService", "helperService", "authenticationService", "Notification", "modalService", "apiService",
     function ($compile, $timeout, $interval, webService, sessionService, helperService, authenticationService, Notification, modalService, apiService) {
         var controller = function ($scope, $element, $attrs) {

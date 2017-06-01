@@ -1,4 +1,4 @@
-﻿teenidolApp.controller("modalReportController", ["$scope", "$uibModalInstance", "data", "sessionService", "webService", "Notification", "data", "authenticationService",
+﻿giasinhvienApp.controller("modalReportController", ["$scope", "$uibModalInstance", "data", "sessionService", "webService", "Notification", "data", "authenticationService",
     function ($scope, $uibModalInstance, data, sessionService, webService, Notification, data, authenticationService) {
         //#region [Field]
 

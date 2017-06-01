@@ -1,4 +1,4 @@
-﻿teenidolApp.directive("udRole", [
+﻿giasinhvienApp.directive("udRole", [
     "authenticationService", "sessionService", "modalService", function (authenticationService, sessionService, modalService) {
         return {
             restrict: "A",

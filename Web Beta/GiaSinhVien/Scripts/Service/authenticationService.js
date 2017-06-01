@@ -1,4 +1,4 @@
-﻿teenidolApp.factory("authenticationService", [
+﻿giasinhvienApp.factory("authenticationService", [
     "$rootScope", "webService", "sessionService", "modalService", function ($rootScope, webService, sessionService, modalService) {
         var service = new function () {
             this.signUp = function (o) {

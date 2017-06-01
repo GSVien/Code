@@ -1,4 +1,4 @@
-﻿teenidolApp.directive("ucShowAction", [
+﻿giasinhvienApp.directive("ucShowAction", [
     "webService", "sessionService", "helperService", "formService", "authenticationService", "notificationService", function (webService, sessionService, helperService, formService, authenticationService, notificationService) {
         var controller = function ($scope, $element) {
             //#region [Field]

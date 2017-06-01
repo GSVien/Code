@@ -1,4 +1,4 @@
-﻿teenidolApp.controller("modalChangePasswordController", [
+﻿giasinhvienApp.controller("modalChangePasswordController", [
     "$scope", "$uibModalInstance", "data", "sessionService", "webService", "authenticationService", "Notification",
     function ($scope, $uibModalInstance, data, sessionService, webService, authenticationService, Notification) {
         //#region [Field]

@@ -1,4 +1,4 @@
-﻿teenidolApp.controller("modalIdolDoneMissionController", [
+﻿giasinhvienApp.controller("modalIdolDoneMissionController", [
     "$scope", "$uibModalInstance", "data", "sessionService", "webService", "modalService", "Notification",
     function ($scope, $uibModalInstance, data, sessionService, webService, modalService, Notification) {
         $scope.sessionService = sessionService;

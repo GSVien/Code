@@ -1,4 +1,4 @@
-﻿teenidolApp.controller("modalRankGuildController", [
+﻿giasinhvienApp.controller("modalRankGuildController", [
     "$scope", "$routeParams", "$log", "sessionService", "webService", "helperService", "Notification", "modalService","$uibModalInstance",
     function ($scope, $routeParams, $log, sessionService, webService, helperService, Notification, modalService, $uibModalInstance) {
         $scope.ListguildRank = {

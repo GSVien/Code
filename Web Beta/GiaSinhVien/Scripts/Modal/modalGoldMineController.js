@@ -1,4 +1,4 @@
-﻿teenidolApp.controller("modalGoldMineController", [
+﻿giasinhvienApp.controller("modalGoldMineController", [
     "$scope", "$uibModalInstance", "data", "sessionService", "webService", "modalService","Notification",
     function ($scope, $uibModalInstance, data, sessionService, webService, modalService,Notification) {
         $scope.UserGuildInfo = {

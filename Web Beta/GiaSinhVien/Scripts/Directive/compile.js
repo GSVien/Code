@@ -1,4 +1,4 @@
-﻿teenidolApp.directive("compile", [
+﻿giasinhvienApp.directive("compile", [
     "$compile", function ($compile) {
         return function (scope, element, attrs) {
             scope.$watch(

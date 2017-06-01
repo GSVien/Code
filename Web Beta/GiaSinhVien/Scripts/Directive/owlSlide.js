@@ -1,4 +1,4 @@
-teenidolApp.directive('wrapOwlcarousel', function () {
+giasinhvienApp.directive('wrapOwlcarousel', function () {
 	return {
 		restrict: 'E',
 		transclude: false,
@@ -33,7 +33,7 @@ teenidolApp.directive('wrapOwlcarousel', function () {
 		}
 	};
 });
-teenidolApp.directive('owlCarouselItem', [function () {
+giasinhvienApp.directive('owlCarouselItem', [function () {
     return {
         restrict: 'A',
         transclude: false,

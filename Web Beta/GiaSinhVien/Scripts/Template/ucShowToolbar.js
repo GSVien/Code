@@ -1,4 +1,4 @@
-﻿teenidolApp.directive("ucShowToolbar", [
+﻿giasinhvienApp.directive("ucShowToolbar", [
     "helperService", function (helperService) {
         return {
             restrict: "E",

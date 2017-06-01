@@ -1,4 +1,4 @@
-﻿teenidolApp.controller("modalShowRankController", ["$scope", "$uibModalInstance", "data", "sessionService", "webService",
+﻿giasinhvienApp.controller("modalShowRankController", ["$scope", "$uibModalInstance", "data", "sessionService", "webService",
     function ($scope, $uibModalInstance, data, sessionService, webService) {
         //#region [Field]
 

@@ -1,4 +1,4 @@
-﻿teenidolApp.directive('fbLike', [
+﻿giasinhvienApp.directive('fbLike', [
         '$window', '$rootScope', function ($window, $rootScope) {
             return {
                 restrict: 'A',

@@ -1,4 +1,4 @@
-﻿teenidolApp.directive("fileread", [function () {
+﻿giasinhvienApp.directive("fileread", [function () {
     return {
         scope: {
             fileread: "="

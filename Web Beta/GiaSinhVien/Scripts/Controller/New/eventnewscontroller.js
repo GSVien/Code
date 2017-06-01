@@ -1,4 +1,4 @@
-﻿teenidolApp.controller("eventnewsController", [
+﻿giasinhvienApp.controller("eventnewsController", [
     "$scope", "$routeParams", "$log", "sessionService", "webService", "helperService",
     function ($scope, $routeParams, $log, sessionService, webService, helperService) {
         //#region [Field]

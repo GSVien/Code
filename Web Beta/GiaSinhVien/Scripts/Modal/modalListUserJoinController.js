@@ -1,4 +1,4 @@
-﻿teenidolApp.controller("modalListUserJoinController", ["$scope", "$uibModalInstance", "data", "sessionService", "webService", "modalService", "Notification", "$rootScope",
+﻿giasinhvienApp.controller("modalListUserJoinController", ["$scope", "$uibModalInstance", "data", "sessionService", "webService", "modalService", "Notification", "$rootScope",
     function ($scope, $uibModalInstance, data, sessionService, webService, modalService, Notification, $rootScope) {
         //#region [Field]
         $scope.sessionService = sessionService;

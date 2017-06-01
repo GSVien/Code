@@ -1,4 +1,4 @@
-﻿teenidolApp.factory("modalService", ["$uibModal", "sessionService",
+﻿giasinhvienApp.factory("modalService", ["$uibModal", "sessionService",
     function ($uibModal, sessionService) {
         var service = new function () {
             this.showAlert = function (o) {

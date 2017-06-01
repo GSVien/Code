@@ -1,4 +1,4 @@
-﻿teenidolApp.directive("ucUserListItem", [
+﻿giasinhvienApp.directive("ucUserListItem", [
     "helperService", function (helperService) {
         return {
             restrict: "E",

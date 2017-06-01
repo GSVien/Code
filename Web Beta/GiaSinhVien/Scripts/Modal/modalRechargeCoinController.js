@@ -1,4 +1,4 @@
-﻿teenidolApp.controller("modalRechargeCoinController", ["$scope", "$uibModalInstance", "data", "sessionService", "webService", "Notification", "helperService", "formService", "$window", "modalService", "$timeout",
+﻿giasinhvienApp.controller("modalRechargeCoinController", ["$scope", "$uibModalInstance", "data", "sessionService", "webService", "Notification", "helperService", "formService", "$window", "modalService", "$timeout",
     function ($scope, $uibModalInstance, data, sessionService, webService, Notification, helperService, formService, $window, modalService, $timeout) {
         //#region [Field]
         $scope.rechargeCoin = {

@@ -1,4 +1,4 @@
-﻿teenidolApp.controller("modalPopupEventController", ["$scope", "$uibModalInstance", "$timeout", "data", "sessionService", "webService",
+﻿giasinhvienApp.controller("modalPopupEventController", ["$scope", "$uibModalInstance", "$timeout", "data", "sessionService", "webService",
     function ($scope, $uibModalInstance, $timeout, data, sessionService, webService) {
         //#region [Field]
         $scope.PopupEvent = {

@@ -1,4 +1,4 @@
-﻿teenidolApp.directive("ucShowItem", [
+﻿giasinhvienApp.directive("ucShowItem", [
     "helperService", function (helperService) {
         return {
             restrict: "E",

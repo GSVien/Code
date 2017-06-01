@@ -1,4 +1,4 @@
-﻿teenidolApp.factory("apiService", ["$rootScope", "mogolab_config", "Notification",
+﻿giasinhvienApp.factory("apiService", ["$rootScope", "mogolab_config", "Notification",
     function ($rootScope, config, notification) {
         var service = new function () {
             this.call = function (o) {

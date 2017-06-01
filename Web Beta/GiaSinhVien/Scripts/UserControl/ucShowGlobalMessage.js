@@ -1,4 +1,4 @@
-﻿teenidolApp.directive("ucShowGlobalMessage", [
+﻿giasinhvienApp.directive("ucShowGlobalMessage", [
     "webService", "sessionService", "helperService", "authenticationService", "Notification",
     function (webService, sessionService, helperService, authenticationService, Notification) {
         var controller = function ($scope, $element) {

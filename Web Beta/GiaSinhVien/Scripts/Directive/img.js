@@ -1,4 +1,4 @@
-﻿teenidolApp.directive("img", [
+﻿giasinhvienApp.directive("img", [
     function () {
         return {
             restrict: "E",

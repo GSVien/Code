@@ -1,4 +1,4 @@
-﻿teenidolApp.directive("paging", [
+﻿giasinhvienApp.directive("paging", [
     "helperService", "$routeParams", function (helperService, $routeParams) {
         return {
             restrict: "E",

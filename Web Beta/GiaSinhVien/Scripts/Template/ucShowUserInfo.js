@@ -1,4 +1,4 @@
-﻿teenidolApp.directive("ucShowUserInfo", [
+﻿giasinhvienApp.directive("ucShowUserInfo", [
     function () {
         return {
             replace: true,

@@ -1,4 +1,4 @@
-﻿teenidolApp.directive("showListUser", [
+﻿giasinhvienApp.directive("showListUser", [
     function () {
         return {
             replace: true,

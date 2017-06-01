@@ -1,4 +1,4 @@
-﻿teenidolApp.directive("head", [
+﻿giasinhvienApp.directive("head", [
     "$rootScope", "$compile", "$window", "$location", "sessionService", function ($rootScope, $compile, $window, $location, sessionService) {
         return {
             restrict: "E",

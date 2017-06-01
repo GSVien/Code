@@ -1,156 +1,18 @@
 ﻿<div class="group">
     <div class="container">
-        <div class="suggest-star">
-            <ul class="suggest-star-carousel" rn-carousel rn-carousel-index="suggestCarouselIndex" rn-carousel-auto-slide rn-carousel-pause-on-hover>
-                <!--rn-carousel-buffered-->
 
-            </ul>
-        </div>
     </div>
 </div>
 <div class="group">
     <div class="background-home">
     </div>
     <div class="container">
-        <div class="star-panel  tab-animate">
-            <ul class="nav nav-tabs">
-                <li class="active" data-toggle="tooltip" data-placement="bottom" data-original-title="Show được user yêu thích nhất">
-                    <a data-target="#top-view" data-toggle="tab">Show yêu thích</a>
-                </li>
-                <li data-toggle="tooltip" data-placement="bottom" data-original-title="Show hay nổi bật nhất">
-                    <a data-target="#top-hot" data-toggle="tab">Show nổi bật</a>
-                </li>
-                <li data-toggle="tooltip" data-placement="bottom" data-original-title="Show đã được bạn theo dõi">
-                    <a data-target="#follow" data-toggle="tab">Đã theo dõi</a>
-                </li>
-                <li data-toggle="tooltip" data-placement="bottom" data-original-title="Show bạn đã xem">
-                    <a data-target="#recent" data-toggle="tab">Đã xem</a>
-                </li>
-            </ul>
-
-            <div class="tab-content">
-                <div id="top-view" class="tab-pane fade in active">
-                    <div class="list">
-                        <div class="col col-xs-6 col-sm-4 col-md-3" ng-repeat="x in topView.listItem">
-                            <show-item link="/show/{{x.Show.Id}}"
-                                       name="{{x.ListShow[0].StarUser.Name}}"
-                                       photo="{{x.Show.Photo}}"
-                                       phone="x.Schedule.Plaform"
-                                       level-name="{{x.ListShow['0'].StarLevel.Name}}"
-                                       level-photo="{{x.ListShow['0'].StarLevel.Photo}}"
-                                       is-live="x.Schedule.Status == 2"
-                                       view="x.Show.OnlineUser"
-                                       issample="x.SampleStar"
-                                       persamper="x.SamplePercent"
-                                       start-time="x.Schedule.StartTime"></show-item>
-                        </div>
-                    </div>
-                    <div class="next" ng-if="topView.canNext">
-                        <button class="btn btn-hover-primary" ng-click="onStarPanelNext($event)">Xem thêm</button>
-                    </div>
-
-                    <div class="alert alert-info show-animate" ng-if="!topView">
-                        <i class="fa fa-spin fa-circle-o-notch"></i> Đang tải...
-                    </div>
-                </div>
-
-                <div id="top-hot" class="tab-pane fade">
-                    <div class="list">
-                        <div class="col col-xs-6 col-sm-4 col-md-3" ng-repeat="x in topHot.listItem">
-                            <uc-show-item show-model="x"></uc-show-item>
-                        </div>
-                    </div>
-
-                    <div class="next" ng-if="topHot.canNext">
-                        <button class="btn btn-hover-primary" ng-click="onStarPanelNext($event)">Xem thêm</button>
-                    </div>
-
-                    <div class="alert alert-info show-animate" ng-if="!topHot">
-                        <i class="fa fa-spin fa-circle-o-notch"></i> Đang tải...
-                    </div>
-                </div>
-
-                <div id="follow" class="tab-pane fade">
-                    <div class="list" ng-if="follow">
-                        <div class="col col-xs-6 col-sm-4 col-md-3" ng-repeat="x in follow.listItem">
-                            <uc-show-item show-model="x"></uc-show-item>
-                        </div>
-                    </div>
-
-                    <div class="next" ng-if="follow.canNext">
-                        <button class="btn btn-hover-primary" ng-click="onStarPanelNext($event)">Xem thêm</button>
-                    </div>
-
-                    <div class="alert alert-warning show-animate" ng-if="!$p.sessionService.isSigned()">
-                        Bạn cần đăng nhập để sử dụng tính năng này. <a href="#" ud-role="sign-in">Click đây để đăng nhập</a>
-                    </div>
-
-                    <div class="alert alert-info show-animate" ng-if="$p.sessionService.isSigned() && !follow">
-                        <i class="fa fa-spin fa-circle-o-notch"></i> Đang tải...
-                    </div>
-                    <div class="alert alert-warning show-animate" ng-if="$p.sessionService.isSigned() && follow.listItem==null">
-                        Hiện bạn chưa theo dõi idol nào .
-                    </div>
-                </div>
-
-                <div id="recent" class="tab-pane fade">
-                    <div class="list" ng-if="recent">
-                        <div class="col col-xs-6 col-sm-4 col-md-3" ng-repeat="x in recent.listItem">
-                            <uc-show-item show-model="x"></uc-show-item>
-                        </div>
-                    </div>
-
-                    <div class="next" ng-if="recent.canNext">
-                        <button class="btn btn-hover-primary" ng-click="onStarPanelNext($event)">Xem thêm</button>
-                    </div>
-
-                    <div class="alert alert-warning show-animate" ng-if="!$p.sessionService.isSigned()">
-                        Bạn cần đăng nhập để sử dụng tính năng này. <a href="#" ud-role="sign-in">Click đây để đăng nhập</a>
-                    </div>
-
-                    <div class="alert alert-info show-animate" ng-if="$p.sessionService.isSigned() && !recent">
-                        <i class="fa fa-spin fa-circle-o-notch"></i> Đang tải...
-                    </div>
-                </div>
-            </div>
-        </div>
+        
     </div>
 </div>
 
 <div class="group">
     <div class="container">
-        <div class="rank-table" ng-repeat="x in rank">
-            <div class="title">{{x.title}}</div>
-            <uib-tabset class="tab-animate">
-                <uib-tab heading="{{y.title}}" ng-repeat="y in x.list" select="onLoadRank(x, y)">
-                    <div class="alert alert-info show-animate" ng-show="y.status == 'loading'">
-                        <i class="fa fa-spin fa-circle-o-notch"></i> Đang tải...
-                    </div>
-
-                    <div class="alert alert-danger show-animate" ng-show="y.status == 'error'">
-                        {{y.message}}
-                    </div>
-
-                    <div class="alert alert-warning show-animate" ng-show="y.status == 'warning'">
-                        {{y.message}}
-                    </div>
-                    <div class="list" ng-show="y.status == 'loaded'">
-                        <user-list-item ng-repeat="z in y.list"
-                                        link="{{z.Show.Id ? '/show/' + z.Show.Id : '/user/'+ z.User.Id}}"
-                                        avatar="{{z.User.AvatarPhoto}}"
-                                        name="{{z.User.Name}}"
-                                        level-name="{{z.StarLevel ? z.StarLevel.Name : z.GroupLevel.Name}}"
-                                        level-photo="{{z.StarLevel ? z.StarLevel.Photo : z.GroupLevel.Photo}}"
-                                        next-level-point-need="{{z.NextGroupLevel.Point - z.UserStarData.CoinGetFromGift | number}}"
-                                        display="{{x.pointType}}"
-                                        coin="x.getPoint(z)"
-                                        free-coin="x.getPoint(z)"></user-list-item>
-                    </div>
-                    <div class="more">
-                        <a ng-show="y.status == 'loaded'" href="{{x.link}}" class="btn btn-hover-primary btn-block">Xem thêm</a>
-                    </div>
-                </uib-tab>
-            </uib-tabset>
-        </div>
+        
     </div>
 </div>

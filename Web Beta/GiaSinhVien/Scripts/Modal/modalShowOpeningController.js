@@ -1,4 +1,4 @@
-﻿teenidolApp.controller("modalShowOpeningController", ["$scope", "$uibModalInstance", "data", "sessionService", "webService", "Notification",
+﻿giasinhvienApp.controller("modalShowOpeningController", ["$scope", "$uibModalInstance", "data", "sessionService", "webService", "Notification",
     function ($scope, $uibModalInstance, data, sessionService, webService, Notification){
         //#region [Field]
         $scope.openingShow = {

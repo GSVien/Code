@@ -1,4 +1,4 @@
-﻿teenidolApp.directive("ucShowControl", [
+﻿giasinhvienApp.directive("ucShowControl", [
     "helperService", "sessionService", "webService", "modalService", "Notification",
     function (helperService, sessionService, webService, modalService, Notification) {
         var controller = function ($scope, $element) {

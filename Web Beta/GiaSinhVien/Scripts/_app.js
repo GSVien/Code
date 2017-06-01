@@ -262,7 +262,8 @@ function modalReposition(element) {
     dialog.css("margin-top", Math.max(0, ($(window).height() - dialog.height()) / 2));
 }
 giasinhvienApp.controller("homeController", [
-    "$scope", "$rootScope", "$location", "$http", "sessionService", "webService", "authenticationService", "modalService", "formService", function ($scope, $rootScope, $location, $http, sessionService, webService, authenticationService, modalService, formService) {
+    "$scope", "$rootScope", "$location", "$http", "webService", "authenticationService", "modalService", "formService",
+    function ($scope, $rootScope, $location, $http, webService, authenticationService, modalService, formService) {
         //#region [Field]
         var now = new Date();
         var endyear = now.getTime();
@@ -270,113 +271,8 @@ giasinhvienApp.controller("homeController", [
         $scope.$p = $scope.$parent;
         $scope.listSuggestStar = undefined;
         $scope.suggestCarouselIndex = undefined;
-        $scope.topView = undefined;
-        $scope.topHot = undefined;
-        $scope.follow = undefined;
+
         $scope.recent = undefined;
-        $scope.rank = [
-    {
-        title: "Top 5 idol hot",
-        link: "/rank",
-        functionName: "List_ListTopStar",
-        pointType: "coin-star",
-        getPoint: function (x) {
-            return x.TotalSumValue;
-        },
-        list: [
-        {
-            title: "Tuần",
-            fromTime: moment().startOf("week").valueOf(),
-            toTime: moment().endOf("week").valueOf(),
-            status: "loading",
-            message: undefined,
-            list: []
-        },
-        {
-            title: "Tháng",
-            fromTime: moment().startOf("month").valueOf(),
-            toTime: moment().endOf("month").valueOf(),
-            status: "loading",
-            message: undefined,
-            list: []
-        },
-        {
-            title: "Tất cả",
-            fromTime: -1,
-            toTime: endyear,
-            status: "loading",
-            message: undefined,
-            list: []
-        }]
-    },
-    {
-        title: "Top 5 idol yêu thích",
-        link: "/rank",
-        functionName: "List_ListTopStarByFreeCoin",
-        pointType: "free-coin",
-        getPoint: function (x) {
-            return x.TotalSumValue;
-        },
-        list: [
-        {
-            title: "Tuần",
-            fromTime: moment().startOf("week").valueOf(),
-            toTime: moment().endOf("week").valueOf(),
-            status: "loading",
-            message: undefined,
-            list: []
-        },
-        {
-            title: "Tháng",
-            fromTime: moment().startOf("month").valueOf(),
-            toTime: moment().endOf("month").valueOf(),
-            status: "loading",
-            message: undefined,
-            list: []
-        },
-        {
-            title: "Tất cả",
-            fromTime: -1,
-            toTime: -1,
-            status: "loading",
-            message: undefined,
-            list: []
-        }]
-    },
-    {
-        title: "Top 5 thành viên",
-        link: "/rank",
-        functionName: "List_ListTopUser",
-        pointType: "coin",
-        getPoint: function (x) {
-            return x.TotalSumValue;
-        },
-        list: [
-        {
-            title: "Tuần",
-            fromTime: moment().startOf("week").valueOf(),
-            toTime: moment().endOf("week").valueOf(),
-            status: "loading",
-            message: undefined,
-            list: []
-        },
-        {
-            title: "Tháng",
-            fromTime: moment().startOf("month").valueOf(),
-            toTime: moment().endOf("month").valueOf(),
-            status: "loading",
-            message: undefined,
-            list: []
-        },
-        {
-            title: "Tất cả",
-            fromTime: -1,
-            toTime: -1,
-            status: "loading",
-            message: undefined,
-            list: []
-        }]
-    }];
         //#endregion
 
         //#region [Layout]
@@ -386,289 +282,11 @@ giasinhvienApp.controller("homeController", [
 
         //#region [Event]
 
-        $scope.onLoadSuggestStar = function () {
-            webService.call({
-                name: "List_SuggestStars",
-                data: {
-                    createUserId: $scope.$p.sessionService.userId(),
-                    pageIndex: 0,
-                    pageSize: 6,
-                    getStarType: 5,
-                    key: $scope.$p.sessionService.key()
-                },
-
-                onSuccess: function (r) {
-                    var array = r.Items;
-                    array.pop();
-                    array.unshift({
-                        Show: {
-                            LinkBaner: "/Content/Image/tuyendungidol.jpg",
-                            OnlineUser: "333",
-                            Id: undefined,
-                            Description: "",
-                            Photo: "",
-                        },
-                        ListShow: [
-                            {
-                                StarUser: { Name: "Casting" },
-
-                            }],
-                    });
-
-                    $scope.listSuggestStar = array;
-                    $scope.listscheduleId = '';
-                    $scope.$apply();
-                }
-            });
-        };
-
-        $scope.onSuggestStarListItemSelect = function (e) {
-            var $target = $(e.target).closest("li");
-            $scope.suggestCarouselIndex = $target.data("index");
-
-        };
 
         $scope.onLoadStarPanel = function () {
-            var currentTab = $(".star-panel .tab-pane.active").attr("id");
-            var getType;
 
-            switch (currentTab) {
-                default:
-                case "top-view":
-                    if ($scope.topView)
-                        return;
-
-                    $scope.topView = {};
-                    getType = 2;
-                    break;
-
-                case "top-hot":
-                    if ($scope.topHot)
-                        return;
-
-                    $scope.topHot = {};
-                    getType = 1;
-                    break;
-
-                case "follow":
-                    if (!sessionService.isSigned()) {
-                        $scope.follow = undefined;
-                        return;
-                    }
-
-                    if ($scope.follow)
-                        return;
-
-                    $scope.follow = {};
-                    getType = 3;
-                    break;
-
-                case "recent":
-                    if (!sessionService.isSigned()) {
-                        $scope.recent = undefined;
-                        return;
-                    }
-
-                    if ($scope.recent)
-                        return;
-
-                    $scope.recent = {};
-                    getType = 4;
-                    break;
-            }
-
-            webService.call({
-                name: "List_SuggestStars",
-                data: {
-                    createUserId: $scope.$p.sessionService.userId(),
-                    pageIndex: 0,
-                    pageSize: 20,
-                    getStarType: getType,
-                    key: $scope.$p.sessionService.key()
-                },
-                onSuccess: function (r) {
-                    switch (currentTab) {
-                        default:
-                        case "top-view":
-                            $scope.topView.pageIndex = r.PageIndex;
-                            $scope.topView.canNext = r.PageIndex < r.PageCount - 1;
-                            $scope.topView.listItem = r.Items;
-                            break;
-
-                        case "top-hot":
-                            $scope.topHot.pageIndex = r.PageIndex;
-                            $scope.topHot.canNext = r.PageIndex < r.PageCount - 1;
-                            $scope.topHot.listItem = r.Items;
-                            break;
-
-                        case "follow":
-                            $scope.follow.pageIndex = r.PageIndex;
-                            $scope.follow.canNext = r.PageIndex < r.PageCount - 1;
-                            $scope.follow.listItem = r.Items;
-                            break;
-
-                        case "recent":
-                            $scope.recent.pageIndex = r.PageIndex;
-                            $scope.recent.canNext = r.PageIndex < r.PageCount - 1;
-                            $scope.recent.listItem = r.Items;
-                            break;
-                    }
-
-                    $scope.$apply();
-                }
-            });
         };
 
-        $scope.onStarPanelNext = function (e) {
-            var $target = $(e.target).closest("button");
-
-            if (formService.isLoading($target))
-                return;
-            $target.button("loading");
-
-            var currentTab = $(".star-panel .tab-pane.active").attr("id");
-            var nextPageIndex;
-            var getType;
-
-            switch (currentTab) {
-                default:
-                case "top-view":
-                    nextPageIndex = $scope.topView.pageIndex + 1;
-                    getType = 2;
-                    break;
-
-                case "top-hot":
-                    nextPageIndex = $scope.topHot.pageIndex + 1;
-                    getType = 1;
-                    break;
-
-                case "follow":
-                    nextPageIndex = $scope.follow.pageIndex + 1;
-                    getType = 3;
-                    break;
-
-                case "recent":
-                    nextPageIndex = $scope.recent.pageIndex + 1;
-                    getType = 4;
-                    break;
-            }
-
-            webService.call({
-                name: "List_SuggestStars",
-                data: {
-                    createUserId: $scope.$p.sessionService.userId(),
-                    pageIndex: nextPageIndex,
-                    pageSize: 20,
-                    getStarType: getType,
-                    key: $scope.$p.sessionService.key()
-                },
-                onError: function () {
-                    $target.button("reset");
-                },
-                onSuccess: function (r) {
-                    $target.button("reset");
-
-                    switch (currentTab) {
-                        default:
-                        case "top-view":
-                            $scope.topView.pageIndex = r.PageIndex;
-                            $scope.topView.canNext = r.PageIndex < r.PageCount - 1;
-                            $scope.topView.listItem = $scope.topView.listItem.concat(r.Items);
-                            break;
-
-                        case "top-hot":
-                            $scope.topHot.pageIndex = r.PageIndex;
-                            $scope.topHot.canNext = r.PageIndex < r.PageCount - 1;
-                            $scope.topHot.listItem = $scope.topHot.listItem.concat(r.Items);
-                            break;
-
-                        case "follow":
-                            $scope.follow.pageIndex = r.PageIndex;
-                            $scope.follow.canNext = r.PageIndex < r.PageCount - 1;
-                            $scope.follow.listItem = $scope.follow.listItem.concat(r.Items);
-                            break;
-
-                        case "recent":
-                            $scope.recent.pageIndex = r.PageIndex;
-                            $scope.recent.canNext = r.PageIndex < r.PageCount - 1;
-                            $scope.recent.listItem = $scope.recent.listItem.concat(r.Items);
-                            break;
-                    }
-
-                    $scope.$apply();
-                }
-            });
-        };
-
-        $scope.onLoadNewsBanner = function () {
-            webService.call({
-                name: "Config_GetConfig",
-                data: {
-                    actionUserId: sessionService.userId(),
-                    value: "NewsImageLink",
-                    key: sessionService.key()
-                },
-                onSuccess: function (imgConfig) {
-                    webService.call({
-                        name: "Config_GetConfig",
-                        data: {
-                            actionUserId: sessionService.userId(),
-                            value: "NewsRedirectLink",
-                            key: sessionService.key()
-                        },
-                        onSuccess: function (linkConfig) {
-                            if (linkConfig && linkConfig.Result && linkConfig.Result.Value) {
-                                if (imgConfig && imgConfig.Result && imgConfig.Result.Value)
-                                    $scope.newBannerImg = imgConfig.Result.Value;
-                                else
-                                    $scope.newBannerImg = "";
-                                $scope.newBannerLink = linkConfig.Result.Value;
-
-                                if ($scope.newBannerImg && $scope.newBannerLink)
-                                    modalService.showBannerEvent({
-                                        data: {
-                                            newBannerLink: $scope.newBannerLink,
-                                            newBannerImage: $scope.newBannerImg,
-                                        }
-                                    });
-                            }
-                        }
-                    });
-                }
-            });
-        }
-
-        $scope.onLoadRank = function (table, time) {
-            if (time.list.length > 0)
-                return;
-
-            webService.call({
-                name: table.functionName,
-                data: {
-                    currentUserId: sessionService.userId(),
-                    pageIndex: 0,
-                    pageSize: 5,
-                    firstTime: time.fromTime,
-                    endTime: time.toTime,
-                    key: sessionService.key()
-                },
-                onError: function (msg) {
-                    time.status = "error";
-                    time.message = msg;
-                },
-                onSuccess: function (r) {
-
-                    time.list = r.Items;
-
-                    if (!time.list || time.list.length === 0) {
-                        time.status = "warning";
-                        time.message = "Hiện chưa có dữ liệu";
-                    } else {
-                        time.status = "loaded";
-                    }
-                }
-            });
-        };
         //#endregion
 
         //#region [Global Event]
@@ -686,16 +304,12 @@ giasinhvienApp.controller("homeController", [
         //#region [On Load]
         $scope.$on("$viewContentLoaded", function () {
 
-            $scope.onLoadNewsBanner();
 
             $("body").css("background-image", "url('/Content/Image/Background-home/home.png')");
-            $scope.onLoadSuggestStar();
 
-            $(".star-panel a[data-toggle='tab']").on("shown.bs.tab", function (e) {
-                $scope.onLoadStarPanel();
-            });
-            $(".star-panel .active a[data-toggle='tab']").trigger("shown.bs.tab");
-            $(".rank-table .active a[data-toggle='tab']").trigger("shown.bs.tab");
+            $scope.onLoadStarPanel();
+
+
             //load meta seo data
             $("meta[name='title']").attr("content", "Giải trí thả ga - Tự tin thể hiện mình cùng teenidol, giao lưu với dàn idol xinh xắn, đa tài, đa phong cách trên nền platform ưu việt nhất.");
             $("meta[name='keywords']").attr("content", "Giải trí thả ga - Tự tin thể hiện mình cùng teenidol, giao lưu với dàn idol xinh xắn, đa tài, đa phong cách trên nền platform ưu việt nhất.");
@@ -708,53 +322,13 @@ giasinhvienApp.controller("homeController", [
     }
 ]);
 giasinhvienApp.controller("layoutController", ["$window", "$http", "$scope", "$rootScope", "$location", "$cookies",
-    "helperService", "sessionService", "signalRService", "authenticationService", "Notification", "formService",
+    "helperService", "authenticationService", "Notification", "formService",
     "webService", "modalService",
 function ($window, $http, $scope, $rootScope, $location, $cookies,
-    helperService, sessionService, signalRService, authenticationService, Notification, formService,
+    helperService, authenticationService, Notification, formService,
     webService, modalService) {
         //#region [Field]
-        $scope.helper = helperService;
-        $scope.sessionService = sessionService;
-        $scope.hub = undefined;
-        $scope.dropdownStatus = "loading";
-        $scope.dropdownMessage = undefined;
-        $scope.dropdownUserId = undefined;
-        $scope.dropdownUserData = undefined;
-        $scope.emoticon = [];
-        $scope.forgetpassword = {
-            email: undefined,
-        }
-        $scope.showSchedule = undefined;
-        $scope.showRank = undefined;
-        $scope.statusGuild = {
-            Items: undefined,
-            NoReadNotification: undefined,
-            status: "loading",
-            pageSize: 0,
-            pageIndex: 5,
-            isNext: false,
-        }
-        $scope.signUp = {
-            email: undefined,
-            password: undefined,
-            repassword: undefined,
-            name: undefined,
-            gender: 0,
-            isBusy: false,
-
-        };
-        $scope.guildInfo = {
-            guildBusy: false,
-            Id: undefined,
-            nameGuild: undefined,
-            photoGuild: undefined,
-            iconGuild: undefined,
-            levelPhoto: undefined,
-            nameMaster: undefined,
-            totalUserGuild: undefined,
-            totalUserMaxGuild: undefined,
-        }
+        
         //#endregion
 
         //#region [Layout Parameter]
@@ -770,10 +344,6 @@ function ($window, $http, $scope, $rootScope, $location, $cookies,
         //#endregion
 
         //#region [Service]
-
-        $scope.helper = helperService;
-        $scope.sessionService = sessionService;
-        $scope.formService = formService;
 
         //#endregion
 
@@ -791,86 +361,11 @@ function ($window, $http, $scope, $rootScope, $location, $cookies,
             $scope.layoutShowHeaderevent = false;
         };
 
-        $scope.userSession = function () {
-            if (!sessionService.isSigned())
-                return undefined;
-            return sessionService.data().user;
-        };
 
         //#endregion
 
         //#region [Event]
 
-        $scope.onSignUp = function ($event) {
-            $scope.signUp.isBusy = true;
-            var grecapt = grecaptcha.getResponse();
-            if (!grecapt) {
-                Notification.error('Bạn chưa check recptcha !');
-                $scope.signUp.isBusy = false;
-                return;
-            }
-            authenticationService.signUp({
-                email: $scope.signUp.email,
-                password: $scope.signUp.password,
-                name: $scope.signUp.name,
-                gender: $scope.signUp.gender * 1,
-                secretkey: grecapt,
-                onDone: function () {
-                    $scope.signUp.isBusy = false;
-                }
-            });
-        };
-
-        $scope.onSignInWithFacebook = function ($event) {
-            var $target = $($event.target);
-
-            $target.button("loading");
-            authenticationService.signIn({
-                mode: "facebook",
-                onDone: function () {
-                    $target.button("reset");
-                }
-            });
-        };
-
-        $scope.onSignInWithEmail = function ($event) {
-            var $target = $($event.target);
-            var $emailElement = $target.find(".email");
-            var $passwordElement = $target.find(".password");
-            var $buttonElement = $target.find("[type=submit]");
-
-            if (formService.isLoading($buttonElement))
-                return;
-            $buttonElement.button("loading");
-
-           authenticationService.signIn({
-                mode: "giasinhvien",
-                email: $emailElement.val(),
-                password: $passwordElement.val(),
-
-                onDone: function () {
-                    $buttonElement.button("reset");
-                }
-            });
-        };
-
-        $scope.onForgetPassword = function ($event) {
-            webService.call({
-                name: "User_CreateResetPasswordKey",
-                data: {
-                    actionUserId: $scope.sessionService.userId(),
-                    email: $scope.forgetpassword.email,
-                    key: $scope.sessionService.key(),
-                },
-                displayError: true,
-                onSuccess: function (a) {
-                    Notification.success("Gửi email thành công");
-                    $scope.forgetpassword.email = undefined;
-                    $("#modal-authentication").modal("hide");
-                    $scope.$apply();
-                }
-            });
-        }
 
         $scope.$watch("dropdownUserId", function (data) {
             if (!data)
@@ -932,145 +427,6 @@ function ($window, $http, $scope, $rootScope, $location, $cookies,
             }
         });
 
-        $scope.onMessageEmoticon = function ($event) {
-            var code = $($event.target).closest(".emoticon-item").data("emoticon-code");
-            var $target = $($("#dropdown-message-emoticon").data("emoticon-target"));
-            $target.val($target.val() + code);
-            $("#message-text").focus();
-        };
-
-        $scope.onSearchIdol = function () {
-            var stringkey = $("#search-text").val();
-            if (!stringkey) {
-                return;
-            }
-            $("#search-text").val("");
-            $location.path('/search/' + stringkey);
-        };
-
-        $scope.onHideModalVip = function () {
-            return $location.path("/shop/");
-        }
-
-        $scope.$on("authentication_onSignUp", function () {
-            Notification.success("Đăng ký thành công");
-        });
-
-        $scope.$on("authentication_onSignIn", function () {
-            $("#modal-authentication").modal("hide");
-            $rootScope.showPopupInterval = false;
-            Notification.success("Đăng nhập thành công");
-        });
-
-        $scope.$on("authentication_onSignOut", function () {
-            Notification.success("Đăng xuất thành công");
-        });
-
-        $scope.$on("onUserMission", function () {
-            $scope.onUserMission();
-        });
-
-        $scope.$on("onUserDayCheck", function () {
-            $scope.onUserDayCheck();
-        });
-
-        $scope.$on("onRegisterstar", function () {
-            $scope.onRegisterstar();
-        });
-
-        $scope.$on("onUserRechargeCoin", function () {
-            $scope.onUserRechargeCoin();
-        });
-
-        $scope.onUserMission = function ($event) {
-            if (!sessionService.isSigned()) {
-                authenticationService.showModal({
-                    mode: "sign-in",
-                    message: "Bạn cần đăng nhập để sử dụng tính năng này"
-                });
-                return;
-            }
-            modalService.showUserMission({
-            });
-        }
-
-        $scope.onUserDayCheck = function ($event) {
-            if (!sessionService.isSigned()) {
-                authenticationService.showModal({
-                    mode: "sign-in",
-                    message: "Bạn cần đăng nhập để sử dụng tính năng này"
-                });
-                return;
-            }
-            modalService.showUserDayCheck({
-            });
-        }
-
-        $scope.onRegisterstar = function ($event) {
-            window.open('https://docs.google.com/forms/d/e/1FAIpQLSeV8X9GuTTzwKHaIfaZCw4VpO-wiKyDgR0ZVRny5_f1qBCfyQ/viewform?fbzx=576265889300412700', '_blank');
-            //modalService.showRegisterstar({
-            //});
-        }
-
-        $scope.onUserRechargeCoin = function ($event) {
-            if (!sessionService.isSigned()) {
-                authenticationService.showModal({
-                    mode: "sign-in",
-                    message: "Bạn cần đăng nhập để sử dụng tính năng này"
-                });
-                return;
-            }
-            modalService.showUserRechargeCoin({
-            });
-        }
-
-        $scope.onLoadStatusGuild = function (page) {
-
-            if (sessionService.isSigned()) {
-                webService.call({
-                    name: "User_GetUserNotification",
-                    data: {
-                        actionUserId: sessionService.userId(),
-                        pageIndex: 0,
-                        pageSize: 5,
-                        status: "1,2",
-                        key: sessionService.key()
-                    },
-                    displayError: true,
-                    onError: function () {
-                    },
-                    onSuccess: function (rs) {
-                        $scope.statusGuild.Items = rs.Items;
-                        var count = 0;
-                        $(rs.Items).each(function (i, x) {
-                            if (x.User_Notification.Status == 1) {
-                                count = count + 1;
-                            }
-                        });
-                        $scope.statusGuild.NoReadNotification = count;
-
-                    }
-                });
-            }
-        }
-
-        $scope.onActionReadNotification = function (data) {
-            webService.call({
-                name: "User_ActionReadNotification",
-                data: {
-                    actionUserId: sessionService.userId(),
-                    userNotificationId: data,
-                    key: sessionService.key(),
-                },
-                displayError: true,
-                onError: function () {
-                },
-                onSuccess: function (rs) {
-                    $scope.onLoadStatusGuild();
-                }
-            });
-        }
-
         $scope.redirectlink = function (link) {
             if (!$scope.showvideo) {
                 $scope.showvideo = true;
@@ -1083,24 +439,6 @@ function ($window, $http, $scope, $rootScope, $location, $cookies,
         //#endregion
 
         //#region [On Load]
-        sessionService.isReady(function () {
-
-            $scope.onLoadStatusGuild();
-
-            webService.call({
-                name: "Config_GetConfig",
-                data: {
-                    actionUserId: sessionService.userId(),
-                    value: "WebClientVersion",
-                    key: sessionService.key()
-                },
-                onSuccess: function (r) {
-                    if (r.Result.Value !== undefined && r.Result.Value !== null && $cookies.get("version") !== r.Result.Value) {
-                        $cookies.put("version", r.Result.Value, { expires: moment().add(1, "days").toDate() });
-                        location.reload(true);
-                    }
-                }
-            });
 
             if (!helperService.checkCookies()) {
                 Notification.showAlert({
@@ -1112,43 +450,10 @@ function ($window, $http, $scope, $rootScope, $location, $cookies,
                     ]
                 });
             }
-
-            for (var i = 0; i <= 65; i++) {
-                $scope.emoticon.push(i);
-            };
-
-            $("#dropdown-user-info").on("show", function (event, dropdownData) {
-                $scope.dropdownUserId = {
-                    userId: dropdownData.jqDropdown.data("user-id"),
-                    userName: dropdownData.jqDropdown.data("user-name"),
-                    scheduleId: dropdownData.jqDropdown.data("schedule-id"),
-                    vipId: dropdownData.jqDropdown.data("vip-id")
-                };
-
-                if ($scope.dropdownUserId.vipId === 100) {
-                    $scope.dropdownStatus = "loading";
-                    webService.call({
-                        name: "IsUserCanFacebookChat",
-                        data: {
-                            userId: $scope.dropdownUserId.userId,
-                            scheduleId: $scope.dropdownUserId.scheduleId
-                        },
-                        onSuccess: function (r) {
-                            $scope.dropdownStatus = "loaded";
-                            $scope.dropdownUserId.isCanChatFacebook = r.Result;
-                            $scope.$apply();
-                        }
-                    });
-                }
-
-                $scope.$apply();
-            });
-            
-        });
         //#endregion
     }
 ]);
-teenidolApp.controller("detailnewsController", [
+giasinhvienApp.controller("detailnewsController", [
     "$scope", "$rootScope", "$routeParams", "$log", "$sce", "sessionService", "webService", "helperService", "$window", "authenticationService", "Notification",
 function ($scope, $rootScope, $routeParams, $log, $sce, sessionService, webService, helperService, $window, authenticationService, Notification) {
     //#region [Field]
@@ -1370,7 +675,7 @@ function ($scope, $rootScope, $routeParams, $log, $sce, sessionService, webServi
     //#endregion
 }
 ]);
-teenidolApp.controller("eventnewsController", [
+giasinhvienApp.controller("eventnewsController", [
     "$scope", "$routeParams", "$log", "sessionService", "webService", "helperService",
     function ($scope, $routeParams, $log, sessionService, webService, helperService) {
         //#region [Field]
@@ -1514,7 +819,7 @@ teenidolApp.controller("eventnewsController", [
         //#endregion
     }
 ]);
-teenidolApp.controller("usercoinlogController", [
+giasinhvienApp.controller("usercoinlogController", [
     "$scope", "$routeParams", "sessionService", "webService", "authenticationService", "formService", "helperService", "$log",
     function ($scope, $routeParams, sessionService, webService, authenticationService, formService, helperService, $log) {
         var suggestStarCarousel;
@@ -1656,7 +961,7 @@ teenidolApp.controller("usercoinlogController", [
         //#endregion
     }
 ]);
-teenidolApp.controller("userfollowController", [
+giasinhvienApp.controller("userfollowController", [
     "$scope", "$rootScope", "$location", "$routeParams", "sessionService", "webService", "authenticationService", "formService", function ($scope, $rootScope, $location, $routeParams, sessionService, webService, authenticationService, formService) {
         var suggestStarCarousel;
         var carouselData = [];
@@ -1807,7 +1112,7 @@ teenidolApp.controller("userfollowController", [
         //#endregion
     }
 ]);
-teenidolApp.controller("userinboxController", [
+giasinhvienApp.controller("userinboxController", [
     "$scope", "$rootScope", "$location", "$routeParams", "sessionService", "webService", "authenticationService", "formService", function ($scope, $rootScope, $location, $routeParams, sessionService, webService, authenticationService, formService) {
 
         //#region [Field]
@@ -1843,7 +1148,7 @@ teenidolApp.controller("userinboxController", [
         //#endregion
     }
 ]);
-teenidolApp.controller("userinventoryController", [
+giasinhvienApp.controller("userinventoryController", [
     "$scope", "$rootScope", "$location", "$routeParams", "sessionService", "webService", "authenticationService", "formService", function ($scope, $rootScope, $location, $routeParams, sessionService, webService, authenticationService, formService) {
         var suggestStarCarousel;
         var carouselData = [];
@@ -1930,7 +1235,7 @@ teenidolApp.controller("userinventoryController", [
         //#endregion
     }
 ]);
-teenidolApp.controller("usermodroomController", [
+giasinhvienApp.controller("usermodroomController", [
     "$scope", "$rootScope", "$location", "$routeParams", "sessionService", "webService", "authenticationService", "formService", function ($scope, $rootScope, $location, $routeParams, sessionService, webService, authenticationService, formService) {
         var suggestStarCarousel;
         var carouselData = [];
@@ -1993,7 +1298,7 @@ teenidolApp.controller("usermodroomController", [
         //#endregion
     }
 ]);
-teenidolApp.controller("userrewardController", [
+giasinhvienApp.controller("userrewardController", [
 "$scope", "$rootScope", "$location", "$routeParams", "sessionService", "webService", "authenticationService", "formService", "helperService", function ($scope, $rootScope, $location, $routeParams, sessionService, webService, authenticationService, formService, helperService) {
     var suggestStarCarousel;
     var carouselData = [];
@@ -2108,7 +1413,7 @@ teenidolApp.controller("userrewardController", [
     //#endregion
 }
 ]);
-teenidolApp.directive("compile", [
+giasinhvienApp.directive("compile", [
     "$compile", function ($compile) {
         return function (scope, element, attrs) {
             scope.$watch(
@@ -2122,7 +1427,7 @@ teenidolApp.directive("compile", [
             );
         };
     }])
-teenidolApp.directive("jqDropdown", [
+giasinhvienApp.directive("jqDropdown", [
     "$timeout", "helperService", function ($timeout, helperService) {
         return {
             restrict: "C",
@@ -2177,7 +1482,7 @@ teenidolApp.directive("jqDropdown", [
         };
     }
 ]);
-teenidolApp.directive('fbLike', [
+giasinhvienApp.directive('fbLike', [
         '$window', '$rootScope', function ($window, $rootScope) {
             return {
                 restrict: 'A',
@@ -2223,7 +1528,7 @@ teenidolApp.directive('fbLike', [
             };
         }
 ]);
-teenidolApp.directive("fileread", [function () {
+giasinhvienApp.directive("fileread", [function () {
     return {
         scope: {
             fileread: "="
@@ -2241,7 +1546,7 @@ teenidolApp.directive("fileread", [function () {
         }
     }
 }]);
-teenidolApp.factory("formatText", [
+giasinhvienApp.factory("formatText", [
     function () {
         var service = new function () {
             this.formatText = function (input) {
@@ -2261,7 +1566,7 @@ teenidolApp.factory("formatText", [
         return service;
     }
 ]);
-teenidolApp.directive("head", [
+giasinhvienApp.directive("head", [
     "$rootScope", "$compile", "$window", "$location", "sessionService", function ($rootScope, $compile, $window, $location, sessionService) {
         return {
             restrict: "E",
@@ -2296,7 +1601,7 @@ teenidolApp.directive("head", [
         };
     }
 ]);
-teenidolApp.directive("img", [
+giasinhvienApp.directive("img", [
     function () {
         return {
             restrict: "E",
@@ -2318,7 +1623,7 @@ teenidolApp.directive("img", [
         };
     }
 ]);
-teenidolApp.directive("imgScale", [
+giasinhvienApp.directive("imgScale", [
     function () {
         return {
             restrict: "E",
@@ -2346,7 +1651,7 @@ teenidolApp.directive("imgScale", [
         };
     }
 ]);
-teenidolApp.directive("isLoading", [
+giasinhvienApp.directive("isLoading", [
     function () {
         return {
             restrict: "A",
@@ -2365,7 +1670,7 @@ teenidolApp.directive("isLoading", [
         };
     }
 ]);
-teenidolApp.directive("kendoTemplate", [
+giasinhvienApp.directive("kendoTemplate", [
     "$compile", function ($compile) {
         return {
             restrict: "E",
@@ -2408,7 +1713,7 @@ teenidolApp.directive("kendoTemplate", [
         };
     }
 ]);
-teenidolApp.directive("modal", [
+giasinhvienApp.directive("modal", [
         function () {
             return {
                 restrict: "C",
@@ -2418,7 +1723,7 @@ teenidolApp.directive("modal", [
             };
         }
 ]);
-teenidolApp.directive('wrapOwlcarousel', function () {
+giasinhvienApp.directive('wrapOwlcarousel', function () {
 	return {
 		restrict: 'E',
 		transclude: false,
@@ -2453,7 +1758,7 @@ teenidolApp.directive('wrapOwlcarousel', function () {
 		}
 	};
 });
-teenidolApp.directive('owlCarouselItem', [function () {
+giasinhvienApp.directive('owlCarouselItem', [function () {
     return {
         restrict: 'A',
         transclude: false,
@@ -2465,7 +1770,7 @@ teenidolApp.directive('owlCarouselItem', [function () {
     };
 }]);
 
-teenidolApp.directive("paging", [
+giasinhvienApp.directive("paging", [
     "helperService", "$routeParams", function (helperService, $routeParams) {
         return {
             restrict: "E",
@@ -2520,7 +1825,7 @@ teenidolApp.directive("paging", [
             }
         }
     }]);
-teenidolApp.directive("toggle", [
+giasinhvienApp.directive("toggle", [
     function() {
         return {
             restrict: "A",
@@ -2538,7 +1843,7 @@ teenidolApp.directive("toggle", [
         };
     }
 ]);
-teenidolApp.directive("udRole", [
+giasinhvienApp.directive("udRole", [
     "authenticationService", "sessionService", "modalService", function (authenticationService, sessionService, modalService) {
         return {
             restrict: "A",
@@ -2619,7 +1924,7 @@ teenidolApp.directive("udRole", [
         };
     }
 ]);
-teenidolApp.directive("validateError", ["$compile",
+giasinhvienApp.directive("validateError", ["$compile",
     function ($compile) {
         return {
             restrict: "E",
@@ -2634,7 +1939,7 @@ teenidolApp.directive("validateError", ["$compile",
         };
     }
 ]);
-teenidolApp.directive("validateSubmit", [
+giasinhvienApp.directive("validateSubmit", [
     function () {
         return {
             restrict: "A",
@@ -2649,7 +1954,7 @@ teenidolApp.directive("validateSubmit", [
         };
     }
 ]);
-teenidolApp.filter("currentListSeatPrice",
+giasinhvienApp.filter("currentListSeatPrice",
     function () {
         return function (input, currentPrice) {
             if (!currentPrice || input.constructor !== Array || isNaN(currentPrice))
@@ -2665,7 +1970,7 @@ teenidolApp.filter("currentListSeatPrice",
         };
     }
 );
-teenidolApp.controller("modalAlertController", ["$scope", "$uibModalInstance", "data",
+giasinhvienApp.controller("modalAlertController", ["$scope", "$uibModalInstance", "data",
     function ($scope, $uibModalInstance, data) {
         //#region [Field]
 
@@ -2688,7 +1993,7 @@ teenidolApp.controller("modalAlertController", ["$scope", "$uibModalInstance", "
         //#endregion
     }
 ]);
-teenidolApp.controller("modalBannerEventController", ["$scope", "$uibModalInstance", "data", "sessionService", "webService", 
+giasinhvienApp.controller("modalBannerEventController", ["$scope", "$uibModalInstance", "data", "sessionService", "webService", 
     function ($scope, $uibModalInstance, data, sessionService, webService) {
         //#region [Field]
         $scope.openingShow = {
@@ -2729,7 +2034,7 @@ teenidolApp.controller("modalBannerEventController", ["$scope", "$uibModalInstan
         //#endregion
     }
 ])
-teenidolApp.controller("modalChangePasswordController", [
+giasinhvienApp.controller("modalChangePasswordController", [
     "$scope", "$uibModalInstance", "data", "sessionService", "webService", "authenticationService", "Notification",
     function ($scope, $uibModalInstance, data, sessionService, webService, authenticationService, Notification) {
         //#region [Field]
@@ -2779,7 +2084,7 @@ teenidolApp.controller("modalChangePasswordController", [
         //#endregion
     }
 ]);
-teenidolApp.controller("modalDayCheckController", ["$scope", "$uibModalInstance", "data", "sessionService", "webService", "authenticationService","Notification",
+giasinhvienApp.controller("modalDayCheckController", ["$scope", "$uibModalInstance", "data", "sessionService", "webService", "authenticationService","Notification",
     function ($scope, $uibModalInstance, data, sessionService, webService, authenticationService, Notification) {
         //#region [Field]
         $scope.listDayCheck = {
@@ -2846,7 +2151,7 @@ teenidolApp.controller("modalDayCheckController", ["$scope", "$uibModalInstance"
         //#endregion
     }
 ])
-teenidolApp.controller("modalDetailGuildController", ["$scope","$rootScope", "$uibModalInstance", "sessionService", "webService", "data", "Notification",
+giasinhvienApp.controller("modalDetailGuildController", ["$scope","$rootScope", "$uibModalInstance", "sessionService", "webService", "data", "Notification",
     function ($scope,$rootScope, $uibModalInstance, sessionService, webService, data, Notification) {
         //#region [Field]
         $scope.openingShow = {
@@ -2946,7 +2251,7 @@ teenidolApp.controller("modalDetailGuildController", ["$scope","$rootScope", "$u
         //#endregion
     }
 ])
-teenidolApp.controller("modalEditAvatarGuildController", ["$scope", "$rootScope", "$uibModalInstance", "sessionService", "webService", "data", "Notification",
+giasinhvienApp.controller("modalEditAvatarGuildController", ["$scope", "$rootScope", "$uibModalInstance", "sessionService", "webService", "data", "Notification",
     function ($scope, $rootScope, $uibModalInstance, sessionService, webService, data, Notification) {
         //#region [Field]
         $scope.uploadavatarguild = {
@@ -3075,7 +2380,7 @@ teenidolApp.controller("modalEditAvatarGuildController", ["$scope", "$rootScope"
         //#endregion
     }
 ])
-teenidolApp.controller("modalEditGuildController", ["$scope", "$rootScope", "$uibModalInstance", "sessionService", "webService", "data", "Notification",
+giasinhvienApp.controller("modalEditGuildController", ["$scope", "$rootScope", "$uibModalInstance", "sessionService", "webService", "data", "Notification",
     function ($scope, $rootScope, $uibModalInstance, sessionService, webService, data, Notification) {
         //#region [Field]
         $scope.uploadavatarguild = {
@@ -3203,7 +2508,7 @@ teenidolApp.controller("modalEditGuildController", ["$scope", "$rootScope", "$ui
         //#endregion
     }
 ])
-teenidolApp.controller("modalFacebookLiveController", ["$scope", "$uibModalInstance", "data", "Notification", "webService", "sessionService", "apiService",
+giasinhvienApp.controller("modalFacebookLiveController", ["$scope", "$uibModalInstance", "data", "Notification", "webService", "sessionService", "apiService",
     function ($scope, $uibModalInstance, data, notification, webService, sessionService, apiService) {
         //#region [Field]
 
@@ -3337,7 +2642,7 @@ teenidolApp.controller("modalFacebookLiveController", ["$scope", "$uibModalInsta
         //#endregion
     }
 ]);
-teenidolApp.controller("modalGoldMineController", [
+giasinhvienApp.controller("modalGoldMineController", [
     "$scope", "$uibModalInstance", "data", "sessionService", "webService", "modalService","Notification",
     function ($scope, $uibModalInstance, data, sessionService, webService, modalService,Notification) {
         $scope.UserGuildInfo = {
@@ -3412,7 +2717,7 @@ teenidolApp.controller("modalGoldMineController", [
         });
     }
 ]);
-teenidolApp.controller("modalGuildMasterController", ["$scope", "$uibModalInstance", "data", "sessionService", "webService", "modalService", "Notification", "$rootScope",
+giasinhvienApp.controller("modalGuildMasterController", ["$scope", "$uibModalInstance", "data", "sessionService", "webService", "modalService", "Notification", "$rootScope",
     function ($scope, $uibModalInstance, data, sessionService, webService, modalService, Notification, $rootScope) {
         //#region [Field]
         $scope.sessionService = sessionService;
@@ -3719,7 +3024,7 @@ teenidolApp.controller("modalGuildMasterController", ["$scope", "$uibModalInstan
         //#endregion
     }
 ]);
-teenidolApp.controller("modalIdolDoneMissionController", [
+giasinhvienApp.controller("modalIdolDoneMissionController", [
     "$scope", "$uibModalInstance", "data", "sessionService", "webService", "modalService", "Notification",
     function ($scope, $uibModalInstance, data, sessionService, webService, modalService, Notification) {
         $scope.sessionService = sessionService;
@@ -3770,7 +3075,7 @@ teenidolApp.controller("modalIdolDoneMissionController", [
         });
     }
 ]);
-teenidolApp.controller("modalIdolMissionController", [
+giasinhvienApp.controller("modalIdolMissionController", [
     "$scope", "$uibModalInstance", "data", "sessionService", "webService", "modalService","Notification",
     function ($scope, $uibModalInstance, data, sessionService, webService, modalService,Notification) {
         $scope.onClose = function () {
@@ -3818,7 +3123,7 @@ teenidolApp.controller("modalIdolMissionController", [
         });
     }
 ]);
-teenidolApp.controller("modalIframeRechargeCoinController", ["$scope", "$uibModalInstance","sessionService",
+giasinhvienApp.controller("modalIframeRechargeCoinController", ["$scope", "$uibModalInstance","sessionService",
     function ($scope, $uibModalInstance, sessionService) {
         //#region [Field]
         $scope.openingShow = {
@@ -3838,7 +3143,7 @@ teenidolApp.controller("modalIframeRechargeCoinController", ["$scope", "$uibModa
         //#endregion
     }
 ])
-teenidolApp.controller("modalInfoTowerController", [
+giasinhvienApp.controller("modalInfoTowerController", [
     "$scope", "sessionService", "webService", "helperService", "Notification", "modalService", "$uibModalInstance", "data",
     function ($scope, sessionService, webService, helperService, Notification, modalService, $uibModalInstance, data) {
         $scope.isShowButton = {
@@ -3921,7 +3226,7 @@ teenidolApp.controller("modalInfoTowerController", [
 
     }
 ]);
-teenidolApp.controller("modalListUserJoinController", ["$scope", "$uibModalInstance", "data", "sessionService", "webService", "modalService", "Notification", "$rootScope",
+giasinhvienApp.controller("modalListUserJoinController", ["$scope", "$uibModalInstance", "data", "sessionService", "webService", "modalService", "Notification", "$rootScope",
     function ($scope, $uibModalInstance, data, sessionService, webService, modalService, Notification, $rootScope) {
         //#region [Field]
         $scope.sessionService = sessionService;
@@ -4031,7 +3336,7 @@ teenidolApp.controller("modalListUserJoinController", ["$scope", "$uibModalInsta
         //#endregion
     }
 ]);
-teenidolApp.controller("modalPopupEventController", ["$scope", "$uibModalInstance", "$timeout", "data", "sessionService", "webService",
+giasinhvienApp.controller("modalPopupEventController", ["$scope", "$uibModalInstance", "$timeout", "data", "sessionService", "webService",
     function ($scope, $uibModalInstance, $timeout, data, sessionService, webService) {
         //#region [Field]
         $scope.PopupEvent = {
@@ -4071,7 +3376,7 @@ teenidolApp.controller("modalPopupEventController", ["$scope", "$uibModalInstanc
         //#endregion
     }
 ])
-teenidolApp.controller("modalRankGuildController", [
+giasinhvienApp.controller("modalRankGuildController", [
     "$scope", "$routeParams", "$log", "sessionService", "webService", "helperService", "Notification", "modalService","$uibModalInstance",
     function ($scope, $routeParams, $log, sessionService, webService, helperService, Notification, modalService, $uibModalInstance) {
         $scope.ListguildRank = {
@@ -4134,7 +3439,7 @@ teenidolApp.controller("modalRankGuildController", [
             });
         });
     }])
-teenidolApp.controller("modalRechargeCoinController", ["$scope", "$uibModalInstance", "data", "sessionService", "webService", "Notification", "helperService", "formService", "$window", "modalService", "$timeout",
+giasinhvienApp.controller("modalRechargeCoinController", ["$scope", "$uibModalInstance", "data", "sessionService", "webService", "Notification", "helperService", "formService", "$window", "modalService", "$timeout",
     function ($scope, $uibModalInstance, data, sessionService, webService, Notification, helperService, formService, $window, modalService, $timeout) {
         //#region [Field]
         $scope.rechargeCoin = {
@@ -4486,7 +3791,7 @@ teenidolApp.controller("modalRechargeCoinController", ["$scope", "$uibModalInsta
         //#endregion
     }
 ])
-teenidolApp.controller("modalRegisterstarController", ["$scope", "$uibModalInstance", "data", "sessionService", "webService", "Notification",
+giasinhvienApp.controller("modalRegisterstarController", ["$scope", "$uibModalInstance", "data", "sessionService", "webService", "Notification",
     function ($scope, $uibModalInstance, data, sessionService, webService, Notification) {
         //#region [Field]
         $scope.register = {
@@ -4547,7 +3852,7 @@ teenidolApp.controller("modalRegisterstarController", ["$scope", "$uibModalInsta
         //#endregion
     }
 ])
-teenidolApp.controller("modalReportController", ["$scope", "$uibModalInstance", "data", "sessionService", "webService", "Notification", "data", "authenticationService",
+giasinhvienApp.controller("modalReportController", ["$scope", "$uibModalInstance", "data", "sessionService", "webService", "Notification", "data", "authenticationService",
     function ($scope, $uibModalInstance, data, sessionService, webService, Notification, data, authenticationService) {
         //#region [Field]
 
@@ -4614,7 +3919,7 @@ teenidolApp.controller("modalReportController", ["$scope", "$uibModalInstance", 
         //#endregion
     }
 ])
-teenidolApp.controller("modalShopGuildController", ["$scope", "$uibModalInstance", "data", "sessionService","webService","modalService",
+giasinhvienApp.controller("modalShopGuildController", ["$scope", "$uibModalInstance", "data", "sessionService","webService","modalService",
     function ($scope, $uibModalInstance, data, sessionService, webService, modalService) {
         var pageindex = 0;
         $scope.onClose = function () {
@@ -4740,7 +4045,7 @@ teenidolApp.controller("modalShopGuildController", ["$scope", "$uibModalInstance
 
     }
 ]);
-teenidolApp.controller("modalShowOpeningController", ["$scope", "$uibModalInstance", "data", "sessionService", "webService", "Notification",
+giasinhvienApp.controller("modalShowOpeningController", ["$scope", "$uibModalInstance", "data", "sessionService", "webService", "Notification",
     function ($scope, $uibModalInstance, data, sessionService, webService, Notification){
         //#region [Field]
         $scope.openingShow = {
@@ -4793,7 +4098,7 @@ teenidolApp.controller("modalShowOpeningController", ["$scope", "$uibModalInstan
         //#endregion
     }
 ])
-teenidolApp.controller("modalShowRankController", ["$scope", "$uibModalInstance", "data", "sessionService", "webService",
+giasinhvienApp.controller("modalShowRankController", ["$scope", "$uibModalInstance", "data", "sessionService", "webService",
     function ($scope, $uibModalInstance, data, sessionService, webService) {
         //#region [Field]
 
@@ -4868,7 +4173,7 @@ teenidolApp.controller("modalShowRankController", ["$scope", "$uibModalInstance"
         //#endregion
     }
 ])
-teenidolApp.controller("modalShowScheduleController", ["$scope", "$uibModalInstance", "data", "sessionService", "webService", "helperService",
+giasinhvienApp.controller("modalShowScheduleController", ["$scope", "$uibModalInstance", "data", "sessionService", "webService", "helperService",
     function ($scope, $uibModalInstance, data, sessionService, webService, helperService) {
         //#region [Field]
         $scope.data = data.data;
@@ -4967,7 +4272,7 @@ teenidolApp.controller("modalShowScheduleController", ["$scope", "$uibModalInsta
         //#endregion
     }
 ])
-teenidolApp.controller("modalTakingMissionController", [
+giasinhvienApp.controller("modalTakingMissionController", [
     "$scope", "$uibModalInstance", "data", "sessionService", "webService", "modalService", "Notification", "$rootScope",
     function ($scope, $uibModalInstance, data, sessionService, webService, modalService, Notification, $rootScope) {
         $scope.level = {
@@ -5068,7 +4373,7 @@ teenidolApp.controller("modalTakingMissionController", [
         });
     }
 ]);
-teenidolApp.controller("modalUserMissionController", ["$scope", "$uibModalInstance", "data", "sessionService", "webService", "Notification",
+giasinhvienApp.controller("modalUserMissionController", ["$scope", "$uibModalInstance", "data", "sessionService", "webService", "Notification",
     function ($scope, $uibModalInstance, data, sessionService, webService, Notification) {
         //#region [Field]
 
@@ -5212,7 +4517,7 @@ teenidolApp.controller("modalUserMissionController", ["$scope", "$uibModalInstan
         //#endregion
     }
 ])
-teenidolApp.controller("popoverSeatMenuController", ["$scope", "sessionService", "webService", "popoverService",
+giasinhvienApp.controller("popoverSeatMenuController", ["$scope", "sessionService", "webService", "popoverService",
     function ($scope, sessionService, webService, popoverService) {
         //#region [Field]
         $scope.status = "loading";
@@ -5309,7 +4614,7 @@ teenidolApp.controller("popoverSeatMenuController", ["$scope", "sessionService",
         //#endregion
     }
 ]);
-teenidolApp.factory("apiService", ["$rootScope", "mogolab_config", "Notification",
+giasinhvienApp.factory("apiService", ["$rootScope", "mogolab_config", "Notification",
     function ($rootScope, config, notification) {
         var service = new function () {
             this.call = function (o) {
@@ -5389,7 +4694,7 @@ teenidolApp.factory("apiService", ["$rootScope", "mogolab_config", "Notification
         return service;
     }
 ]);
-teenidolApp.factory("authenticationService", [
+giasinhvienApp.factory("authenticationService", [
     "$rootScope", "webService", "sessionService", "modalService", function ($rootScope, webService, sessionService, modalService) {
         var service = new function () {
             this.signUp = function (o) {
@@ -5633,7 +4938,7 @@ teenidolApp.factory("authenticationService", [
         return service;
     }
 ]);
-teenidolApp.factory("formService", [
+giasinhvienApp.factory("formService", [
     function () {
         var service = new function () {
             this.validate = function (o) {
@@ -5719,7 +5024,7 @@ teenidolApp.factory("formService", [
         return service;
     }
 ]);
-teenidolApp.factory("helperService", [
+giasinhvienApp.factory("helperService", [
     function () {
         var service = new function () {
             this.formatMessage = function (message) {
@@ -5995,7 +5300,7 @@ teenidolApp.factory("helperService", [
         return service;
     }
 ]);
-teenidolApp.factory("modalService", ["$uibModal", "sessionService",
+giasinhvienApp.factory("modalService", ["$uibModal", "sessionService",
     function ($uibModal, sessionService) {
         var service = new function () {
             this.showAlert = function (o) {
@@ -6671,7 +5976,7 @@ teenidolApp.factory("modalService", ["$uibModal", "sessionService",
         return service;
     }
 ]);
-//teenidolApp.factory("notificationService", [
+//giasinhvienApp.factory("notificationService", [
 //    function() {
 //        var _topNotificationTemplate = "<div id='top-notification' style='display: none;'></div>";
 //        var _screenNotificationTemplate = "<div id='centered-notification' style='display: none;'></div>";
@@ -6805,7 +6110,7 @@ teenidolApp.factory("modalService", ["$uibModal", "sessionService",
 //        return service;
 //    }
 //]);
-teenidolApp.factory("popoverService", [
+giasinhvienApp.factory("popoverService", [
     function () {
         var service = new function () {
             this.userMenu = {
@@ -6823,8 +6128,9 @@ teenidolApp.factory("popoverService", [
         return service;
     }
 ]);
-teenidolApp.factory("sessionService", [
-    "$rootScope", "$http", "$interval", "$cookies", "webService", "signalRService", "helperService", "Notification", function ($rootScope, $http, $interval, $cookies, webService, signalRService, helperService, Notification) {
+giasinhvienApp.factory("sessionService", [
+    "$rootScope", "$http", "$interval", "$cookies", "webService", "helperService", "Notification",
+    function ($rootScope, $http, $interval, $cookies, webService, helperService, Notification) {
         var _userId, _key, _data, _level,_groupUserId;
         var _status = "unloaded";
 
@@ -6878,28 +6184,28 @@ teenidolApp.factory("sessionService", [
                 _userId = userId;
                 _key = key;
 
-                webService.call({
-                    name: "User_GetDetails",
-                    data: { actionUserId: _userId, userId: _userId, isStar: true, key: _key },
-                    onError: function (error, msg) {
-                        Notification.error(msg + "! Vui lòng F5 để tải lại");
-                        service.clear();
-                    },
-                    onSuccess: function (r) {
-                        _data = {
-                            user: r.Result
-                        };
-                        _groupUserId = r.Result.User.GroupUserId;
-                        $cookies.putObject("session", {
-                            userId: _userId,
-                            key: _key
-                        }, {
-                            expires: moment().add(7, "days").toDate()
-                        });
-                        if (typeof onDone === "function")
-                            onDone();
-                    }
-                });
+                //webService.call({
+                //    name: "User_GetDetails",
+                //    data: { actionUserId: _userId, userId: _userId, isStar: true, key: _key },
+                //    onError: function (error, msg) {
+                //        Notification.error(msg + "! Vui lòng F5 để tải lại");
+                //        service.clear();
+                //    },
+                //    onSuccess: function (r) {
+                //        _data = {
+                //            user: r.Result
+                //        };
+                //        _groupUserId = r.Result.User.GroupUserId;
+                //        $cookies.putObject("session", {
+                //            userId: _userId,
+                //            key: _key
+                //        }, {
+                //            expires: moment().add(7, "days").toDate()
+                //        });
+                //        if (typeof onDone === "function")
+                //            onDone();
+                //    }
+                //});
             };
 
             this.levelidol = function () {
@@ -6938,16 +6244,16 @@ teenidolApp.factory("sessionService", [
             };
 
             this.reload = function () {
-                webService.call({
-                    name: "User_GetDetails",
-                    data: { actionUserId: _userId, userId: _userId, isStar: true, key: _key },
-                    onSuccess: function (r) {
-                        _data = {
-                            user: r.Result
-                        };
-                        $rootScope.$apply();
-                    }
-                });
+                //webService.call({
+                //    name: "User_GetDetails",
+                //    data: { actionUserId: _userId, userId: _userId, isStar: true, key: _key },
+                //    onSuccess: function (r) {
+                //        _data = {
+                //            user: r.Result
+                //        };
+                //        $rootScope.$apply();
+                //    }
+                //});
             };
 
             this.isReady = function (callback) {
@@ -6969,7 +6275,7 @@ teenidolApp.factory("sessionService", [
         return service;
     }
 ]);
-teenidolApp.factory("signalRService", ["mogolab_config",
+giasinhvienApp.factory("signalRService", ["mogolab_config",
     function (mogolab_config) {
         var _hostLink = mogolab_config.baseUrlSignalRService;
         //var _hostLink = "http://teenidol.vn:1239";
@@ -7029,7 +6335,7 @@ teenidolApp.factory("signalRService", ["mogolab_config",
         return service;
     }
 ]);
-teenidolApp.factory("webService", [
+giasinhvienApp.factory("webService", [
     "Notification", "mogolab_config", function (Notification, mogolab_config) {
         var _hostLink = mogolab_config.baseUrlWebService;
         //var _hostLink = "https://teenidol.vn:9240/TeenIdolsService.svc/";
@@ -7095,7 +6401,7 @@ teenidolApp.factory("webService", [
         return service;
     }
 ]);
-teenidolApp.directive("guildInfo", [
+giasinhvienApp.directive("guildInfo", [
       function () {
           return {
               replace: true,
@@ -7187,7 +6493,7 @@ teenidolApp.directive("guildInfo", [
           };
       }
 ]);
-teenidolApp.directive("listGuildRank", [
+giasinhvienApp.directive("listGuildRank", [
     function () {
         return {
             replace: true,
@@ -7227,7 +6533,7 @@ teenidolApp.directive("listGuildRank", [
         };
     }
 ]);
-teenidolApp.directive("luckyWheel", [
+giasinhvienApp.directive("luckyWheel", [
       function () {
           return {
               replace: true,
@@ -7489,7 +6795,7 @@ teenidolApp.directive("luckyWheel", [
           };
       }
 ]);
-teenidolApp.directive("showGift", [
+giasinhvienApp.directive("showGift", [
     function () {
         return {
             restrict: "E",
@@ -7648,7 +6954,7 @@ teenidolApp.directive("showGift", [
         };
     }
 ]);
-teenidolApp.directive("showItem", [
+giasinhvienApp.directive("showItem", [
     function () {
         return {
             replace: true,
@@ -7693,7 +6999,7 @@ teenidolApp.directive("showItem", [
         };
     }
 ]);
-teenidolApp.directive("showListUser", [
+giasinhvienApp.directive("showListUser", [
     function () {
         return {
             replace: true,
@@ -7808,7 +7114,7 @@ teenidolApp.directive("showListUser", [
         };
     }
 ]);
-teenidolApp.directive("showMessage", [
+giasinhvienApp.directive("showMessage", [
     function () {
         return {
             replace: true,
@@ -7887,7 +7193,7 @@ teenidolApp.directive("showMessage", [
         };
     }
 ]);
-teenidolApp.directive("showSeat", [
+giasinhvienApp.directive("showSeat", [
     "helperService", function (helperService) {
         return {
             restrict: "E",
@@ -7926,7 +7232,7 @@ teenidolApp.directive("showSeat", [
         };
     }
 ]);
-teenidolApp.directive("showSentGift", [
+giasinhvienApp.directive("showSentGift", [
        function () {
            return {
                replace: true,
@@ -7957,7 +7263,7 @@ teenidolApp.directive("showSentGift", [
            };
        }
 ]);
-teenidolApp.directive("showStatus", [
+giasinhvienApp.directive("showStatus", [
       function () {
           return {
               replace: true,
@@ -9082,7 +8388,7 @@ teenidolApp.directive("showStatus", [
           };
       }
 ]);
-teenidolApp.directive("ucShowToolbar", [
+giasinhvienApp.directive("ucShowToolbar", [
     "helperService", function (helperService) {
         return {
             restrict: "E",
@@ -9130,7 +8436,7 @@ teenidolApp.directive("ucShowToolbar", [
         };
     }
 ]);
-teenidolApp.directive("ucShowUserInfo", [
+giasinhvienApp.directive("ucShowUserInfo", [
     function () {
         return {
             replace: true,
@@ -9184,7 +8490,7 @@ teenidolApp.directive("ucShowUserInfo", [
         };
     }
 ]);
-teenidolApp.directive("unitChanged", [
+giasinhvienApp.directive("unitChanged", [
       function () {
           return {
               replace: true,
@@ -9810,7 +9116,7 @@ teenidolApp.directive("unitChanged", [
           };
       }
 ]);
-teenidolApp.directive("userListItem", [
+giasinhvienApp.directive("userListItem", [
     function () {
         return {
             replace: true,
@@ -9852,7 +9158,7 @@ teenidolApp.directive("userListItem", [
         };
     }
 ]);
-teenidolApp.directive("ucFollowButton", [
+giasinhvienApp.directive("ucFollowButton", [
     function () {
         return {
             restrict: "E",
@@ -9945,7 +9251,7 @@ teenidolApp.directive("ucFollowButton", [
         };
     }
 ]);
-teenidolApp.directive("ucMenuUser", ["$routeParams", function ($routeParams) {
+giasinhvienApp.directive("ucMenuUser", ["$routeParams", function ($routeParams) {
     return {
         restrict: "E",
         transclude: true,
@@ -10006,7 +9312,7 @@ teenidolApp.directive("ucMenuUser", ["$routeParams", function ($routeParams) {
         }
     }
 }]);
-teenidolApp.directive("ucPrivateMessage", [
+giasinhvienApp.directive("ucPrivateMessage", [
     "webService", "sessionService", "helperService", "Notification", "authenticationService", "signalRService", function (webService, sessionService, helperService, Notification, authenticationService, signalRService) {
         var controller = function ($scope, $element) {
             //#region [Field]
@@ -10447,7 +9753,7 @@ teenidolApp.directive("ucPrivateMessage", [
         };
     }
 ]);
-teenidolApp.directive("ucShopCatelogyItem", [
+giasinhvienApp.directive("ucShopCatelogyItem", [
     "helperService", "sessionService", "webService", "authenticationService", "Notification","modalService",
     function (helperService, sessionService, webService, authenticationService, Notification,modalService) {
         var controller = function ($scope, $element) {
@@ -10583,7 +9889,7 @@ teenidolApp.directive("ucShopCatelogyItem", [
         };
     }
 ]);
-teenidolApp.directive("ucShopVipItem", [
+giasinhvienApp.directive("ucShopVipItem", [
     "helperService", "sessionService", "webService", "authenticationService", "Notification", "modalService",
     function (helperService, sessionService, webService, authenticationService, Notification, modalService) {
         var controller = function ($scope, $element) {
@@ -10673,7 +9979,7 @@ teenidolApp.directive("ucShopVipItem", [
         };
     }
 ]);
-teenidolApp.directive("ucShowAction", [
+giasinhvienApp.directive("ucShowAction", [
     "webService", "sessionService", "helperService", "formService", "authenticationService", "notificationService", function (webService, sessionService, helperService, formService, authenticationService, notificationService) {
         var controller = function ($scope, $element) {
             //#region [Field]
@@ -11129,7 +10435,7 @@ teenidolApp.directive("ucShowAction", [
         };
     }
 ]);
-teenidolApp.directive("ucShowControl", [
+giasinhvienApp.directive("ucShowControl", [
     "helperService", "sessionService", "webService", "modalService", "Notification",
     function (helperService, sessionService, webService, modalService, Notification) {
         var controller = function ($scope, $element) {
@@ -11386,7 +10692,7 @@ teenidolApp.directive("ucShowControl", [
         };
     }
 ]);
-teenidolApp.directive("ucShowGlobalMessage", [
+giasinhvienApp.directive("ucShowGlobalMessage", [
     "webService", "sessionService", "helperService", "authenticationService", "Notification",
     function (webService, sessionService, helperService, authenticationService, Notification) {
         var controller = function ($scope, $element) {
@@ -11624,7 +10930,7 @@ teenidolApp.directive("ucShowGlobalMessage", [
         };
     }
 ]);
-teenidolApp.directive("ucShowItem", [
+giasinhvienApp.directive("ucShowItem", [
     "helperService", function (helperService) {
         return {
             restrict: "E",
@@ -11706,7 +11012,7 @@ teenidolApp.directive("ucShowItem", [
         };
     }
 ]);
-teenidolApp.directive("ucShowVideo", [
+giasinhvienApp.directive("ucShowVideo", [
     "$compile", "$timeout", "$interval", "webService", "sessionService", "helperService", "authenticationService", "Notification", "modalService", "apiService",
     function ($compile, $timeout, $interval, webService, sessionService, helperService, authenticationService, Notification, modalService, apiService) {
         var controller = function ($scope, $element, $attrs) {
@@ -12559,7 +11865,7 @@ teenidolApp.directive("ucShowVideo", [
         };
     }
 ]);
-teenidolApp.directive("ucUserListItem", [
+giasinhvienApp.directive("ucUserListItem", [
     "helperService", function (helperService) {
         return {
             restrict: "E",

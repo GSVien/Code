@@ -1,4 +1,4 @@
-﻿teenidolApp.controller("modalFacebookLiveController", ["$scope", "$uibModalInstance", "data", "Notification", "webService", "sessionService", "apiService",
+﻿giasinhvienApp.controller("modalFacebookLiveController", ["$scope", "$uibModalInstance", "data", "Notification", "webService", "sessionService", "apiService",
     function ($scope, $uibModalInstance, data, notification, webService, sessionService, apiService) {
         //#region [Field]
 

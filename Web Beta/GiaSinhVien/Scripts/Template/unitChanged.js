@@ -1,4 +1,4 @@
-﻿teenidolApp.directive("unitChanged", [
+﻿giasinhvienApp.directive("unitChanged", [
       function () {
           return {
               replace: true,

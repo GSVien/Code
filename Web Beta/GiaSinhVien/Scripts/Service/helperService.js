@@ -1,4 +1,4 @@
-﻿teenidolApp.factory("helperService", [
+﻿giasinhvienApp.factory("helperService", [
     function () {
         var service = new function () {
             this.formatMessage = function (message) {

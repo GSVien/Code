@@ -1,4 +1,4 @@
-﻿teenidolApp.directive("modal", [
+﻿giasinhvienApp.directive("modal", [
         function () {
             return {
                 restrict: "C",

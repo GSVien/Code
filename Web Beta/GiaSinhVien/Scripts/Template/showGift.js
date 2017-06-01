@@ -1,4 +1,4 @@
-﻿teenidolApp.directive("showGift", [
+﻿giasinhvienApp.directive("showGift", [
     function () {
         return {
             restrict: "E",

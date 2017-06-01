@@ -1,4 +1,4 @@
-﻿teenidolApp.directive("validateError", ["$compile",
+﻿giasinhvienApp.directive("validateError", ["$compile",
     function ($compile) {
         return {
             restrict: "E",

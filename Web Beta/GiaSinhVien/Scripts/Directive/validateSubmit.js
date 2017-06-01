@@ -1,4 +1,4 @@
-﻿teenidolApp.directive("validateSubmit", [
+﻿giasinhvienApp.directive("validateSubmit", [
     function () {
         return {
             restrict: "A",

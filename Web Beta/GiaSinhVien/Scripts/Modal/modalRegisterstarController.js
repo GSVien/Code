@@ -1,4 +1,4 @@
-﻿teenidolApp.controller("modalRegisterstarController", ["$scope", "$uibModalInstance", "data", "sessionService", "webService", "Notification",
+﻿giasinhvienApp.controller("modalRegisterstarController", ["$scope", "$uibModalInstance", "data", "sessionService", "webService", "Notification",
     function ($scope, $uibModalInstance, data, sessionService, webService, Notification) {
         //#region [Field]
         $scope.register = {

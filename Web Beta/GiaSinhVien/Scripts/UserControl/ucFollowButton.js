@@ -1,4 +1,4 @@
-﻿teenidolApp.directive("ucFollowButton", [
+﻿giasinhvienApp.directive("ucFollowButton", [
     function () {
         return {
             restrict: "E",
