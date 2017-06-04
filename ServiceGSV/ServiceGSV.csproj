@@ -144,8 +144,12 @@
   <ItemGroup>
     <Compile Include="BUSCore\Controller.cs" />
     <Compile Include="BUSCore\Do.cs" />
+    <Compile Include="BUS\Product.cs" />
+    <Compile Include="BUS\User.cs" />
     <Compile Include="BUS\ProductCategory.cs" />
+    <Compile Include="Helper\ResultHelper.cs" />
     <Compile Include="IService1.cs" />
+    <Compile Include="Module\DAO\ProductDAO.cs" />
     <Compile Include="Module\DAO\ProductCategoryDAO.cs" />
     <Compile Include="Module\DAO\UserInfoDAO.cs" />
     <Compile Include="Module\District.cs">

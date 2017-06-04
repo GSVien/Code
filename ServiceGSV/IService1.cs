@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.EnterpriseServices.Internal;
+using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
@@ -13,15 +14,17 @@ namespace ServiceGSV
     [ServiceContract]
     public interface IService1
     {
-        [OperationContract]
-        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare,
-            UriTemplate = "aaa")]
 
+        [OperationContract]
+        [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, ResponseFormat = WebMessageFormat.Json)]
         string aaa();
 
         [OperationContract]
-        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare)]
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json)]
+        Stream GetListCategory(string key);
 
-        string GetListAll();
+        [OperationContract]
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json)]
+        Stream GetListProduct(string key);
     }
 }

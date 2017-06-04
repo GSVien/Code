@@ -10,7 +10,6 @@
                 // Điều chỉnh danh sách link
                 scope.routeStyles = {};
                 $rootScope.$on("$routeChangeStart", function (e, next, current) {
-                    $window.ga("send", "pageview", { page: $location.url() });
 
                     if (current && current.$$route && current.$$route.css) {
                         if (!angular.isArray(current.$$route.css)) {

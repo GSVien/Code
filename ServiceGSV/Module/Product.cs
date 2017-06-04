@@ -24,5 +24,7 @@ namespace ServiceGSV.Module
         public Nullable<long> PostUserId { get; set; }
         public System.DateTime CreateDate { get; set; }
         public int DictrictId { get; set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
     }
 }

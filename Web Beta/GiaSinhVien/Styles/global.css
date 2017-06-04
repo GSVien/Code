@@ -12,12 +12,15 @@ body {
   font-size: 12px;
   background-image: url("/Content/Image/background-home.jpg");
   background-repeat: repeat; }
-  @media (max-width: 1000px) {
-    body .container {
-      width: 100%; } }
-  @media (min-width: 1000px) {
-    body .container {
-      width: 990px; } }
+  body .container {
+    margin-left: 40px;
+    margin-right: 40px; }
+    @media (max-width: 1000px) {
+      body .container {
+        width: 100%; } }
+    @media (min-width: 1000px) {
+      body .container {
+        width: calc(100% - 80px); } }
 
 body > element .header {
   margin: 0;
@@ -42,12 +45,10 @@ body > element .header {
         color: #fff;
         padding-left: 5px;
         padding-right: 10px; }
-        body > element .header > div:nth-child(1) ul li:not(:last-child) {
-          border-right: 1px solid rgba(243, 243, 243, 0.42); }
         body > element .header > div:nth-child(1) ul li a {
           display: block;
           padding: 2px 5px;
-          color: inherit;
+          color: #828282;
           text-decoration: none; }
           body > element .header > div:nth-child(1) ul li a:hover {
             background-color: rgba(255, 255, 255, 0.6);

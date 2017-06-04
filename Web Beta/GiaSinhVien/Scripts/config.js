@@ -60,6 +60,8 @@ giasinhvienApp.run([
             $rootScope.showAppBanner = true;
         };
 
+        
+
         sessionService.load();
 
 

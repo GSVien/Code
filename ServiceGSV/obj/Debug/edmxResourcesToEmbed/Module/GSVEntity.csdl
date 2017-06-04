@@ -62,39 +62,6 @@
     <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="Status" Type="GiaSinhVienModel.UserStatus" Nullable="false" />
   </EntityType>
-  <EntityType Name="GroupUser">
-    <Key>
-      <PropertyRef Name="Id" />
-      <PropertyRef Name="Name" />
-      <PropertyRef Name="Status" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" />
-    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Status" Type="Int32" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Product">
-    <Key>
-      <PropertyRef Name="Id" />
-      <PropertyRef Name="Name" />
-      <PropertyRef Name="CategoryId" />
-      <PropertyRef Name="SubCategoryId" />
-      <PropertyRef Name="Price" />
-      <PropertyRef Name="Photo" />
-      <PropertyRef Name="Status" />
-      <PropertyRef Name="CreateDate" />
-      <PropertyRef Name="DictrictId" />
-    </Key>
-    <Property Name="Id" Type="Int64" Nullable="false" />
-    <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="CategoryId" Type="Int64" Nullable="false" />
-    <Property Name="SubCategoryId" Type="Int64" Nullable="false" />
-    <Property Name="Price" Type="Int64" Nullable="false" />
-    <Property Name="Photo" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Status" Type="GiaSinhVienModel.ProductStatus" Nullable="false" />
-    <Property Name="PostUserId" Type="Int64" />
-    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="DictrictId" Type="Int32" Nullable="false" />
-  </EntityType>
   <EntityContainer Name="GiaSinhVienEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Districts" EntityType="Self.District" />
     <EntitySet Name="PhotoMedias" EntityType="Self.PhotoMedia" />
@@ -102,8 +69,8 @@
     <EntitySet Name="Provinces" EntityType="Self.Province" />
     <EntitySet Name="SubProductCategories" EntityType="Self.SubProductCategory" />
     <EntitySet Name="UserInfoes" EntityType="Self.UserInfo" />
-    <EntitySet Name="GroupUsers" EntityType="Self.GroupUser" />
-    <EntitySet Name="Products" EntityType="Self.Product" />
+    <EntitySet Name="GroupUsers" EntityType="GiaSinhVienModel.GroupUser" />
+    <EntitySet Name="Products" EntityType="GiaSinhVienModel.Product" />
   </EntityContainer>
   <EnumType Name="UserStatus">
     <Member Name="Deleted" Value="0" />
@@ -121,4 +88,29 @@
     <Member Name="Deleted" Value="0" />
     <Member Name="Active" Value="1" />
   </EnumType>
+  <EntityType Name="GroupUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="CategoryId" Type="Int64" Nullable="false" />
+    <Property Name="SubCategoryId" Type="Int64" Nullable="false" />
+    <Property Name="Price" Type="Int64" Nullable="false" />
+    <Property Name="Photo" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="GiaSinhVienModel.ProductStatus" Nullable="false" />
+    <Property Name="PostUserId" Type="Int64" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DictrictId" Type="Int32" Nullable="false" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
 </Schema>

@@ -44,7 +44,7 @@
                             displayError: true,
                             onError: function () {
                                 if (o.onDone) o.onDone();
-                                return grecaptcha.reset();
+                                return null;
                             },
                             onSuccess: function (r) {
                                 if (r.Result && r.Result.Id && r.Result.Key)

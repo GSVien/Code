@@ -20,12 +20,15 @@ body {
     }
 
     .container {
+        margin-left: 40px;
+        margin-right: 40px;
+
         @media (max-width: 1000px) {
             width: 100%;
         }
 
         @media (min-width: 1000px) {
-            width: 990px;
+            width: calc(100% - 80px);
         }
     }
 }
@@ -62,14 +65,10 @@ body > element .header {
                 padding-left: 5px;
                 padding-right: 10px;
 
-                &:not(:last-child) {
-                    border-right: 1px solid rgba(243, 243, 243, 0.42);
-                }
-
                 a {
                     display: block;
                     padding: 2px 5px;
-                    color: inherit;
+                    color: #828282;
                     text-decoration: none;
 
                     &:hover {

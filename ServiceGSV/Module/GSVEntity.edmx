@@ -4,25 +4,21 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="GiaSinhVienModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="GiaSinhVienModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="District">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="ProvinceId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="Status" Type="int" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'GiaSinhVien.dbo.GroupUser' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="GroupUser">
           <Key>
             <PropertyRef Name="Id" />
-            <PropertyRef Name="Name" />
-            <PropertyRef Name="Status" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Status" Type="int" Nullable="false" />
         </EntityType>
@@ -37,21 +33,11 @@ warning 6002: The table/view 'GiaSinhVien.dbo.GroupUser' does not have a primary
           <Property Name="MediaLink" Type="nvarchar" MaxLength="255" />
           <Property Name="Type" Type="int" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'GiaSinhVien.dbo.Product' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Product">
           <Key>
             <PropertyRef Name="Id" />
-            <PropertyRef Name="Name" />
-            <PropertyRef Name="CategoryId" />
-            <PropertyRef Name="SubCategoryId" />
-            <PropertyRef Name="Price" />
-            <PropertyRef Name="Photo" />
-            <PropertyRef Name="Status" />
-            <PropertyRef Name="CreateDate" />
-            <PropertyRef Name="DictrictId" />
           </Key>
-          <Property Name="Id" Type="bigint" Nullable="false" />
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="CategoryId" Type="bigint" Nullable="false" />
           <Property Name="SubCategoryId" Type="bigint" Nullable="false" />
@@ -61,6 +47,8 @@ warning 6002: The table/view 'GiaSinhVien.dbo.Product' does not have a primary k
           <Property Name="PostUserId" Type="bigint" />
           <Property Name="CreateDate" Type="datetime" Nullable="false" />
           <Property Name="DictrictId" Type="int" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="ProductCategory">
           <Key>
@@ -106,35 +94,15 @@ warning 6002: The table/view 'GiaSinhVien.dbo.Product' does not have a primary k
         </EntityType>
         <EntityContainer Name="GiaSinhVienModelStoreContainer">
           <EntitySet Name="District" EntityType="Self.District" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GroupUser" EntityType="Self.GroupUser" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PhotoMedia" EntityType="Self.PhotoMedia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProductCategory" EntityType="Self.ProductCategory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Province" EntityType="Self.Province" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SubProductCategory" EntityType="Self.SubProductCategory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserInfo" EntityType="Self.UserInfo" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="GroupUser" EntityType="Self.GroupUser" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-[GroupUser].[Id] AS [Id], 
-[GroupUser].[Name] AS [Name], 
-[GroupUser].[Status] AS [Status]
-FROM [dbo].[GroupUser] AS [GroupUser]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="Product" EntityType="Self.Product" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-[Product].[Id] AS [Id], 
-[Product].[Name] AS [Name], 
-[Product].[CategoryId] AS [CategoryId], 
-[Product].[SubCategoryId] AS [SubCategoryId], 
-[Product].[Price] AS [Price], 
-[Product].[Photo] AS [Photo], 
-[Product].[Status] AS [Status], 
-[Product].[PostUserId] AS [PostUserId], 
-[Product].[CreateDate] AS [CreateDate], 
-[Product].[DictrictId] AS [DictrictId]
-FROM [dbo].[Product] AS [Product]</DefiningQuery>
-          </EntitySet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="GiaSinhVienModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -200,39 +168,6 @@ FROM [dbo].[Product] AS [Product]</DefiningQuery>
           <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Status" Type="GiaSinhVienModel.UserStatus" Nullable="false" />
         </EntityType>
-        <EntityType Name="GroupUser">
-          <Key>
-            <PropertyRef Name="Id" />
-            <PropertyRef Name="Name" />
-            <PropertyRef Name="Status" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Status" Type="Int32" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Product">
-          <Key>
-            <PropertyRef Name="Id" />
-            <PropertyRef Name="Name" />
-            <PropertyRef Name="CategoryId" />
-            <PropertyRef Name="SubCategoryId" />
-            <PropertyRef Name="Price" />
-            <PropertyRef Name="Photo" />
-            <PropertyRef Name="Status" />
-            <PropertyRef Name="CreateDate" />
-            <PropertyRef Name="DictrictId" />
-          </Key>
-          <Property Name="Id" Type="Int64" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="CategoryId" Type="Int64" Nullable="false" />
-          <Property Name="SubCategoryId" Type="Int64" Nullable="false" />
-          <Property Name="Price" Type="Int64" Nullable="false" />
-          <Property Name="Photo" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Status" Type="GiaSinhVienModel.ProductStatus" Nullable="false" />
-          <Property Name="PostUserId" Type="Int64" />
-          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="DictrictId" Type="Int32" Nullable="false" />
-        </EntityType>
         <EntityContainer Name="GiaSinhVienEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Districts" EntityType="Self.District" />
           <EntitySet Name="PhotoMedias" EntityType="Self.PhotoMedia" />
@@ -240,8 +175,8 @@ FROM [dbo].[Product] AS [Product]</DefiningQuery>
           <EntitySet Name="Provinces" EntityType="Self.Province" />
           <EntitySet Name="SubProductCategories" EntityType="Self.SubProductCategory" />
           <EntitySet Name="UserInfoes" EntityType="Self.UserInfo" />
-          <EntitySet Name="GroupUsers" EntityType="Self.GroupUser" />
-          <EntitySet Name="Products" EntityType="Self.Product" />
+          <EntitySet Name="GroupUsers" EntityType="GiaSinhVienModel.GroupUser" />
+          <EntitySet Name="Products" EntityType="GiaSinhVienModel.Product" />
         </EntityContainer>
         <EnumType Name="UserStatus">
           <Member Name="Deleted" Value="0" />
@@ -259,6 +194,31 @@ FROM [dbo].[Product] AS [Product]</DefiningQuery>
           <Member Name="Deleted" Value="0" />
           <Member Name="Active" Value="1" />
         </EnumType>
+        <EntityType Name="GroupUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="CategoryId" Type="Int64" Nullable="false" />
+          <Property Name="SubCategoryId" Type="Int64" Nullable="false" />
+          <Property Name="Price" Type="Int64" Nullable="false" />
+          <Property Name="Photo" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="GiaSinhVienModel.ProductStatus" Nullable="false" />
+          <Property Name="PostUserId" Type="Int64" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DictrictId" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -336,25 +296,27 @@ FROM [dbo].[Product] AS [Product]</DefiningQuery>
           <EntitySetMapping Name="GroupUsers">
             <EntityTypeMapping TypeName="GiaSinhVienModel.GroupUser">
               <MappingFragment StoreEntitySet="GroupUser">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Products">
             <EntityTypeMapping TypeName="GiaSinhVienModel.Product">
               <MappingFragment StoreEntitySet="Product">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
-                <ScalarProperty Name="SubCategoryId" ColumnName="SubCategoryId" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="Photo" ColumnName="Photo" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="PostUserId" ColumnName="PostUserId" />
-                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="DictrictId" ColumnName="DictrictId" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="PostUserId" ColumnName="PostUserId" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="SubCategoryId" ColumnName="SubCategoryId" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

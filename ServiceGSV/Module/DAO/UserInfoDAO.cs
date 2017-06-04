@@ -63,6 +63,15 @@ namespace ServiceGSV.Module.DAO
             });
         }
 
+        public static DoResult<UserInfo> GetUserByEmail(GiaSinhVienEntities db, string email)
+        {
+            return DAOCore.Do<UserInfo>(c =>
+            {
+                var userTemp = db.UserInfoes.FirstOrDefault(f => f.Email == email);
+                return userTemp;
+            });
+        }
+
         public static DoResult ChangeStatus(GiaSinhVienEntities db, long id, UserStatus newStatus)
         {
             return DAOCore.Do(c =>
