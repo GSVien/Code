@@ -1,7 +1,19 @@
 ﻿<nav class="header navbar navbar-default" ng-show="layoutShowHeader">
     <div class="hidden-xs">
         <div class="container">
-            <ul class="pull-right list-inline" >
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">
+                    <img alt="Teen Idol" src="/Content/Image/Logo/logo-w-200.png">
+                </a>
+            </div>
+            <ul class="pull-left list-inline">
+                <li ng-repeat="item in ListMenuHead">
+                    <a href="{{item.Link}}" ud-role="sign-in">
+                        {{item.Name}}
+                    </a>
+                </li>
+            </ul>
+            <ul class="pull-right list-inline">
                 <li>
                     <a href="#" ud-role="sign-in"><i class="fa fa-user"></i> Đăng nhập</a>
                 </li>
@@ -9,33 +21,26 @@
                     <a href="#" ud-role="sign-up">Đăng ký</a>
                 </li>
             </ul>
-        </div>
-    </div>
-
-    <div>
-        <div class="container">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="/">
-                    <img alt="Teen Idol" src="/Content/Image/Logo/logo-w-200.png">
-                </a>
-            </div>
-            
             <form class="search navbar-form navbar-right">
                 <div class="form-group">
                     <input type="text" id="search-text" class="search-text form-control" placeholder="Tìm kiếm...">
                 </div>
                 <button type="submit" ng-click="onSearchIdol()" class="btn btn-default"><i class="fa fa-search"></i></button>
             </form>
-            <div id="header-navbar" class="collapse navbar-collapse">
-                <ul class="nav navbar-nav">
-                    <li ng-repeat="item in ListCategory">
-                        <a href="/">
-                            <span>{{item.Name}}</span>
-                        </a>
-                    </li>
-                </ul>
+            <ul class="pull-left list-inline second">
+                <li ng-repeat="item in ListCategory">
+                    <a href="{{item.Link}}" ud-role="sign-in">
+                        {{item.Name}}
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
 
-            </div>
+    <div>
+        <div class="container">
+
+
         </div>
     </div>
 </nav>

@@ -37,6 +37,11 @@ body > element .header {
     background-size: auto 100%;
     background-repeat: repeat-x;
     background-color: transparent; }
+    body > element .header > div:nth-child(1) .navbar-header .navbar-brand {
+      padding: 10px; }
+      body > element .header > div:nth-child(1) .navbar-header .navbar-brand img {
+        width: 100px;
+        height: 30px; }
     body > element .header > div:nth-child(1) ul {
       margin: 0;
       padding: 0; }
@@ -46,9 +51,12 @@ body > element .header {
         padding-left: 5px;
         padding-right: 10px; }
         body > element .header > div:nth-child(1) ul li a {
+          font-family: Verdana, Geneva, sans-serif;
+          font-size: 16px;
+          margin-top: 13px;
           display: block;
           padding: 2px 5px;
-          color: #828282;
+          color: #000;
           text-decoration: none; }
           body > element .header > div:nth-child(1) ul li a:hover {
             background-color: rgba(255, 255, 255, 0.6);
@@ -131,6 +139,28 @@ body > element .header {
                   width: calc(100% - 70px); }
                 body > element .header > div:nth-child(1) ul li .dropdown .dropdown-menu li a:hover {
                   background: transparent; }
+    body > element .header > div:nth-child(1) .second {
+      margin: 0;
+      padding: 0; }
+      body > element .header > div:nth-child(1) .second li {
+        padding: 0;
+        color: #fff;
+        padding-left: 5px;
+        padding-right: 10px; }
+        body > element .header > div:nth-child(1) .second li a {
+          font-family: Verdana, Geneva, sans-serif;
+          font-size: 16px;
+          margin-top: 13px;
+          display: block;
+          padding: 2px 5px;
+          color: #000;
+          text-decoration: none; }
+          body > element .header > div:nth-child(1) .second li a:hover {
+            background-color: rgba(255, 255, 255, 0.6);
+            border-radius: 3px; }
+          body > element .header > div:nth-child(1) .second li a:focus {
+            border-radius: 3px;
+            outline: none; }
     body > element .header > div:nth-child(1) .signed .avatar {
       width: 18px;
       height: 18px;

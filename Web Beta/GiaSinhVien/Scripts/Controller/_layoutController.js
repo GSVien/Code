@@ -18,77 +18,75 @@ function ($window, $http, $scope, $rootScope, $location, $cookies,
     $scope.layoutShowRightBar = true;
     $scope.layoutShowHeaderevent = false;
     //#endregion
+    $scope.ListMenuHead = [
+        {
+            Name: "Giới Thiệu",
+            Link: '/',
+        },
+        {
+            Name: "Chính Sách",
+            Link: '/',
+        },
+        {
+            Name: "Liên Hệ",
+            Link: '/',
+        }
+    ];
     $scope.ListCategory = [
         {
             Id: 1,
             Name: "Đồ Điện Tử",
-            Photo: null,
+            Photo: 'http://i1150.photobucket.com/albums/o617/redsvn/slide/slide-ewaste.jpg',
+            Link: '/',
             Status: 1
         },
+        //{
+        //    Id: 2,
+        //    Name: "Xe Cộ",
+        //    Photo: 'http://i1150.photobucket.com/albums/o617/redsvn/slide/slide-ewaste.jpg',
+        //    Link: '/',
+        //    Status: 1
+        //},
         {
-            Id: 2,
-            Name: "Xe Cộ",
-            Photo: null,
-            Status: 1
-        },
-        {
-            Id: 3,
-            Name: "Bất Động Sản",
-            Photo: null,
+            Id: 7,
+            Name: "Nội Ngoại Thất",
+            Photo: 'http://i1150.photobucket.com/albums/o617/redsvn/slide/slide-ewaste.jpg',
+            Link: '/',
             Status: 1
         },
         {
             Id: 4,
-            Name: "Thời Trang Phụ Kiện",
-            Photo: null,
+            Name: "Gia Dụng",
+            Photo: 'http://i1150.photobucket.com/albums/o617/redsvn/slide/slide-ewaste.jpg',
+            Link: '/',
             Status: 1
         },
-        {
-            Id: 6,
-            Name: "Đồ Gia Dụng",
-            Photo: null,
-            Status: 1
-        },
-        {
-            Id: 7,
-            Name: "Nội Ngoại Thất",
-            Photo: null,
-            Status: 1
-        },
-        {
-            Id: 8,
-            Name: "Giải Trí Thể Thao",
-            Photo: null,
-            Status: 1
-        },
-        {
-            Id: 9,
-            Name: "Đồ Dùng Văn Phòng,Công Nông Nghiệp",
-            Photo: null,
-            Status: 1
-        },
+        //{
+        //    Id: 8,
+        //    Name: "Giải Trí Thể Thao",
+        //    Photo: 'http://i1150.photobucket.com/albums/o617/redsvn/slide/slide-ewaste.jpg',
+        //    Link: '/',
+        //    Status: 1
+        //},
         {
             Id: 10,
-            Name: "Sách Báo Đồ Nghệ Thuật",
-            Photo: null,
+            Name: "Sách Báo",
+            Photo: 'http://i1150.photobucket.com/albums/o617/redsvn/slide/slide-ewaste.jpg',
+            Link: '/',
             Status: 1
         },
         {
             Id: 13,
-            Name: "Vật Nuôi,Thú Cưng",
-            Photo: null,
-            Status: 1
-        },
-        {
-            Id: 14,
-            Name: "Dịch Vụ,Việc Làm",
-            Photo: null,
+            Name: "Bất Động Sản",
+            Photo: 'http://i1150.photobucket.com/albums/o617/redsvn/slide/slide-ewaste.jpg',
+            Link: '/',
             Status: 1
         },
         {
             Id: 15,
             Name: "Các Loại Khác",
-            Photo: null,
+            Photo: 'http://i1150.photobucket.com/albums/o617/redsvn/slide/slide-ewaste.jpg',
+            Link: '/',
             Status: 1
         }
     ];
