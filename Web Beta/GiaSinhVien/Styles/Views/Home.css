@@ -10,16 +10,21 @@ body {
 
 .group {
   position: relative; }
-  .group:nth-child(1) {
-    height: 450px; }
-    .group:nth-child(1) #myCarousel {
-      position: absolute;
-      left: 50%;
-      transform: translate(-50%);
-      margin-top: 20px; }
-      .group:nth-child(1) #myCarousel .carousel-inner .item img {
-        width: 800px !important;
-        height: 450px !important; }
+  .group:nth-child(1) #myCarousel {
+    position: relative;
+    margin-left: 50%;
+    transform: translate(-50%);
+    margin-top: 20px; }
+    .group:nth-child(1) #myCarousel .carousel-inner .item img {
+      width: 800px !important;
+      height: 450px !important; }
+  .group:nth-child(1) .list-product .product-item {
+    width: calc(100%/4);
+    height: 300px;
+    float: left; }
+    .group:nth-child(1) .list-product .product-item .list-item .photo {
+      width: 200px;
+      height: 200px; }
   .group:nth-child(2) {
     background-repeat: repeat;
     /*&:after {

@@ -18,10 +18,19 @@
                 </div>
             </div> 
         </div>
-        
+        <div class="list-product">
+            <div class="product-item" ng-repeat="item in ListProduct">
+                <a class="list-item" href="{{item.Id}}" target="_blank'">
+                    <img class="photo" ng-src="{{item.Photo}}"/>
+                    <div class="info">
+                        {{item.Name}}
+                    </div>
+                </a>
+            </div>
+        </div>
     </div>
 </div>
-<div class="group">
+<!--<div class="group">
     <div class="background-home">
     </div>
     <div class="container">
@@ -33,4 +42,4 @@
     <div class="container">
         
     </div>
-</div>
+</div>-->

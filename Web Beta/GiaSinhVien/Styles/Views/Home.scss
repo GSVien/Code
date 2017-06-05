@@ -19,11 +19,10 @@ body {
     position: relative;
 
     &:nth-child(1) {
-        height: 450px;
 
         #myCarousel {
-            position: absolute;
-            left: 50%;
+            position: relative;
+            margin-left: 50%;
             transform: translate(-50%);
             margin-top: 20px;
 
@@ -32,6 +31,21 @@ body {
                     img {
                         width: 800px !important;
                         height: 450px !important;
+                    }
+                }
+            }
+        }
+
+        .list-product {
+            .product-item {
+                width: calc(100%/4);
+                height: 300px;
+                float: left;
+
+                .list-item {
+                    .photo {
+                        width: 200px;
+                        height: 200px;
                     }
                 }
             }
