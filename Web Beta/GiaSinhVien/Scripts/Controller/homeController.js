@@ -20,8 +20,22 @@
         //#region [Event]
 
 
-        $scope.onLoadStarPanel = function () {
+        $scope.onLoadProductData = function () {
+            webService.call({
+                name: "GetListProduct",
+                data: {
+                    key:"sdgsg"
+                },
 
+                onError: function (errorCode, message) {
+                },
+
+                onSuccess: function (r) {
+                    console.log(r);
+                    $scope.ListProduct = r;
+                    if (!$scope.$$phase) $scope.$apply();
+                },
+            });
         };
 
         //#endregion
@@ -29,11 +43,11 @@
         //#region [Global Event]
 
         $rootScope.$on("authentication_onSignIn", function () {
-            $scope.onLoadStarPanel();
+            $scope.onLoadProductData();
         });
 
         $rootScope.$on("authentication_onSignOut", function () {
-            $scope.onLoadStarPanel();
+            $scope.onLoadProductData();
         });
 
         //#endregion
@@ -44,7 +58,7 @@
 
             $("body").css("background-image", "url('/Content/Image/Background-home/home.png')");
 
-            $scope.onLoadStarPanel();
+            $scope.onLoadProductData();
 
 
             //load meta seo data
