@@ -129,6 +129,25 @@ function ($window, $http, $scope, $rootScope, $location, $cookies,
     //#endregion
 
     //#region [Event]
+    $scope.dangNhapBangEmail = function (e) {
+       
+        //goi service dang nhap
+        webService.call({
+            name: "DangNhapBangEmail",
+            data: {
+                email: "tai_@tfl.vn",
+                passwork: "654321"
+            },
+
+            onError: function (errorCode, message) {
+            },
+
+            onSuccess: function (r) {
+                console.log(r);
+                if (!$scope.$$phase) $scope.$apply();
+            },
+        });
+    };
 
 
     $scope.$watch("dropdownUserId", function (data) {

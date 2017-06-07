@@ -36,14 +36,16 @@ namespace ServiceGSV
             return ("ddgdsgs").ToJson("*");
         }
 
-        public string DangKyUser(string Name,string email,string pass)
+        public Stream DangNhapBangEmail(string email,string passwork)
         {
-            var rs = BUS.BUS.DangKyUserMoi(new UserInfo
-            {
-                UserName = Name,
-
-            }).Result;
-            return rs.ToJson("*");
+            var rs = BUS.BUS.Bus_DangNhapBangEmail(email, passwork);
+            return ResultHelper.Json(rs.ToJson("*"));
         }
+        public Stream DangKyUserMoi(string email, string passwork,string photo)
+        {
+            var rs = BUS.BUS.Bus_DangKyUserMoi(email, passwork,photo);
+            return ResultHelper.Json(rs.ToJson("*"));
+        }
+       
     }
 }

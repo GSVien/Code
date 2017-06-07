@@ -25,6 +25,15 @@ namespace ServiceGSV
 
         [OperationContract]
         [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json)]
+        Stream DangNhapBangEmail(string email, string passwork);
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json)]
+        Stream DangKyUserMoi(string email, string passwork,string photo);
+
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json)]
         Stream GetListProduct(string key);
     }
 }
