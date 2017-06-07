@@ -2,7 +2,7 @@
 using System.Net;
 using System.Text;
 using Newtonsoft.Json.Linq;
-using TFL.Lib;
+using TFLLib;
 
 namespace TeenIdol
 {

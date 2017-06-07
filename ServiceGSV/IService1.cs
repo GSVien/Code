@@ -29,7 +29,11 @@ namespace ServiceGSV
 
         [OperationContract]
         [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json)]
-        Stream DangKyUserMoi(string email, string passwork,string photo);
+        Stream DangKyUserMoi(string email, string username, string passwork,string photo, string sodienthoai);
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json)]
+        Stream ThayDoiThongTinUser(string username, string passwork, string photo, string sodienthoai);
 
 
         [OperationContract]

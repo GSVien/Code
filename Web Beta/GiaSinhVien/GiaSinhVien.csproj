@@ -75,6 +75,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\TFL.Lib.dll</HintPath>
     </Reference>
+    <Reference Include="TFLLib">
+      <HintPath>..\..\TFLLib.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Web.Razor">

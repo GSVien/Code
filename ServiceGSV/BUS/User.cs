@@ -41,7 +41,7 @@ namespace ServiceGSV.BUS
 
         }
 
-        public static DoResult<UserInfo> Bus_DangKyUserMoi(string email, string passwork, string photo)
+        public static DoResult<UserInfo> Bus_DangKyUserMoi(string email, string username, string passwork, string photo, string sodienthoai)
         {
             return BUSCore.Do<UserInfo>(
                 userId: -1,
@@ -56,13 +56,33 @@ namespace ServiceGSV.BUS
                     }
                     UserInfo data = new UserInfo();
                     data.Email = email;
-                    data.UserName = email;
+                    data.UserName = username;
                     data.Passwork = passwork;
                     data.AvatarPhoto = photo;
                     data.GroupId = 1;
-                    data.Phone = "12345";
+                    data.Phone = sodienthoai;
                         // Cập nhật hệ thống
                         var r = UserInfoDAO.Insert(c.Db, data);
+
+                    return r.Result;
+                });
+
+        }
+        public static DoResult<UserInfo> Bus_ThayDoiThongTinUser(string username, string passwork, string photo, string sodienthoai)
+        {
+            return BUSCore.Do<UserInfo>(
+                userId: -1,
+                action: (c) =>
+                {
+                 
+                    UserInfo data = new UserInfo();
+                    data.UserName = username;
+                    data.Passwork = passwork;
+                    data.AvatarPhoto = photo;
+                    data.GroupId = 1;
+                    data.Phone = sodienthoai;
+                    // Cập nhật hệ thống
+                    var r = UserInfoDAO.Update(c.Db, data);
 
                     return r.Result;
                 });
