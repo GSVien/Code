@@ -143,6 +143,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BUSCore\Controller.cs" />
+    <Compile Include="MD5.cs" />
     <Compile Include="BUSCore\Do.cs" />
     <Compile Include="BUS\Product.cs" />
     <Compile Include="BUS\User.cs" />

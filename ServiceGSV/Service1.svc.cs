@@ -41,11 +41,16 @@ namespace ServiceGSV
             var rs = BUS.BUS.Bus_DangNhapBangEmail(email, passwork);
             return ResultHelper.Json(rs.ToJson("*"));
         }
-        public Stream DangKyUserMoi(string email, string passwork,string photo)
+        public Stream DangKyUserMoi(string email, string username, string passwork, string photo, string sodienthoai)
         {
-            var rs = BUS.BUS.Bus_DangKyUserMoi(email, passwork,photo);
+            var rs = BUS.BUS.Bus_DangKyUserMoi(email,username, passwork, photo, sodienthoai);
             return ResultHelper.Json(rs.ToJson("*"));
         }
-       
+        public Stream ThayDoiThongTinUser(string username, string passwork, string photo, string sodienthoai)
+        {
+            var rs = BUS.BUS.Bus_ThayDoiThongTinUser(username, passwork, photo, sodienthoai);
+            return ResultHelper.Json(rs.ToJson("*"));
+        }
+
     }
 }

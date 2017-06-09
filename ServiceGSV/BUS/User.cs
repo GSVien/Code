@@ -14,6 +14,8 @@ namespace ServiceGSV.BUS
     {
         public static DoResult<UserInfo> Bus_DangNhapBangEmail(string _email, string passwork)
         {
+            MaHoaMD5 mahoa = new MaHoaMD5();
+
             return BUSCore.Do<UserInfo>(
                 userId: -1,
                 action: (c) =>
@@ -27,7 +29,7 @@ namespace ServiceGSV.BUS
                     }
                     else // có user=> kiểm tra passwork
                     {
-                        if (userTemp.Passwork != passwork)
+                        if (userTemp.Passwork != mahoa.md5(passwork))
                         {
                             c.SetError("Passwork nhập vào không đúng.Nhập lại", 1);
                             return null;
@@ -41,8 +43,9 @@ namespace ServiceGSV.BUS
 
         }
 
-        public static DoResult<UserInfo> Bus_DangKyUserMoi(string email, string passwork, string photo)
+        public static DoResult<UserInfo> Bus_DangKyUserMoi(string email, string username, string passwork, string photo, string sodienthoai)
         {
+            MaHoaMD5 mahoa = new MaHoaMD5();
             return BUSCore.Do<UserInfo>(
                 userId: -1,
                 action: (c) =>
@@ -56,11 +59,11 @@ namespace ServiceGSV.BUS
                     }
                     UserInfo data = new UserInfo();
                     data.Email = email;
-                    data.UserName = email;
-                    data.Passwork = passwork;
+                    data.UserName = username;
+                    data.Passwork = mahoa.md5(passwork);
                     data.AvatarPhoto = photo;
                     data.GroupId = 1;
-                    data.Phone = "12345";
+                    data.Phone = sodienthoai;
                         // Cập nhật hệ thống
                         var r = UserInfoDAO.Insert(c.Db, data);
 
@@ -68,5 +71,27 @@ namespace ServiceGSV.BUS
                 });
 
         }
+        public static DoResult<UserInfo> Bus_ThayDoiThongTinUser(string username, string passwork, string photo, string sodienthoai)
+        {
+            MaHoaMD5 mahoa = new MaHoaMD5();
+            return BUSCore.Do<UserInfo>(
+                userId: -1,
+                action: (c) =>
+                {
+                 
+                    UserInfo data = new UserInfo();
+                    data.UserName = username;
+                    data.Passwork = mahoa.md5(passwork);
+                    data.AvatarPhoto = photo;
+                    data.GroupId = 1;
+                    data.Phone = sodienthoai;
+                    // Cập nhật hệ thống
+                    var r = UserInfoDAO.Update(c.Db, data);
+
+                    return r.Result;
+                });
+
+        }
+       
     }
 }
