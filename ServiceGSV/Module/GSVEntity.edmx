@@ -92,6 +92,25 @@
           <Property Name="CreateDate" Type="datetime" Nullable="false" />
           <Property Name="Status" Type="int" Nullable="false" />
         </EntityType>
+        <Function Name="usp_Product_Get" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Select" Type="varchar(max)" Mode="In" />
+          <Parameter Name="Sort" Type="varchar(max)" Mode="In" />
+          <Parameter Name="PageIndex" Type="int" Mode="In" />
+          <Parameter Name="PageSize" Type="int" Mode="In" />
+          <Parameter Name="DebugQuery" Type="bit" Mode="In" />
+          <Parameter Name="Id" Type="varchar(max)" Mode="In" />
+          <Parameter Name="str_Name" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="num_CategoryId" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="num_SubCategoryId" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="num_Price" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="num_Status" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="date_CreateDate" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="num_PostUserId" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="num_DictrictId" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="num_ProviceId" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Total" Type="int" Mode="InOut" />
+          <Parameter Name="Query" Type="nvarchar(max)" Mode="InOut" />
+        </Function>
         <EntityContainer Name="GiaSinhVienModelStoreContainer">
           <EntitySet Name="District" EntityType="Self.District" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GroupUser" EntityType="Self.GroupUser" Schema="dbo" store:Type="Tables" />
@@ -177,6 +196,25 @@
           <EntitySet Name="UserInfoes" EntityType="Self.UserInfo" />
           <EntitySet Name="GroupUsers" EntityType="GiaSinhVienModel.GroupUser" />
           <EntitySet Name="Products" EntityType="GiaSinhVienModel.Product" />
+          <FunctionImport Name="usp_Product_Get" ReturnType="Collection(String)">
+            <Parameter Name="Select" Mode="In" Type="String" />
+            <Parameter Name="Sort" Mode="In" Type="String" />
+            <Parameter Name="PageIndex" Mode="In" Type="Int32" />
+            <Parameter Name="PageSize" Mode="In" Type="Int32" />
+            <Parameter Name="DebugQuery" Mode="In" Type="Boolean" />
+            <Parameter Name="Id" Mode="In" Type="String" />
+            <Parameter Name="str_Name" Mode="In" Type="String" />
+            <Parameter Name="num_CategoryId" Mode="In" Type="String" />
+            <Parameter Name="num_SubCategoryId" Mode="In" Type="String" />
+            <Parameter Name="num_Price" Mode="In" Type="String" />
+            <Parameter Name="num_Status" Mode="In" Type="String" />
+            <Parameter Name="date_CreateDate" Mode="In" Type="String" />
+            <Parameter Name="num_PostUserId" Mode="In" Type="String" />
+            <Parameter Name="num_DictrictId" Mode="In" Type="String" />
+            <Parameter Name="num_ProviceId" Mode="In" Type="String" />
+            <Parameter Name="Total" Mode="InOut" Type="Int32" />
+            <Parameter Name="Query" Mode="InOut" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <EnumType Name="UserStatus">
           <Member Name="Deleted" Value="0" />
@@ -320,6 +358,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="usp_Product_Get" FunctionName="GiaSinhVienModel.Store.usp_Product_Get" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

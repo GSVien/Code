@@ -34,8 +34,26 @@ giasinhvienApp.config([
                 templateUrl: function (params) { return "Views/Home.html"; },
                 controller: "homeController",
             })
+            .when("/Search/", {
+                css: "Styles/Views/Search.min.css",
+                templateUrl: function (params) { return "Views/Search.html"; },
+                controller: "searchController",
+                caseInsensitiveMatch: true,
+            })
+            .when("/Search/:keystring", {
+                css: "Styles/Views/Search.min.css",
+                templateUrl: function (params) { return "Views/Search.html"; },
+                controller: "searchController",
+                caseInsensitiveMatch: true,
+            })
+            .when("/product/:id", {
+                css: "Styles/Views/Product.min.css",
+                templateUrl: function (params) { return "Views/Product/Product.html"; },
+                controller: "productController",
+                caseInsensitiveMatch: true,
+            })
             .otherwise({
-                redirectTo: "/show/live"
+                redirectTo: "/"
             });
         // Notification
         NotificationProvider.setOptions({
@@ -284,24 +302,30 @@ giasinhvienApp.controller("homeController", [
 
         //#region [Event]
 
-
+        $scope.pageSizeProduct = 16;
         $scope.onLoadProductData = function () {
             webService.call({
-                name: "GetListProduct",
+                name: "GetListProductModel",
                 data: {
-                    key:"sdgsg"
+                    actionUserId: 1,
+                    pageIndex: 0,
+                    pageSize: $scope.pageSizeProduct
                 },
 
                 onError: function (errorCode, message) {
                 },
 
                 onSuccess: function (r) {
-                    console.log(r);
-                    $scope.ListProduct = r;
+                    $scope.ListProduct = r.Items;
                     if (!$scope.$$phase) $scope.$apply();
                 },
             });
         };
+
+        $scope.viewShowMore = function() {
+            $scope.pageSizeProduct += 16;
+            $scope.onLoadProductData();
+        }
 
         //#endregion
 
@@ -321,10 +345,249 @@ giasinhvienApp.controller("homeController", [
         $scope.$on("$viewContentLoaded", function () {
 
 
-            $("body").css("background-image", "url('/Content/Image/Background-home/home.png')");
+            //$("body").css("background-image", "url('/Content/Image/Background-home/home.png')");
 
             $scope.onLoadProductData();
 
+
+            //load meta seo data
+            $("meta[name='title']").attr("content", "Giải trí thả ga - Tự tin thể hiện mình cùng teenidol, giao lưu với dàn idol xinh xắn, đa tài, đa phong cách trên nền platform ưu việt nhất.");
+            $("meta[name='keywords']").attr("content", "Giải trí thả ga - Tự tin thể hiện mình cùng teenidol, giao lưu với dàn idol xinh xắn, đa tài, đa phong cách trên nền platform ưu việt nhất.");
+            $("meta[name='description']").attr("content", "Giải trí thả ga - Tự tin thể hiện mình cùng teenidol, giao lưu với dàn idol xinh xắn, đa tài, đa phong cách trên nền platform ưu việt nhất.");
+
+
+        });
+
+        //#endregion
+    }
+]);
+giasinhvienApp.controller("productController", [
+    "$scope", "$rootScope", "$routeParams", "$log", "$sce", "sessionService", "webService", "helperService", "$window", "authenticationService", "Notification",
+function ($scope, $rootScope, $routeParams, $log, $sce, sessionService, webService, helperService, $window, authenticationService, Notification) {
+    //#region [Field]
+    $scope.htmlContent = undefined;
+    $scope.productId = undefined;
+    $scope.pageSizeSimilarProduct = 8;
+    $scope.$p = $scope.$parent;
+    if ($routeParams) {
+        $scope.productId = $routeParams.id;
+    }
+    //#endregion
+    //#region [Layout]
+
+    $scope.$p.resetLayout();
+    $scope.$p.layoutFullBody = false;
+    //#endregion
+
+    //#region [Event]
+    $scope.getTimeFormat = function (e) {
+        return helperService.formatStortDate(e);
+    }
+
+    $scope.onLoadMainProduct = function () {
+        webService.call({
+            name: "GetInfoProductModel",
+            data: {
+                actionUserId: 1,
+                id: $scope.productId
+            },
+
+            onError: function (errorCode, message) {
+            },
+
+            onSuccess: function (r) {
+                $scope.district = r.Items[0].District.Name;
+                $scope.province = r.Items[0].Province.Name;
+                $scope.category = r.Items[0].ProductCategory.Name;
+
+                $scope.productTitle = r.Items[0].Product.Title;
+                $scope.description = r.Items[0].Product.Description;
+                $scope.createDate = r.Items[0].Product.CreateDate;
+                $scope.price = r.Items[0].Product.Price;
+                $scope.productaddrress = r.Items[0].District.Name + ' ' + r.Items[0].Province.Name;
+                $scope.createdate = r.Items[0].Product.CreateDate;
+
+                $scope.userphoto = r.Items[0].UserInfo.AvatarPhoto;
+                $scope.username = r.Items[0].UserInfo.UserName;
+                $scope.userphone = r.Items[0].UserInfo.Phone;
+                $scope.userdate = r.Items[0].UserInfo.CreateDate;
+
+
+                $scope.onLoadSimilarProductData();
+
+                if (!$scope.$$phase) $scope.$apply();
+            },
+        });
+    }
+
+    $scope.onLoadSimilarProductData = function () {
+        webService.call({
+            name: "GetListProductModel",
+            data: {
+                actionUserId: 1,
+                pageIndex: 0,
+                pageSize: $scope.pageSizeSimilarProduct
+            },
+
+            onError: function (errorCode, message) {
+            },
+
+            onSuccess: function (r) {
+                $scope.ListSimilarProduct = r.Items;
+                if (!$scope.$$phase) $scope.$apply();
+            },
+        });
+    };
+
+    $scope.viewShowMore = function () {
+        $scope.pageSizeSimilarProduct += 8;
+        $scope.onLoadSimilarProductData();
+    }
+    
+    //#endregion
+
+    //#region [On Load]
+    sessionService.isReady(function () {
+        $scope.onLoadMainProduct();
+
+
+        $($window).bind("scroll", function () {
+            if (this.pageYOffset > 750) {
+                $(".crolltop").css("position", "fixed");
+                $(".crolltop").css("top", "0");
+                $(".crolltop").css("width", "23.4%");
+            } else {
+                $(".crolltop").css("position", "relative");
+                $(".crolltop").css("top", "0");
+                $(".crolltop").css("width", "auto");
+            }
+        });
+    });
+
+    //#endregion
+}
+]);
+giasinhvienApp.controller("searchController", [
+    "$scope", "$rootScope", "$routeParams", "$location", "$http", "webService", "authenticationService", "modalService", "formService",
+    function ($scope, $rootScope,$routeParams, $location, $http, webService, authenticationService, modalService, formService) {
+        //#region [Field]
+        var now = new Date();
+        var endyear = now.getTime();
+        $scope.stringText = undefined;
+        $scope.categoryId = undefined;
+        $scope.proviceId = undefined;
+        $scope.$p = $scope.$parent;
+        $scope.pageSizeProduct = 16;
+
+        if ($routeParams) {
+            $scope.stringText = $routeParams.keystring;
+            $("#searchValue").val($scope.stringText);
+        }
+
+        
+        //#endregion
+
+        //#region [Layout]
+        $scope.$p.resetLayout();
+        $scope.$p.layoutFullBody = true;
+        //#endregion
+
+        //#region [Event]
+
+
+        $scope.OnSelectProvice = function(id) {
+                $scope.proviceId = id;
+        };
+
+
+        $scope.OnSelectCategory = function (id) {
+                $scope.categoryId = id;
+        };
+
+        $scope.onLoadProvince = function () {
+            webService.call({
+                name: "GetAllProvince",
+                data: {
+                    key: 1
+                },
+
+                onError: function (errorCode, message) {
+                },
+
+                onSuccess: function (r) {
+                    $scope.ListProvince = r.Result;
+                    if (!$scope.$$phase) $scope.$apply();
+                },
+            });
+        };
+
+        $scope.onLoadCategory = function () {
+            webService.call({
+                name: "GetListCategory",
+                data: {
+                    key: 1
+                },
+
+                onError: function (errorCode, message) {
+                },
+
+                onSuccess: function (r) {
+                    $scope.ListCategory = r.Result;
+                    if (!$scope.$$phase) $scope.$apply();
+                },
+            });
+        };
+
+        $scope.onLoadProductData = function () {
+            webService.call({
+                name: "GetListProductModel",
+                data: {
+                    actionUserId: 1,
+                    pageIndex: 0,
+                    pageSize: $scope.pageSizeProduct,
+                    str_Name: $("#searchValue").val(),
+                    num_CategoryId: $scope.categoryId,
+                    num_ProviceId: $scope.proviceId
+                },
+
+                onError: function (errorCode, message) {
+                },
+
+                onSuccess: function (r) {
+                    $scope.ListProduct = r.Items;
+                    if (!$scope.$$phase) $scope.$apply();
+                },
+            });
+        };
+
+        $scope.viewShowMore = function() {
+            $scope.pageSizeProduct += 16;
+            $scope.onLoadProductData();
+        }
+
+        //#endregion
+
+        //#region [Global Event]
+
+        $rootScope.$on("authentication_onSignIn", function () {
+            $scope.onLoadProductData();
+        });
+
+        $rootScope.$on("authentication_onSignOut", function () {
+            $scope.onLoadProductData();
+        });
+
+        //#endregion
+
+        //#region [On Load]
+        $scope.$on("$viewContentLoaded", function () {
+
+
+            //$("body").css("background-image", "url('/Content/Image/Background-home/home.png')");
+
+            $scope.onLoadProductData();
+            $scope.onLoadProvince();
+            $scope.onLoadCategory();
 
             //load meta seo data
             $("meta[name='title']").attr("content", "Giải trí thả ga - Tự tin thể hiện mình cùng teenidol, giao lưu với dàn idol xinh xắn, đa tài, đa phong cách trên nền platform ưu việt nhất.");
@@ -471,11 +734,17 @@ function ($window, $http, $scope, $rootScope, $location, $cookies,
     $scope.dangNhapBangEmail = function (e) {
        
         //goi service dang nhap
+        var $target = $($event.target);
+        var $emailElement = $target.find(".email");
+        var $passwordElement = $target.find(".password");
+
+        $buttonElement.button("loading");
+
         webService.call({
             name: "DangNhapBangEmail",
             data: {
-                email: "tai_@tfl.vn",
-                passwork: "654321"
+                email: $emailElement,
+                passwork: $passwordElement
             },
 
             onError: function (errorCode, message) {
@@ -488,6 +757,9 @@ function ($window, $http, $scope, $rootScope, $location, $cookies,
         });
     };
 
+    $scope.onSearchProduct = function () {
+        $window.location.href = '/Search/' + $("#search-text").val();
+    }
 
     $scope.$watch("dropdownUserId", function (data) {
         if (!data)
@@ -575,372 +847,6 @@ function ($window, $http, $scope, $rootScope, $location, $cookies,
 
     //#endregion
 }
-]);
-giasinhvienApp.controller("detailnewsController", [
-    "$scope", "$rootScope", "$routeParams", "$log", "$sce", "sessionService", "webService", "helperService", "$window", "authenticationService", "Notification",
-function ($scope, $rootScope, $routeParams, $log, $sce, sessionService, webService, helperService, $window, authenticationService, Notification) {
-    //#region [Field]
-    $scope.htmlContent = undefined;
-    var link = "";
-    $scope.$p = $scope.$parent;
-    if ($routeParams) {
-        link = $routeParams.link;
-    }
-    //#endregion
-    //#region [Layout]
-
-    $scope.$p.resetLayout();
-    $scope.$p.layoutFullBody = false;
-    //#endregion
-
-    //#region [Event]
-    $scope.getTimeFormat = function (e) {
-        return helperService.formatStortDate(e);
-    }
-    $scope.getNewsLink = function (link) {
-        return "/detailnews/" + link;
-    }
-
-    $scope.getLinkShare = function (link) {
-        return "/" + "/detailnews/" + link;
-    }
-
-    $scope.onLoadMainNews = function () {
-        webService.call({
-            name: "GetNewsDetailByLink",
-            data: {
-                actionUserId: $scope.$p.sessionService.userId(),
-                link: link,
-                key: $scope.$p.sessionService.key()
-            },
-            onSuccess: function (r) {
-                console.log(r);
-                $scope.newsId = r.Result.Id;
-                $scope.title = r.Result.Title;
-                $scope.description = r.Result.Summary;
-                $scope.linkNews = r.Result.LinkNews;
-                $scope.createDate = r.Result.CreateDate;
-                $scope.photoImage = r.Result.LinkPhoto;
-
-                $rootScope.DetailNewsTitle = r.Result.Title;
-                $rootScope.DetailNewsUrl = +r.Result.LinkNews;
-                $rootScope.DetailNewsImage = r.Result.LinkPhoto;
-                r.Result.HtmlText = r.Result.HtmlText.replace(/\\r\\n/g, "");
-
-                $scope.htmlContent = $sce.trustAsHtml($('<div/>').html(r.Result.HtmlText).text());
-
-                webService.call({
-                    name: "New_GetListNewsReference",
-                    data: {
-                        actionUserId: $scope.$p.sessionService.userId(),
-                        categoryNewsId: 1,
-                        newsId: $scope.newsId,
-                        key: $scope.$p.sessionService.key()
-                    },
-                    onSuccess: function (rs) {
-                        $scope.listNewsReference = rs.Items;
-                        $scope.$apply();
-                    }
-                });
-
-                if ($scope.newsId == 293) {
-                    webService.call({
-                        name: "User_GetDetails",
-                        data: {
-                            actionUserId: sessionService.userId(),
-                            userId: 127479,
-                            isStar: true,
-                            key: sessionService.key()
-                        },
-                        onError: function (errorCode, message) {
-                            $scope.starError = message;
-                            $scope.starStatus = "error";
-                            $scope.$apply();
-                        },
-                        onSuccess: function (r) {
-                            $scope.rubuidoltrungthu = r.Result.UserStarData ? r.Result.UserStarData.CoinGetFromGift : undefined;
-                            $scope.$apply();
-                        }
-                    });
-                }
-            }
-        });
-
-        webService.call({
-            name: "New_GetListNews",
-            data: {
-                actionUserId: $scope.$p.sessionService.userId(),
-                newsCategoryId: 2,
-                pageIndex: 0,
-                pageSize: 2,
-                key: $scope.$p.sessionService.key()
-            },
-            onSuccess: function (rs) {
-                $scope.listEvent = rs.Items
-            }
-        });
-        webService.call({
-            name: "List_SuggestStars",
-            data: {
-                createUserId: $scope.$p.sessionService.userId(),
-                pageIndex: 0,
-                pageSize: 2,
-                getStarType: 1,
-                key: $scope.$p.sessionService.key()
-            },
-            onSuccess: function (rs) {
-                $scope.listShowItem = rs.Items;
-                $scope.$apply();
-            }
-        });
-
-
-    }
-
-
-    $scope.onShareFacebook = function () {
-        FB.ui({
-            method: "feed",
-            link: "https://teenidol.vn/detailnews/" + $scope.linkNews,
-            picture: $scope.photoImage,
-            name: $scope.title,
-            description: $scope.description,
-            caption: "",
-            message: ""
-        });
-    };
-    //#endregion
-
-    //#region [Global Event]
-    //trung thu
-
-    $scope.liststatus = {
-        quantitytrungthu: '500',
-        data: [
-         { id: 100, qualiti: 100 },
-         { id: 300, qualiti: 300 },
-         { id: 500, qualiti: 500 },
-         { id: 999, qualiti: 1000 },
-        ],
-    }
-    $scope.onSendRuByTrungThu = function () {
-        if (!$scope.liststatus.quantitytrungthu) {
-            Notification.error('Bạn chưa chọn số tiền khuyên góp');
-            return;
-        }
-
-        if (!sessionService.isSigned()) {
-            authenticationService.showModal({
-                mode: "sign-in",
-                message: "Bạn cần đăng nhập để sử dụng tính năng này"
-            });
-            return;
-        }
-
-        webService.call({
-            type: "POST",
-            name: "User_GiveAwayGiftEvent",
-            data: {
-                actionUserId: sessionService.userId(),
-                giftId: 8,
-                quantity: $scope.liststatus.quantitytrungthu * 1,
-                scheduleId: "70294",
-                starId: 127479,
-                isInEvent: false,
-                key: sessionService.key()
-            },
-            displayError: true,
-            onError: function (errorCode, message) {
-            },
-            onSuccess: function (r) {
-                Notification.success('Bạn vừa khuyên góp thành công');
-                webService.call({
-                    name: "User_GetDetails",
-                    data: {
-                        actionUserId: sessionService.userId(),
-                        userId: 127479,
-                        isStar: true,
-                        key: sessionService.key()
-                    },
-                    onError: function (errorCode, message) {
-                        $scope.starError = message;
-                        $scope.starStatus = "error";
-                        $scope.$apply();
-                    },
-                    onSuccess: function (r) {
-                        $scope.rubuidoltrungthu = r.Result.UserStarData ? r.Result.UserStarData.CoinGetFromGift : undefined;
-                        $scope.$apply();
-                    }
-                });
-            }
-        });
-    }
-    //#endregion
-
-    //#region [On Load]
-    sessionService.isReady(function () {
-        $scope.onLoadMainNews();
-
-
-        $($window).bind("scroll", function () {
-            if (this.pageYOffset > 750) {
-                $(".crolltop").css("position", "fixed");
-                $(".crolltop").css("top", "0");
-                $(".crolltop").css("width", "23.4%");
-            } else {
-                $(".crolltop").css("position", "relative");
-                $(".crolltop").css("top", "0");
-                $(".crolltop").css("width", "auto");
-            }
-        });
-    });
-
-    //#endregion
-}
-]);
-giasinhvienApp.controller("eventnewsController", [
-    "$scope", "$routeParams", "$log", "sessionService", "webService", "helperService",
-    function ($scope, $routeParams, $log, sessionService, webService, helperService) {
-        //#region [Field]
-
-        $scope.$p = $scope.$parent;
-
-        //$scope.setPage = function (pageNo) {
-        //    $scope.currentPage = pageNo;
-        //};
-
-        //$scope.pageChanged = function () {
-        //    $log.log('Page changed to: ' + $scope.currentPage);
-        //};
-        $scope.newsCategoryId = 2;
-
-        $scope.pageIndex = 0;
-        $scope.pageSize = 6;
-        //#endregion
-       //#region [Layout]
-
-           $scope.$p.resetLayout();
-           $scope.$p.layoutFullBody = false;
-        //#endregion
-
-        //#region [Event]
-           $scope.getTimeFormat = function (e) {
-               return helperService.formatStortDate(e)
-           }
-
-           $scope.getNewsLink = function (id) {
-               return "/detailnews/" + id;
-           }
-           
-        $scope.onLoadMainNews = function () {
-            //webService.call({
-            //    name: "New_GetListNewsCategory",
-            //    data: {
-            //        actionUserId: $scope.$p.sessionService.userId(),
-            //        key: $scope.$p.sessionService.key()
-            //    },
-            //    onSuccess: function (r) {
-            //        angular.forEach(r.Items, function (value, key) {
-            //            if (value.NewsCategory.Name === 'Main') {
-                            webService.call({
-                                name: "New_GetListNews",
-                                data: {
-                                    actionUserId: $scope.$p.sessionService.userId(),
-                                    newsCategoryId: $scope.newsCategoryId,
-                                    pageIndex: $scope.pageIndex,
-                                    pageSize: $scope.pageSize,
-                                    key: $scope.$p.sessionService.key()
-                                },
-                                onSuccess: function (rs) {
-                                    $scope.mainObject = rs.Items[0];
-                                    $scope.listEvent = rs.Items.slice(1, 6);
-                                    $scope.canNext = rs.PageIndex < rs.PageCount - 1;
-                                    $scope.$apply();
-                                }
-                            });
-                        //}
-                        //if (value.NewsCategory.Name === 'Event') {
-                            webService.call({
-                                name: "New_GetListNews",
-                                data: {
-                                    actionUserId: $scope.$p.sessionService.userId(),
-                                    newsCategoryId: 1,
-                                    pageIndex: 0,
-                                    pageSize: 2,
-                                    key: $scope.$p.sessionService.key()
-                                },
-                                onSuccess: function (rs) {
-                                    $scope.listNews = rs.Items;
-                                    $scope.$apply();
-                                }
-                            });
-                        //}
-                    //});
-                    webService.call({
-                        name: "List_SuggestStars",
-                        data: {
-                            createUserId: $scope.$p.sessionService.userId(),
-                            pageIndex:0,
-                            pageSize:3,
-                            getStarType:1,
-                            key: $scope.$p.sessionService.key()
-                        },
-                        onSuccess: function (rs) {
-                            $scope.listShowItem = rs.Items;
-                            $scope.$apply();
-                        }
-                    });
-                    
-            //    }
-            //});
-        }
-
-        $scope.onLoadNewsNext = function (e) {
-            $scope.pageIndex = $scope.pageIndex + 1;
-
-
-            //webService.call({
-            //    name: "New_GetListNewsCategory",
-            //    data: {
-            //        actionUserId: $scope.$p.sessionService.userId(),
-            //        key: $scope.$p.sessionService.key()
-            //    },
-            //    onSuccess: function (r) {
-            //        angular.forEach(r.Items, function (value, key) {
-            //            if (value.NewsCategory.Name === 'Main') {
-                            webService.call({
-                                name: "New_GetListNews",
-                                data: {
-                                    actionUserId: $scope.$p.sessionService.userId(),
-                                    newsCategoryId: $scope.newsCategoryId,
-                                    pageIndex: $scope.pageIndex,
-                                    pageSize: $scope.pageSize,
-                                    key: $scope.$p.sessionService.key()
-                                },
-                                onSuccess: function (rs) {
-                                    $scope.listEvent = $scope.listEvent.concat(rs.Items);
-                                    $scope.canNext = rs.PageIndex < rs.PageCount - 1;
-                                    $scope.$apply();
-                                }
-                            });
-                    //    }
-                    //});
-                    
-            //    }
-            //});
-        };
-        //#endregion
-
-        //#region [Global Event]
-
-        //#endregion
-
-        //#region [On Load]
-        sessionService.isReady(function () {
-            $scope.onLoadMainNews();
-        });
-        //#endregion
-    }
 ]);
 giasinhvienApp.controller("usercoinlogController", [
     "$scope", "$routeParams", "sessionService", "webService", "authenticationService", "formService", "helperService", "$log",
@@ -1845,6 +1751,19 @@ giasinhvienApp.directive("modal", [
             };
         }
 ]);
+giasinhvienApp.directive('myEnter', function () {
+    return function (scope, element, attrs) {
+        element.bind("keydown keypress", function (event) {
+            if (event.which === 13) {
+                scope.$apply(function () {
+                    scope.$eval(attrs.myEnter);
+                });
+
+                event.preventDefault();
+            }
+        });
+    };
+});
 giasinhvienApp.directive('wrapOwlcarousel', function () {
 	return {
 		restrict: 'E',
@@ -6480,7 +6399,6 @@ giasinhvienApp.factory("webService", [
                 o.displayError = getOrDefault(o.displayError, false);
                 if (o.displayError && typeof o.displayError !== "boolean")
                     throw "displayError must be boolean type";
-                console.log("aaaaa");
                 //#endregion
                 $.ajax({
                     url: _hostLink + o.name,
@@ -6489,14 +6407,12 @@ giasinhvienApp.factory("webService", [
                     contentType: o.type === "GET" ? undefined : "application/json",
                     data: o.type === "GET" ? o.data : JSON.stringify(o.data),
                     error: function () {
-                        console.log("sssss");
                         if (o.displayError)
                             Notification.error("Có lỗi, xin thử lại");
                         if (o.onError)
                             o.onError();
                     },
                     success: function (response) {
-                        console.log("gdsgs");
                         if (response && typeof response === "string" && response.indexOf("$Exception$") !== -1) {
                             if (o.displayError)
                                 Notification.error(response);

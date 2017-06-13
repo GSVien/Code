@@ -96,5 +96,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="usp_Product_Get" FunctionName="GiaSinhVienModel.Store.usp_Product_Get" />
   </EntityContainerMapping>
 </Mapping>

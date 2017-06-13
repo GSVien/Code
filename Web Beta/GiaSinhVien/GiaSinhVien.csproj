@@ -630,6 +630,8 @@
     <Content Include="App_Lib\signalR-2.2.0\jquery.signalR.js" />
     <Content Include="App_Lib\winwhell\TwheenMax.js" />
     <Content Include="App_Lib\winwhell\Winwheel.js" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Image\404-image.jpg" />
     <Content Include="Content\Image\android-download.png" />
     <Content Include="Content\Image\App\background_app.png" />
@@ -801,6 +803,8 @@
     <Content Include="Content\Image\tuyendungidol.jpg" />
     <Content Include="Content\Image\windows-phone-download.png" />
     <Content Include="Content\Image\uplevel.png" />
+    <Content Include="Content\Site.css" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="config.js" />
     <Content Include="Layouts\Banner.html" />
@@ -909,9 +913,9 @@
     <Content Include="Layouts\Template\UserListItem.min.html">
       <DependentUpon>UserListItem.html</DependentUpon>
     </Content>
-    <Content Include="Scripts\Controller\New\eventnewscontroller.js" />
+    <Content Include="Scripts\Controller\productController.js" />
+    <Content Include="Scripts\Controller\searchController.js" />
     <Content Include="Scripts\Controller\homeController.js" />
-    <Content Include="Scripts\Controller\New\detailnewscontroller.js" />
     <Content Include="Scripts\Controller\User\userfollowController.js" />
     <Content Include="Scripts\Controller\_layoutController.js" />
     <Content Include="Scripts\Directive\compile.js" />
@@ -1399,10 +1403,23 @@
     <Content Include="Layouts\_layout_app.cshtml" />
     <Content Include="Styles\Template\UnitChanged.scss" />
     <Content Include="Styles\Template\GuildInfo.scss" />
+    <Content Include="Styles\Views\Product.css">
+      <DependentUpon>Product.scss</DependentUpon>
+    </Content>
+    <Content Include="Styles\Views\Product.min.css">
+      <DependentUpon>Product.css</DependentUpon>
+    </Content>
+    <Content Include="Styles\Views\Search.css">
+      <DependentUpon>Search.scss</DependentUpon>
+    </Content>
+    <Content Include="Styles\Views\Search.min.css">
+      <DependentUpon>Search.css</DependentUpon>
+    </Content>
     <Content Include="Styles\_app.css" />
     <Content Include="Styles\_app.min.css">
       <DependentUpon>_app.css</DependentUpon>
     </Content>
+    <Content Include="Views\Search.html" />
     <Content Include="Views\Include\CheckAppMobile.html" />
     <Content Include="Views\About.min.html">
       <DependentUpon>About.html</DependentUpon>
@@ -1413,6 +1430,12 @@
       <DependentUpon>Home.html</DependentUpon>
     </Content>
     <Content Include="Views\Error\404.html" />
+    <Content Include="Views\Product\Product.min.html">
+      <DependentUpon>Product.html</DependentUpon>
+    </Content>
+    <Content Include="Views\Search.min.html">
+      <DependentUpon>Search.html</DependentUpon>
+    </Content>
     <Content Include="Views\UserControl\ucFollowButton.html" />
     <Content Include="Views\UserControl\ucFollowButton.min.html">
       <DependentUpon>ucFollowButton.html</DependentUpon>
@@ -1485,8 +1508,14 @@
       <DependentUpon>compilerconfig.json</DependentUpon>
     </None>
     <Content Include="Styles\Views\Home.scss" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="Properties\PublishProfiles\beta.teenidol.vn.pubxml" />
     <Content Include="Styles\_lib.scss" />
+    <Content Include="Views\Product\Product.html" />
+    <Content Include="Styles\Views\Search.scss" />
+    <Content Include="Styles\Views\Product.scss" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -24,7 +24,6 @@
       "App_Lib/jquery.cropit/jquery.cropit.js",
       "App_Lib/fullscreen-api/fullscreen-api.js",
       "App_Lib/fingerprint-1.1.3/fingerprint2.js",
-      //"App_Lib/jssor.slider/jssor.slider-22.2.16.min.js",
       "App_Lib/owl.carousel.2.0.0-beta.2.4/owl.carousel.min.js"
     ],
     "minify": {
@@ -78,6 +77,18 @@
     "outputFileName": "Layouts/Template/UserListItem.min.html",
     "inputFiles": [
       "Layouts/Template/UserListItem.html"
+    ]
+  },
+  {
+    "outputFileName": "Views/Product/Product.min.html",
+    "inputFiles": [
+      "Views/Product/Product.html"
+    ]
+  },
+  {
+    "outputFileName": "Views/Search.min.html",
+    "inputFiles": [
+      "Views/Search.html"
     ]
   }
 ]

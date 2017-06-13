@@ -19,24 +19,30 @@
 
         //#region [Event]
 
-
+        $scope.pageSizeProduct = 16;
         $scope.onLoadProductData = function () {
             webService.call({
-                name: "GetListProduct",
+                name: "GetListProductModel",
                 data: {
-                    key:"sdgsg"
+                    actionUserId: 1,
+                    pageIndex: 0,
+                    pageSize: $scope.pageSizeProduct
                 },
 
                 onError: function (errorCode, message) {
                 },
 
                 onSuccess: function (r) {
-                    console.log(r);
-                    $scope.ListProduct = r;
+                    $scope.ListProduct = r.Items;
                     if (!$scope.$$phase) $scope.$apply();
                 },
             });
         };
+
+        $scope.viewShowMore = function() {
+            $scope.pageSizeProduct += 16;
+            $scope.onLoadProductData();
+        }
 
         //#endregion
 
@@ -56,7 +62,7 @@
         $scope.$on("$viewContentLoaded", function () {
 
 
-            $("body").css("background-image", "url('/Content/Image/Background-home/home.png')");
+            //$("body").css("background-image", "url('/Content/Image/Background-home/home.png')");
 
             $scope.onLoadProductData();
 

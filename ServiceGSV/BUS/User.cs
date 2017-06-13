@@ -14,7 +14,7 @@ namespace ServiceGSV.BUS
     {
         public static DoResult<UserInfo> Bus_DangNhapBangEmail(string _email, string passwork)
         {
-            MaHoaMD5 mahoa = new MaHoaMD5();
+            //MaHoaMD5 mahoa = new MaHoaMD5();
 
             return BUSCore.Do<UserInfo>(
                 userId: -1,
@@ -29,7 +29,7 @@ namespace ServiceGSV.BUS
                     }
                     else // có user=> kiểm tra passwork
                     {
-                        if (userTemp.Passwork != mahoa.md5(passwork))
+                        if (/*userTemp.Passwork != mahoa.md5(passwork)*/1==1)
                         {
                             c.SetError("Passwork nhập vào không đúng.Nhập lại", 1);
                             return null;
@@ -45,7 +45,7 @@ namespace ServiceGSV.BUS
 
         public static DoResult<UserInfo> Bus_DangKyUserMoi(string email, string username, string passwork, string photo, string sodienthoai)
         {
-            MaHoaMD5 mahoa = new MaHoaMD5();
+            //MaHoaMD5 mahoa = new MaHoaMD5();
             return BUSCore.Do<UserInfo>(
                 userId: -1,
                 action: (c) =>
@@ -60,7 +60,7 @@ namespace ServiceGSV.BUS
                     UserInfo data = new UserInfo();
                     data.Email = email;
                     data.UserName = username;
-                    data.Passwork = mahoa.md5(passwork);
+                    //data.Passwork = mahoa.md5(passwork);
                     data.AvatarPhoto = photo;
                     data.GroupId = 1;
                     data.Phone = sodienthoai;
@@ -73,7 +73,7 @@ namespace ServiceGSV.BUS
         }
         public static DoResult<UserInfo> Bus_ThayDoiThongTinUser(string username, string passwork, string photo, string sodienthoai)
         {
-            MaHoaMD5 mahoa = new MaHoaMD5();
+            //MaHoaMD5 mahoa = new MaHoaMD5();
             return BUSCore.Do<UserInfo>(
                 userId: -1,
                 action: (c) =>
@@ -81,7 +81,7 @@ namespace ServiceGSV.BUS
                  
                     UserInfo data = new UserInfo();
                     data.UserName = username;
-                    data.Passwork = mahoa.md5(passwork);
+                    //data.Passwork = mahoa.md5(passwork);
                     data.AvatarPhoto = photo;
                     data.GroupId = 1;
                     data.Phone = sodienthoai;

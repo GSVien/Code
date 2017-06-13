@@ -132,11 +132,17 @@ function ($window, $http, $scope, $rootScope, $location, $cookies,
     $scope.dangNhapBangEmail = function (e) {
        
         //goi service dang nhap
+        var $target = $($event.target);
+        var $emailElement = $target.find(".email");
+        var $passwordElement = $target.find(".password");
+
+        $buttonElement.button("loading");
+
         webService.call({
             name: "DangNhapBangEmail",
             data: {
-                email: "tai_@tfl.vn",
-                passwork: "654321"
+                email: $emailElement,
+                passwork: $passwordElement
             },
 
             onError: function (errorCode, message) {
@@ -149,6 +155,9 @@ function ($window, $http, $scope, $rootScope, $location, $cookies,
         });
     };
 
+    $scope.onSearchProduct = function () {
+        $window.location.href = '/Search/' + $("#search-text").val();
+    }
 
     $scope.$watch("dropdownUserId", function (data) {
         if (!data)

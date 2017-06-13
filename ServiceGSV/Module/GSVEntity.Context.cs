@@ -12,6 +12,9 @@ namespace ServiceGSV.Module
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Objects;
+    using System.Data.Objects.DataClasses;
+    using System.Linq;
     
     public partial class GiaSinhVienEntities : DbContext
     {
@@ -33,5 +36,70 @@ namespace ServiceGSV.Module
         public DbSet<UserInfo> UserInfoes { get; set; }
         public DbSet<GroupUser> GroupUsers { get; set; }
         public DbSet<Product> Products { get; set; }
+    
+        public virtual ObjectResult<string> usp_Product_Get(string select, string sort, Nullable<int> pageIndex, Nullable<int> pageSize, Nullable<bool> debugQuery, string id, string str_Name, string num_CategoryId, string num_SubCategoryId, string num_Price, string num_Status, string date_CreateDate, string num_PostUserId, string num_DictrictId, string num_ProviceId, ObjectParameter total, ObjectParameter query)
+        {
+            var selectParameter = select != null ?
+                new ObjectParameter("Select", select) :
+                new ObjectParameter("Select", typeof(string));
+    
+            var sortParameter = sort != null ?
+                new ObjectParameter("Sort", sort) :
+                new ObjectParameter("Sort", typeof(string));
+    
+            var pageIndexParameter = pageIndex.HasValue ?
+                new ObjectParameter("PageIndex", pageIndex) :
+                new ObjectParameter("PageIndex", typeof(int));
+    
+            var pageSizeParameter = pageSize.HasValue ?
+                new ObjectParameter("PageSize", pageSize) :
+                new ObjectParameter("PageSize", typeof(int));
+    
+            var debugQueryParameter = debugQuery.HasValue ?
+                new ObjectParameter("DebugQuery", debugQuery) :
+                new ObjectParameter("DebugQuery", typeof(bool));
+    
+            var idParameter = id != null ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(string));
+    
+            var str_NameParameter = str_Name != null ?
+                new ObjectParameter("str_Name", str_Name) :
+                new ObjectParameter("str_Name", typeof(string));
+    
+            var num_CategoryIdParameter = num_CategoryId != null ?
+                new ObjectParameter("num_CategoryId", num_CategoryId) :
+                new ObjectParameter("num_CategoryId", typeof(string));
+    
+            var num_SubCategoryIdParameter = num_SubCategoryId != null ?
+                new ObjectParameter("num_SubCategoryId", num_SubCategoryId) :
+                new ObjectParameter("num_SubCategoryId", typeof(string));
+    
+            var num_PriceParameter = num_Price != null ?
+                new ObjectParameter("num_Price", num_Price) :
+                new ObjectParameter("num_Price", typeof(string));
+    
+            var num_StatusParameter = num_Status != null ?
+                new ObjectParameter("num_Status", num_Status) :
+                new ObjectParameter("num_Status", typeof(string));
+    
+            var date_CreateDateParameter = date_CreateDate != null ?
+                new ObjectParameter("date_CreateDate", date_CreateDate) :
+                new ObjectParameter("date_CreateDate", typeof(string));
+    
+            var num_PostUserIdParameter = num_PostUserId != null ?
+                new ObjectParameter("num_PostUserId", num_PostUserId) :
+                new ObjectParameter("num_PostUserId", typeof(string));
+    
+            var num_DictrictIdParameter = num_DictrictId != null ?
+                new ObjectParameter("num_DictrictId", num_DictrictId) :
+                new ObjectParameter("num_DictrictId", typeof(string));
+    
+            var num_ProviceIdParameter = num_ProviceId != null ?
+                new ObjectParameter("num_ProviceId", num_ProviceId) :
+                new ObjectParameter("num_ProviceId", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("usp_Product_Get", selectParameter, sortParameter, pageIndexParameter, pageSizeParameter, debugQueryParameter, idParameter, str_NameParameter, num_CategoryIdParameter, num_SubCategoryIdParameter, num_PriceParameter, num_StatusParameter, date_CreateDateParameter, num_PostUserIdParameter, num_DictrictIdParameter, num_ProviceIdParameter, total, query);
+        }
     }
 }

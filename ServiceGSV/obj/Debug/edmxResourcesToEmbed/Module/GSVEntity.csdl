@@ -71,6 +71,25 @@
     <EntitySet Name="UserInfoes" EntityType="Self.UserInfo" />
     <EntitySet Name="GroupUsers" EntityType="GiaSinhVienModel.GroupUser" />
     <EntitySet Name="Products" EntityType="GiaSinhVienModel.Product" />
+    <FunctionImport Name="usp_Product_Get" ReturnType="Collection(String)">
+      <Parameter Name="Select" Mode="In" Type="String" />
+      <Parameter Name="Sort" Mode="In" Type="String" />
+      <Parameter Name="PageIndex" Mode="In" Type="Int32" />
+      <Parameter Name="PageSize" Mode="In" Type="Int32" />
+      <Parameter Name="DebugQuery" Mode="In" Type="Boolean" />
+      <Parameter Name="Id" Mode="In" Type="String" />
+      <Parameter Name="str_Name" Mode="In" Type="String" />
+      <Parameter Name="num_CategoryId" Mode="In" Type="String" />
+      <Parameter Name="num_SubCategoryId" Mode="In" Type="String" />
+      <Parameter Name="num_Price" Mode="In" Type="String" />
+      <Parameter Name="num_Status" Mode="In" Type="String" />
+      <Parameter Name="date_CreateDate" Mode="In" Type="String" />
+      <Parameter Name="num_PostUserId" Mode="In" Type="String" />
+      <Parameter Name="num_DictrictId" Mode="In" Type="String" />
+      <Parameter Name="num_ProviceId" Mode="In" Type="String" />
+      <Parameter Name="Total" Mode="InOut" Type="Int32" />
+      <Parameter Name="Query" Mode="InOut" Type="String" />
+    </FunctionImport>
   </EntityContainer>
   <EnumType Name="UserStatus">
     <Member Name="Deleted" Value="0" />

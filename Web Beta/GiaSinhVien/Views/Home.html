@@ -19,13 +19,26 @@
             </div> 
         </div>
         <div class="list-product">
-            <div class="product-item" ng-repeat="item in ListProduct">
-                <a class="list-item" href="{{item.Id}}" target="_blank'">
-                    <img class="photo" ng-src="{{item.Photo}}"/>
+            <div class="title-product">Sản Phẩm Hot</div>
+
+            <div class="col col-xs-6 col-sm-4 col-md-3 product-item" ng-repeat="item in ListProduct">
+                <a class="list-item" href="product/{{item.Product.Id}}" target="_blank'">
+                    <img class="photo" ng-src="{{item.Product.Photo}}"/>
                     <div class="info">
-                        {{item.Name}}
+                        {{item.Product.Name}}
+                    </div>
+                    <div class="price">
+                        <div class="name">
+                            Giá
+                        </div>
+                        <div class="number">
+                            {{item.Product.Price}}
+                        </div>
                     </div>
                 </a>
+            </div>
+            <div class="more">
+                <a ng-click="viewShowMore()" class="btn btn-hover-primary btn-block">Xem thêm</a>
             </div>
         </div>
     </div>

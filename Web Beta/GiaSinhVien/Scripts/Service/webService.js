@@ -21,7 +21,6 @@
                 o.displayError = getOrDefault(o.displayError, false);
                 if (o.displayError && typeof o.displayError !== "boolean")
                     throw "displayError must be boolean type";
-                console.log("aaaaa");
                 //#endregion
                 $.ajax({
                     url: _hostLink + o.name,
@@ -30,14 +29,12 @@
                     contentType: o.type === "GET" ? undefined : "application/json",
                     data: o.type === "GET" ? o.data : JSON.stringify(o.data),
                     error: function () {
-                        console.log("sssss");
                         if (o.displayError)
                             Notification.error("Có lỗi, xin thử lại");
                         if (o.onError)
                             o.onError();
                     },
                     success: function (response) {
-                        console.log("gdsgs");
                         if (response && typeof response === "string" && response.indexOf("$Exception$") !== -1) {
                             if (o.displayError)
                                 Notification.error(response);

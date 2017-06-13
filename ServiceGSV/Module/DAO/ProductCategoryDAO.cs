@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Objects;
 using System.Linq;
 using System.Web;
+using ServiceGSV.Module.Model;
+using TFLLib.DAOCore;
 
 namespace ServiceGSV.Module.DAO
 {
@@ -11,5 +14,7 @@ namespace ServiceGSV.Module.DAO
         {
             return db.ProductCategories.Where(w=> w.Status == ProductCategoryStatus.Active).ToList();
         }
+
+        
     }
 }

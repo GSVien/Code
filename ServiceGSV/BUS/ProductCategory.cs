@@ -54,5 +54,44 @@ namespace ServiceGSV.BUS
                 });
 
         }
+
+        public static DoResult<List<SubProductCategory>> GetSubProductCategory(long? actionUserId,long categoryId)
+        {
+            return BUSCore.Do<List<SubProductCategory>>(
+                userId: actionUserId,
+                action: (c) =>
+                {
+                    // Cập nhật hệ thống
+                    var r = SubProductCategoryDAO.GetListByCategoryId(c.Db, categoryId);
+                    return r;
+                });
+
+        }
+
+        public static DoResult<List<Province>> GetAllProvince(long? actionUserId)
+        {
+            return BUSCore.Do<List<Province>>(
+                userId: actionUserId,
+                action: (c) =>
+                {
+                    // Cập nhật hệ thống
+                    var r = ProvinceDAO.GetList(c.Db);
+                    return r;
+                });
+
+        }
+
+        public static DoResult<List<District>> GetDistrict(long? actionUserId,long proviceId)
+        {
+            return BUSCore.Do<List<District>>(
+                userId: actionUserId,
+                action: (c) =>
+                {
+                    // Cập nhật hệ thống
+                    var r = DistrictDAO.GetListByProviceId(c.Db, proviceId);
+                    return r;
+                });
+
+        }
     }
 }

@@ -10,21 +10,57 @@ body {
 
 .group {
   position: relative; }
-  .group:nth-child(1) #myCarousel {
-    position: relative;
-    margin-left: 50%;
-    transform: translate(-50%);
-    margin-top: 20px; }
-    .group:nth-child(1) #myCarousel .carousel-inner .item img {
-      width: 800px !important;
-      height: 450px !important; }
-  .group:nth-child(1) .list-product .product-item {
-    width: calc(100%/4);
-    height: 300px;
-    float: left; }
-    .group:nth-child(1) .list-product .product-item .list-item .photo {
-      width: 200px;
-      height: 200px; }
+  .group:nth-child(1) {
+    padding-bottom: 60px; }
+    .group:nth-child(1) #myCarousel {
+      position: relative;
+      margin-left: 50%;
+      transform: translate(-50%);
+      margin-top: 20px; }
+      .group:nth-child(1) #myCarousel .carousel-inner .item img {
+        width: 800px !important;
+        height: 450px !important; }
+    .group:nth-child(1) .list-product {
+      margin-top: 30px;
+      padding: 5px; }
+      .group:nth-child(1) .list-product .title-product {
+        margin: 10px;
+        font-size: 20px; }
+      .group:nth-child(1) .list-product .product-item {
+        width: calc(100%/4);
+        margin-bottom: 30px;
+        float: left;
+        position: relative; }
+        .group:nth-child(1) .list-product .product-item .list-item .photo {
+          width: 200px;
+          height: 200px; }
+        .group:nth-child(1) .list-product .product-item .list-item .info {
+          position: absolute;
+          top: 10px;
+          font-size: 16px;
+          left: 15px; }
+        .group:nth-child(1) .list-product .product-item .list-item .price {
+          width: 200px;
+          padding: 5px;
+          font-size: 15px; }
+          .group:nth-child(1) .list-product .product-item .list-item .price .name {
+            float: left; }
+          .group:nth-child(1) .list-product .product-item .list-item .price .number {
+            float: right; }
+      .group:nth-child(1) .list-product .more {
+        width: 40%;
+        left: 50%;
+        transform: translate(-50%);
+        position: absolute;
+        bottom: 15px; }
+        .group:nth-child(1) .list-product .more .btn {
+          margin: 0;
+          padding: 0;
+          height: 35px;
+          line-height: 35px;
+          color: #252525; }
+          .group:nth-child(1) .list-product .more .btn:hover, .group:nth-child(1) .list-product .more .btn:focus {
+            color: #fff; }
   .group:nth-child(2) {
     background-repeat: repeat;
     /*&:after {
