@@ -48,7 +48,7 @@ namespace ServiceGSV.BUS
                                 Table = ProductModel.Select.Product,
                                 Column =
                                     new[] {"Id", "Name", "Description", "Photo", "CreateDate", "Title",
-                                        "Price" }
+                                        "Price","Link" }
                             },
                             new SelectItem<ProductModel.Select>()
                             {
@@ -112,7 +112,7 @@ namespace ServiceGSV.BUS
                                 Table = ProductModel.Select.Product,
                                 Column =
                                     new[] {"Id", "Name", "Description", "Photo", "CreateDate", "Title",
-                                        "Price" }
+                                        "Price" ,"Link" }
                             },
                             new SelectItem<ProductModel.Select>()
                             {

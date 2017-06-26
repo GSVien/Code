@@ -1,9 +1,9 @@
 ﻿giasinhvienApp.controller("layoutController", ["$window", "$http", "$scope", "$rootScope", "$location", "$cookies",
     "helperService", "authenticationService", "Notification", "formService",
-    "webService", "modalService","sessionService",
+    "webService", "modalService","sessionService","menulinkService",
 function ($window, $http, $scope, $rootScope, $location, $cookies,
     helperService, authenticationService, Notification, formService,
-    webService, modalService, sessionService) {
+    webService, modalService, sessionService,menulinkService) {
     //#region [Field]
 
     //#endregion
@@ -21,78 +21,9 @@ function ($window, $http, $scope, $rootScope, $location, $cookies,
     $scope.userSession = sessionService.data();
     console.log($scope.userSession);
     //#endregion
-    $scope.ListMenuHead = [
-        {
-            Name: "Giới Thiệu",
-            Link: '/',
-        },
-        {
-            Name: "Chính Sách",
-            Link: '/',
-        },
-        {
-            Name: "Liên Hệ",
-            Link: '/',
-        }
-    ];
-    $scope.ListCategory = [
-        {
-            Id: 1,
-            Name: "Đồ Điện Tử",
-            Photo: 'http://i1150.photobucket.com/albums/o617/redsvn/slide/slide-ewaste.jpg',
-            Link: '/',
-            Status: 1
-        },
-        //{
-        //    Id: 2,
-        //    Name: "Xe Cộ",
-        //    Photo: 'http://i1150.photobucket.com/albums/o617/redsvn/slide/slide-ewaste.jpg',
-        //    Link: '/',
-        //    Status: 1
-        //},
-        {
-            Id: 7,
-            Name: "Nội Ngoại Thất",
-            Photo: 'http://i1150.photobucket.com/albums/o617/redsvn/slide/slide-ewaste.jpg',
-            Link: '/',
-            Status: 1
-        },
-        {
-            Id: 4,
-            Name: "Gia Dụng",
-            Photo: 'http://i1150.photobucket.com/albums/o617/redsvn/slide/slide-ewaste.jpg',
-            Link: '/',
-            Status: 1
-        },
-        //{
-        //    Id: 8,
-        //    Name: "Giải Trí Thể Thao",
-        //    Photo: 'http://i1150.photobucket.com/albums/o617/redsvn/slide/slide-ewaste.jpg',
-        //    Link: '/',
-        //    Status: 1
-        //},
-        {
-            Id: 10,
-            Name: "Sách Báo",
-            Photo: 'http://i1150.photobucket.com/albums/o617/redsvn/slide/slide-ewaste.jpg',
-            Link: '/',
-            Status: 1
-        },
-        {
-            Id: 13,
-            Name: "Bất Động Sản",
-            Photo: 'http://i1150.photobucket.com/albums/o617/redsvn/slide/slide-ewaste.jpg',
-            Link: '/',
-            Status: 1
-        },
-        {
-            Id: 15,
-            Name: "Các Loại Khác",
-            Photo: 'http://i1150.photobucket.com/albums/o617/redsvn/slide/slide-ewaste.jpg',
-            Link: '/',
-            Status: 1
-        }
-    ];
+    $scope.ListMenuHead = menulinkService.listMenuHead();
+
+    $scope.ListCategory = menulinkService.listCategory();
 
     //#region [Service]
 

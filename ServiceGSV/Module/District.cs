@@ -18,5 +18,6 @@ namespace ServiceGSV.Module
         public string Name { get; set; }
         public int ProvinceId { get; set; }
         public int Status { get; set; }
+        public string Link { get; set; }
     }
 }

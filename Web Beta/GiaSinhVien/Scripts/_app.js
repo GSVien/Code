@@ -46,6 +46,24 @@ giasinhvienApp.config([
                 controller: "searchController",
                 caseInsensitiveMatch: true,
             })
+            .when("/:keyProvice", {
+                css: "Styles/Views/Search.min.css",
+                templateUrl: function (params) { return "Views/Search.html"; },
+                controller: "searchController",
+                caseInsensitiveMatch: true,
+            })
+            .when("/:keyProvice/:keyCategory", {
+                css: "Styles/Views/Search.min.css",
+                templateUrl: function (params) { return "Views/Search.html"; },
+                controller: "searchController",
+                caseInsensitiveMatch: true,
+            })
+            .when("/:keyProvice/:keyCategory/:keyProduct", {
+                css: "Styles/Views/Product.min.css",
+                templateUrl: function (params) { return "Views/Product/Product.html"; },
+                controller: "productController",
+                caseInsensitiveMatch: true,
+            })
             .when("/product/:id", {
                 css: "Styles/Views/Product.min.css",
                 templateUrl: function (params) { return "Views/Product/Product.html"; },
@@ -469,23 +487,81 @@ function ($scope, $rootScope, $routeParams, $log, $sce, sessionService, webServi
 }
 ]);
 giasinhvienApp.controller("searchController", [
-    "$scope", "$rootScope", "$routeParams", "$location", "$http", "webService", "authenticationService", "modalService", "formService",
-    function ($scope, $rootScope,$routeParams, $location, $http, webService, authenticationService, modalService, formService) {
+    "$window", "$scope", "$rootScope", "$routeParams", "$location", "$http", "webService", "authenticationService", "modalService", "formService",
+    function ($window,$scope, $rootScope, $routeParams, $location, $http, webService, authenticationService, modalService, formService) {
         //#region [Field]
         var now = new Date();
         var endyear = now.getTime();
         $scope.stringText = undefined;
+        $scope.linkProvice = undefined;
+        $scope.linkCategory = undefined;
         $scope.categoryId = undefined;
         $scope.proviceId = undefined;
+        $scope.province = undefined;
+        $scope.category = undefined;
         $scope.$p = $scope.$parent;
         $scope.pageSizeProduct = 16;
 
         if ($routeParams) {
-            $scope.stringText = $routeParams.keystring;
-            $("#searchValue").val($scope.stringText);
+            if ($routeParams.keystring) {
+                $scope.stringText = $routeParams.keystring;
+                $("#searchValue").val($scope.stringText);
+            }
+            if ($routeParams.keyProvice) {
+                $scope.linkProvice = $routeParams.keyProvice;
+                webService.call({
+                    name: "GetProviveByLink",
+                    data: {
+                        link: $scope.linkProvice
+                    },
+
+                    onError: function (errorCode, message) {
+                    },
+
+                    onSuccess: function (r) {
+                        if (r.Result) {
+                            $scope.province = r.Result;
+                            $scope.proviceId = $scope.province.Id;
+                            if ($routeParams.keyCategory) {
+                                $scope.linkCategory = $routeParams.keyCategory;
+                                webService.call({
+                                    name: "GetCategoryByLink",
+                                    data: {
+                                        link: $scope.linkCategory
+                                    },
+
+                                    onError: function(errorCode, message) {
+                                    },
+
+                                    onSuccess: function(rs) {
+                                        if (rs.Result) {
+                                            $scope.category = rs.Result;
+                                            $scope.categoryId = $scope.category.Id;
+                                            //$scope.OnSelectCategory($scope.category.Id, $scope.category);
+                                            $("#sp-menu2").html($scope.category.Name);
+                                            $("#sp-menu1").html($scope.province.Name);
+                                            if (!$scope.$$phase) $scope.$apply();
+                                        }
+                                    },
+                                });
+                            } else {
+                                //$scope.OnSelectProvice($scope.province.Id, $scope.province);
+                                $("#sp-menu1").html($scope.province.Name);
+                            }
+                        } else {
+                            $window.location.href = '/Search/';
+                        }
+                        $scope.onLoadProductData();
+                        if (!$scope.$$phase) $scope.$apply();
+                    },
+                });
+
+
+            }
+
         }
 
-        
+
         //#endregion
 
         //#region [Layout]
@@ -496,13 +572,23 @@ giasinhvienApp.controller("searchController", [
         //#region [Event]
 
 
-        $scope.OnSelectProvice = function(id) {
-                $scope.proviceId = id;
+        $scope.OnSelectProvice = function (id,o) {
+            $scope.proviceId = id;
+            if (o) {
+                $scope.province = o;
+                if (!$scope.$$phase) $scope.$apply();
+            }
+            $scope.onLoadProductData();
         };
 
 
-        $scope.OnSelectCategory = function (id) {
-                $scope.categoryId = id;
+        $scope.OnSelectCategory = function (id,o) {
+            $scope.categoryId = id;
+            if (o) {
+                $scope.category = o;
+                if (!$scope.$$phase) $scope.$apply();
+            }
+            $scope.onLoadProductData();
         };
 
         $scope.onLoadProvince = function () {
@@ -561,7 +647,7 @@ giasinhvienApp.controller("searchController", [
             });
         };
 
-        $scope.viewShowMore = function() {
+        $scope.viewShowMore = function () {
             $scope.pageSizeProduct += 16;
             $scope.onLoadProductData();
         }
@@ -595,6 +681,11 @@ giasinhvienApp.controller("searchController", [
             $("meta[name='keywords']").attr("content", "Giải trí thả ga - Tự tin thể hiện mình cùng teenidol, giao lưu với dàn idol xinh xắn, đa tài, đa phong cách trên nền platform ưu việt nhất.");
             $("meta[name='description']").attr("content", "Giải trí thả ga - Tự tin thể hiện mình cùng teenidol, giao lưu với dàn idol xinh xắn, đa tài, đa phong cách trên nền platform ưu việt nhất.");
 
+            $('.dropdown-menu').on('click', 'a', function () {
+                var text = $(this).html();
+                var htmlText = text + ' <span class="caret"></span>';
+                $(this).closest('.dropdown').find('.dropdown-toggle').html(htmlText);
+            });
 
         });
 
@@ -603,10 +694,10 @@ giasinhvienApp.controller("searchController", [
 ]);
 giasinhvienApp.controller("layoutController", ["$window", "$http", "$scope", "$rootScope", "$location", "$cookies",
     "helperService", "authenticationService", "Notification", "formService",
-    "webService", "modalService","sessionService",
+    "webService", "modalService","sessionService","menulinkService",
 function ($window, $http, $scope, $rootScope, $location, $cookies,
     helperService, authenticationService, Notification, formService,
-    webService, modalService, sessionService) {
+    webService, modalService, sessionService,menulinkService) {
     //#region [Field]
 
     //#endregion
@@ -624,78 +715,9 @@ function ($window, $http, $scope, $rootScope, $location, $cookies,
     $scope.userSession = sessionService.data();
     console.log($scope.userSession);
     //#endregion
-    $scope.ListMenuHead = [
-        {
-            Name: "Giới Thiệu",
-            Link: '/',
-        },
-        {
-            Name: "Chính Sách",
-            Link: '/',
-        },
-        {
-            Name: "Liên Hệ",
-            Link: '/',
-        }
-    ];
-    $scope.ListCategory = [
-        {
-            Id: 1,
-            Name: "Đồ Điện Tử",
-            Photo: 'http://i1150.photobucket.com/albums/o617/redsvn/slide/slide-ewaste.jpg',
-            Link: '/',
-            Status: 1
-        },
-        //{
-        //    Id: 2,
-        //    Name: "Xe Cộ",
-        //    Photo: 'http://i1150.photobucket.com/albums/o617/redsvn/slide/slide-ewaste.jpg',
-        //    Link: '/',
-        //    Status: 1
-        //},
-        {
-            Id: 7,
-            Name: "Nội Ngoại Thất",
-            Photo: 'http://i1150.photobucket.com/albums/o617/redsvn/slide/slide-ewaste.jpg',
-            Link: '/',
-            Status: 1
-        },
-        {
-            Id: 4,
-            Name: "Gia Dụng",
-            Photo: 'http://i1150.photobucket.com/albums/o617/redsvn/slide/slide-ewaste.jpg',
-            Link: '/',
-            Status: 1
-        },
-        //{
-        //    Id: 8,
-        //    Name: "Giải Trí Thể Thao",
-        //    Photo: 'http://i1150.photobucket.com/albums/o617/redsvn/slide/slide-ewaste.jpg',
-        //    Link: '/',
-        //    Status: 1
-        //},
-        {
-            Id: 10,
-            Name: "Sách Báo",
-            Photo: 'http://i1150.photobucket.com/albums/o617/redsvn/slide/slide-ewaste.jpg',
-            Link: '/',
-            Status: 1
-        },
-        {
-            Id: 13,
-            Name: "Bất Động Sản",
-            Photo: 'http://i1150.photobucket.com/albums/o617/redsvn/slide/slide-ewaste.jpg',
-            Link: '/',
-            Status: 1
-        },
-        {
-            Id: 15,
-            Name: "Các Loại Khác",
-            Photo: 'http://i1150.photobucket.com/albums/o617/redsvn/slide/slide-ewaste.jpg',
-            Link: '/',
-            Status: 1
-        }
-    ];
+    $scope.ListMenuHead = menulinkService.listMenuHead();
+
+    $scope.ListCategory = menulinkService.listCategory();
 
     //#region [Service]
 
@@ -5348,6 +5370,90 @@ giasinhvienApp.factory("helperService", [
                     cookieEnabled = (document.cookie.indexOf("testcookie") !== -1) ? true : false;
                 }
                 return cookieEnabled;
+            };
+        };
+        return service;
+    }
+]);
+giasinhvienApp.factory("menulinkService", [
+    function () {
+        var service = new function () {
+            this.listMenuHead = function () {
+                return [
+                        {
+                            Name: "Giới Thiệu",
+                            Link: '/',
+                        },
+                        {
+                            Name: "Chính Sách",
+                            Link: '/',
+                        },
+                        {
+                            Name: "Liên Hệ",
+                            Link: '/',
+                        }
+                                ];
+            };
+
+            this.listCategory = function () {
+                return [
+                        {
+                            Id: 1,
+                            Name: "Đồ Điện Tử",
+                            Photo: 'http://i1150.photobucket.com/albums/o617/redsvn/slide/slide-ewaste.jpg',
+                            Link: '/',
+                            Status: 1
+                        },
+                        //{
+                        //    Id: 2,
+                        //    Name: "Xe Cộ",
+                        //    Photo: 'http://i1150.photobucket.com/albums/o617/redsvn/slide/slide-ewaste.jpg',
+                        //    Link: '/',
+                        //    Status: 1
+                        //},
+                        {
+                            Id: 7,
+                            Name: "Nội Ngoại Thất",
+                            Photo: 'http://i1150.photobucket.com/albums/o617/redsvn/slide/slide-ewaste.jpg',
+                            Link: '/',
+                            Status: 1
+                        },
+                        {
+                            Id: 4,
+                            Name: "Gia Dụng",
+                            Photo: 'http://i1150.photobucket.com/albums/o617/redsvn/slide/slide-ewaste.jpg',
+                            Link: '/',
+                            Status: 1
+                        },
+                        //{
+                        //    Id: 8,
+                        //    Name: "Giải Trí Thể Thao",
+                        //    Photo: 'http://i1150.photobucket.com/albums/o617/redsvn/slide/slide-ewaste.jpg',
+                        //    Link: '/',
+                        //    Status: 1
+                        //},
+                        {
+                            Id: 10,
+                            Name: "Sách Báo",
+                            Photo: 'http://i1150.photobucket.com/albums/o617/redsvn/slide/slide-ewaste.jpg',
+                            Link: '/',
+                            Status: 1
+                        },
+                        {
+                            Id: 13,
+                            Name: "Bất Động Sản",
+                            Photo: 'http://i1150.photobucket.com/albums/o617/redsvn/slide/slide-ewaste.jpg',
+                            Link: '/',
+                            Status: 1
+                        },
+                        {
+                            Id: 15,
+                            Name: "Các Loại Khác",
+                            Photo: 'http://i1150.photobucket.com/albums/o617/redsvn/slide/slide-ewaste.jpg',
+                            Link: '/',
+                            Status: 1
+                        }
+                                ];
             };
         };
         return service;

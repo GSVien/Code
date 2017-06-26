@@ -56,6 +56,17 @@ namespace ServiceGSV
         #endregion
 
         #region Product
+        public Stream GetCategoryByLink(string link)
+        {
+            var rs = BUS.BUS.GetProductCategoryByLink(1,link);
+            return ResultHelper.Json(rs.ToJson("*"));
+        }
+
+        public Stream GetProviveByLink(string link)
+        {
+            var rs = BUS.BUS.GetProvinceByLink(1, link);
+            return ResultHelper.Json(rs.ToJson("*"));
+        }
         public Stream GetListCategory(string key)
         {
             var rs = BUS.BUS.GetAllProductCategory(1);

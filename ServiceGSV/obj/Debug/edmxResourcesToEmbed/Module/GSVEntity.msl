@@ -4,6 +4,7 @@
     <EntitySetMapping Name="Districts">
       <EntityTypeMapping TypeName="GiaSinhVienModel.District">
         <MappingFragment StoreEntitySet="District">
+          <ScalarProperty Name="Link" ColumnName="Link" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="ProvinceId" ColumnName="ProvinceId" />
@@ -26,6 +27,7 @@
     <EntitySetMapping Name="ProductCategories">
       <EntityTypeMapping TypeName="GiaSinhVienModel.ProductCategory">
         <MappingFragment StoreEntitySet="ProductCategory">
+          <ScalarProperty Name="Link" ColumnName="Link" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Photo" ColumnName="Photo" />
@@ -36,6 +38,7 @@
     <EntitySetMapping Name="Provinces">
       <EntityTypeMapping TypeName="GiaSinhVienModel.Province">
         <MappingFragment StoreEntitySet="Province">
+          <ScalarProperty Name="Link" ColumnName="Link" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Status" ColumnName="Status" />
@@ -45,6 +48,7 @@
     <EntitySetMapping Name="SubProductCategories">
       <EntityTypeMapping TypeName="GiaSinhVienModel.SubProductCategory">
         <MappingFragment StoreEntitySet="SubProductCategory">
+          <ScalarProperty Name="Link" ColumnName="Link" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="ProductCategoryId" ColumnName="ProductCategoryId" />
           <ScalarProperty Name="Name" ColumnName="Name" />
@@ -81,6 +85,7 @@
     <EntitySetMapping Name="Products">
       <EntityTypeMapping TypeName="GiaSinhVienModel.Product">
         <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="Link" ColumnName="Link" />
           <ScalarProperty Name="Description" ColumnName="Description" />
           <ScalarProperty Name="Title" ColumnName="Title" />
           <ScalarProperty Name="DictrictId" ColumnName="DictrictId" />

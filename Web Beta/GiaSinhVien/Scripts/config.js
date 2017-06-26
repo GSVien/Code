@@ -46,6 +46,24 @@ giasinhvienApp.config([
                 controller: "searchController",
                 caseInsensitiveMatch: true,
             })
+            .when("/:keyProvice", {
+                css: "Styles/Views/Search.min.css",
+                templateUrl: function (params) { return "Views/Search.html"; },
+                controller: "searchController",
+                caseInsensitiveMatch: true,
+            })
+            .when("/:keyProvice/:keyCategory", {
+                css: "Styles/Views/Search.min.css",
+                templateUrl: function (params) { return "Views/Search.html"; },
+                controller: "searchController",
+                caseInsensitiveMatch: true,
+            })
+            .when("/:keyProvice/:keyCategory/:keyProduct", {
+                css: "Styles/Views/Product.min.css",
+                templateUrl: function (params) { return "Views/Product/Product.html"; },
+                controller: "productController",
+                caseInsensitiveMatch: true,
+            })
             .when("/product/:id", {
                 css: "Styles/Views/Product.min.css",
                 templateUrl: function (params) { return "Views/Product/Product.html"; },

@@ -19,5 +19,6 @@ namespace ServiceGSV.Module
         public string Name { get; set; }
         public string Photo { get; set; }
         public SubProductCategoryStatus Status { get; set; }
+        public string Link { get; set; }
     }
 }

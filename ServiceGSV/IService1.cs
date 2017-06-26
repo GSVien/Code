@@ -20,6 +20,14 @@ namespace ServiceGSV
 
         [OperationContract]
         [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json)]
+        Stream GetCategoryByLink(string link);
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json)]
+        Stream GetProviveByLink(string link);
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json)]
         Stream GetListCategory(string key);
 
         [OperationContract]

@@ -54,7 +54,17 @@ namespace ServiceGSV.BUS
                 });
 
         }
-
+        public static DoResult<ProductCategory> GetProductCategoryByLink(long? actionUserId, string link)
+        {
+            return BUSCore.Do<ProductCategory>(
+                userId: actionUserId,
+                action: (c) =>
+                {
+                    // Cập nhật hệ thống
+                    var r = ProductCategoryDAO.GetByLink(c.Db, link);
+                    return r;
+                });
+        }
         public static DoResult<List<SubProductCategory>> GetSubProductCategory(long? actionUserId,long categoryId)
         {
             return BUSCore.Do<List<SubProductCategory>>(
@@ -79,6 +89,18 @@ namespace ServiceGSV.BUS
                     return r;
                 });
 
+        }
+
+        public static DoResult<Province> GetProvinceByLink(long? actionUserId,string link)
+        {
+            return BUSCore.Do<Province>(
+                userId: actionUserId,
+                action: (c) =>
+                {
+                    // Cập nhật hệ thống
+                    var r = ProvinceDAO.GetByLink(c.Db,link);
+                    return r;
+                });
         }
 
         public static DoResult<List<District>> GetDistrict(long? actionUserId,long proviceId)

@@ -8,6 +8,7 @@
     <Property Name="ProvinceId" Type="int" Nullable="false" />
     <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
     <Property Name="Status" Type="int" Nullable="false" />
+    <Property Name="Link" Type="nvarchar" MaxLength="255" Nullable="false" />
   </EntityType>
   <EntityType Name="GroupUser">
     <Key>
@@ -44,6 +45,7 @@
     <Property Name="DictrictId" Type="int" Nullable="false" />
     <Property Name="Title" Type="nvarchar" MaxLength="500" Nullable="false" />
     <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Link" Type="nvarchar" MaxLength="500" Nullable="false" />
   </EntityType>
   <EntityType Name="ProductCategory">
     <Key>
@@ -53,6 +55,7 @@
     <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
     <Property Name="Photo" Type="nvarchar" MaxLength="255" />
     <Property Name="Status" Type="int" Nullable="false" />
+    <Property Name="Link" Type="nvarchar" MaxLength="255" Nullable="false" />
   </EntityType>
   <EntityType Name="Province">
     <Key>
@@ -61,6 +64,7 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
     <Property Name="Status" Type="int" Nullable="false" />
+    <Property Name="Link" Type="nvarchar" MaxLength="255" Nullable="false" />
   </EntityType>
   <EntityType Name="SubProductCategory">
     <Key>
@@ -71,6 +75,7 @@
     <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
     <Property Name="Photo" Type="nvarchar" MaxLength="255" />
     <Property Name="Status" Type="int" Nullable="false" />
+    <Property Name="Link" Type="nvarchar" MaxLength="255" Nullable="false" />
   </EntityType>
   <EntityType Name="UserInfo">
     <Key>

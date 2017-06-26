@@ -13,6 +13,7 @@
           <Property Name="ProvinceId" Type="int" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="Link" Type="nvarchar" MaxLength="255" Nullable="false" />
         </EntityType>
         <EntityType Name="GroupUser">
           <Key>
@@ -49,6 +50,7 @@
           <Property Name="DictrictId" Type="int" Nullable="false" />
           <Property Name="Title" Type="nvarchar" MaxLength="500" Nullable="false" />
           <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Link" Type="nvarchar" MaxLength="500" Nullable="false" />
         </EntityType>
         <EntityType Name="ProductCategory">
           <Key>
@@ -58,6 +60,7 @@
           <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="Photo" Type="nvarchar" MaxLength="255" />
           <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="Link" Type="nvarchar" MaxLength="255" Nullable="false" />
         </EntityType>
         <EntityType Name="Province">
           <Key>
@@ -66,6 +69,7 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="Link" Type="nvarchar" MaxLength="255" Nullable="false" />
         </EntityType>
         <EntityType Name="SubProductCategory">
           <Key>
@@ -76,6 +80,7 @@
           <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="Photo" Type="nvarchar" MaxLength="255" />
           <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="Link" Type="nvarchar" MaxLength="255" Nullable="false" />
         </EntityType>
         <EntityType Name="UserInfo">
           <Key>
@@ -133,6 +138,7 @@
           <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ProvinceId" Type="Int32" Nullable="false" />
           <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="Link" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="PhotoMedia">
           <Key>
@@ -153,6 +159,7 @@
           <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Photo" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="Status" Type="GiaSinhVienModel.ProductCategoryStatus" Nullable="false" />
+          <Property Name="Link" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Province">
           <Key>
@@ -161,6 +168,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="Link" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="SubProductCategory">
           <Key>
@@ -171,6 +179,7 @@
           <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Photo" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="Status" Type="GiaSinhVienModel.SubProductCategoryStatus" Nullable="false" />
+          <Property Name="Link" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="UserInfo">
           <Key>
@@ -256,6 +265,7 @@
           <Property Name="DictrictId" Type="Int32" Nullable="false" />
           <Property Name="Title" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Link" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -266,6 +276,7 @@
           <EntitySetMapping Name="Districts">
             <EntityTypeMapping TypeName="GiaSinhVienModel.District">
               <MappingFragment StoreEntitySet="District">
+                <ScalarProperty Name="Link" ColumnName="Link" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="ProvinceId" ColumnName="ProvinceId" />
@@ -288,6 +299,7 @@
           <EntitySetMapping Name="ProductCategories">
             <EntityTypeMapping TypeName="GiaSinhVienModel.ProductCategory">
               <MappingFragment StoreEntitySet="ProductCategory">
+                <ScalarProperty Name="Link" ColumnName="Link" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Photo" ColumnName="Photo" />
@@ -298,6 +310,7 @@
           <EntitySetMapping Name="Provinces">
             <EntityTypeMapping TypeName="GiaSinhVienModel.Province">
               <MappingFragment StoreEntitySet="Province">
+                <ScalarProperty Name="Link" ColumnName="Link" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
@@ -307,6 +320,7 @@
           <EntitySetMapping Name="SubProductCategories">
             <EntityTypeMapping TypeName="GiaSinhVienModel.SubProductCategory">
               <MappingFragment StoreEntitySet="SubProductCategory">
+                <ScalarProperty Name="Link" ColumnName="Link" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="ProductCategoryId" ColumnName="ProductCategoryId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -343,6 +357,7 @@
           <EntitySetMapping Name="Products">
             <EntityTypeMapping TypeName="GiaSinhVienModel.Product">
               <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="Link" ColumnName="Link" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="DictrictId" ColumnName="DictrictId" />

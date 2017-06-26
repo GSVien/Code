@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\ThinkPad-Lap\Documents\Visual Studio 2015\Projects\ServiceGSV\Code\ServiceGSV\Module\GSVEntity.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\Welcome\Documents\GitHub\Code\ServiceGSV\Module\GSVEntity.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

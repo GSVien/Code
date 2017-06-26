@@ -6,7 +6,6 @@ using System.Net;
 using System.Security.Cryptography;
 using System.Text;
 using System.Web.Mvc;
-using Newtonsoft.Json.Linq;
 
 namespace TeenIdol.Controllers
 {

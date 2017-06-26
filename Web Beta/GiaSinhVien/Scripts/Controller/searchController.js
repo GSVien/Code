@@ -1,21 +1,79 @@
 ﻿giasinhvienApp.controller("searchController", [
-    "$scope", "$rootScope", "$routeParams", "$location", "$http", "webService", "authenticationService", "modalService", "formService",
-    function ($scope, $rootScope,$routeParams, $location, $http, webService, authenticationService, modalService, formService) {
+    "$window", "$scope", "$rootScope", "$routeParams", "$location", "$http", "webService", "authenticationService", "modalService", "formService",
+    function ($window,$scope, $rootScope, $routeParams, $location, $http, webService, authenticationService, modalService, formService) {
         //#region [Field]
         var now = new Date();
         var endyear = now.getTime();
         $scope.stringText = undefined;
+        $scope.linkProvice = undefined;
+        $scope.linkCategory = undefined;
         $scope.categoryId = undefined;
         $scope.proviceId = undefined;
+        $scope.province = undefined;
+        $scope.category = undefined;
         $scope.$p = $scope.$parent;
         $scope.pageSizeProduct = 16;
 
         if ($routeParams) {
-            $scope.stringText = $routeParams.keystring;
-            $("#searchValue").val($scope.stringText);
+            if ($routeParams.keystring) {
+                $scope.stringText = $routeParams.keystring;
+                $("#searchValue").val($scope.stringText);
+            }
+            if ($routeParams.keyProvice) {
+                $scope.linkProvice = $routeParams.keyProvice;
+                webService.call({
+                    name: "GetProviveByLink",
+                    data: {
+                        link: $scope.linkProvice
+                    },
+
+                    onError: function (errorCode, message) {
+                    },
+
+                    onSuccess: function (r) {
+                        if (r.Result) {
+                            $scope.province = r.Result;
+                            $scope.proviceId = $scope.province.Id;
+                            if ($routeParams.keyCategory) {
+                                $scope.linkCategory = $routeParams.keyCategory;
+                                webService.call({
+                                    name: "GetCategoryByLink",
+                                    data: {
+                                        link: $scope.linkCategory
+                                    },
+
+                                    onError: function(errorCode, message) {
+                                    },
+
+                                    onSuccess: function(rs) {
+                                        if (rs.Result) {
+                                            $scope.category = rs.Result;
+                                            $scope.categoryId = $scope.category.Id;
+                                            //$scope.OnSelectCategory($scope.category.Id, $scope.category);
+                                            $("#sp-menu2").html($scope.category.Name);
+                                            $("#sp-menu1").html($scope.province.Name);
+                                            if (!$scope.$$phase) $scope.$apply();
+                                        }
+                                    },
+                                });
+                            } else {
+                                //$scope.OnSelectProvice($scope.province.Id, $scope.province);
+                                $("#sp-menu1").html($scope.province.Name);
+                            }
+                        } else {
+                            $window.location.href = '/Search/';
+                        }
+                        $scope.onLoadProductData();
+                        if (!$scope.$$phase) $scope.$apply();
+                    },
+                });
+
+
+            }
+
         }
 
-        
+
         //#endregion
 
         //#region [Layout]
@@ -26,13 +84,23 @@
         //#region [Event]
 
 
-        $scope.OnSelectProvice = function(id) {
-                $scope.proviceId = id;
+        $scope.OnSelectProvice = function (id,o) {
+            $scope.proviceId = id;
+            if (o) {
+                $scope.province = o;
+                if (!$scope.$$phase) $scope.$apply();
+            }
+            $scope.onLoadProductData();
         };
 
 
-        $scope.OnSelectCategory = function (id) {
-                $scope.categoryId = id;
+        $scope.OnSelectCategory = function (id,o) {
+            $scope.categoryId = id;
+            if (o) {
+                $scope.category = o;
+                if (!$scope.$$phase) $scope.$apply();
+            }
+            $scope.onLoadProductData();
         };
 
         $scope.onLoadProvince = function () {
@@ -91,7 +159,7 @@
             });
         };
 
-        $scope.viewShowMore = function() {
+        $scope.viewShowMore = function () {
             $scope.pageSizeProduct += 16;
             $scope.onLoadProductData();
         }
@@ -125,6 +193,11 @@
             $("meta[name='keywords']").attr("content", "Giải trí thả ga - Tự tin thể hiện mình cùng teenidol, giao lưu với dàn idol xinh xắn, đa tài, đa phong cách trên nền platform ưu việt nhất.");
             $("meta[name='description']").attr("content", "Giải trí thả ga - Tự tin thể hiện mình cùng teenidol, giao lưu với dàn idol xinh xắn, đa tài, đa phong cách trên nền platform ưu việt nhất.");
 
+            $('.dropdown-menu').on('click', 'a', function () {
+                var text = $(this).html();
+                var htmlText = text + ' <span class="caret"></span>';
+                $(this).closest('.dropdown').find('.dropdown-toggle').html(htmlText);
+            });
 
         });
 
