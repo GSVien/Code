@@ -16,6 +16,7 @@ namespace ServiceGSV
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in code, svc and config file together.
     // NOTE: In order to launch WCF Test Client for testing this service, please select Service1.svc or Service1.svc.cs at the Solution Explorer and start debugging.
     [AspNetCompatibilityRequirements(RequirementsMode = AspNetCompatibilityRequirementsMode.Allowed)]
+   
     public class Service1 : IService1
     {
         public Stream GetListProduct(string key)
@@ -44,6 +45,12 @@ namespace ServiceGSV
         public Stream ThayDoiThongTinUser(string username, string passwork, string photo, string sodienthoai)
         {
             var rs = BUS.BUS.Bus_ThayDoiThongTinUser(username, passwork, photo, sodienthoai);
+            return ResultHelper.Json(rs.ToJson("*"));
+        }
+
+        public Stream GetUserInfo(long id)
+        {
+            var rs = BUS.BUS.Bus_GetUserInfo(id);
             return ResultHelper.Json(rs.ToJson("*"));
         }
         #endregion

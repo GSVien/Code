@@ -385,6 +385,7 @@ function ($scope, $rootScope, $routeParams, $log, $sce, sessionService, webServi
     }
 
     $scope.onLoadMainProduct = function () {
+        
         webService.call({
             name: "GetInfoProductModel",
             data: {
@@ -447,22 +448,22 @@ function ($scope, $rootScope, $routeParams, $log, $sce, sessionService, webServi
     //#endregion
 
     //#region [On Load]
-    sessionService.isReady(function () {
+    //sessionService.isReady(function () {
         $scope.onLoadMainProduct();
 
-
-        $($window).bind("scroll", function () {
-            if (this.pageYOffset > 750) {
-                $(".crolltop").css("position", "fixed");
-                $(".crolltop").css("top", "0");
-                $(".crolltop").css("width", "23.4%");
-            } else {
-                $(".crolltop").css("position", "relative");
-                $(".crolltop").css("top", "0");
-                $(".crolltop").css("width", "auto");
-            }
-        });
-    });
+        
+    //    $($window).bind("scroll", function () {
+    //        if (this.pageYOffset > 750) {
+    //            $(".crolltop").css("position", "fixed");
+    //            $(".crolltop").css("top", "0");
+    //            $(".crolltop").css("width", "23.4%");
+    //        } else {
+    //            $(".crolltop").css("position", "relative");
+    //            $(".crolltop").css("top", "0");
+    //            $(".crolltop").css("width", "auto");
+    //        }
+    //    });
+    //});
 
     //#endregion
 }
@@ -602,10 +603,10 @@ giasinhvienApp.controller("searchController", [
 ]);
 giasinhvienApp.controller("layoutController", ["$window", "$http", "$scope", "$rootScope", "$location", "$cookies",
     "helperService", "authenticationService", "Notification", "formService",
-    "webService", "modalService",
+    "webService", "modalService","sessionService",
 function ($window, $http, $scope, $rootScope, $location, $cookies,
     helperService, authenticationService, Notification, formService,
-    webService, modalService) {
+    webService, modalService, sessionService) {
     //#region [Field]
 
     //#endregion
@@ -619,6 +620,9 @@ function ($window, $http, $scope, $rootScope, $location, $cookies,
     $scope.layoutFullBody = false;
     $scope.layoutShowRightBar = true;
     $scope.layoutShowHeaderevent = false;
+
+    $scope.userSession = sessionService.data();
+    console.log($scope.userSession);
     //#endregion
     $scope.ListMenuHead = [
         {
@@ -692,8 +696,10 @@ function ($window, $http, $scope, $rootScope, $location, $cookies,
             Status: 1
         }
     ];
-    console.log($scope.ListCategory);
+
     //#region [Service]
+
+    
 
     //webService.call({
     //    name: "GetListCategory",
@@ -731,27 +737,33 @@ function ($window, $http, $scope, $rootScope, $location, $cookies,
     //#endregion
 
     //#region [Event]
-    $scope.dangNhapBangEmail = function (e) {
+    $scope.dangNhapBangEmail = function ($event) {
        
         //goi service dang nhap
         var $target = $($event.target);
         var $emailElement = $target.find(".email");
         var $passwordElement = $target.find(".password");
 
-        $buttonElement.button("loading");
-
         webService.call({
             name: "DangNhapBangEmail",
+            type: "POST",
             data: {
-                email: $emailElement,
-                passwork: $passwordElement
+                email: $emailElement.val(),
+                passwork: $passwordElement.val()
             },
-
-            onError: function (errorCode, message) {
+            displayError: true,
+            onError: function () {
+                Notification.error("Đăng nhập thất bại!");
             },
 
             onSuccess: function (r) {
-                console.log(r);
+                if (r.Result && r.Result.Id)
+                    sessionService.set(r.Result.Id, function () {
+                        $("#modal-authentication").modal("hide");
+                        $rootScope.showPopupInterval = false;
+                        Notification.success("Đăng nhập thành công");
+                        if (o.onDone) o.onDone();
+                    });
                 if (!$scope.$$phase) $scope.$apply();
             },
         });
@@ -6177,7 +6189,7 @@ giasinhvienApp.factory("sessionService", [
 
         var service = new function () {
             this.isSigned = function () {
-                return !isNoU(_userId) && !isNoUoW(_key) && _data !== undefined;
+                return !isNoU(_userId) && _data !== undefined;
             };
 
             this.isLoaded = function () {
@@ -6221,13 +6233,12 @@ giasinhvienApp.factory("sessionService", [
                 $cookies.remove("session");
             };
 
-            this.set = function (userId, key, onDone) {
+            this.set = function (userId,  onDone) {
                 _userId = userId;
-                _key = key;
 
                 //webService.call({
-                //    name: "User_GetDetails",
-                //    data: { actionUserId: _userId, userId: _userId, isStar: true, key: _key },
+                //    name: "GetUserInfo",
+                //    data: { id: _userId },
                 //    onError: function (error, msg) {
                 //        Notification.error(msg + "! Vui lòng F5 để tải lại");
                 //        service.clear();
@@ -6236,10 +6247,9 @@ giasinhvienApp.factory("sessionService", [
                 //        _data = {
                 //            user: r.Result
                 //        };
-                //        _groupUserId = r.Result.User.GroupUserId;
+                //        _groupUserId = r.Result.GroupId;
                 //        $cookies.putObject("session", {
                 //            userId: _userId,
-                //            key: _key
                 //        }, {
                 //            expires: moment().add(7, "days").toDate()
                 //        });
@@ -6297,7 +6307,9 @@ giasinhvienApp.factory("sessionService", [
                 //});
             };
 
+
             this.isReady = function (callback) {
+                console.log("safafa");
                 var handler = $interval(function () {
                     if (_status !== "loaded")
                         return;

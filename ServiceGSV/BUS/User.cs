@@ -12,6 +12,26 @@ namespace ServiceGSV.BUS
 {
     public partial class BUS
     {
+        public static DoResult<UserInfo> Bus_GetUserInfo(long id)
+        {
+            return BUSCore.Do<UserInfo>(
+                userId: -1,
+                action: (c) =>
+                {
+                    //lấy user có email là _email
+                    var userTemp = UserInfoDAO.GetById(c.Db, id);
+                    if (userTemp == null) //không ttồn tại user có email
+                    {
+                        c.SetError("Không tìm thấy thông tin User", 1);
+                        return null;
+                    }
+
+                    return userTemp;
+
+                });
+
+        }
+
         public static DoResult<UserInfo> Bus_DangNhapBangEmail(string _email, string passwork)
         {
             //MaHoaMD5 mahoa = new MaHoaMD5();
@@ -29,7 +49,7 @@ namespace ServiceGSV.BUS
                     }
                     else // có user=> kiểm tra passwork
                     {
-                        if (/*userTemp.Passwork != mahoa.md5(passwork)*/1==1)
+                        if (/*userTemp.Passwork != mahoa.md5(passwork)*/1 != 1)
                         {
                             c.SetError("Passwork nhập vào không đúng.Nhập lại", 1);
                             return null;
@@ -50,8 +70,8 @@ namespace ServiceGSV.BUS
                 userId: -1,
                 action: (c) =>
                 {
-                        //get user có email xxxxx => xxxxx có ng dung chua ? loi
-                        var ysafas = UserInfoDAO.GetUserByEmail(c.Db, email).Result;
+                    //get user có email xxxxx => xxxxx có ng dung chua ? loi
+                    var ysafas = UserInfoDAO.GetUserByEmail(c.Db, email).Result;
                     if (ysafas != null)
                     {
                         c.SetError("Email đã đc sử dụng", 1);
@@ -64,8 +84,8 @@ namespace ServiceGSV.BUS
                     data.AvatarPhoto = photo;
                     data.GroupId = 1;
                     data.Phone = sodienthoai;
-                        // Cập nhật hệ thống
-                        var r = UserInfoDAO.Insert(c.Db, data);
+                    // Cập nhật hệ thống
+                    var r = UserInfoDAO.Insert(c.Db, data);
 
                     return r.Result;
                 });
@@ -78,7 +98,7 @@ namespace ServiceGSV.BUS
                 userId: -1,
                 action: (c) =>
                 {
-                 
+
                     UserInfo data = new UserInfo();
                     data.UserName = username;
                     //data.Passwork = mahoa.md5(passwork);
@@ -92,6 +112,6 @@ namespace ServiceGSV.BUS
                 });
 
         }
-       
+
     }
 }

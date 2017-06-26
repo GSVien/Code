@@ -6,7 +6,7 @@
 
         var service = new function () {
             this.isSigned = function () {
-                return !isNoU(_userId) && !isNoUoW(_key) && _data !== undefined;
+                return !isNoU(_userId) && _data !== undefined;
             };
 
             this.isLoaded = function () {
@@ -50,13 +50,12 @@
                 $cookies.remove("session");
             };
 
-            this.set = function (userId, key, onDone) {
+            this.set = function (userId,  onDone) {
                 _userId = userId;
-                _key = key;
 
                 //webService.call({
-                //    name: "User_GetDetails",
-                //    data: { actionUserId: _userId, userId: _userId, isStar: true, key: _key },
+                //    name: "GetUserInfo",
+                //    data: { id: _userId },
                 //    onError: function (error, msg) {
                 //        Notification.error(msg + "! Vui lòng F5 để tải lại");
                 //        service.clear();
@@ -65,10 +64,9 @@
                 //        _data = {
                 //            user: r.Result
                 //        };
-                //        _groupUserId = r.Result.User.GroupUserId;
+                //        _groupUserId = r.Result.GroupId;
                 //        $cookies.putObject("session", {
                 //            userId: _userId,
-                //            key: _key
                 //        }, {
                 //            expires: moment().add(7, "days").toDate()
                 //        });
@@ -126,7 +124,9 @@
                 //});
             };
 
+
             this.isReady = function (callback) {
+                console.log("safafa");
                 var handler = $interval(function () {
                     if (_status !== "loaded")
                         return;

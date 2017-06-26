@@ -1,9 +1,9 @@
 ﻿giasinhvienApp.controller("layoutController", ["$window", "$http", "$scope", "$rootScope", "$location", "$cookies",
     "helperService", "authenticationService", "Notification", "formService",
-    "webService", "modalService",
+    "webService", "modalService","sessionService",
 function ($window, $http, $scope, $rootScope, $location, $cookies,
     helperService, authenticationService, Notification, formService,
-    webService, modalService) {
+    webService, modalService, sessionService) {
     //#region [Field]
 
     //#endregion
@@ -17,6 +17,9 @@ function ($window, $http, $scope, $rootScope, $location, $cookies,
     $scope.layoutFullBody = false;
     $scope.layoutShowRightBar = true;
     $scope.layoutShowHeaderevent = false;
+
+    $scope.userSession = sessionService.data();
+    console.log($scope.userSession);
     //#endregion
     $scope.ListMenuHead = [
         {
@@ -90,8 +93,10 @@ function ($window, $http, $scope, $rootScope, $location, $cookies,
             Status: 1
         }
     ];
-    console.log($scope.ListCategory);
+
     //#region [Service]
+
+    
 
     //webService.call({
     //    name: "GetListCategory",
@@ -129,27 +134,33 @@ function ($window, $http, $scope, $rootScope, $location, $cookies,
     //#endregion
 
     //#region [Event]
-    $scope.dangNhapBangEmail = function (e) {
+    $scope.dangNhapBangEmail = function ($event) {
        
         //goi service dang nhap
         var $target = $($event.target);
         var $emailElement = $target.find(".email");
         var $passwordElement = $target.find(".password");
 
-        $buttonElement.button("loading");
-
         webService.call({
             name: "DangNhapBangEmail",
+            type: "POST",
             data: {
-                email: $emailElement,
-                passwork: $passwordElement
+                email: $emailElement.val(),
+                passwork: $passwordElement.val()
             },
-
-            onError: function (errorCode, message) {
+            displayError: true,
+            onError: function () {
+                Notification.error("Đăng nhập thất bại!");
             },
 
             onSuccess: function (r) {
-                console.log(r);
+                if (r.Result && r.Result.Id)
+                    sessionService.set(r.Result.Id, function () {
+                        $("#modal-authentication").modal("hide");
+                        $rootScope.showPopupInterval = false;
+                        Notification.success("Đăng nhập thành công");
+                        if (o.onDone) o.onDone();
+                    });
                 if (!$scope.$$phase) $scope.$apply();
             },
         });

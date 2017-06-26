@@ -13,12 +13,30 @@
                     </a>
                 </li>
             </ul>
-            <ul class="pull-right list-inline">
+            <ul class="pull-right list-inline" ng-if="!sessionService.isSigned()">
                 <li>
                     <a href="#" ud-role="sign-in"><i class="fa fa-user"></i> Đăng nhập</a>
                 </li>
                 <li>
                     <a href="#" ud-role="sign-up">Đăng ký</a>
+                </li>
+            </ul>
+            <ul class="signed pull-right list-inline" ng-if="sessionService.isSigned()">
+
+                <li>
+                    <a href="{{}}">
+                        <img class="avatar" ng-src="{{userSession().AvatarPhoto}}" />
+                        <span class="user-name">{{userSession().Name}}</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{}}">
+                        <i class="fa fa-envelope"></i>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#" ud-role="sign-out">Đăng xuất</a>
                 </li>
             </ul>
             <form class="search navbar-form navbar-right">

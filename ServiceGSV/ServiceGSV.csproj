@@ -107,6 +107,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Global.asax" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -147,9 +148,13 @@
     <Compile Include="BUS\Product.cs" />
     <Compile Include="BUS\User.cs" />
     <Compile Include="BUS\ProductCategory.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
     <Compile Include="Helper\ParamHelper.cs" />
     <Compile Include="Helper\ResultHelper.cs" />
     <Compile Include="IService1.cs" />
+    <Compile Include="MD5.cs" />
     <Compile Include="Module\DAO\DistrictDAO.cs" />
     <Compile Include="Module\DAO\SubProductCategoryDAO.cs" />
     <Compile Include="Module\DAO\ProvinceDAO.cs" />

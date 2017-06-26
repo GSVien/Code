@@ -11,7 +11,7 @@ namespace ServiceGSV.Module.DAO
 {
     public class UserInfoDAO
     {
-        public UserInfo GetById(GiaSinhVienEntities db,long id)
+        public static UserInfo GetById(GiaSinhVienEntities db,long id)
         {
             return db.UserInfoes.FirstOrDefault(f => f.Id == id).CloneObject();
         }

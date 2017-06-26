@@ -22,6 +22,7 @@ function ($scope, $rootScope, $routeParams, $log, $sce, sessionService, webServi
     }
 
     $scope.onLoadMainProduct = function () {
+        
         webService.call({
             name: "GetInfoProductModel",
             data: {
@@ -84,22 +85,22 @@ function ($scope, $rootScope, $routeParams, $log, $sce, sessionService, webServi
     //#endregion
 
     //#region [On Load]
-    sessionService.isReady(function () {
+    //sessionService.isReady(function () {
         $scope.onLoadMainProduct();
 
-
-        $($window).bind("scroll", function () {
-            if (this.pageYOffset > 750) {
-                $(".crolltop").css("position", "fixed");
-                $(".crolltop").css("top", "0");
-                $(".crolltop").css("width", "23.4%");
-            } else {
-                $(".crolltop").css("position", "relative");
-                $(".crolltop").css("top", "0");
-                $(".crolltop").css("width", "auto");
-            }
-        });
-    });
+        
+    //    $($window).bind("scroll", function () {
+    //        if (this.pageYOffset > 750) {
+    //            $(".crolltop").css("position", "fixed");
+    //            $(".crolltop").css("top", "0");
+    //            $(".crolltop").css("width", "23.4%");
+    //        } else {
+    //            $(".crolltop").css("position", "relative");
+    //            $(".crolltop").css("top", "0");
+    //            $(".crolltop").css("width", "auto");
+    //        }
+    //    });
+    //});
 
     //#endregion
 }

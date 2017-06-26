@@ -918,6 +918,7 @@
     <Content Include="Scripts\Controller\homeController.js" />
     <Content Include="Scripts\Controller\User\userfollowController.js" />
     <Content Include="Scripts\Controller\_layoutController.js" />
+    <Content Include="Scripts\Directive\myEnter.js" />
     <Content Include="Scripts\Directive\compile.js" />
     <Content Include="Scripts\Directive\dropdown.js" />
     <Content Include="Scripts\Directive\fileread.js" />
